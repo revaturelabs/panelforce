@@ -1,0 +1,65 @@
+/* RED */
+.THIS .red-btn {
+    background: token(backgroundFailure);
+    color: token(redBtnTextColor);
+}
+.THIS .red-btn:hover {
+    background: token(backgroundFailure);
+    color: token(redBtnTextColor);
+}
+.THIS .red-btn:focus {
+    background: token(backgroundFailure);
+    color: token(redBtnTextColor);
+}
+
+/* GREEN */
+.THIS .green-btn {
+    background: token(backgroundSuccess);
+    color: token(greenBtnTextColor);
+}
+.THIS .green-btn:hover {
+    background: token(backgroundSuccess);
+    color: token(greenBtnTextColor);
+}
+.THIS .green-btn:focus {
+    background: token(backgroundSuccess);
+    color: token(greenBtnTextColor);
+}
+
+/* BLUE */
+.THIS .blue-btn {
+    background: token(backgroundCurrent);
+    color: token(blueBtnTextColor);
+}
+.THIS .blue-btn:hover {
+    background: token(backgroundCurrent);
+    color: token(blueBtnTextColor);
+}
+.THIS .blue-btn:focus {
+    background: token(backgroundCurrent);
+    color: token(blueBtnTextColor);
+}
+
+/* WHITE */
+.THIS .white-btn {
+    background: token(backgroundInactive);
+    color: token(whiteBtnTextColor);
+}
+.THIS .white-btn:hover {
+    background: token(backgroundInactive);
+    color: token(whiteBtnTextColor);
+}
+.THIS .white-btn:focus {
+    background: token(backgroundInactive);
+    color: token(whiteBtnTextColor);
+}
+
+/* Rounded */
+.THIS .first-btn {
+    border-radius: 20px 0 0 20px !important;
+    margin: 0 0 0 20px;
+}
+.THIS .last-btn {
+    border-radius: 0 20px 20px 0 !important;
+    margin: 0 20px 0 0;
+}

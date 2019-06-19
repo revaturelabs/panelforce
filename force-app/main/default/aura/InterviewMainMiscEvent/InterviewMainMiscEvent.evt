@@ -1,0 +1,18 @@
+<aura:event type="APPLICATION" description="Event to transfer changed categories to PanelViewMain"> 
+    <aura:attribute name="status" type="Integer"/>
+</aura:event>
+
+<!-- REFERENCE: https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/events_component_example.htm -->
+
+<!-- This is how you fire an event: -->
+<!-- First register it inside the component that fires the event with: -->
+<!-- <aura:registerEvent name="cmpEvent" type="c:eventComponentName"/> -->
+<!-- Then in js controller make a function that does something like this: -->
+<!--    var cmpEvent = component.getEvent("cmpEvent");
+        cmpEvent.setParams({"name of attribute on the top" : "value"});
+        cmpEvent.fire(); -->
+
+<!-- This is how you handle the event: -->
+<!-- <aura:handler name="cmpEvent" event="c:eventComponentName" action="{!c.handleComponentEventFunctionInYourJSController}"/> -->
+<!-- This is how you get data from event in js: -->
+<!-- var attr = event.getParam("AttributeName"); -->

@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Event template">
+    <aura:attribute name="current" type="Integer" />
+    <aura:attribute name="categories" type="CategoryLineItem__c[]" />
+</aura:event>

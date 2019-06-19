@@ -24,8 +24,7 @@
                 {
                     "aura:id": "btn-"+count,
                     "label": el.Name,
-                    "class": "slds-col "+ btnColor +" "+ roundness,
-                    "onclick": component.getReference("c.tmpHandlePress")
+                    "class": "slds-col "+ btnColor +" "+ roundness
                 },
                 function(newButton, status, errorMessage){
                     //Add the new button to the body array

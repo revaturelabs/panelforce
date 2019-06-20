@@ -9,7 +9,7 @@
     <aura:attribute name="numberofTries" type="Integer" />
     <aura:attribute name="listFromEvent" type="List" />
     <aura:attribute name="trackFromEvent" type="Object" />
-    <aura:attribute name="appState" type="Integer" />
+    <aura:attribute name="appState" type="Integer" default = "0" />
 
     <force:recordData recordId="{!v.recordId}" fields="Name" targetFields="{!v.contactRecord}" />
 

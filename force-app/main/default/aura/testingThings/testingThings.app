@@ -1,3 +1,3 @@
-<aura:application extends="force:slds ltng:outApp" tokens="force:base" access="global">
+<aura:application extends="force:slds" tokens="force:base" access="global">
     <c:InterviewMainProgress />
 </aura:application>

@@ -31,6 +31,7 @@
     },
 
     handleCategories : function(component, event, helper) {
+        console.log("event from progress gets handled")
         let allCats = component.get("v.allCategories");
         let prev = component.get("v.currentCat");
         let next = event.getParam("current");

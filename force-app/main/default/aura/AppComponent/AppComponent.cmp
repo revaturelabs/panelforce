@@ -1,0 +1,27 @@
+<aura:component 
+    implements="force:lightningQuickAction,force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes"
+    access="global">
+
+    <aura:html tag="style">
+        .slds-modal__container {
+            height : auto;
+            width: 70%;
+            max-width: 170rem;
+        }
+        .modal-body {
+            height : 800px !important;
+            max-height: 800px !important;
+        }
+        
+        .customFooter {
+            display: inline !important;
+        }
+    </aura:html> 
+
+    <aura:attribute name="_recordId" type="String" />
+    {!'record id = ' + v.recordId}
+    
+    <c:InterviewInitial />
+    <c:InterviewMain />
+    <c:PanelViewMain recordId="{!v.recordId}"/>
+</aura:component>	

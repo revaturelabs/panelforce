@@ -36,8 +36,8 @@ public with sharing class TrackController {
         //        trackName = t.Name;
         //    }
         //}
-        //trackName = [SELECT PH_TrainingTrack__r.Name FROM PH_Training__c WHERE Id IN (SELECT PH_Training__c FROM PH_TrainingAssignment__c WHERE Contact__c = :contactId)][0].PH_TrainingTrack__r.Name;
-        return trackName;
+        // trackName = [SELECT PH_TrainingTrack__r.Name FROM PH_Training__c WHERE Id IN (SELECT PH_Training__c FROM PH_TrainingAssignment__c WHERE Contact__c = :contactId)][0].PH_TrainingTrack__r.Name;
+        return 'trackName';
     }
 
     //public cody() {

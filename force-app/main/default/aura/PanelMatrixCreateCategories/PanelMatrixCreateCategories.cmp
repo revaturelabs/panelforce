@@ -7,22 +7,25 @@
     <!-- Boolean attribute to open/close the modal -->
     <aura:attribute name="viewModal" type="Boolean" default="false"/>
     <aura:attribute name="editModal" type="Boolean" default="false"/>
+    <!-- Change Max_Score__c to maxScore__c -->
     <aura:attribute name="newCategory" type="PanelCategory__c" 
-                    default="{ 'sobjectType':'PanelCategory__c','Name': '','Max_Score__c': '' }"/>
+                    default="{ 'sobjectType':'PanelCategory__c','Name': '','maxScore__c': '' }"/>
     <!-- Page Header -->
     <h1 class="slds-align_absolute-center slds-text-heading_large slds-p-top_large slds-p-bottom_large">Categories</h1>
-    <div class="slds-grid slds-gutters slds-wrap">
+    <div class="slds-grid slds-gutters slds-wrap slds-p-bottom_small">
         <aura:iteration items="{!v.categories}" var="cat" indexVar="index">
-            <div class="slds-col slds-size_1-of-2 slds-p-bottom_small">
-                <lightning:card title="{!cat.Name}" class="">
-                    <p class="slds-align_absolute-center">{!cat.Max_Score__c}</p>
-                    <lightning:button label="Edit" title="{!index}" onclick="{!c.editCategory}"/>
-                    <lightning:button label="Delete" title="{!index}" onclick="{!c.deleteCategory}"/>
+            <div class="slds-col slds-size_1-of-3 slds-p-bottom_small">
+                <lightning:card title="{!cat.Name}" class="slds-text-align_center">
+                    <p class="slds-align_absolute-center">{!cat.maxScore__c}</p>
+                    <div class="slds-p-top_small">
+                        <lightning:button label="Edit" title="{!index}" onclick="{!c.editCategory}"/>
+                        <lightning:button label="Delete" title="{!index}" onclick="{!c.deleteCategory}"/>
+                    </div>
                 </lightning:card>
             </div>
         </aura:iteration>
-        <div>
-            <lightning:card title="Add New Category" class="">
+        <div class="slds-col slds-size_1-of-3 slds-p-bottom_small">
+            <lightning:card title="Add New Category" class="slds-text-align_center">
                 <p class="slds-align_absolute-center">
                     <lightning:icon iconName="action:new" alternativeText="New Button" size="x-small" onclick="{!c.viewModal}"/>  
                 </p>
@@ -31,9 +34,13 @@
     </div>
     
     
-    <div>
-        <p>{!v.totalScore}</p>
-        <p>{!v.categories.length}</p>
+    <div class="slds-grid slds-gutters slds-wrap slds-p-top_large">
+        <div class="slds-col">
+            <h2 class="slds-text-heading_medium">Total Score: {!v.totalScore}</h2>
+        </div>
+        <div class="slds-col">
+            <h2 class="slds-text-heading_medium"> Number of Categories: {!v.categories.length}</h2>
+        </div>
     </div>
     
     <aura:if isTrue="{!v.viewModal}" >
@@ -48,7 +55,7 @@
                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
                         <form>
                             <lightning:input aura:id="categoryform" type="text" name="nameBox" label="Name" required="true" value="{!v.newCategory.Name}"/>
-                            <lightning:input aura:id="categoryform" type="number" name="numberBox" label="Score" required="true" value="{!v.newCategory.Max_Score__c}"/>
+                            <lightning:input aura:id="categoryform" type="number" name="numberBox" label="Score" required="true" value="{!v.newCategory.maxScore__c}"/>
                         </form>
                     </div>
                     <!-- Footer of Modal -->

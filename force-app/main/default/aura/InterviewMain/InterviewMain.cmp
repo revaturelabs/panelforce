@@ -12,9 +12,7 @@
     
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     
-    <aura:handler name="appStateChange" event="c:InterviewAppStateEvent" action="{!c.appStateChange}"/>
-    <!-- <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent"/> -->
-    <aura:registerEvent name="categoriesChange" type="c:InterviewMainEvent"/>
+    
     
     <div class="slds-text-align_center">
         <lightning:formattedText value="{!'Assignment: ' + v.assignment.Name}" />
@@ -38,8 +36,10 @@
                 
                 <lightning:layoutItem flexibility="auto" padding="around-small" size="4">
                 <div class="slds-align_center">
-                        <!--c:InterviewMainScore categories="{!v.categories}" currentIndex="{!v.current}" -->
+                        <h1>Score place holder</h1>
+                        <!--c:InterviewMainScore categories="v.categories" category="v.category" currentIndex="v.current" Current_Score="v.category.score" -->
                         <c:InterviewMainScore />
+                        <h1>Misc place holder</h1>
                         <!--c:InterviewMainMisc categories="v.categories" category="v.category" currentIndex="v.current"-->
                         <c:InterviewMainMisc />
                     </div>

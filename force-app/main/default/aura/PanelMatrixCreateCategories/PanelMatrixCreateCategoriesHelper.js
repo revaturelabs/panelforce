@@ -15,7 +15,7 @@
         let scoreList = component.get('v.categories');
         let totalScore = 0;
         for (let i = 0; i < scoreList.length; i++) { 
-            totalScore += scoreList[i].Max_Score__c;
+            totalScore += scoreList[i].maxScore__c;
         }
         component.set('v.totalScore', totalScore);
     },
@@ -65,7 +65,7 @@
             }
         });
         $A.enqueueAction(saveCat);
-        component.set('v.newCategory', { 'sobjectType':'PanelCategory__c','Name': '','Max_Score__c': '' });
+        component.set('v.newCategory', { 'sobjectType':'PanelCategory__c','Name': '','maxScore__c': '' });
         component.set('v.viewModal',false);
     },
 

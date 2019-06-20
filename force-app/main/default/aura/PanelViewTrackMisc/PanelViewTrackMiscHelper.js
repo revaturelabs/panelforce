@@ -2,4 +2,6 @@
     helperMethod : function() {
 
     }
+
+    
 })

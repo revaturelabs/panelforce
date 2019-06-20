@@ -1,2 +1,12 @@
-.THIS {
+.THIS.right-align {
+    text-align: right;
+}
+
+.THIS.lm-0 {
+    margin-left: 0;
+
+}
+
+.THIS.white {
+    color: white;
 }

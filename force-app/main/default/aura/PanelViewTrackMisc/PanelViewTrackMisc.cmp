@@ -1,3 +1,123 @@
-<aura:component>
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+  <!-- Variables -->
+  <aura:attribute name="editState" type="boolean" />
+  <aura:attribute name="readState" type="boolean" />
+  <aura:attribute
+    name="options"
+    type="List"
+    default="[
+  {'label': 'Bad Technical', 'value': 'option1'},
+  {'label': 'Bad Softskills', 'value': 'option2'},
+  {'label': 'Good Technical', 'value': 'option3'},
+  {'label': 'Good Softskills', 'value': 'option4'}
+  ]"
+  />
+  <aura:attribute name="value" type="List" default="" />
+  <aura:attribute name="comment" type="string" />
+  <aura:attribute name="pass" type="boolean" />
+  <aura:attribute name="fail" type="boolean" />
 
+  <aura:registerEvent
+    name="updateAssessmentEvent"
+    type="c:PanelViewTrackMiscEvent"
+  />
+  <aura:handler name="init" value="{! this }" action="{! c.init }" />
+
+  <!--Card Start -->
+  <div class="slds-p-around_medium" onblur="{!c.updateAssessment}">
+    <!-- Grid Start -->
+    <div class="slds-grid">
+      <section class="slds-col slds-size_6-of-12">
+        <h1><strong>Description</strong></h1>
+        <p class="slds-p-around_medium"
+          >This is Cody's panel interview. He passed with flying colors like
+          every superstar does.</p
+        >
+      </section>
+
+      <section class="slds-col slds-size_6-of-12 slds-grid_vertical">
+        <h1><strong>Type of Associate</strong></h1>
+
+        <lightning:checkboxGroup
+          name="Checkbox Group Required"
+          label="Checkbox Group"
+          options="{! v.options }"
+          value="{! v.value }"
+          required="true"
+        />
+
+        <h1 class="slds-col slds-p-around_medium"
+          ><strong>Score:</strong> 30/30</h1
+        >
+      </section>
+    </div>
+    <!-- Grid End -->
+
+    <h1><strong>Overall Comment</strong></h1>
+    <section class="slds-p-around_medium">
+      <!-- Grid Start -->
+      <div class="slds-grid">
+        <aura:if isTrue="{!v.editState}">
+          <lightning:inputRichText
+            aura:id="richComment"
+            placeholder="Overall Panel Comment"
+            class="slds-col slds-size_10-of-12"
+          >
+            <lightning:insertImageButton />
+          </lightning:inputRichText>
+
+          <aura:set attribute="else">
+            <lightning:formattedText
+              id="pComment"
+              class="slds-col slds-size_10-of-12"
+              value="{!v.comment}"
+            />
+          </aura:set>
+        </aura:if>
+
+        <div class="slds-col slds-size_2-of-12">
+          <div class="slds-grid slds-grid_vertical">
+            <lightning:button
+              class="slds-col white"
+              variant="success"
+              label="P"
+              title="Pass"
+              onclick="{! c.handlePass }"
+            />
+
+            <lightning:button
+              class="slds-col lm-0"
+              variant="destructive"
+              label="F"
+              title="Fail"
+              onclick="{! c.handleFail }"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Grid End -->
+    </section>
+
+    <br />
+    <br />
+    <br />
+
+    <!-- Panel History -->
+    <section>
+      <h1><strong>Panel History</strong></h1>
+      <div class="slds-p-around_medium">
+        <lightning:listView
+          aura:id="listViewAccounts"
+          objectApiName="Account"
+          listName="AllAccounts"
+          rows="5"
+          showSearchBar="true"
+          showActionBar="false"
+          enableInlineEdit="true"
+          showRowLevelActions="false"
+        />
+      </div>
+    </section>
+  </div>
+  <!-- Card End -->
 </aura:component>

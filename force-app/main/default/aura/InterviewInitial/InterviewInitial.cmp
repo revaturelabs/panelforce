@@ -1,3 +1,80 @@
-<aura:component>
+<aura:component controller="TrackController" description="Interview Initial" implements="force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:appHostable" access="global" >
+
+    <aura:attribute name="_recordId" type="String" />
+    <aura:attribute name="PH_TrainingTrack__c" type="String" />
+
+    <aura:attribute name="record" type="Object" />
+    <aura:attribute name="recordTemplate" type="Object" />
+
+    <aura:attribute name="error" type="Object" />
+    <aura:attribute name="mode" type="String" default="VIEW" />
+    <aura:attribute name="fetch" type="Boolean" default="false" />
+    <aura:attribute name="logMessage" type="String" description="Message to verify/assert for different operations." />
+    <aura:attribute name="isCallbackCalled" type="Boolean" default="false" description="Attribute to determine is action callback is called or not." />
+
+    <aura:method name="getNewRecord" action="{!c.getNewRecord}" description="Method to get a new empty record for the entity using force:recordData" />
+    <aura:method name="reloadRecord" action="{!c.reloadRecord}" description="Method to reload the record using force:recordData" />
+    <aura:method name="saveRecord" action="{!c.saveRecord}" description="Method to save record using force:recordData" />
+    <aura:method name="deleteRecord" action="{!c.deleteRecord}" description="Method to delete record using force:recordData" />
+
+    <h3 class="slds-section__title">Interview Initial</h3>
+
+    <force:recordData aura:id="recordDataCreate" layoutType="FULL" targetRecord="{!v.recordTemplate}"
+        targetError="{!v.error}" />
+<!--
+    <aura:if isTrue="{!v.fetch}">
+        <force:recordData aura:id="recordDataCmp" recordId="{!v._recordId}" layoutType="FULL" mode="{!v.mode}"
+            targetRecord="{!v.record}" targetError="{!v.error}" recordUpdated="{!c.handleRecordUpdate}" />
+ 
+        <force:recordData aura:id="trackDataCmp" recordId="{!v.PH_TrainingTrack__c}" layoutType="FULL" mode="{!v.mode}"
+            targetRecord="{!v.trackRecord}" targetError="{!v.error}" recordUpdated="{!c.handleRecordUpdate}" />
+
+    </aura:if>
+-->
+
+    <aura:if isTrue="{! !empty(v.error)}">
+        <div class="slds-box slds-theme--error">
+            <p><ui:outputText value="{!v.error}" /></p>
+        </div>
+    </aura:if>
+    <br />
+    <br />
+    <p><ui:outputText aura:id="logMessage" value="{!v.logMessage}" class="slds-text-heading--small" /></p>
+
+
+<!--
+    <aura:attribute name="record" type="Object" description="Record object to be displayed" />
+    <aura:attribute name="contactRecord" type="Object" />
+    <aura:attribute name="recordError" type="String" />
+    <force:recordData aura:id="record" layoutType="FULL" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="getcontact" value="{!this}" action="{!c.getContact}" />
+-->
+
+    <!-- Initial -->
+    Contact
+    <aura:attribute name="contact" type="Contact" />
+    <lightning:input aura:id="contactInput" value="{!v.recordId}" />
+ 
+    Track
+    <aura:attribute name="trackName" type="PH_TrainingTrack__c" />
+    <lightning:input aura:id="trackInput" value="{!v.PH_TrainingTrack__c}" />
+   
+    Date
+    <lightning:input type="date" />
+
+    Comment
+    <aura:attribute name="comment" type="String" />
+    <lightning:input aura:id="commentInput" value="{!v.comment}" />
+    
+    <!-- start -->
+    <ui:button aura:id="cancel" label="cancel" press="{!c.cancel}" />
+    <ui:button aura:id="start" label="start" press="{!c.start}" />
+
+
+    <!-- 
+    <lightning:button label="start" name="{! c.start}" />
+    <lightning:button label="cancel" name="{! c.cancel}" onclick="{!c.cancel}" class="slds-m-top_medium"/>
+    --> 
 
 </aura:component>

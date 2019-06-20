@@ -3,7 +3,7 @@
     <aura:handler name="categoryStatusChange" event="c:InterviewMainMiscEvent" action="{!c.handleStatusChange}" />
     <aura:handler name="categoriesChange" event="c:InterviewMainEvent" action="{!c.handleCategories}" />
 
-    <aura:attribute name="allCategories" type="CategoryLineItem__c[]" />
+    <aura:attribute name="allCategories" type="AssessmentLineItem__c[]" />
     <aura:attribute name="currentCat" type="Integer" default="0"/>
 
     <lightning:buttonGroup class="slds-grid slds-gutters">

@@ -1,2 +1,9 @@
-.THIS {
+.THIS .cntr-btn2{
+    background: t(colorBackgroundAlt);
+    border-bottom:1px solid lightgray;
 }
+.THIS .cntr-btn{
+    background: t(colorBackgroundAlt);
+    
+}
+

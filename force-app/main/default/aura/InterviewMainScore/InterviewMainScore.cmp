@@ -1,3 +1,45 @@
 <aura:component>
 
+
+        <aura:attribute name = "Current_Score" type = "integer" default = "0"/> 
+        <aura:attribute name = "Max_Score" type = "integer"/>
+        <aura:attribute name = "categories" type = "AssessmentLineItem__c[]" 
+            default='[{
+                "sobjectType": "AssessmentLineItem__c",
+                "Score__c": 20,
+                "maxScore__c": 20
+            }]'/> 
+        <aura:attribute name = "currentIndex" type = "Integer" default="0"/>
+        <aura:attribute name = "category_type" type = "PanelCategory__c"/> 
+        <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+      
+
+    <lightning:buttonGroup class="slds-grid">
+
+        
+        <lightning:button class="slds-col" label="-5" onclick="{!c.handleClickS5}" />
+        <lightning:button class="slds-col" label="-3" onclick="{!c.handleClickS3}"/>
+        <lightning:button class="slds-col" label="-1" onclick="{!c.handleClickS1}"/>
+   
+    
+        
+        <div class="slds-col slds-grid slds-grid_vertical slds-text-align_center slds-border_top slds-border_right slds-border_bottom slds-border_left cntr-btn">
+           
+            <lightning:tile class="cntr-btn cntr-btn2" label="{!'Current Score: ' + v.Current_Score}" />
+            <lightning:tile class="cntr-btn slds-m-top_none" label="{!'Max Score: ' + v.Max_Score}" />
+        
+        </div>
+        
+        
+    
+    
+        <lightning:button class="slds-col" label="+1" onclick="{!c.handleClickA1}"/>
+        <lightning:button class="slds-col" label="+3" onclick="{!c.handleClickA3}"/>
+        <lightning:button class="slds-col" label="+5" onclick="{!c.handleClickA5}"/>
+    
+    </lightning:buttonGroup>
+       
+      
+
+    
 </aura:component>

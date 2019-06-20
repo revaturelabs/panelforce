@@ -21,7 +21,7 @@
     <aura:attribute name="_recordId" type="String" />
     {!'record id = ' + v.recordId}
     
-    <c:InterviewInitial />
-    <c:InterviewMain />
+    <c:InterviewInitial recordId="{!v.recordId}"/>
+    <c:InterviewMain recordId="{!v.recordId}"/>
     <c:PanelViewMain recordId="{!v.recordId}"/>
 </aura:component>	

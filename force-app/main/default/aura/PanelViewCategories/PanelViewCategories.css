@@ -1,2 +1,21 @@
-.THIS {
+.THIS {}
+
+.THIS .scrollerSize {
+    /* height: 200px; */
 }
+
+.THIS#PanelViewCategoriesContainer {
+    /* width: 30%; */
+}
+
+.THIS .sdls-col {
+    display: inline-block;
+    width: 30%;
+}
+
+
+/* .THIS .flag {
+    width: 24px;
+    height: 24px;
+    align-content: center;
+} */

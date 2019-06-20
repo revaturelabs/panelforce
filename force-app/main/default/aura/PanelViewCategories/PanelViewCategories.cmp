@@ -1,3 +1,41 @@
-<aura:component>
+<aura:component controller="PanelViewCategoriesController" implements="flexipage:availableForRecordHome, force:hasRecordId">
 
+    <!-- Current assessment record id -->
+    <aura:attribute name="recordId" type="String" />
+    <!-- Stores all records associated to this Assessment, to save on SOQL queries -->
+    <aura:attribute name="records" type="List" />
+    <!-- Text for filtering results -->
+    <aura:attribute name="searchText" type="String" />
+    <aura:attribute name="buttonSelection" type="String" default="All" />
+
+    <!-- Initial population of list -->
+    <aura:handler name="init" value="{!this}" action="{!c.loadList}" />
+    <!-- Filter upon search text change -->
+    <aura:handler name="change" value="{!v.searchText}" action="{!c.filterResults}" />
+    <aura:handler name="change" value="{!v.buttonSelection}" action="{!c.filterResults}" />
+
+    <!-- Event for passing saved info to parent component -->
+    <aura:registerEvent name="updateCategoriesEvent" type="c:PanelViewCategoriesEvent" />
+
+    <div id="PanelViewCategoriesContainer">
+
+        <lightning:input type="text" aura:id="search" value="{!v.searchText}" />
+
+        <lightning:buttonGroup aura:id="filterButtons">
+            <lightning:button variant="brand" label="All" aura:id="allButton" onclick="{!c.buttonClick}" />
+            <lightning:button variant="neutral" label="Passed" aura:id="passButton" onclick="{!c.buttonClick}" />
+            <lightning:button variant="neutral" label="Failed" aura:id="failButton" onclick="{!c.buttonClick}" />
+        </lightning:buttonGroup>
+
+        <!-- <lightning:button label="Test" title="Test" onclick="{!c.loadList}" /> -->
+        <!-- <lightning:button label="TestEvent" title="TestEvent" onclick="{!c.updateCategories}" /> -->
+
+        <ui:scrollerWrapper class="scrollerSize">
+            <!--Scrollable content here -->
+
+            <ul class="slds-has-dividers_top-space" id="CategoryList" name="CategoryList" aura:id="CategoryList">
+                {!v.body}
+            </ul>
+        </ui:scrollerWrapper>
+    </div>
 </aura:component>

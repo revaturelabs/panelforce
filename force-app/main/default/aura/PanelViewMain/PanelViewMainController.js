@@ -1,5 +1,9 @@
 ({
     doInit: function (component, event, helper) {
+<<<<<<< HEAD
+=======
+        component.set("v.appState", 3);
+>>>>>>> master
         var contactID = component.get("v.recordId");
 
         var action = component.get("c.getTrack");

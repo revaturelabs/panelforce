@@ -18,7 +18,7 @@
   <aura:attribute name="fail" type="boolean" />
 
   <aura:registerEvent
-    name="updateAssessmentEvent"
+    name="Assessment"
     type="c:PanelViewTrackMiscEvent"
   />
   <aura:handler name="init" value="{! this }" action="{! c.init }" />

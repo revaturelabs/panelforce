@@ -25,7 +25,7 @@
 
         //References Custom Field names that may not exist. 
         var assessment = {
-            sobjectType: "Assessment",
+            sobjectType: "assessment__c",
             Types_of_Associates: cmp.get("v.options"),
             Overall_Comment: cmp.get("v.comment"),
             Pass: cmp.get("v.pass"),

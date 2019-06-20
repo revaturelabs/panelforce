@@ -7,7 +7,8 @@
 !force-app/main/
 !force-app/main/default/
 !force-app/main/default/classes/
-!force-app/main/default/classes/*/
+!force-app/main/default/classes/*
+!force-app/main/default/classes/*/*
 !force-app/main/default/aura/
 !force-app/main/default/aura/*
 !force-app/main/default/aura/*/*

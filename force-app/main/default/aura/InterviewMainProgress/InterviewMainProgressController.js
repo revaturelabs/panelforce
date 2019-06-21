@@ -1,23 +1,31 @@
 ({
     doInit : function(component, event, helper) {
-        // Create the action
-        let action = component.get("c.getCategories");
-        // Add callback behavior for when response is received
-        action.setCallback(this, function(response) {
-            let state = response.getState();
-            if (state === "SUCCESS") {
-                // component.set("v.allCategories", response.getReturnValue());
-                let resp = response.getReturnValue();
-                helper.generateButtons(component, resp);
-                console.log("initiated with: \n" + JSON.stringify(resp));
-                component.set("v.allCategories", resp);
-            }
-            else {
-                console.log("Failed with state: " + state);
-            }
-        });
-        // Send action off to be executed
-        $A.enqueueAction(action);
+        var allCats = component.get("v.allCategories");
+
+        // console.log("generating buttons with: " + JSON.stringify(allCats) + "length: " + allCats.length);
+        // helper.generateButtons(component, allCats);
+
+        // if (allCats.length != 0) {
+        // } else {
+        //     // Create the action
+        //     let action = component.get("c.getCategories");
+        //     // Add callback behavior for when response is received
+        //     action.setCallback(this, function(response) {
+        //         let state = response.getState();
+        //         if (state === "SUCCESS") {
+        //             // component.set("v.allCategories", response.getReturnValue());
+        //             let resp = response.getReturnValue();
+        //             helper.generateButtons(component, resp);
+        //             console.log("initiated with: \n" + JSON.stringify(resp));
+        //             // component.set("v.allCategories", resp);
+        //         }
+        //         else {
+        //             console.log("Failed with state: " + state);
+        //         }
+        //     });
+        //     // Send action off to be executed
+        //     $A.enqueueAction(action);
+        // }
     },
 
     handleStatusChange : function(component, event, helper) {
@@ -71,10 +79,12 @@
         let categoriesChange = component.getEvent("categoriesChange");
         let btnid = event.getSource().getLocalId();
         categoriesChange.setParams({
-            "current": btnid[btnid.length-1],
-            "categories": []
+            "current": btnid[btnid.length-1]
         });
         categoriesChange.fire();
-        console.log("event categoriesChange fired!")
+        console.log("event categoriesChange fired!");
+
+        var allCats = component.get("v.allCategories");
+        console.log("all categories: " + JSON.stringify(allCats));
     }
 })

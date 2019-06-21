@@ -21,7 +21,7 @@
         
         <h1>Progress bar place holder</h1>
         <!--c:InterviewMainProgress categories="v.categories" category="v.category" currentIndex="v.current"-->
-        <c:InterviewMainProgress />
+        <c:InterviewMainProgress allCategories="{!v.categories}"/>
         
         <!-- "{!'Category: ' + v.category.Name}"-->
         <lightning:card variant="Base" title="{!'Category: ' + v.category.Name}">

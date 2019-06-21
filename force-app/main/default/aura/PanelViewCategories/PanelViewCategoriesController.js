@@ -90,13 +90,17 @@
 
     liClick: function(component, event, helper) {
         console.log("Category list: " + component.find("CategoryList"));
-        console.log("body: " + component.get("v.body"));
-        component.get("v.body").forEach(element => {
-            console.log("Element: " + element.toString());
-            // $A.util.addClass();
-            // console.log("inputs: " + element.find({ instancesOf: "lightning:input" }));
+        let componentBody = component.get("v.body");
+        console.log("body: " + componentBody);
+        for (let i = 1; i < componentBody.length; i++) {
+            let localId = componentBody[i].getLocalId();
+            console.log("localId: " + localId);
+            let currComment = component.find("Comment " + localId);
+            console.log("curr Comment: " + currComment);
+            $A.util.addClass(currComment, "slds-hide");
+        };
 
-        });
+        console.log("Event: " + event);
 
 
         console.log("Comment " + event.srcElement["id"]);

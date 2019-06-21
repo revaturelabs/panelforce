@@ -12,7 +12,8 @@
     start : function(cmp, event) {
         // open interview window
         //window.open("InterviewApp");
-        let compEvent = cmp.getEvent("c:interviewAppStateEvent");
+        let compEvent = $A.get("c:interviewAppStateEvent");
+        // let compEvent = cmp.getEvent("c:interviewAppStateEvent");
         compEvent.setParams({
             state: 1
         });

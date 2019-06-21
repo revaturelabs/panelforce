@@ -18,6 +18,8 @@
 
     <h3 class="slds-section__title">Interview Initial</h3>
 
+    <force:recordData recordId="{!v.recordId}" fields="Name" targetFields="{!v.contactRecord}" />
+
     <force:recordData aura:id="recordDataCreate" layoutType="FULL" targetRecord="{!v.recordTemplate}"
         targetError="{!v.error}" />
 
@@ -27,7 +29,6 @@
  
         <force:recordData aura:id="trackDataCmp" recordId="{!v.PH_TrainingTrack__c}" layoutType="FULL" mode="{!v.mode}"
             targetRecord="{!v.trackRecord}" targetError="{!v.error}" recordUpdated="{!c.handleRecordUpdate}" />
-
     </aura:if>
 
 
@@ -52,7 +53,7 @@
     <!-- Initial -->
     Contact
     <aura:attribute name="contact" type="Contact" />
-    <lightning:input aura:id="contactInput" value="{!v.recordId}" />
+    <lightning:input aura:id="contactInput" value="{!v.contactRecord.Name}" />
  
     Track
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
@@ -67,14 +68,16 @@
     <lightning:input aura:id="commentInput" value="{!v.comment}" />
     
     <!-- start -->
+
     <aura:registerEvent name="appStateChange" type="c.interviewAppStateEvent" />
     <ui:button aura:id="cancel" label="cancel" press="{!c.cancel}" />
     <ui:button aura:id="start" label="start" press="{!c.start}" />
 
 
-    <!-- 
-    <lightning:button label="start" name="{! c.start}" />
-    <lightning:button label="cancel" name="{! c.cancel}" onclick="{!c.cancel}" class="slds-m-top_medium"/>
-    --> 
+<!--
+    <aura:registerEvent name="appStateChange" type="c.interviewAppStateEvent" />
+    <lightning:button label="cancel" name="cancel" onclick="{!c.cancel}" class="slds-m-top_medium"/>
+    <lightning:button label="start" name="start" onclick="{!c.start}" />
+ -->
 
 </aura:component>

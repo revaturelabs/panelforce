@@ -1,11 +1,12 @@
 ({
-    
     doInit : function(component, event, helper) {
         //let recId = component.get("v.recordId");
         
         //Current Index is default 0
         var current = component.get("v.current");
         
+
+
         var action1 = component.get("c.getTrainAssign");
         var recordId = component.get("v.recordId");
         action1.setParams({ recId : recordId });
@@ -34,6 +35,10 @@
                 //Get the current category
                 let category = categories[current];
                 component.set("v.category", category);
+
+                //Set up the event to fire
+                helper.changeEvent(current, categories);
+                
             }
         });
         
@@ -42,10 +47,16 @@
     },
     
     appStateChange : function(component, event, helper) {
-        //Determine if the forward or backward button was pressed
-        let whichOne = event.getSource().getLocalId();
+        //Get the event
+        let compEvent = $A.get("e.c:InterviewAppStateEvent");
+        //Set the parameters
+        compEvent.setParams({
+            "state" : 2
+        });
+        //Fire the event
+        compEvent.fire();
         
-        
+
     },
     
     categoriesChange : function(component, event, helper) {
@@ -53,6 +64,7 @@
         let whichOne = event.getSource().getLocalId();
         //Get the current index
         var current = component.get("v.current");
+
         //Backward button
         if(whichOne == "backward"){
             current -= 1;
@@ -62,8 +74,9 @@
                 button.set('v.disabled',true);
             }
             //Make sure the forward button is enabled
-            let button = component.find('forward');
-            button.set('v.disabled',false);
+            //let button = component.find('forward');
+            //button.set('v.disabled',false);
+            helper.buttonChange(component, whichOne);
         }
         else if(whichOne == "forward"){
             current += 1;
@@ -71,8 +84,9 @@
             //Get the size of the array
             let catsize = component.get("v.catsize");
             if(current == catsize){
-                let button = component.find('forward');
-                button.set('v.disabled',true);
+                //let button = component.find('forward');
+                //button.set('v.disabled',true);
+                helper.buttonChange(component, whichOne);
             }            
             //Make sure the previous button is enabled
             let button = component.find('backward');
@@ -88,7 +102,8 @@
         component.set("v.category", category);
         
         //Pass the current index to the child components
-        //TODO
+        helper.changeEvent(current, []);
+        
     }
     
 })

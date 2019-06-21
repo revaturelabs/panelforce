@@ -19,7 +19,7 @@
     </aura:html> 
 
     <aura:attribute name="_recordId" type="String" />
-    <aura:attribute name="appState" type="Integer" default="0"/>
+    <aura:attribute name="appState" type="Integer" default="1"/>
     
     <aura:handler event="c:InterviewAppStateEvent" action="{!c.handleAppStateChange}" />
 

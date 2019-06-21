@@ -3,10 +3,19 @@
 
     },
 
-    cancel : function(component, event) {
-        this.fireTheEvent();
-        event.cancel;
-        window.close();
+    cancel : function(component, event, helper) {
+        $A.get("e.force:closeQuickAction").fire();
+        
+        //this.fireTheEvent();
+        //event.cancel;
+        //window.close();
+
+        ////let compEvent = $A.get();
+        //let compEvent = cmp.getEvent("c:interviewAppStateEvent");
+        //compEvent.setParams({});
+        //console.log(compEvent);
+        //compEvent.fire();
+        //console.log("event fired");
     },
 
     start : function(cmp, event) {
@@ -15,7 +24,7 @@
         let compEvent = $A.get("e.c:InterviewAppStateEvent");
         //let compEvent = cmp.getEvent("c:interviewAppStateEvent");
         compEvent.setParams({
-            state : "1"
+            state : 1
         });
         console.log(compEvent);
         compEvent.fire();
@@ -30,12 +39,13 @@
 //        cmpEvent.fire();
 //    },
 
-    getTrack : function(component, event) {
+    getTrackToo : function(component, event) {
+        console.log("in getTrack .");
         var action = component.get("c.getTrack");
-        action.setParams({"trackInput" : component.get("v.trackName")});
+        action.setParams({"contactId" : component.get("v.recordId")});
         console.log(action);
         action.setCallback(this, function(response) {
-            var state = response.getState();
+           var state = response.getState();
             if(state === "SUCCESS") {
                 component.set("v.trackName", response.getReturnValue());
             } else {

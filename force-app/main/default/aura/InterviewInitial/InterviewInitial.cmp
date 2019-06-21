@@ -1,6 +1,6 @@
 <aura:component controller="TrackController" description="Interview Initial" implements="force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:appHostable" access="global" >
     <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent" />
-    <aura:attribute name="PH_TrainingTrack__c" type="String" />
+    <aura:attribute name="trackName" type="String" />
 
     <aura:attribute name="record" type="Object" />
     <aura:attribute name="recordTemplate" type="Object" />
@@ -48,14 +48,14 @@
 
 
     <!-- Initial -->
+    <aura:handler name="init" value="{!this}" action="{!c.getTrackToo}" />
+
     Contact
     <aura:attribute name="contact" type="Contact" />
     <lightning:input aura:id="contactInput" value="{!v.contactRecord.Name}" />
  
     Track
-    <aura:handler name="init" value="{!this}" action="{!c.start}" />
-    <aura:attribute name="trackName" type="PH_TrainingTrack__c" />
-    <lightning:input aura:id="trackInput" value="{!v.PH_TrainingTrack__c}" />
+    <lightning:input aura:id="trackInput" value="{!v.trackName}" />
    
     Date
     <lightning:input type="date" />
@@ -66,14 +66,14 @@
     
     <!-- start -->
 
-
+<!--
     <ui:button aura:id="cancel" label="cancel" press="{!c.cancel}" />
     <ui:button aura:id="start" label="start" press="{!c.start}" />
+-->
 
 
-
-    <lightning:button label="cancel" name="cancel" onclick="{!c.cancel}" class="slds-m-top_medium"/>
-    <lightning:button variant="neutral" label="start" name="start" onclick="{!c.start}" />
+    <lightning:button variant="neutral" label="cancel" name="cancel" onclick="{!c.cancel}" class="slds-m-top_medium"/>
+    <lightning:button variant="neutral" label="start" name="start" onclick="{!c.start}" class="slds-m-top_medium"/>
 
 
 </aura:component>

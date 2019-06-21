@@ -1,5 +1,4 @@
 ({
-    
     doInit : function(component, event, helper) {
         //let recId = component.get("v.recordId");
         
@@ -10,6 +9,7 @@
 
         var action1 = component.get("c.getTrainAssign");
         var recordId = component.get("v.recordId");
+        console.log("recordId: " + recordId);
         action1.setParams({ recId : recordId });
         action1.setCallback(this, function(response) {
             let state = response.getState();
@@ -30,6 +30,7 @@
                 //Set up the categories
                 let categories = response.getReturnValue();
                 component.set("v.categories", categories);
+                console.log("catefories from apex: " + JSON.stringify(categories));
                 //Set the max number of categories
                 let catsize = categories.length - 1;
                 component.set("v.catsize", catsize);
@@ -38,10 +39,8 @@
                 component.set("v.category", category);
 
                 //Set up the event to fire
-                let compEvent = component.getEvent("categoriesChange");
-                compEvent.setParam("current" , current);
-                compEvent.fire();    
-
+                helper.changeEvent(current, categories);
+                
             }
         });
         
@@ -101,10 +100,8 @@
         component.set("v.category", category);
         
         //Pass the current index to the child components
-        let compEvent = component.getEvent("categoriesChange");
-        compEvent.setParam("current" , current);
-        compEvent.fire();
-        console.log("event fired: " + JSON.stringify(compEvent));
+        helper.changeEvent(current, []);
+        
     }
     
 })

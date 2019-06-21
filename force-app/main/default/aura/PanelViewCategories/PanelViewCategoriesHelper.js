@@ -2,7 +2,7 @@
     helperMethod: function() {
 
     },
-    addListItem: function(component, listItem) {
+    addListItem: function(component, listItem, index) {
         $A.createComponents(
             [
                 ["aura:html", { tag: "li", "aura:id": listItem["Name"], HTMLAttributes: { id: listItem["Name"], class: "slds-item CategoryItem", onclick: component.getReference("c.liClick"), onblur: component.getReference("c.liBlur") } }],
@@ -13,14 +13,14 @@
                     "lightning:layoutItem",
                     { class: "CategoryName", padding: "around-small" }
                 ],
-                ["lightning:input", { type: "text", name: "CategoryName", value: listItem["Name"], readonly: "true" }],
+                ["lightning:input", { type: "text", name: index, value: listItem["Name"], readonly: "true" }],
 
                 // Category Score
                 [
                     "lightning:layoutItem",
                     { class: "CategoryScore", flexibility: "no-grow", size: 3, padding: "around-small" }
                 ],
-                ["lightning:input", { type: "text", name: "Score", value: listItem["Score__c"], readonly: "true", onblur: component.getReference("c.labelBlur"), onclick: component.getReference("c.labelClick") }],
+                ["lightning:input", { type: "text", name: index, "aura:id": "Score__c", value: listItem["Score__c"], readonly: "true", onblur: component.getReference("c.labelBlur"), onclick: component.getReference("c.labelClick") }],
 
                 // Icon container
                 [
@@ -28,7 +28,7 @@
                     { class: "CategoryResult", flexibility: "no-grow", size: 2, padding: "around-small" }
                 ],
                 // Comment
-                ["lightning:input", { type: "text", class: "slds-hide", "aura:id": "Comment " + listItem["Name"], name: "Comment", value: listItem["Comment__c"], readonly: "true", onblur: component.getReference("c.labelBlur"), onclick: component.getReference("c.labelClick") }],
+                ["lightning:input", { type: "text", class: "slds-hide", "aura:id": "Comment " + listItem["Name"], name: index, value: listItem["Comment__c"], readonly: "true", onblur: component.getReference("c.labelBlur"), onclick: component.getReference("c.labelClick") }],
 
                 // Icon
                 ["lightning:icon", { iconName: (listItem["Status__c"]) ? "action:approval" : "action:close", size: "xx-small" }]
@@ -77,5 +77,26 @@
                 }
             }
         );
+    },
+
+    // Fires the update event to the parent controller
+    updateCategories: function(component, event, helper) {
+        // let compEvent = $A.get("e.c:InterviewMainEvent");
+        let customEvent = component.getEvent("updateCategoriesEvent");
+        // let records = [{
+        //     sobjectType: "Contact",
+        //     Param1: "I_am_a_param",
+        //     Param2: "I_am_another_param"
+        // }];
+        let records = component.get("v.records");
+        console.log("records: " + records);
+        records.forEach(rec => {
+            console.log(Object.keys(rec));
+        });
+        customEvent.setParams({
+            // Some placeholder stuff here
+            updateCategories: records
+        });
+        customEvent.fire();
     }
 })

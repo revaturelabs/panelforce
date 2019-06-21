@@ -27,6 +27,7 @@
             <lightning:button variant="neutral" label="Passed" aura:id="passButton" onclick="{!c.buttonClick}" />
             <lightning:button variant="neutral" label="Failed" aura:id="failButton" onclick="{!c.buttonClick}" />
         </lightning:buttonGroup>
+        <lightning:button onclick="{!c.updateCategories}" label="Test event" />
 
         <!-- <lightning:button label="Test" title="Test" onclick="{!c.loadList}" /> -->
         <!-- <lightning:button label="TestEvent" title="TestEvent" onclick="{!c.updateCategories}" /> -->

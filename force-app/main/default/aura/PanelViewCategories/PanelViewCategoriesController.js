@@ -15,9 +15,9 @@
                 // Save records returned from apex SOQL
                 items = response.getReturnValue();
                 component.set("v.records", items);
-                // Populate the list
-                items.forEach(listItem => {
-                    helper.addListItem(component, listItem);
+                // Populate the list, i is passed to later reference and update the list in v.records
+                items.forEach(function(listItem, i) {
+                    helper.addListItem(component, listItem, i);
                 });
             }
         });
@@ -91,8 +91,20 @@
     labelBlur: function(component, event, helper) {
         console.log("label blurred!" + event.getSource().getLocalId());
         event.getSource().set("v.readonly", true);
-        console.log(component.get("v.records"));
         // console.log(source);
+        let name = event.getSource().get("v.name");
+        console.log("Name: " + name);
+        let id = String(event.getSource().getLocalId());
+        console.log("id: " + id);
+        console.log(id.includes('Score'));
+        let record = component.get("v.records")[name];
+        console.log("record: " + record);
+        if (id.includes('Comment')) {
+            record["Comment__c"] = event.getSource().get("v.value");
+        } else {
+            record["Score__c"] = event.getSource().get("v.value");
+        }
+        helper.updateCategories(component);
     },
 
     // Show comments when li element clicked
@@ -108,6 +120,9 @@
         };
 
         console.log("LI Clicked:" + component.find("Comment " + event.srcElement["id"]));
+        // console.log("SubElement: " + Object.keys(event));
+        // console.log("SubElement: " + event.target);
+        // console.log("SubElement: " + Object.getOwnPropertyNames(event.target));
         // console.log(component.find("Comment " + event.srcElement["id"]));
         // Reveal selected element
         let selectedComment = component.find("Comment " + event.srcElement["id"]);
@@ -117,20 +132,5 @@
     liBlur: function(component, event, helper) {
         console.log("Things are getting blurry");
         $A.util.addClass(component.find("Comment" + event.srcElement["id"]), "slds-hide");
-    },
-
-    // Fires the update event to the parent controller
-    updateCategories: function(component, event, helper) {
-        let customEvent = component.getEvent("updateCategoriesEvent");
-        let records = [{
-            sobjectType: "Contact",
-            Param1: "I_am_a_param",
-            Param2: "I_am_another_param"
-        }];
-        customEvent.setParams({
-            // Some placeholder stuff here
-            updateCategories: records
-        });
-        customEvent.fire();
     }
 });

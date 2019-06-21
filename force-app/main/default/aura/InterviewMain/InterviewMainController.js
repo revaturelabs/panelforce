@@ -39,14 +39,8 @@
                 component.set("v.category", category);
 
                 //Set up the event to fire
-                // let compEvent = component.getEvent("categoriesChange");
-                let compEvent = $A.get("e.c:InterviewMainEvent");
-                compEvent.setParams({
-                    "current": current,
-                    "categories": categories
-                });
-                compEvent.fire();
-                console.log("evet from init fired");
+                helper.changeEvent(current, categories);
+                
             }
         });
         
@@ -106,13 +100,8 @@
         component.set("v.category", category);
         
         //Pass the current index to the child components
-        let compEvent = $A.get("e.c:InterviewMainEvent");
-        compEvent.setParams({
-            "current": current,
-            "categories": []
-        });
-        compEvent.fire();
-        console.log("event fired: " + compEvent);
+        helper.changeEvent(current, []);
+        
     }
     
 })

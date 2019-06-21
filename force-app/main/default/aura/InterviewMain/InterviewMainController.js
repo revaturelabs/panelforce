@@ -1,13 +1,15 @@
 ({
-    
     doInit : function(component, event, helper) {
         //let recId = component.get("v.recordId");
         
         //Current Index is default 0
         var current = component.get("v.current");
         
+
+
         var action1 = component.get("c.getTrainAssign");
         var recordId = component.get("v.recordId");
+        console.log("recordId: " + recordId);
         action1.setParams({ recId : recordId });
         action1.setCallback(this, function(response) {
             let state = response.getState();
@@ -28,12 +30,17 @@
                 //Set up the categories
                 let categories = response.getReturnValue();
                 component.set("v.categories", categories);
+                console.log("catefories from apex: " + JSON.stringify(categories));
                 //Set the max number of categories
                 let catsize = categories.length - 1;
                 component.set("v.catsize", catsize);
                 //Get the current category
                 let category = categories[current];
                 component.set("v.category", category);
+
+                //Set up the event to fire
+                helper.changeEvent(current, categories);
+                
             }
         });
         
@@ -42,10 +49,14 @@
     },
     
     appStateChange : function(component, event, helper) {
-        //Determine if the forward or backward button was pressed
-        let whichOne = event.getSource().getLocalId();
+        //Get the parameters from the event
+        let state = event.getParam("state");
         
-        
+        //If state is at one make the component visable
+        if(state == 1){
+            
+        }
+
     },
     
     categoriesChange : function(component, event, helper) {
@@ -53,6 +64,7 @@
         let whichOne = event.getSource().getLocalId();
         //Get the current index
         var current = component.get("v.current");
+
         //Backward button
         if(whichOne == "backward"){
             current -= 1;
@@ -88,7 +100,8 @@
         component.set("v.category", category);
         
         //Pass the current index to the child components
-        //TODO
+        helper.changeEvent(current, []);
+        
     }
     
 })

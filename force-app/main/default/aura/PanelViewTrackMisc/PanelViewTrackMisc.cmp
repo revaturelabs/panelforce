@@ -17,82 +17,79 @@
   <aura:attribute name="pass" type="boolean" />
   <aura:attribute name="fail" type="boolean" />
 
-  <aura:registerEvent
-    name="Assessment"
-    type="c:PanelViewTrackMiscEvent"
-  />
+  <aura:registerEvent name="Assessment" type="c:PanelViewTrackMiscEvent" />
   <aura:handler name="init" value="{! this }" action="{! c.init }" />
 
-  <!--Card Start -->
-  <div class="slds-p-around_medium" onblur="{!c.updateAssessment}">
+  <!--Div Container Start -->
+  <div class="slds-p-around_small" onblur="{!c.updateAssessment}">
     <!-- Grid Start -->
-    <div class="slds-grid">
-      <section class="slds-col slds-size_6-of-12">
+    <div class="slds-grid slds-wrap slds-grid_align-space">
+      <section class="slds-col slds-size_12-of-12 slds-large-size_6-of-12">
         <h1><strong>Description</strong></h1>
-        <p class="slds-p-around_medium"
+        <p class="slds-p-around_small"
           >This is Cody's panel interview. He passed with flying colors like
           every superstar does.</p
         >
       </section>
 
-      <section class="slds-col slds-size_6-of-12 slds-grid_vertical">
+      <section class="slds-col slds-size_12-of-12 slds-large-size_6-of-12">
         <h1><strong>Type of Associate</strong></h1>
 
         <lightning:checkboxGroup
-          name="Checkbox Group Required"
-          label="Checkbox Group"
+        aura:class="slds-p-around_small"
+          name="Checkbox Group"
           options="{! v.options }"
           value="{! v.value }"
-          required="true"
         />
-
-        <h1 class="slds-col slds-p-around_medium"
-          ><strong>Score:</strong> 30/30</h1
-        >
       </section>
     </div>
     <!-- Grid End -->
+    <br />
 
-    <h1><strong>Overall Comment</strong></h1>
-    <section class="slds-p-around_medium">
+    <section class="slds-grid slds-wrap slds-grid_align-space">
+
       <!-- Grid Start -->
-      <div class="slds-grid">
-        <aura:if isTrue="{!v.editState}">
+      <aura:if isTrue="{!v.editState}">
+        <div class="slds-col slds-small-size_12-of-12 slds-large-size_10-of-12">
+            <h1><strong>Overall Comment</strong></h1>
           <lightning:inputRichText
             aura:id="richComment"
+            aura:class="slds-p-around_small"
             placeholder="Overall Panel Comment"
-            class="slds-col slds-size_10-of-12"
           >
             <lightning:insertImageButton />
           </lightning:inputRichText>
+        </div>
 
-          <aura:set attribute="else">
-            <lightning:formattedText
-              id="pComment"
-              class="slds-col slds-size_10-of-12"
-              value="{!v.comment}"
-            />
-          </aura:set>
-        </aura:if>
-
-        <div class="slds-col slds-size_2-of-12">
-          <div class="slds-grid slds-grid_vertical">
-            <lightning:button
-              class="slds-col white"
-              variant="success"
-              label="P"
-              title="Pass"
-              onclick="{! c.handlePass }"
-            />
-
-            <lightning:button
-              class="slds-col lm-0"
-              variant="destructive"
-              label="F"
-              title="Fail"
-              onclick="{! c.handleFail }"
-            />
+        <aura:set attribute="else">
+          <div
+            class="slds-col slds-small-size_12-of-12 slds-large-size_10-of-12"
+          >
+          <h1><strong>Overall Comment</strong></h1>
+            <lightning:formattedText id="pComment"             aura:class="slds-p-around_small"
+            value="{!v.comment}" />
           </div>
+        </aura:set>
+      </aura:if>
+
+      <div class="slds-col slds-small-size_12-of-12 slds-large-size_2-of-12">
+        <h1><strong>Score:</strong> 30/30</h1>
+        <div class="slds-grid slds-wrap slds-grid_align-space">
+          <lightning:button
+            class="slds-col white slds-size_12-of-12"
+            variant="success"
+            label="P"
+            title="Pass"
+            onclick="{! c.handlePass }"
+          />
+
+          <lightning:button
+            class="slds-col lm-0 slds-size_12-of-12"
+            variant="destructive"
+            label="F"
+            title="Fail"
+            onclick="{! c.handleFail }"
+          />
         </div>
       </div>
       <!-- Grid End -->
@@ -105,7 +102,7 @@
     <!-- Panel History -->
     <section>
       <h1><strong>Panel History</strong></h1>
-      <div class="slds-p-around_medium">
+      <div class="slds-p-around_small">
         <lightning:listView
           aura:id="listViewAccounts"
           objectApiName="Account"
@@ -119,5 +116,5 @@
       </div>
     </section>
   </div>
-  <!-- Hope this works -->
+  <!-- Div Container End -->
 </aura:component>

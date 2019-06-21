@@ -21,7 +21,7 @@
     updateAssessment: function (cmp, event, helper) {
 
         // Get the component event by using the name value from aura:registerEvent.
-        var updateAssessmentEvent = cmp.getEvent("updateAssessmentEvent");
+        var updateAssessmentEvent = $A.get("e.c:PanelViewTrackMiscEvent");
 
         //References Custom Field names that may not exist. 
         var assessment = {

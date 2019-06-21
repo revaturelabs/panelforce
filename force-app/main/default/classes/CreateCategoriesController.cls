@@ -2,7 +2,7 @@ public class CreateCategoriesController {
  
     @AuraEnabled
     public static List<PanelCategory__c> getCategories(){
-        return [SELECT Id, Name, maxScore__c, PH_TrainingTrack__c
+        return [SELECT Id, Name, Max_Score__c, PH_TrainingTrack__c
                 FROM PanelCategory__c];
     }
     

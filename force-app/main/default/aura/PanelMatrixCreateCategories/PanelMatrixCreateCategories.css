@@ -1,2 +1,7 @@
-.THIS {
+.THIS .add-new-btn {
+    padding-top: 1.8em;
+}
+
+.THIS .add-new-btn :hover {
+    cursor: pointer;
 }

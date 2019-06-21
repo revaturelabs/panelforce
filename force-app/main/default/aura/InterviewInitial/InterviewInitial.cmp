@@ -1,6 +1,5 @@
 <aura:component controller="TrackController" description="Interview Initial" implements="force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:appHostable" access="global" >
 
-    <aura:attribute name="_recordId" type="String" />
     <aura:attribute name="PH_TrainingTrack__c" type="String" />
 
     <aura:attribute name="record" type="Object" />
@@ -21,7 +20,7 @@
 
     <force:recordData aura:id="recordDataCreate" layoutType="FULL" targetRecord="{!v.recordTemplate}"
         targetError="{!v.error}" />
-<!--
+
     <aura:if isTrue="{!v.fetch}">
         <force:recordData aura:id="recordDataCmp" recordId="{!v._recordId}" layoutType="FULL" mode="{!v.mode}"
             targetRecord="{!v.record}" targetError="{!v.error}" recordUpdated="{!c.handleRecordUpdate}" />
@@ -30,7 +29,7 @@
             targetRecord="{!v.trackRecord}" targetError="{!v.error}" recordUpdated="{!c.handleRecordUpdate}" />
 
     </aura:if>
--->
+
 
     <aura:if isTrue="{! !empty(v.error)}">
         <div class="slds-box slds-theme--error">
@@ -47,7 +46,6 @@
     <aura:attribute name="contactRecord" type="Object" />
     <aura:attribute name="recordError" type="String" />
     <force:recordData aura:id="record" layoutType="FULL" />
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:handler name="getcontact" value="{!this}" action="{!c.getContact}" />
 -->
 
@@ -57,6 +55,7 @@
     <lightning:input aura:id="contactInput" value="{!v.recordId}" />
  
     Track
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:attribute name="trackName" type="PH_TrainingTrack__c" />
     <lightning:input aura:id="trackInput" value="{!v.PH_TrainingTrack__c}" />
    
@@ -68,6 +67,7 @@
     <lightning:input aura:id="commentInput" value="{!v.comment}" />
     
     <!-- start -->
+    <aura:registerEvent name="appStateChange" type="c.interviewAppStateEvent" />
     <ui:button aura:id="cancel" label="cancel" press="{!c.cancel}" />
     <ui:button aura:id="start" label="start" press="{!c.start}" />
 

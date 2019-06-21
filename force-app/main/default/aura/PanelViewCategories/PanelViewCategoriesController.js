@@ -2,7 +2,6 @@
 ({
 
     loadList: function(component, event, helper) {
-        console.log("loadList Fired!!");
         component.set("v.searchText", "");
         let assessmentID = component.get("v.recordId");
         // console.log(assessmentID);
@@ -14,7 +13,6 @@
         action.setCallback(this, function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
-                console.log("Success!");
                 items = response.getReturnValue();
                 component.set("v.records", items);
                 items.forEach(listItem => {
@@ -53,7 +51,7 @@
 
     buttonClick: function(component, event, helper) {
         let source = event.getSource().getLocalId();
-        console.log("Source: " + source);
+        // console.log("Source: " + source);
         let buttonSelection = "";
         let buttonGroup = component.find("filterButtons").get("v.body");
         buttonGroup.forEach(button => {
@@ -88,6 +86,26 @@
         console.log("label clicked!");
         event.getSource().set("v.readonly", true);
         // console.log(source);
+    },
+
+    liClick: function(component, event, helper) {
+        console.log("Category list: " + component.find("CategoryList"));
+        console.log("body: " + component.get("v.body"));
+        component.get("v.body").forEach(element => {
+            console.log("Element: " + element.toString());
+            // $A.util.addClass();
+            // console.log("inputs: " + element.find({ instancesOf: "lightning:input" }));
+
+        });
+
+
+        console.log("Comment " + event.srcElement["id"]);
+        console.log("LI Clicked:" + component.find("Comment " + event.srcElement["id"]));
+        $A.util.removeClass(component.find("Comment " + event.srcElement["id"]), "slds-hide");
+    },
+    liBlur: function(component, event, helper) {
+        console.log("Things are getting blurry");
+        $A.util.addClass(component.find("Comment" + event.srcElement["id"]), "slds-hide");
     },
 
     updateCategories: function(component, event, helper) {

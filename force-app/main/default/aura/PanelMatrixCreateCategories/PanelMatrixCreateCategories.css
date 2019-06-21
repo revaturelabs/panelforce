@@ -1,2 +1,7 @@
-.THIS {
+.THIS .add-new-icon {
+    padding-top: 1.7em;
+}
+
+.THIS .add-new-icon :hover {
+    cursor: pointer;
 }

@@ -6,9 +6,24 @@
             if(component.isValid() && state == 'SUCCESS') {
                 component.set('v.categories', response.getReturnValue());
                 helper.totalScoreHelper(component);
+                helper.scoreVaildationHelper(component, event, helper);
             }
         });
         $A.enqueueAction(getCat);
+    },
+
+    scoreVaildationHelper : function(component, event, helper) {
+        let scoreList = component.get('v.categories');
+        let cmpTarget = component.find('scoreErr');
+        let totalScore = 0;
+        for (let i = 0; i < scoreList.length; i++) { 
+            totalScore += scoreList[i].maxScore__c;
+        }
+        if (totalScore > 100) {
+            $A.util.addClass(cmpTarget, 'slds-text-color_error');
+        } else if (totalScore <= 100) {
+            $A.util.removeClass(cmpTarget, 'slds-text-color_error'); 
+        }
     },
 
     totalScoreHelper : function(component) {
@@ -25,7 +40,9 @@
         let category = component.get('v.categories');
         component.set('v.newCategory','');
         component.set('v.newCategory', category[btnTitle]);
+        helper.scoreVaildationHelper(component, event, helper);
         helper.totalScoreHelper(component);
+        component.set('v.modal', 'Edit Category');
         component.set('v.viewModal', true);
     },
 
@@ -70,6 +87,7 @@
     },
 
     viewModalHelper : function(component, event, helper) {
+        component.set('v.modal', 'Create Category');
         component.set('v.viewModal',true);
     },
 

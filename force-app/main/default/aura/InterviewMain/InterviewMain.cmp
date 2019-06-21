@@ -12,9 +12,10 @@
         
         <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
         
-        <aura:handler name="appStateChange" event="c:InterviewAppStateEvent" action="{!c.appStateChange}"/>
+        <!--aura:handler name="appStateChange" event="c:InterviewAppStateEvent" action="{!c.appStateChange}"/-->
         <!-- <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent"/> -->
         <aura:registerEvent name="categoriesChange" type="c:InterviewMainEvent"/>
+        <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent"/>
         
         <div class="slds-text-align_center">
             <lightning:formattedText value="{!'Assignment: ' + v.assignment.Name}" />
@@ -27,7 +28,7 @@
                 
                 <lightning:layout>    
 
-                        <div class="slds-float_left" style="height:25%;">
+                        <div aura:id="leftbutton" class="slds-float_left" style="height:25%;">
                             <lightning:buttonIcon aura:id="backward" name="backwardButton"
                                                 alternativeText="Previous Category" onclick="{!c.categoriesChange}" 
                                                 iconName="utility:chevronleft" disabled="true" 
@@ -41,7 +42,7 @@
                             <c:InterviewMainMisc />
                         </div>
 
-                        <div class="slds-float_right" style="height:25%;">
+                        <div aura:id="rightbutton" class="slds-float_right" style="height:25%;">
                             <lightning:buttonIcon aura:id="forward" name="forwardButton"
                             alternativeText="Next Category" onclick="{!c.categoriesChange}" 
                                             iconName="utility:chevronright" size="large"/>

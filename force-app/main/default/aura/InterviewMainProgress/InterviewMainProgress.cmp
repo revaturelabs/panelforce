@@ -1,7 +1,6 @@
 <aura:component controller="ProgressBarController">
-    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
     <aura:handler name="categoryStatusChange" event="c:InterviewMainMiscEvent" action="{!c.handleStatusChange}" />
-    <aura:handler name="categoriesChange" event="c:InterviewMainEvent" action="{!c.handleCategories}" />
+    <aura:handler event="c:InterviewMainEvent" action="{!c.handleCategories}" />
 
     <aura:attribute name="allCategories" type="AssessmentLineItem__c[]" />
     <aura:attribute name="currentCat" type="Integer" default="0"/>

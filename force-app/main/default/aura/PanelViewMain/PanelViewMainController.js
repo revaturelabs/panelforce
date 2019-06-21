@@ -1,6 +1,5 @@
 ({
     doInit: function (component, event, helper) {
-        component.set("v.appState", 3);
         var contactID = component.get("v.recordId");
 
         var action = component.get("c.getTrack");
@@ -45,11 +44,6 @@
     handlePanelCategoriesEvent: function (cmp, event) {
         var listOfCategories = event.getParam("updateCategories");
         cmp.set("v.listFromEvent", listOfCategories);
-    },
-
-    handleInterviewAppStateEvent: function (cmp, event) {
-        var interviewAppState = event.getParam("state");
-        cmp.set("v.appState", interviewAppState);
     },
 
     save: function (component, event, helper) {

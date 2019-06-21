@@ -50,9 +50,9 @@
         //Get the event
         let compEvent = $A.get("e.c:InterviewAppStateEvent");
         //Set the parameters
-        /*compEvent.setParams({
-
-        });*/
+        compEvent.setParams({
+            "state" : 2
+        });
         //Fire the event
         compEvent.fire();
         

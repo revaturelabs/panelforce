@@ -38,7 +38,7 @@
                 component.set("v.category", category);
 
                 //Set up the event to fire
-                let compEvent = cmp.getEvent("categoriesChange");
+                let compEvent = component.getEvent("categoriesChange");
                 compEvent.setParam("current" , current);
                 compEvent.fire();    
 
@@ -101,10 +101,10 @@
         component.set("v.category", category);
         
         //Pass the current index to the child components
-        let compEvent = cmp.getEvent("categoriesChange");
+        let compEvent = component.getEvent("categoriesChange");
         compEvent.setParam("current" , current);
         compEvent.fire();
-
+        console.log("event fired: " + JSON.stringify(compEvent));
     }
     
 })

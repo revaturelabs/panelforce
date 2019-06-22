@@ -5,27 +5,29 @@
     addListItem: function(component, listItem, index) {
         $A.createComponents(
             [
-                ["aura:html", { tag: "li", "aura:id": listItem["Name"], HTMLAttributes: { id: listItem["Name"], class: "slds-item CategoryItem", onclick: component.getReference("c.liClick"), onblur: component.getReference("c.liBlur") } }],
-                ["lightning:layout", { "aura:id": "id", class: "CategoryLayout", name: listItem["Id"] }],
+                // New list item
+                ["aura:html", { tag: "li", "aura:id": listItem["Name"], HTMLAttributes: { id: listItem["Name"], class: "slds-item CategoryItem", onclick: component.getReference("c.liClick") } }],
+                // Container inside the list item
+                ["lightning:layout", { "aura:id": "id", class: "CategoryLayout slds-align_absolute-center", name: listItem["Id"] }],
 
                 // Category name
                 [
                     "lightning:layoutItem",
-                    { class: "CategoryName", padding: "around-small" }
+                    { class: "CategoryName slds-align_absolute-center", padding: "around-small" }
                 ],
-                ["lightning:input", { type: "text", name: index, value: listItem["Name"], readonly: "true" }],
+                ["lightning:formattedText", { type: "text", name: index, value: listItem["Name"], readonly: "true" }],
 
                 // Category Score
                 [
                     "lightning:layoutItem",
-                    { class: "CategoryScore", flexibility: "no-grow", size: 3, padding: "around-small" }
+                    { class: "CategoryScore slds-align_absolute-center", flexibility: "no-grow", size: 3, padding: "around-small" }
                 ],
                 ["lightning:input", { type: "text", name: index, "aura:id": "Score__c", value: listItem["Score__c"], readonly: "true", onblur: component.getReference("c.labelBlur"), onclick: component.getReference("c.labelClick") }],
 
                 // Icon container
                 [
                     "lightning:layoutItem",
-                    { class: "CategoryResult", flexibility: "no-grow", size: 2, padding: "around-small" }
+                    { class: "CategoryResult slds-align_absolute-center", flexibility: "no-grow", size: 2, padding: "around-small" }
                 ],
                 // Comment
                 ["lightning:input", { type: "text", class: "slds-hide", "aura:id": "Comment " + listItem["Name"], name: index, value: listItem["Comment__c"], readonly: "true", onblur: component.getReference("c.labelBlur"), onclick: component.getReference("c.labelClick") }],
@@ -92,6 +94,7 @@
         console.log("records: " + records);
         records.forEach(rec => {
             console.log(Object.keys(rec));
+            console.log(rec["Score__c"]);
         });
         customEvent.setParams({
             // Some placeholder stuff here

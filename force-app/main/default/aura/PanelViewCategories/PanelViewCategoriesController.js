@@ -31,7 +31,7 @@
         let records = component.get("v.records");
         // First clear v.body
         component.set("v.body", "");
-        records.forEach(record => {
+        records.forEach((record, i) => {
             // Don't add records without containing 'searchText' in the Name
             if (!record["Name"].toUpperCase().includes(searchText.toUpperCase())) {
                 return;
@@ -45,7 +45,7 @@
                 return;
             }
             // Add element if it passed through all previous filterings
-            helper.addListItem(component, record);
+            helper.addListItem(component, record, i);
         });
     },
 

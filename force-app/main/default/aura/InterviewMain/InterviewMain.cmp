@@ -2,6 +2,23 @@
                     implements="force:lightningQuickAction,force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes"
                     access="global">
         
+
+                    <aura:html tag="style">
+                        .slds-modal__container {
+                            height : auto;
+                            width: 70%;
+                            max-width: 170rem;
+                        }
+                        .modal-body {
+                            height : 500px !important;
+                            max-height: 800px !important;
+                        }
+                        
+                        .customFooter {
+                            display: inline !important;
+                        }
+                    </aura:html>
+
         <!--aura:attribute name="recordId" type="String" /-->
         <aura:attribute name="assignmenttrain" type="PH_TrainingAssignment__c" />
         <aura:attribute name="assignment" type="PH_Assessment__c" />
@@ -12,48 +29,41 @@
         
         <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
         
-        <aura:handler name="appStateChange" event="c:InterviewAppStateEvent" action="{!c.appStateChange}"/>
+        <!--aura:handler name="appStateChange" event="c:InterviewAppStateEvent" action="{!c.appStateChange}"/-->
         <!-- <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent"/> -->
         <aura:registerEvent name="categoriesChange" type="c:InterviewMainEvent"/>
-        
-        <div class="slds-text-align_center">
+        <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent"/>
+
             <lightning:formattedText value="{!'Assignment: ' + v.assignment.Name}" />
             
             <!--c:InterviewMainProgress categories="v.categories" category="v.category" currentIndex="v.current"-->
             <c:InterviewMainProgress allCategories="{!v.categories}"/>
-            
-            <!-- "{!'Category: ' + v.category.Name}"-->
-            <lightning:card variant="Base" title="{!'Category: ' + v.category.Name}">
+                        
                 
-                <lightning:layout>    
-
-                        <div class="slds-float_left" style="height:25%;">
-                            <lightning:buttonIcon aura:id="backward" name="backwardButton"
+                <lightning:layout verticalAlign="stretch" class="slds-align_absolute-center slds-grid">    
+                        <div aura:id="leftbutton" class="slds-float_left" style="height:25%;">
+                            <lightning:buttonIcon aura:id="backward" name="backwardButton" class="start button"
                                                 alternativeText="Previous Category" onclick="{!c.categoriesChange}" 
                                                 iconName="utility:chevronleft" disabled="true" 
                                                 size="large"/>
                         </div>
                     
-                    <div class="slds-align_center">
+                        <div class="slds-p-around_medium">
                             <!--c:InterviewMainScore categories="{!v.categories}" currentIndex="{!v.current}" -->
-                            <c:InterviewMainScore />
+                            <div class="slds-p-around_small interviewscore">
+                                <c:InterviewMainScore />
+                            </div>
                             <!--c:InterviewMainMisc categories="v.categories" category="v.category" currentIndex="v.current"-->
-                            <c:InterviewMainMisc />
+                            <div class="slds-p-around_small interviewmisc">
+                                <c:InterviewMainMisc />
+                            </div>
                         </div>
 
-                        <div class="slds-float_right" style="height:25%;">
-                            <lightning:buttonIcon aura:id="forward" name="forwardButton"
+                        <div aura:id="rightbutton" class="slds-float_right" style="height:25%;">
+                            <lightning:buttonIcon aura:id="forward" name="forwardButton" class="next button"
                             alternativeText="Next Category" onclick="{!c.categoriesChange}" 
                                             iconName="utility:chevronright" size="large"/>
                         </div>
-                    
-                                
-                    
-                    <!--aura:set attribute="actions">
-                    
-                </aura:set>-->
-                    
                 </lightning:layout>
-            </lightning:card>
-        </div>
+
     </aura:component>

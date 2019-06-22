@@ -2,7 +2,6 @@
     // Initialize component variables.
     init: function (cmp) {
         cmp.set('v.comment', null);
-
     },
 
     // Pass button functionality.
@@ -16,7 +15,6 @@
 
         changeFail.removeAttribute("iconName");
         changeFail.removeAttribute("iconPosition");
-
     },
 
     // Fail button functionality.
@@ -30,7 +28,6 @@
 
         changePass.removeAttribute("iconName");
         changePass.removeAttribute("iconPosition");
-
     },
 
     // Componenet event that saves data from this component and sends it to the component with the save button.
@@ -59,6 +56,5 @@
     // Handle Assessment Event from other component to get Assessment Id.
     // Need assessment Id for application to work.
     handleAssessment: function (cmp, event, helper) {
-
     }
 });

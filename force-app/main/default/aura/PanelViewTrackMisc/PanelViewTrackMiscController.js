@@ -55,7 +55,6 @@
 
         updateAssessmentEvent.fire();
     },
-<<<<<<< HEAD
 
     // Handle Assessment Event from other component to get Assessment Id.
     // Need assessment Id for application to work.
@@ -63,6 +62,3 @@
 
     }
 });
-=======
-});
->>>>>>> Dwayne

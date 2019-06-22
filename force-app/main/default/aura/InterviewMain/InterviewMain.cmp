@@ -1,4 +1,3 @@
-<<<<<<< HEAD
     <aura:component controller="InterviewMainController" 
                     implements="force:lightningQuickAction,force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes"
                     access="global">
@@ -68,70 +67,3 @@
                 </lightning:layout>
 
     </aura:component>
-=======
-<aura:component controller="InterviewMainController" 
-                implements="force:lightningQuickAction,force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes"
-                access="global">
-    
-    <!--aura:attribute name="recordId" type="String" /-->
-    <aura:attribute name="assignmenttrain" type="PH_TrainingAssignment__c" />
-    <aura:attribute name="assignment" type="PH_Assessment__c" />
-    <aura:attribute name="category" type="AssessmentLineItem__c" />
-    <aura:attribute name="categories" type="AssessmentLineItem__c[]" />
-    <aura:attribute name="current" type="Integer" default="0" />
-    <aura:attribute name="catsize" type="Integer" default="0" />
-    
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-    
-    
-    
-    <div class="slds-text-align_center">
-        <lightning:formattedText value="{!'Assignment: ' + v.assignment.Name}" />
-        
-        <h1>Progress bar place holder</h1>
-        <!--c:InterviewMainProgress categories="v.categories" category="v.category" currentIndex="v.current"-->
-        <c:InterviewMainProgress />
-        
-        <!-- "{!'Category: ' + v.category.Name}"-->
-        <lightning:card variant="Base" title="{!'Category: ' + v.category.Name}">
-            
-            <lightning:layout>    
-                <lightning:layoutItem flexibility="auto" padding="around-small" size="4">
-                    <div class="slds-float_left" style="height:25%;">
-                        <lightning:buttonIcon aura:id="backward" name="backwardButton"
-                                            alternativeText="Previous Category" onclick="{!c.categoriesChange}" 
-                                            iconName="utility:chevronleft" disabled="true" 
-                                            size="large"/>
-                    </div>
-                </lightning:layoutItem>
-                
-                <lightning:layoutItem flexibility="auto" padding="around-small" size="4">
-                <div class="slds-align_center">
-                        <h1>Score place holder</h1>
-                        <!--c:InterviewMainScore categories="v.categories" category="v.category" currentIndex="v.current" Current_Score="v.category.score" -->
-                        <c:InterviewMainScore />
-                        <h1>Misc place holder</h1>
-                        <!--c:InterviewMainMisc categories="v.categories" category="v.category" currentIndex="v.current"-->
-                        <c:InterviewMainMisc />
-                    </div>
-                </lightning:layoutItem>
-
-                <lightning:layoutItem flexibility="auto" padding="around-small" size="4">
-                    <div class="slds-float_right" style="height:25%;">
-                        <lightning:buttonIcon aura:id="forward" name="forwardButton"
-                        alternativeText="Next Category" onclick="{!c.categoriesChange}" 
-                                          iconName="utility:chevronright" size="large"/>
-                    </div>
-                </lightning:layoutItem>
-                
-                            
-                
-                <!--aura:set attribute="actions">
-                
-            </aura:set>-->
-                
-            </lightning:layout>
-        </lightning:card>
-    </div>
-</aura:component>
->>>>>>> Dwayne

@@ -36,6 +36,7 @@
     },
 
     handlePanelTrackEvent: function (cmp, event) {
+        console.log("Event fired!");
         var panelTrack = event.getParam("updateTrack");
         cmp.set("v.trackFromEvent", panelTrack);
         var tEvent = cmp.get("v.trackFromEvent");

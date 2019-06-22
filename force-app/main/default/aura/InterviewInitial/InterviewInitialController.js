@@ -15,7 +15,7 @@
         let compEvent = $A.get("e.c:InterviewAppStateEvent");
         //let compEvent = cmp.getEvent("c:interviewAppStateEvent");
         compEvent.setParams({
-            state : "1"
+            state : 1
         });
         console.log(compEvent);
         compEvent.fire();

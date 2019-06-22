@@ -1,5 +1,4 @@
 ({
-    
     doInit : function(component, event, helper) {
         //let recId = component.get("v.recordId");
         
@@ -38,10 +37,8 @@
                 component.set("v.category", category);
 
                 //Set up the event to fire
-                let compEvent = component.getEvent("categoriesChange");
-                compEvent.setParam("current" , current);
-                compEvent.fire();    
-
+                helper.changeEvent(current, categories);
+                
             }
         });
         
@@ -50,13 +47,15 @@
     },
     
     appStateChange : function(component, event, helper) {
-        //Get the parameters from the event
-        let state = event.getParam("state");
+        //Get the event
+        let compEvent = $A.get("e.c:InterviewAppStateEvent");
+        //Set the parameters
+        compEvent.setParams({
+            "state" : 2
+        });
+        //Fire the event
+        compEvent.fire();
         
-        //If state is at one make the component visable
-        if(state == 1){
-            
-        }
 
     },
     
@@ -75,8 +74,9 @@
                 button.set('v.disabled',true);
             }
             //Make sure the forward button is enabled
-            let button = component.find('forward');
-            button.set('v.disabled',false);
+            //let button = component.find('forward');
+            //button.set('v.disabled',false);
+            helper.buttonChange(component, whichOne);
         }
         else if(whichOne == "forward"){
             current += 1;
@@ -84,8 +84,9 @@
             //Get the size of the array
             let catsize = component.get("v.catsize");
             if(current == catsize){
-                let button = component.find('forward');
-                button.set('v.disabled',true);
+                //let button = component.find('forward');
+                //button.set('v.disabled',true);
+                helper.buttonChange(component, whichOne);
             }            
             //Make sure the previous button is enabled
             let button = component.find('backward');
@@ -101,10 +102,8 @@
         component.set("v.category", category);
         
         //Pass the current index to the child components
-        let compEvent = component.getEvent("categoriesChange");
-        compEvent.setParam("current" , current);
-        compEvent.fire();
-        console.log("event fired: " + JSON.stringify(compEvent));
+        helper.changeEvent(current, []);
+        
     }
     
 })

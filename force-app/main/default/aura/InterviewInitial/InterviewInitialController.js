@@ -3,17 +3,31 @@
 
     },
 
-    cancel : function(cmp, event, handler) {
+    cancel : function(component, event) {
+        this.fireTheEvent();
         event.cancel;
         window.close();
     },
 
     start : function(cmp, event) {
         // open interview window
-        window.open("InterviewApp");
+        //window.open("InterviewApp");
+        let compEvent = cmp.getEvent("c:interviewAppStateEvent");
+        compEvent.setParams({
+            state: 1
+        });
+        compEvent.fire();
     },
-    
-    getTrack : function(cmp, event) {
+
+    fireTheEvent : function(component, event) {
+        var cmpEvent = component.getEvent("cmpEvent");
+        cmpEvent.setParams({
+            "message" : "The message: The component has fired."
+        });
+        cmpEvent.fire();
+    },
+
+    getTrack : function(component, event) {
         var action = component.get("c.getTrack");
         action.setParams({"trackInput" : component.get("v.trackName")});
         console.log(action);
@@ -28,7 +42,7 @@
         $A.enqueueAction(action);
     },
 
-    getContact : function(cmp, event) {      
+    getContact : function(component, event) {
         var action = component.get("c.getContact");
         action.setParams({"contact": component.get("v.recordId")});
         console.log(component.get("v.recordId") + ' ' + "c.getContact");
@@ -38,6 +52,7 @@
             if(state === "SUCCESS") {
                 component.set("v.contact", response.getReturnValue());
             } else {
+                fireTheEvent();
                 console.log('Problem getting contact name, response state: ' + state);
             }
         });
@@ -45,18 +60,19 @@
     },
 
     doInit : function(component, event, helper) {        
-                var action = component.get("c.getAccount");
-                action.setParams({"accountId": component.get("v.recordId")});
-                action.setCallback(this, function(response) {
-                    var state = response.getState();
-                    if(state === "SUCCESS") {
-                        component.set("v.account", response.getReturnValue());
-                    } else {
-                        console.log('Problem getting account, response state: ' + state);
-                    }
-                });
-                $A.enqueueAction(action);
-            },
+        var action = component.get("c.getTrack");
+        action.setParams({"contactId" : component.get("v.recordId")});
+        console.log(action);
+        action.setCallback(this, function(response) {
+            var state = response.getState();
+            if(state === "SUCCESS") {
+                component.set("v.trackName", response.getReturnValue());
+            } else {
+                console.log('Problem getting track name, response state: ' + state);
+            }
+        });
+        $A.enqueueAction(action);
+        },
         
             handleSaveContact: function(component, event, helper) {
                 if(helper.validateContactForm(component)) {

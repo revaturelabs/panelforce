@@ -27,7 +27,7 @@ public with sharing class TrackController {
     }
 
     @AuraEnabled
-    Public Static String getTrack() {
+    Public Static String getTrack(Id contactId) {
         String trackName;
         //List<PH_TrainingTrack__c> tl = new List<PH_TrainingTrack__c>();
         //for (PH_TrainingTrack__c t : tl) {

@@ -4,6 +4,7 @@
     },
 
     cancel : function(component, event, helper) {
+        // cancel button for InterviewInitial window.
         $A.get("e.force:closeQuickAction").fire();
     },
 

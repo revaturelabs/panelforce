@@ -1,4 +1,5 @@
 <aura:component controller="TrackController" description="Interview Initial" implements="force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:appHostable" access="global" >
+    <!-- Register Event for Interview App -->
     <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent" />
     <aura:attribute name="trackName" type="String" />
 

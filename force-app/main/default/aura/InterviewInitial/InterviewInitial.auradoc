@@ -1,11 +1,11 @@
 <aura:documentation>
 	<aura:description>Interview Initial Documentation</aura:description>
-	<aura:interviewInitialDoc name="InterviewInitial" ref="interviewInitial" label="Interview Initial">
+	<aura:example name="InterviewInitial" ref="interviewInitial" label="Interview Initial">
 		The Interview Initial component consists of a window which is opened from
 		the "Interview" button on the Contact detail page.  It consists of four fields
 		and two buttons: Contact, Track, Date, Comment and Cancel and Start.
 		Start open the interview window.
 		Cancel brings the user back to the Contact detail page.  Contact and Track
 		are auto populated.  Date picker is used.  Comment is text.
-	</aura:interviewInitialDoc>
+	</aura:example>
 </aura:documentation>

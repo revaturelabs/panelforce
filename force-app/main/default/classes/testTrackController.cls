@@ -12,7 +12,7 @@ public class testTrackController {
         Id i = c.Id;
         TrackController.getTrack(c.Id);
         TrackController.getContact(c.Id);
-        // System.assert();
+        // System.assert(bla, 'bla');
         // database delete c
     }
 }

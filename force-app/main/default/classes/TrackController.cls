@@ -31,6 +31,11 @@ public with sharing class TrackController {
         return trackName;
     }
 
+    @AuraEnabled
+    public static string methodName(){
+        
+    }
+
     // There's no direct relationship in the data model
     // hence the SOQL statement below.
     //public cody() {

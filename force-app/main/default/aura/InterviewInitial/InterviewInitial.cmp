@@ -31,7 +31,6 @@
             targetRecord="{!v.trackRecord}" targetError="{!v.error}" recordUpdated="{!c.handleRecordUpdate}" />
     </aura:if>
 
-
     <aura:if isTrue="{! !empty(v.error)}">
         <div class="slds-box slds-theme--error">
             <p><ui:outputText value="{!v.error}" /></p>
@@ -41,10 +40,11 @@
     <br />
     <p><ui:outputText aura:id="logMessage" value="{!v.logMessage}" class="slds-text-heading--small" /></p>
 
+<!--    <aura:handler name="getcontact" value="{!this}" action="{!c.getContact}" /> -->
+
     <aura:attribute name="contactRecord" type="Object" />
     <aura:attribute name="recordError" type="String" />
     <force:recordData aura:id="record" layoutType="FULL" />
-<!--    <aura:handler name="getcontact" value="{!this}" action="{!c.getContact}" /> -->
 
 
     <!-- Initial -->
@@ -65,15 +65,7 @@
     <lightning:input aura:id="commentInput" value="{!v.comment}" />
     
     <!-- start -->
-
-<!--
-    <ui:button aura:id="cancel" label="cancel" press="{!c.cancel}" />
-    <ui:button aura:id="start" label="start" press="{!c.start}" />
--->
-
-
     <lightning:button variant="neutral" label="cancel" name="cancel" onclick="{!c.cancel}" class="slds-m-top_medium"/>
     <lightning:button variant="neutral" label="start" name="start" onclick="{!c.start}" class="slds-m-top_medium"/>
-
 
 </aura:component>

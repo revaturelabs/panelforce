@@ -40,7 +40,9 @@
         let category = component.get('v.categories');
         component.set('v.newCategory','');
         component.set('v.newCategory', category[btnTitle]);
+        helper.scoreVaildationHelper(component, event, helper);
         helper.totalScoreHelper(component);
+        component.set('v.modal', 'Edit Category');
         component.set('v.viewModal', true);
     },
 
@@ -84,6 +86,7 @@
     },
 
     viewModalHelper : function(component, event, helper) {
+        component.set('v.modal', 'Create Category');
         component.set('v.viewModal',true);
     },
 

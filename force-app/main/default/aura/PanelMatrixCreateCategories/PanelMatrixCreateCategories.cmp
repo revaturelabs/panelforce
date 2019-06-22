@@ -2,7 +2,7 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:attribute name="categories" type="List" />
     <aura:attribute name="editName" type="String"/>
-    <aura:attribute name="numOfCat" type="Integer"/>
+    <aura:attribute name="modal" type="String"/>
     <aura:attribute name="totalScore" type="Double"/>
     <!-- Boolean attribute to open/close the modal -->
     <aura:attribute name="viewModal" type="Boolean" default="false"/>
@@ -58,7 +58,7 @@
                 <div class="slds-modal__container">
                     <!-- Header of Modal -->
                     <header class="slds-modal__header">
-                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create New Category</h2>
+                        <h2 aura:id="edit-modal" id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.modal}</h2>
                     </header>
                     <!-- Body of Modal -->
                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">

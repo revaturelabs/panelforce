@@ -14,12 +14,13 @@
   <aura:attribute name="comment" type="string" />
   <aura:attribute name="pass" type="boolean" />
   <aura:attribute name="fail" type="boolean" />
+  <aura:attribute name="assessmentId" type="string" />
 
-  <aura:registerEvent name="Assessment" type="c:PanelViewTrackMiscEvent" />
+  <aura:registerEvent name="updateAssessmentEvent" type="c:PanelViewTrackMiscEvent" />
   <aura:handler name="init" value="{! this }" action="{! c.init }" />
   <aura:handler
     event="c:PanelViewTrackMiscEvent"
-    action="{!c.handleCategories}"
+    action="{!c.handleAssessment}"
   />
 
   <!--Div Container Start -->

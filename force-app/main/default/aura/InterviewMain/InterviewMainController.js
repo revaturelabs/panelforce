@@ -47,18 +47,34 @@
     },
     
     appStateChange : function(component, event, helper) {
-        //Get the event
-        let compEvent = $A.get("e.c:InterviewAppStateEvent");
-        let categories = component.get("v.categories");
-        //Set the parameters
-        compEvent.setParams({
-            "state" : 2,
-            "categories" : categories
-        });
-        //Fire the event
-        compEvent.fire();
         
+        
+        let categories = component.get("v.categories");
 
+        var action = component.get("c.getUpdatedCategories");
+
+        action.setParams({ oldRecs : categories });
+        action.setCallback(this, function(response) {
+            let state = response.getState();
+            if (state === "SUCCESS") {
+                //Get the new Categories from the class
+                let newCats = response.getReturnValue();
+
+                //Get the event
+                let compEvent = $A.get("e.c:InterviewAppStateEvent");
+                //Set the parameters
+                compEvent.setParams({
+                    "state" : 2,
+                    "categories" : newCats
+                });
+
+                //Fire the event
+                compEvent.fire();
+            }
+            
+        });
+        
+        $A.enqueueAction(action);
     },
     
     categoriesSetup: function(component, event, helper) {

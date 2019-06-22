@@ -30,7 +30,12 @@
         let searchText = component.get("v.searchText");
         let records = component.get("v.records");
         // First clear v.body
-        component.set("v.body", "");
+        let vbody = component.get("v.body");
+        vbody.forEach(elem => {
+            elem.destroy();
+        });
+        // component.set("v.body", []);
+
         records.forEach((record, i) => {
             // Don't add records without containing 'searchText' in the Name
             if (!record["Name"].toUpperCase().includes(searchText.toUpperCase())) {
@@ -113,9 +118,9 @@
         let componentBody = component.get("v.body");
         console.log("body: " + componentBody);
         // First hide all comments
-        // for (let i = 0; i < componentBody.length; i++) {
         componentBody.forEach(comp => {
             console.log("Body type: " + typeof comp);
+            // Temp fix, body has a random empty string as first element, i think this is because I start by setting v.body = "", then later the elements get appended
             if (typeof comp != 'string') {
                 console.log("Made it in");
                 let localId = comp.getLocalId();
@@ -127,9 +132,10 @@
 
         });
 
-        console.log("LI Clicked:" + component.find("Comment " + event.srcElement["id"]));
+        console.log("LI comment Clicked:" + component.find("Comment " + event.srcElement["id"]));
         console.log("Source element id: " + event.srcElement["id"]);
         let selectedComment = component.find("Comment " + event.srcElement["id"]);
         $A.util.removeClass(selectedComment, "slds-hide");
+        console.log("Class removed");
     }
 });

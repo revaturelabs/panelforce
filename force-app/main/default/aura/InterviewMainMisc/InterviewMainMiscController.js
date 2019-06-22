@@ -1,13 +1,38 @@
 ({
 
-    doInit: function(component, event, helper){
-        let onloadTimeStamp = Date.now();
-    },
+    autoTimer: function(component, event, helper){
+        var getAppState = event.getParam("state"); 
+        let startStopTime;
+        let sst = component.get("v.totalInterviewTimeList");
+        if(state == 1){
+            sst.push([Date.now(), -1]);
+            component.set("v.totalInterviewTimeList", sst);
+        }
+        else if(state == 2){
+            sst[sst.length-1][1] = Date.now();
+            component.set("v.totalInterviewTimeList", sst);       
+         }
 
-    //end the interview
-    endPage:  function(component, event, helper){
-        let endTimeStamp = Date.now();
-        alert(endTimeStamp);
+         if(state != 0){
+
+            startStopTime = sst[1] - sst[0];
+            let assessmentComp = component.get("v.assessment");
+            paramT = component.get("c.totalTimeDiff");
+
+            paramT.setParams({
+                "totalTime": startStopTime,
+                "phAss": assessmentComp
+            });
+
+            paramT.setCallback(this, function(a) {
+                var state = a.getState();
+                 if (state === "ERROR") {
+                    console.log(a.getError()[0].message);
+                 }
+             });
+            $A.enqueueAction(paramT);
+         }
+        
     },
 
     terminate : function(component, event, helper) {
@@ -103,13 +128,13 @@
 
                     let handlePass = component.get("c.updatePass");
                     let com = component.get("v.commentAtt");
-                    let panelcat = component.get("v.panelCat");
-                    let phAssess = component.get("v.assessment");
+                    let AssessLineCat = component.get("v.lineItemCategories");
+                    var lItemIndex = event.getParam("current");
+
                         
                     handlePass.setParams({
                         "comment": com,
-                        "phAss": phAssess,
-                        "pc": panelcat
+                        "AssLineItem": AssessLineCat[lItemIndex]
                     });
 
                     handlePass.setCallback(this, function(a) {
@@ -128,13 +153,13 @@
 
         let handleFail = component.get("c.updateFailed");
         let com = component.get("v.commentAtt");
-        let panelcat = component.get("v.panelCat");
-        let phAssess = component.get("v.assessment");
+        let AssessLineCat = component.get("v.lineItemCategories");
+        var lItemIndex = event.getParam("current");
+
 
         handleFail.setParams({
             "comment": com,
-            "phAss": phAssess,
-            "pc": panelcat
+            "AssLineItem": AssessLineCat[lItemIndex]
         });
 
         handleFail.setCallback(this, function(a) {
@@ -146,5 +171,19 @@
 
         $A.enqueueAction(handleFail);
         component.set('v.openModal2',false);
+    },
+
+    setCurrentLineItem : function(component, event, helper) {
+        var lItemIndex = event.getParam("current");
+        var getCat = event.getParam("categories");
+        component.set("v.lineItemIndex", lItemIndex);
+        if(getCat.length != 0){
+            component.set("v.lineItemCategories", getCat);
+        }
+    },
+
+    setAssess : function(component, event, helper) {
+        var assess = event.getParam("updateAssessment");
+        component.set("v.assessment", assess);
     }
 })

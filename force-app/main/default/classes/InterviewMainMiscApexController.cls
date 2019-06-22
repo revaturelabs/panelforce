@@ -15,33 +15,33 @@ public with sharing class InterviewMainMiscApexController {
 insert tsList;
   }
 
+  public static void totalTimeDiff(Integer totalTime, PH_Assessment__c phAss){
+        ID phAssID = phAss.id;
+        Time_Stamp__c updateTotal = [Select milliSecs__c from Time_Stamp__c where id =: phAssID];
+        updateTotal.Total_Interview_Length__c = totalTime - updateTotal.milliSecs__c;
+        upsert updateTotal;
+
+    
+  }
+
     @AuraEnabled
-    public static void updatePass(String comment,  PH_Assessment__c phAss, PanelCategory__c pc){
-        List<AssessmentLineItem__c> catList = new List<AssessmentLineItem__c>();
-        AssessmentLineItem__c cat = new AssessmentLineItem__c();
-        String comm = comment;
-                cat.name = 'Temporal Name: ' + comment;
-                cat.Status__c = true;
-                cat.Interviewed__c = true;
-                cat.Comment__c = comm;
-                cat.PH_Assessment__c = phAss.Id;
-                cat.PanelCategory__c = pc.Id;
-                catList.add(cat);
-                insert catList;
+    public static void updatePass(String comment,  AssessmentLineItem__c AssLineItem){
+      ID AssessID = AssLineItem.id;
+      AssessmentLineItem__c aliList = [Select Status__c, Interviewed__c, Comment__c from AssessmentLineItem__c where id =:AssessID]; 
+      aliList.Status__c = false;
+      aliList.Interviewed__c = true;
+      aliList.Comment__c = comment;
+      update aliList;
     }
 
 @AuraEnabled
-    public static void updateFailed(String comment, PH_Assessment__c phAss, PanelCategory__c pc){
-       AssessmentLineItem__c cat = new AssessmentLineItem__c();
-       List<AssessmentLineItem__c> catList = new List<AssessmentLineItem__c>();
-        cat.name = 'Temporal Name: ' + comment.substring(0,15);
-       cat.Status__c = false;
-       cat.Interviewed__c = true;
-       cat.Comment__c = comment;
-       cat.PH_Assessment__c = phAss.Id;
-       cat.PanelCategory__c = pc.Id;
-       catList.add(cat);
-       insert catList;
+    public static void updateFailed(String comment, AssessmentLineItem__c AssLineItem){
+      ID AssessID = AssLineItem.id;
+      AssessmentLineItem__c aliList = [Select Status__c, Interviewed__c, Comment__c from AssessmentLineItem__c where id =:AssessID]; 
+      aliList.Status__c = false;
+      aliList.Interviewed__c = true;
+      aliList.Comment__c = comment;
+      update aliList;
    }
 
 }

@@ -1,23 +1,21 @@
 <aura:component controller="InterviewMainMiscApexController" >
 
-<aura:handler name="init" action="{!c.doInit}" value="{!this}" />
-<aura:handler name="appStateChange" event="c:InterviewAppStateEvent" action="{!c.endPage}"/>
+<aura:handler event="c:InterviewAppStateEvent" action="{!c.autoTimer}"/>
+<aura:handler event="c:PanelViewTrackMiscEvent" action="{!c.setAssess}"/>
+<aura:handler event="c:InterviewMainEvent" action="{!c.setCurrentLineItem}"/>
+
 <aura:attribute name="togglebtn" type="Boolean" default="false" />
 <aura:attribute name="pauseStartList" type="List"/>
 <aura:attribute name="timeStampList" type="List"/>
 <aura:attribute name="commentAtt" type="String" default=""/>
+<aura:attribute name="totalInterviewTimeList" type="List"/>
 <aura:attribute name="errorM" type="Boolean" default="false" />
 <aura:attribute name="openModal" type="Boolean" default="false" />
 <aura:attribute name="openModal2" type="Boolean" default="false" />
 
-<aura:attribute name="assessment" type="PH_Assessment__c" default="{
-															'sobjectType': 'PH_Assessment__c',
-															'Id': 'a014P00001sp4AYQAY'
-													}"/>
-<aura:attribute name="panelCat" type="PanelCategory__c" default="{
-															'sobjectType': 'PanelCategory__c',
-															'Id': 'a054P00000ti74RQAQ'
-													}"/>
+<aura:attribute name="assessment" type="PH_Assessment__c" />
+<aura:attribute name="lineItemIndex" type="Integer" />
+<aura:attribute name="lineItemCategories" type="AssessmentLineItem__c[]" />
 											
 
 

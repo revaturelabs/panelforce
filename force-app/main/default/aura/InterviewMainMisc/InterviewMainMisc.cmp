@@ -22,7 +22,7 @@
 
 <div class="slds-grid slds-gutters slds-align_absolute-center">
 
-	<div class="slds-col slds-size_10-of-12">
+	<div class="slds-col slds-size_9-of-12">
 					<lightning:layoutItem>
 					<lightning:textarea name="comment" title="comment" placeholder="type comment here..." variant="label-hidden" value="{!v.commentAtt}"/>			
 					</lightning:layoutItem>   
@@ -53,7 +53,7 @@
 					</aura:if>            
 
 	</div>
-	<div class="slds-col slds-size_2-of-12 slds-border_right">
+	<div class="slds-col slds-size_3-of-12 slds-border_right">
 					<lightning:buttonGroup class="slds-grid slds-grid_vertical">
 							<lightning:button class="slds-col" label="Pass" title="btnPass" onclick="{!c.openerrorM}"/>
 							<lightning:button class="slds-col" label="Fail" title="btnFail" onclick="{!c.openerrorM}"/>

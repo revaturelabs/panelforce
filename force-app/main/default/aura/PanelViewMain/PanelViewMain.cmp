@@ -45,7 +45,7 @@
 
                     <!-- Panel View Categories on the left side of the screen -->
                     <div class="slds-col slds-size_3-of-7 slds-card">
-                        <c:PanelViewCategories />
+                        <c:PanelViewCategories recordId="{!v.recordId}"/>
                     </div>
 
                     <!-- Panel View Assessment on the right side of the screen -->

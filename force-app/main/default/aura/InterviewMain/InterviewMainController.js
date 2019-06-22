@@ -5,8 +5,8 @@
         //Current Index is default 0
         var current = component.get("v.current");
         
-
-
+        
+        
         var action1 = component.get("c.getTrainAssign");
         var recordId = component.get("v.recordId");
         action1.setParams({ recId : recordId });
@@ -35,7 +35,7 @@
                 //Get the current category
                 let category = categories[current];
                 component.set("v.category", category);
-
+                
                 //Set up the event to fire
                 helper.changeEvent(current, categories);
                 
@@ -50,16 +50,16 @@
         
         
         let categories = component.get("v.categories");
-
+        
         var action = component.get("c.getUpdatedCategories");
-
+        
         action.setParams({ oldRecs : categories });
         action.setCallback(this, function(response) {
             let state = response.getState();
             if (state === "SUCCESS") {
                 //Get the new Categories from the class
                 let newCats = response.getReturnValue();
-
+                
                 //Get the event
                 let compEvent = $A.get("e.c:InterviewAppStateEvent");
                 //Set the parameters
@@ -67,7 +67,7 @@
                     "state" : 2,
                     "categories" : newCats
                 });
-
+                
                 //Fire the event
                 compEvent.fire();
             }
@@ -93,18 +93,18 @@
             //Get the current category
             let category = categories[current];
             component.set("v.category", category);
-
+            
             //Set up the event to fire
             helper.changeEvent(current, categories);
         }
     },
-
+    
     categoriesChange : function(component, event, helper) {
         //Determine if the forward or backward button was pressed
         let whichOne = event.getSource().getLocalId();
         //Get the current index
         var current = component.get("v.current");
-
+        
         //Backward button
         if(whichOne == "backward"){
             current -= 1;

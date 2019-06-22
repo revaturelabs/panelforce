@@ -19,6 +19,7 @@
         let buttonText;
         let buttonAction;
         let buttonClass;
+        let iconClass;
 
         //Figure out which button to change
         if(whichOne == "forward"){
@@ -28,7 +29,8 @@
             buttonIcon = "utility:check";
             buttonText = "Finish Interview";
             buttonAction = "c.appStateChange";
-            buttonClass = "slds-button_success finish button";
+            buttonClass = "finish button";
+            iconClass = "icon checkmark";
 
         }else if(whichOne == "backward"){
             //Create the forward button parameters
@@ -37,7 +39,8 @@
             buttonIcon = "utility:chevronright";
             buttonText = "Next Category";
             buttonAction = "c.categoriesChange";
-            buttonClass = "slds-button_brand next button";
+            buttonClass = "next button";
+            iconClass = "icon arrow";
         }
         //Create the button
         $A.createComponent(
@@ -46,9 +49,10 @@
                 "aura:id": buttonId,
                 "name": buttonName,
                 "iconName": buttonIcon,
-                "iconClass": "icon",
+                "iconClass": iconClass,
                 "alternativeText": buttonText,
                 "size" : "large",
+                "variant": "bare",
                 "class" : buttonClass,
                 "onclick": component.getReference(buttonAction)
             },

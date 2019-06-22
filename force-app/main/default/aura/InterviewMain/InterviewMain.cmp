@@ -42,10 +42,10 @@
                 
                 <lightning:layout verticalAlign="stretch" class="slds-align_absolute-center slds-grid">    
                         <div aura:id="leftbutton" class="slds-float_left" style="height:25%;">
-                            <lightning:buttonIcon aura:id="backward" name="backwardButton" class="start button"
-                                                alternativeText="Previous Category" onclick="{!c.categoriesChange}" 
-                                                iconName="utility:chevronleft" disabled="true" 
-                                                size="large"/>
+                            <lightning:buttonIcon aura:id="backward" name="backwardButton" class="start button slds-button_brand"
+                            alternativeText="Previous Category" onclick="{!c.categoriesChange}" 
+                            iconName="utility:chevronleft" disabled="true" 
+                            iconClass="icon" size="large"/>
                         </div>
                     
                         <div class="slds-p-around_medium">
@@ -60,9 +60,9 @@
                         </div>
 
                         <div aura:id="rightbutton" class="slds-float_right" style="height:25%;">
-                            <lightning:buttonIcon aura:id="forward" name="forwardButton" class="next button"
+                            <lightning:buttonIcon aura:id="forward" name="forwardButton" class="next button slds-button_brand"
                             alternativeText="Next Category" onclick="{!c.categoriesChange}" 
-                                            iconName="utility:chevronright" size="large"/>
+                            iconName="utility:chevronright" iconClass="icon" size="large"/>
                         </div>
                 </lightning:layout>
 

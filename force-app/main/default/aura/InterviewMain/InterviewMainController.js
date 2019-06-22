@@ -49,9 +49,11 @@
     appStateChange : function(component, event, helper) {
         //Get the event
         let compEvent = $A.get("e.c:InterviewAppStateEvent");
+        let categories = component.get("v.categories");
         //Set the parameters
         compEvent.setParams({
-            "state" : 2
+            "state" : 2,
+            "categories" : categories
         });
         //Fire the event
         compEvent.fire();
@@ -59,6 +61,13 @@
 
     },
     
+    categoriesSetup: function(component, event, helper) {
+        //Get the current state
+
+        //Make sure that we are in the correct state
+
+    },
+
     categoriesChange : function(component, event, helper) {
         //Determine if the forward or backward button was pressed
         let whichOne = event.getSource().getLocalId();

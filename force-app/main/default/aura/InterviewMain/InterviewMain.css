@@ -1,6 +1,13 @@
 .THIS .button{
     height: 200px;
     width: 200px;
+    font-size: 100px;
+    
+}
+
+.THIS .icon {
+    width: 50%;
+    height: 50%;
 }
 
 .THIS .start {    
@@ -11,7 +18,7 @@
     border-radius: 0 40px 40px 0 !important;
     margin: 0 20px 0 0;
 }
-.THIS .finishbutton {
+.THIS .finish {
     margin: 0 20px 0 0;
 
 }

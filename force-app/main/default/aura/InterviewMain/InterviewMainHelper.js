@@ -37,7 +37,7 @@
             buttonIcon = "utility:chevronright";
             buttonText = "Next Category";
             buttonAction = "c.categoriesChange";
-            buttonClass = "next button";
+            buttonClass = "slds-button_brand next button";
         }
         //Create the button
         $A.createComponent(
@@ -46,6 +46,7 @@
                 "aura:id": buttonId,
                 "name": buttonName,
                 "iconName": buttonIcon,
+                "iconClass": "icon",
                 "alternativeText": buttonText,
                 "size" : "large",
                 "class" : buttonClass,

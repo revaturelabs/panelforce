@@ -16,11 +16,13 @@
         <aura:iteration items="{!v.categories}" var="cat" indexVar="index">
             <div class="slds-col slds-medium-size_1-of-3 slds-small-size_3-of-3 slds-p-bottom_small">
                 <lightning:card title="{!cat.Name}" class="slds-text-align_center">
-                    <p class="slds-align_absolute-center">{!cat.maxScore__c}</p>
+                    <p class="slds-align_absolute-center max-score-size">{!cat.maxScore__c}</p>
                     <div class="slds-p-top_small">
-                        <lightning:button label="Edit" title="{!index}" onclick="{!c.editCategory}"/>
-                        <lightning:button label="Delete" title="{!index}" onclick="{!c.deleteCategory}"/>
-                    </div>
+                        <lightning:buttonGroup class="slds-grid_vertical">
+                            <lightning:button label="Edit" title="{!index}" onclick="{!c.editCategory}"/>
+                            <lightning:button label="Delete" title="{!index}" onclick="{!c.deleteCategory}"/>
+                        </lightning:buttonGroup>
+                    </div>    
                 </lightning:card>
             </div>
         </aura:iteration>
@@ -33,12 +35,12 @@
         </div>
     </div>
     
-    <div class="slds-grid slds-gutters slds-wrap slds-p-top_large">
+    <div class="slds-grid slds-gutters slds-wrap footer-bg-color slds-grid_vertical-align-end">
         <div class="slds-col slds-small-size_3-of-3 slds-medium-size_1-of-2">
-            <h2 aura:id="scoreErr" class="slds-text-heading_medium">Total Score: {!v.totalScore}</h2>
+            <h2 aura:id="scoreErr" class="slds-text-heading_medium slds-text-align_center">Total Score: {!v.totalScore}</h2>
         </div>
         <div class="slds-col slds-small-size_3-of-3 slds-medium-size_1-of-2">
-            <h2 class="slds-text-heading_medium"> Number of Categories: {!v.categories.length}</h2>
+            <h2 class="slds-text-heading_medium slds-text-align_center"> Number of Categories: {!v.categories.length}</h2>
         </div>
     </div>
     

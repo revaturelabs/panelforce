@@ -1,2 +1,16 @@
-.THIS {
+.THIS .add-new-btn {
+    padding-top: 3.6em;
+}
+
+.THIS .add-new-btn :hover {
+    cursor: pointer;
+}
+
+.THIS .max-score-size {
+    font-size: 2.3em;
+}
+
+.THIS.footer-bg-color {
+    height: 20vh;
+    background-color: #ffffff;
 }

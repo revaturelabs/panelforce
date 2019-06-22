@@ -1,4 +1,4 @@
-<aura:component controller="PanelViewCategoriesController" implements="flexipage:availableForRecordHome, force:hasRecordId">
+<aura:component controller="PanelViewCategoriesController" implements="flexipage:availableForRecordHome,force:hasRecordId">
 
     <!-- Current assessment record id -->
     <aura:attribute name="recordId" type="String" />

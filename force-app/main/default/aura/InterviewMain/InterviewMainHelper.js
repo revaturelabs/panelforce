@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ({
 
     changeEvent : function(currIndex, categories) {
@@ -59,4 +60,13 @@
 
     }
 
+=======
+({
+    
+    
+    
+    helperMethod : function() {
+
+    }
+>>>>>>> Dwayne
 })

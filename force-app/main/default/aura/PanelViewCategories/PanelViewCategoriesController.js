@@ -113,24 +113,23 @@
         let componentBody = component.get("v.body");
         console.log("body: " + componentBody);
         // First hide all comments
-        for (let i = 1; i < componentBody.length; i++) {
-            let localId = componentBody[i].getLocalId();
-            let currComment = component.find("Comment " + localId);
-            $A.util.addClass(currComment, "slds-hide");
-        };
+        // for (let i = 0; i < componentBody.length; i++) {
+        componentBody.forEach(comp => {
+            console.log("Body type: " + typeof comp);
+            if (typeof comp != 'string') {
+                console.log("Made it in");
+                let localId = comp.getLocalId();
+                let currComment = component.find("Comment " + localId);
+                if (currComment) {
+                    $A.util.addClass(currComment, "slds-hide");
+                }
+            }
+
+        });
 
         console.log("LI Clicked:" + component.find("Comment " + event.srcElement["id"]));
-        // console.log("SubElement: " + Object.keys(event));
-        // console.log("SubElement: " + event.target);
-        // console.log("SubElement: " + Object.getOwnPropertyNames(event.target));
-        // console.log(component.find("Comment " + event.srcElement["id"]));
-        // Reveal selected element
+        console.log("Source element id: " + event.srcElement["id"]);
         let selectedComment = component.find("Comment " + event.srcElement["id"]);
         $A.util.removeClass(selectedComment, "slds-hide");
-    },
-
-    liBlur: function(component, event, helper) {
-        console.log("Things are getting blurry");
-        $A.util.addClass(component.find("Comment" + event.srcElement["id"]), "slds-hide");
     }
 });

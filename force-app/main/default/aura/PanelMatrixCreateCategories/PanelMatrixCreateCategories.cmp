@@ -11,6 +11,14 @@
     <aura:attribute name="newCategory" type="PanelCategory__c" 
                     default="{ 'sobjectType':'PanelCategory__c','Name': '','maxScore__c': '' }"/>
     <!-- Page Header -->
+    <div class="slds-grid slds-gutters slds-wrap slds-p-bottom_small"> 
+        <div class="slds-col slds-size_1-of-2">
+            <lightning:button class="slds-text-align_right" label="Cancel"/>
+        </div>
+        <div class="slds-col slds-size_1-of-2 slds-text-align_right">
+            <lightning:button class="slds-text-align_right" label="Save"/>
+        </div>
+    </div>
     <h1 class="slds-align_absolute-center slds-text-heading_large slds-p-top_large slds-p-bottom_large">Categories</h1>
     <div class="slds-grid slds-gutters slds-wrap slds-p-bottom_small">
         <aura:iteration items="{!v.categories}" var="cat" indexVar="index">
@@ -70,5 +78,4 @@
             <div class="slds-backdrop slds-backdrop_open"></div>
         </div>
     </aura:if>
-    
 </aura:component>

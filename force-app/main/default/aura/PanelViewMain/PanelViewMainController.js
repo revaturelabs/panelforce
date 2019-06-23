@@ -1,9 +1,11 @@
 ({
     doInit: function (component, event, helper) {
+        component.set("v.appState", 3);
         var contactID = component.get("v.recordId");
+
         var action = component.get("c.getTrack");
-        action.setParams({"contactID" : contactID});
-        action.setCallback(this, function(response) {
+        action.setParams({ "contactID": contactID });
+        action.setCallback(this, function (response) {
             var state = response.getState();
             if (state === "SUCCESS") {
                 component.set("v.track", response.getReturnValue());
@@ -18,9 +20,8 @@
         $A.enqueueAction(action);
 
         var action2 = component.get("c.getNumberofTries");
-        action2.setParams({"contactID" : contactID});
-        action2.setCallback(this, function(response2) {
-            console.log(response2.getReturnValue());
+        action2.setParams({ "contactID": contactID });
+        action2.setCallback(this, function (response2) {
             var state = response2.getState();
             if (state === "SUCCESS") {
                 component.set("v.numberofTries", response2.getReturnValue());
@@ -36,29 +37,31 @@
     },
 
     handlePanelTrackEvent: function (cmp, event) {
-        console.log("Event fired!");
         var panelTrack = event.getParam("updateTrack");
         cmp.set("v.trackFromEvent", panelTrack);
         var tEvent = cmp.get("v.trackFromEvent");
-        console.log(tEvent);
-    },    
-    
-    handlePanelCategoriesEvent : function(cmp, event) {
+    },
+
+    handlePanelCategoriesEvent: function (cmp, event) {
         var listOfCategories = event.getParam("updateCategories");
         cmp.set("v.listFromEvent", listOfCategories);
     },
 
+    handleInterviewAppStateEvent: function (cmp, event) {
+        var interviewAppState = event.getParam("state");
+        cmp.set("v.appState", interviewAppState);
+    },
+
     save: function (component, event, helper) {
         var lEventCategories = component.get("v.listFromEvent");
-        console.log(lEventCategories);
-
-        // var lEventTrack = component.get("v.trackFromEvent");
-        // console.log(lEventTrack);
+        var assessment = component.get("v.trackFromEvent");
 
         var sCategories = component.get("c.saveAssessment");
-        sCategories.setParams({"pcList" : lEventCategories});//,
-                                // "track" : lEventTrack});
-        sCategories.setCallback(this,function(response){
+        sCategories.setParams({
+            "pcList": lEventCategories,
+            "assessment": assessment
+        });
+        sCategories.setCallback(this, function (response) {
             var state = response.getState();
             if (state === "SUCCESS") {
                 console.log("The save was successful.");
@@ -70,14 +73,14 @@
                 var errors = response.getError();
                 if (errors) {
                     if (errors[0] && errors[0].message) {
-                        console.log("Error message: " + 
-                                 errors[0].message);
+                        console.log("Error message: " +
+                            errors[0].message);
                     }
                 } else {
                     console.log("Unknown error");
                 }
             }
-        });      
-        $A.enqueueAction(sCategories); 
+        });
+        $A.enqueueAction(sCategories);
     }
 })

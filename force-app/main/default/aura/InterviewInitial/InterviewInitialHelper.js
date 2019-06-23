@@ -1,5 +1,5 @@
 ({
-    helperMethod : function() {
+    createLineItem : function(assId, trackId) {
 
     }
 })

@@ -20,16 +20,15 @@ public class testTrackController {
     @isTest
     Public Static Void testCreateData() {
         Contact c = new Contact();
-        TrackController t = new TrackController();
+        //TrackController t = new TrackController();
         c.Lastname = 'test';
         // needs DML insert in order to use c.Id to check createData()
         insert c;
 
         // test a.Id and that Id is not null.
-        if (t.createData(c.Id) != null) {
+        if (TrackController.createData(c.Id) != null) {
             System.debug('record inserted createData works.');
         }
-
         Database.delete(c);
     }
 }

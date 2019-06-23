@@ -51,8 +51,8 @@ public with sharing class TrackController {
             li.PanelCategory__c = pc.Id;
             li.maxScore__c = pc.maxScore__c;
             li.Score__c = pc.maxScore__c;
+            loali.add(li);
         }
-        loali.add(li);
         insert loali;
         return a.Id;
     }

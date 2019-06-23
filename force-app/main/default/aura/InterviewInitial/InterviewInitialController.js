@@ -11,13 +11,17 @@
     start : function(component, event) {
         // create Assessment and AssessmentLineItems
         var action = component.get("c.createData");
-        action.setParams({"contactId" : component.get("v.recordId")});
+        action.setParams({
+            "contactId" : component.get("v.recordId"),
+            "trackId" : component.get("v.track.Id")
+        });
         console.log(action);
         action.setCallback(this, function(response) {
             var state = response.getState();
              if(state === "SUCCESS") {
                 console.log('success with Assessment record creation.');
                 var loli = response.getReturnValue();
+                console.log("loli" + JSON.stringify(loli));
 
                 let sendAssessmentEvent = $A.get("e.c:PanelViewTrackMiscEvent");
                 sendAssessmentEvent.setParams({
@@ -41,8 +45,9 @@
                 compEvent.fire();
                 console.log("event fired");
 
-            } else {
-                console.log('Problem getting Assessment Name, response state: ' + state);
+            } else if (state === "ERROR") {
+                var errors = response.getError();
+                console.log("Error message: " + errors[0].message);
             }
         });
         $A.enqueueAction(action);
@@ -67,7 +72,8 @@
         action.setCallback(this, function(response) {
            var state = response.getState();
             if(state === "SUCCESS") {
-                component.set("v.trackName", response.getReturnValue());
+                component.set("v.track", response.getReturnValue());
+                console.log("I got the track: " + JSON.stringify(component.get("v.track")));
             } else {
                 console.log('Problem getting track name, response state: ' + state);
             }

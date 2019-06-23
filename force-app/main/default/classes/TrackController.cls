@@ -6,14 +6,9 @@ public with sharing class TrackController {
     }
 
     @AuraEnabled
-<<<<<<< HEAD
-    Public Static String getContact(Id contactId) {
-        // method to get the Contact record for InterviewInitial component.
-=======
     public static String getContact(Id contactId) {
         // perform isAccessible here
         // Contact c = new Contact();
->>>>>>> James
         List<Contact> cl = new List<Contact>();
         //Contact returnContact = new Contact();
         String lastName;

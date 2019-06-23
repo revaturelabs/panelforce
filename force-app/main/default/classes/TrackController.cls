@@ -32,7 +32,7 @@ public with sharing class TrackController {
     }
 
     @AuraEnabled
-    Public Static String createData(Id contactId) {
+    Public Static List<AssessmentLineItem__c> createData(Id contactId) {
         PH_Assessment__c a = new PH_Assessment__c();
         // populate Name and Contact__c
         
@@ -48,16 +48,17 @@ public with sharing class TrackController {
         AssessmentLineItem__c li = new AssessmentLineItem__c();
         for (PanelCategory__c pc : [SELECT Name, Id, maxScore__c From PanelCategory__c]) {
             System.debug(pc.Id);
+            li.PH_Assessment__c = a.Id;
             li.PanelCategory__c = pc.Id;
             li.maxScore__c = pc.maxScore__c;
             li.Score__c = pc.maxScore__c;
             loali.add(li);
         }
         insert loali;
-        return a.Id;
+        return loali;
+        //return a.Id;
     }
 
-    
     // There's no direct relationship in the data model
     // hence the SOQL statement below.
     //public cody() {

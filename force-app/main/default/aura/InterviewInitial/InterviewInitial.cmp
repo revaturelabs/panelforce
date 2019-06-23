@@ -1,7 +1,6 @@
 <aura:component controller="TrackController" description="Interview Initial" implements="force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:appHostable" access="global" >
-    <!-- Register Event for Interview App -->
     <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent" />
-    <aura:attribute name="trackName" type="String" />
+    <aura:attribute name="PH_TrainingTrack__c" type="String" />
 
     <aura:attribute name="record" type="Object" />
     <aura:attribute name="recordTemplate" type="Object" />
@@ -32,6 +31,7 @@
             targetRecord="{!v.trackRecord}" targetError="{!v.error}" recordUpdated="{!c.handleRecordUpdate}" />
     </aura:if>
 
+
     <aura:if isTrue="{! !empty(v.error)}">
         <div class="slds-box slds-theme--error">
             <p><ui:outputText value="{!v.error}" /></p>
@@ -41,22 +41,21 @@
     <br />
     <p><ui:outputText aura:id="logMessage" value="{!v.logMessage}" class="slds-text-heading--small" /></p>
 
-<!--    <aura:handler name="getcontact" value="{!this}" action="{!c.getContact}" /> -->
-
     <aura:attribute name="contactRecord" type="Object" />
     <aura:attribute name="recordError" type="String" />
     <force:recordData aura:id="record" layoutType="FULL" />
+<!--    <aura:handler name="getcontact" value="{!this}" action="{!c.getContact}" /> -->
 
 
     <!-- Initial -->
-    <aura:handler name="init" value="{!this}" action="{!c.getTrackToo}" />
-
     Contact
     <aura:attribute name="contact" type="Contact" />
     <lightning:input aura:id="contactInput" value="{!v.contactRecord.Name}" />
  
     Track
-    <lightning:input aura:id="trackInput" value="{!v.trackName}" />
+    <aura:handler name="init" value="{!this}" action="{!c.start}" />
+    <aura:attribute name="trackName" type="PH_TrainingTrack__c" />
+    <lightning:input aura:id="trackInput" value="{!v.PH_TrainingTrack__c}" />
    
     Date
     <lightning:input type="date" />
@@ -66,7 +65,15 @@
     <lightning:input aura:id="commentInput" value="{!v.comment}" />
     
     <!-- start -->
-    <lightning:button variant="neutral" label="cancel" name="cancel" onclick="{!c.cancel}" class="slds-m-top_medium"/>
-    <lightning:button variant="neutral" label="start" name="start" onclick="{!c.start}" class="slds-m-top_medium"/>
+
+
+    <ui:button aura:id="cancel" label="cancel" press="{!c.cancel}" />
+    <ui:button aura:id="start" label="start" press="{!c.start}" />
+
+
+
+    <lightning:button label="cancel" name="cancel" onclick="{!c.cancel}" class="slds-m-top_medium"/>
+    <lightning:button variant="neutral" label="start" name="start" onclick="{!c.start}" />
+
 
 </aura:component>

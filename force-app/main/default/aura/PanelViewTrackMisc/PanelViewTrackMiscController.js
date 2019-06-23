@@ -35,33 +35,30 @@
 
     // Componenet event that saves data from this component and sends it to the component with the save button.
     updateAssessment: function (cmp, event, helper) {
-
         // Get the component event by using the name value from aura:registerEvent.
-        let updateAssessmentEvent = $A.get("e.c:PanelViewTrackMiscEvent");
-        
-        console.log("Begin Assessment");
+        let updateAssessmentEvent = cmp.getEvent("updateAssessmentEvent");
+
         //References Custom Field names that may not exist. 
         let assessment = {
             sobjectType: "PH_Assessment__c",
+            id: "",
             Types_of_Associates: cmp.get("v.options"),
             Overall_Comment: cmp.get("v.comment"),
             Pass: cmp.get("v.pass"),
             Fail: cmp.get("v.fail"),
         };
-       
-        console.log("Update Assessment");
-        //Updates update assessment field with variables and values from component.
+
+        //Updates assessment object with fields and values from assessment variable.
         updateAssessmentEvent.setParams({
             "Assessment": assessment
         });
 
-        console.log("Begin Event Fire");
         updateAssessmentEvent.fire();
     },
 
-    // Handle Assessment Event
+    // Handle Assessment Event from other component to get Assessment Id.
+    // Need assessment Id for application to work.
     handleAssessment: function (cmp, event, helper) {
 
-        console.log("Event Fired");
     }
 });

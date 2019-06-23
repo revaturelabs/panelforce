@@ -30,8 +30,13 @@
         let searchText = component.get("v.searchText");
         let records = component.get("v.records");
         // First clear v.body
-        component.set("v.body", "");
-        records.forEach(record => {
+        let vbody = component.get("v.body");
+        vbody.forEach(elem => {
+            elem.destroy();
+        });
+        // component.set("v.body", []);
+
+        records.forEach((record, i) => {
             // Don't add records without containing 'searchText' in the Name
             if (!record["Name"].toUpperCase().includes(searchText.toUpperCase())) {
                 return;
@@ -45,7 +50,7 @@
                 return;
             }
             // Add element if it passed through all previous filterings
-            helper.addListItem(component, record);
+            helper.addListItem(component, record, i);
         });
     },
 
@@ -113,24 +118,24 @@
         let componentBody = component.get("v.body");
         console.log("body: " + componentBody);
         // First hide all comments
-        for (let i = 1; i < componentBody.length; i++) {
-            let localId = componentBody[i].getLocalId();
-            let currComment = component.find("Comment " + localId);
-            $A.util.addClass(currComment, "slds-hide");
-        };
+        componentBody.forEach(comp => {
+            console.log("Body type: " + typeof comp);
+            // Temp fix, body has a random empty string as first element, i think this is because I start by setting v.body = "", then later the elements get appended
+            if (typeof comp != 'string') {
+                console.log("Made it in");
+                let localId = comp.getLocalId();
+                let currComment = component.find("Comment " + localId);
+                if (currComment) {
+                    $A.util.addClass(currComment, "slds-hide");
+                }
+            }
 
-        console.log("LI Clicked:" + component.find("Comment " + event.srcElement["id"]));
-        // console.log("SubElement: " + Object.keys(event));
-        // console.log("SubElement: " + event.target);
-        // console.log("SubElement: " + Object.getOwnPropertyNames(event.target));
-        // console.log(component.find("Comment " + event.srcElement["id"]));
-        // Reveal selected element
+        });
+
+        console.log("LI comment Clicked:" + component.find("Comment " + event.srcElement["id"]));
+        console.log("Source element id: " + event.srcElement["id"]);
         let selectedComment = component.find("Comment " + event.srcElement["id"]);
         $A.util.removeClass(selectedComment, "slds-hide");
-    },
-
-    liBlur: function(component, event, helper) {
-        console.log("Things are getting blurry");
-        $A.util.addClass(component.find("Comment" + event.srcElement["id"]), "slds-hide");
+        console.log("Class removed");
     }
 });

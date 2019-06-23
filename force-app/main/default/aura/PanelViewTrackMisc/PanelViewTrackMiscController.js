@@ -40,14 +40,14 @@
 
         //References Custom Field names that may not exist. 
         var assessment = {
-            sobjectType: "Assessment",
-            Types_of_Associates: cmp.get("v.options"),
-            Overall_Comment: cmp.get("v.comment"),
-            Pass: cmp.get("v.pass"),
-            Fail: cmp.get("v.fail"),
+            "sobjectType": "Assessment",
+            "Types_of_Associates": cmp.get("v.options"),
+            "Overall_Comment": cmp.get("v.comment"),
+            "Pass": cmp.get("v.pass"),
+            "Fail": cmp.get("v.fail"),
         };
 
-        //Updates update assessment field with variables and values from component.
+        //Updates assessment field with variables and values from component.
         updateAssessmentEvent.setParams({
             updateAssessment: assessment
         });

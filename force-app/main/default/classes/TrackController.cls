@@ -7,7 +7,7 @@ public with sharing class TrackController {
     }
 
     @AuraEnabled
-    public static String getContact(Id contactId) {
+    Public Static String getContact(Id contactId) {
         // method to get the Contact record for InterviewInitial component.
         List<Contact> cl = new List<Contact>();
         String lastName;

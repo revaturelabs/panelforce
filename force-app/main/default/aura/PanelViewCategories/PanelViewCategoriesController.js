@@ -1,64 +1,64 @@
 // {!REQUIRESCRIPT('/soap/ajax/37.0/connection.js')}
 ({
 
+    // Fetches all the relevant records, stores them in v.records, and performs initial population.
     loadList: function(component, event, helper) {
-        console.log("loadList Fired!!");
         component.set("v.searchText", "");
         let assessmentID = component.get("v.recordId");
-        // console.log(assessmentID);
-        // result = sforce.connection.query("Select Name, Id FROM AssessmentLineItem__c WHERE PH_Assessment__c = " + assessmentID);
-        // records = result.getArray("AssessmentLineItem__c");
-        var action = component.get("c.fetchLineItems");
         var items;
+        // Performs the fetching using apex
+        var action = component.get("c.fetchLineItems");
         action.setParams({ PanelId: assessmentID });
         action.setCallback(this, function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
-                console.log("Success!");
+                // Save records returned from apex SOQL
                 items = response.getReturnValue();
                 component.set("v.records", items);
-                items.forEach(listItem => {
-                    console.log("item: " + JSON.stringify(listItem));
-                    helper.addListItem(component, listItem);
+                // Populate the list, i is passed to later reference and update the list in v.records
+                items.forEach(function(listItem, i) {
+                    helper.addListItem(component, listItem, i);
                 });
             }
         });
         $A.enqueueAction(action);
     },
 
+    // Performs filtering acording to currently selected mode (All|Pass|Fail), and search text
     filterResults: function(component, event, helper) {
         let buttonSelection = component.get("v.buttonSelection");
         let searchText = component.get("v.searchText");
         let records = component.get("v.records");
+        // First clear v.body
         component.set("v.body", "");
-        records.forEach(record => {
-            // Only add records with name containing searchText
+        records.forEach((record, i) => {
+            // Don't add records without containing 'searchText' in the Name
             if (!record["Name"].toUpperCase().includes(searchText.toUpperCase())) {
                 return;
             }
-            // console.log("selection: " + buttonSelection);
-            // console.log("status: " + record["Status__c"]);
+            // Don't add failed records when filter mode is 'Pass'
             if (buttonSelection == "Pass" && record["Status__c"] == false) {
                 return;
             }
+            // Don't add passeded records when filter mode is 'Fail'
             if (buttonSelection == "Fail" && record["Status__c"] == true) {
                 return;
             }
-            helper.addListItem(component, record);
-            // console.log("adding item");
-            // console.log("Name: " + record["Name"]);
+            // Add element if it passed through all previous filterings
+            helper.addListItem(component, record, i);
         });
-        // console.log(searchText);
     },
 
+    // Set button selection, and appropriate styling when a button is clicked
     buttonClick: function(component, event, helper) {
         let source = event.getSource().getLocalId();
-        console.log("Source: " + source);
         let buttonSelection = "";
         let buttonGroup = component.find("filterButtons").get("v.body");
+        // Reset buttons
         buttonGroup.forEach(button => {
             button.set("v.variant", "neutral");
         });
+        // Set corresponding button style and button filter mode
         switch (source) {
             case "allButton":
                 buttonSelection = "All";
@@ -76,32 +76,60 @@
                 console.log("error");
                 break;
         }
+        // Finalize button filter mode
         component.set("v.buttonSelection", buttonSelection);
     },
 
+    // Enable editing when clicking the field
     labelClick: function(component, event, helper) {
         console.log("label clicked!");
         event.getSource().set("v.readonly", false);
         // console.log(source);
     },
+
+    // Disable editing when field loses focus
     labelBlur: function(component, event, helper) {
-        console.log("label clicked!");
+        console.log("label blurred!" + event.getSource().getLocalId());
         event.getSource().set("v.readonly", true);
         // console.log(source);
+        let name = event.getSource().get("v.name");
+        console.log("Name: " + name);
+        let id = String(event.getSource().getLocalId());
+        console.log("id: " + id);
+        console.log(id.includes('Score'));
+        let record = component.get("v.records")[name];
+        console.log("record: " + record);
+        if (id.includes('Comment')) {
+            record["Comment__c"] = event.getSource().get("v.value");
+        } else {
+            record["Score__c"] = event.getSource().get("v.value");
+        }
+        helper.updateCategories(component);
     },
 
-    updateCategories: function(component, event, helper) {
-        let customEvent = component.getEvent("updateCategoriesEvent");
-        // let records = [{...},{...}];
-        let records = [{
-            sobjectType: "Contact",
-            Param1: "I_am_a_param",
-            Param2: "I_am_another_param"
-        }];
-        customEvent.setParams({
-            // Some placeholder stuff here
-            updateCategories: records
+    // Show comments when li element clicked
+    liClick: function(component, event, helper) {
+        console.log("Category list: " + component.find("CategoryList"));
+        let componentBody = component.get("v.body");
+        console.log("body: " + componentBody);
+        // First hide all comments
+        // for (let i = 0; i < componentBody.length; i++) {
+        componentBody.forEach(comp => {
+            console.log("Body type: " + typeof comp);
+            if (typeof comp != 'string') {
+                console.log("Made it in");
+                let localId = comp.getLocalId();
+                let currComment = component.find("Comment " + localId);
+                if (currComment) {
+                    $A.util.addClass(currComment, "slds-hide");
+                }
+            }
+
         });
-        customEvent.fire();
+
+        console.log("LI Clicked:" + component.find("Comment " + event.srcElement["id"]));
+        console.log("Source element id: " + event.srcElement["id"]);
+        let selectedComment = component.find("Comment " + event.srcElement["id"]);
+        $A.util.removeClass(selectedComment, "slds-hide");
     }
 });

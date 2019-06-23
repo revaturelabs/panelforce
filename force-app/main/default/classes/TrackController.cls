@@ -40,6 +40,36 @@ public with sharing class TrackController {
         return 'trackName';
     }
 
+    @AuraEnabled
+    Public Static List<AssessmentLineItem__c> createData(Id contactId) {
+        PH_Assessment__c a = new PH_Assessment__c();
+        // populate Name and Contact__c
+        
+        a.Name = 'Panel';
+        a.Contact__c = contactId;
+        insert a;
+
+        // should really put SELECT into List
+        // List<PanelCategory__c> pcl = new List<PanelCategory__c>();
+
+        List<AssessmentLineItem__c> loali = new List<AssessmentLineItem__c>();
+        // create LineItems (one item per PanelCategory__c)
+        AssessmentLineItem__c li = new AssessmentLineItem__c();
+        for (PanelCategory__c pc : [SELECT Name, Id, maxScore__c From PanelCategory__c]) {
+            System.debug(pc.Id);
+            li.PH_Assessment__c = a.Id;
+            li.PanelCategory__c = pc.Id;
+            li.maxScore__c = pc.maxScore__c;
+            li.Score__c = pc.maxScore__c;
+            loali.add(li);
+        }
+        insert loali;
+        return loali;
+        //return a.Id;
+    }
+
+    // There's no direct relationship in the data model
+    // hence the SOQL statement below.
     //public cody() {
     //    [SELECT PH_TrainingTrack__r.Name FROM PH_Training__c
     //    WHERE Id IN (SELECT PH_Training__c FROM PH_TrainingAssignment__c WHERE Contact__c = :contactId)][0].PH_TrainingTrack__r.Name;

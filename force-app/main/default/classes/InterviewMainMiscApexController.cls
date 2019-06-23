@@ -15,6 +15,7 @@ public with sharing class InterviewMainMiscApexController {
 insert tsList;
   }
 
+  @AuraEnabled
   public static void totalTimeDiff(Integer totalTime, PH_Assessment__c phAss){
         ID phAssID = phAss.id;
         Time_Stamp__c updateTotal = [Select milliSecs__c from Time_Stamp__c where id =: phAssID];

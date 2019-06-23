@@ -1,54 +1,45 @@
 <aura:component controller="PanelCategories"
     implements="flexipage:availableForRecordHome,force:lightningQuickActionWithoutHeader,force:hasRecordId">
-    <!-- Initialize -->
     <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
-    
-    <!-- attribute to store record data from force:recordData down below -->
+
+    <aura:attribute name="record" type="Object" />
     <aura:attribute name="contactRecord" type="Object" />
 
-    <!-- Attributes to store information based on aura:handler functions -->
     <aura:attribute name="track" type="String" />
     <aura:attribute name="numberofTries" type="Integer" />
     <aura:attribute name="listFromEvent" type="List" />
     <aura:attribute name="trackFromEvent" type="Object" />
-    
-    <!-- Record data for contact -->
+    <aura:attribute name="appState" type="Integer" />
+
     <force:recordData recordId="{!v.recordId}" fields="Name" targetFields="{!v.contactRecord}" />
 
-        <!-- All encompasing Margin -->
+    <aura:if isTrue="{!or(v.appState == 2, v.appState == 3)}">
         <div class="slds-m-around_xx-large">
-
-            <!-- The Header of the component -->
             <div class="slds-grid slds-grid_vertical">
                 <div
                     class="slds-col slds-grid slds-gutters slds-card slds-has-bottom-magnet slds-grid--vertical-align-center">
 
                     <div class="slds-grid slds-grid_vertical">
-                        <!-- Candidate Name -->
                         <lightning:formattedtext class="slds-col recordName slds-text-heading--x_small"
                             title="Record Name" value="{!'Candidate: ' + v.contactRecord.Name}" />
-                        <!-- Number of tries for the candidate -->
                         <lightning:formattedtext class="slds-col recordName slds-text-heading--x_small"
                             title="Record Name" value="{!'Number of Tries: ' + v.numberofTries}" />
                     </div>
-                    
-                    <!-- The track name -->
-                    <lightning:formattedtext class="slds-col  slds-align_absolute-center slds-text-heading--x-large" 
-                        title="Record Name" value="{!v.track}" />
 
-                    <!-- Save button -->
-                    <lightning:button class="slds-col slds-align_right slds-button" 
-                        variant="neutral" label="Save" title="Base action" onclick="{! c.save }"/>
+                    <lightning:formattedtext class="slds-col  slds-align_absolute-center slds-text-heading--x-large"
+                        title="Record Name" value="{!v.track}" />
+                    <aura:if isTrue="{!v.appState == 3}">
+                        <lightning:button class="slds-col slds-align_right slds-button" variant="neutral" label="Save"
+                            title="Base action" onclick="{! c.save }"></lightning:button>
+                    </aura:if>
                 </div>
 
                 <div class="slds-grid slds-gutters">
 
-                    <!-- Panel View Categories on the left side of the screen -->
                     <div class="slds-col slds-size_3-of-7 slds-card">
-                        <c:PanelViewCategories recordId="{!v.recordId}"/>
+                        <c:PanelViewCategories />
                     </div>
 
-                    <!-- Panel View Assessment on the right side of the screen -->
                     <div class="slds-col slds-size_4-of-7 slds-card slds-has-top-magnet">
                         <c:PanelViewTrackMisc />
                     </div>
@@ -57,9 +48,11 @@
 
             </div>
         </div>
+    </aura:if>
     
-    <!-- Event Handles for updating the assessment and category line items -->
+    <aura:handler name="appStateChange" event="c:InterviewAppStateEvent" action="{!c.handleInterviewAppStateEvent}" />
     <aura:handler name="updateTrackEvent" event="c:PanelViewTrackMiscEvent" action="{!c.handlePanelTrackEvent}" />
-    <aura:handler name="updateCategoriesEvent" event="c:PanelViewCategoriesEvent" action="{!c.handlePanelCategoriesEvent}" />
+    <aura:handler name="updateCategoriesEvent" event="c:PanelViewCategoriesEvent"
+        action="{!c.handlePanelCategoriesEvent}" />
 
 </aura:component>

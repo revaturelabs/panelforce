@@ -5,8 +5,8 @@
         //Current Index is default 0
         var current = component.get("v.current");
         
-
-
+        
+        
         var action1 = component.get("c.getTrainAssign");
         var recordId = component.get("v.recordId");
         action1.setParams({ recId : recordId });
@@ -35,7 +35,7 @@
                 //Get the current category
                 let category = categories[current];
                 component.set("v.category", category);
-
+                
                 //Set up the event to fire
                 helper.changeEvent(current, categories);
                 
@@ -47,16 +47,56 @@
     },
     
     appStateChange : function(component, event, helper) {
-        //Get the event
-        let compEvent = $A.get("e.c:InterviewAppStateEvent");
-        //Set the parameters
-        compEvent.setParams({
-            "state" : 2
-        });
-        //Fire the event
-        compEvent.fire();
         
-
+        
+        let categories = component.get("v.categories");
+        
+        var action = component.get("c.getUpdatedCategories");
+        
+        action.setParams({ oldRecs : categories });
+        action.setCallback(this, function(response) {
+            let state = response.getState();
+            if (state === "SUCCESS") {
+                //Get the new Categories from the class
+                let newCats = response.getReturnValue();
+                
+                //Get the event
+                let compEvent = $A.get("e.c:InterviewAppStateEvent");
+                //Set the parameters
+                compEvent.setParams({
+                    "state" : 2,
+                    "categories" : newCats
+                });
+                
+                //Fire the event
+                compEvent.fire();
+            }
+            
+        });
+        
+        $A.enqueueAction(action);
+    },
+    
+    categoriesSetup: function(component, event, helper) {
+        //Get the current state
+        let state = event.getParam("state");
+        //Make sure that we are in the correct state
+        if(state == 1){
+            //Get the categories from the parameters and set them
+            let categories = event.getParam("categories");
+            component.set("v.categories", categories);
+            //Set the max number of categories
+            let catsize = categories.length - 1;
+            component.set("v.catsize", catsize);
+            //Get the current index
+            let current = component.get("current");
+            //Get the current category
+            let category = categories[current];
+            component.set("v.category", category);
+            
+            //Set up the event to fire
+            helper.changeEvent(current, categories);
+        }
     },
     
     categoriesChange : function(component, event, helper) {
@@ -64,7 +104,7 @@
         let whichOne = event.getSource().getLocalId();
         //Get the current index
         var current = component.get("v.current");
-
+        
         //Backward button
         if(whichOne == "backward"){
             current -= 1;

@@ -1,5 +1,6 @@
 <aura:event type="APPLICATION" description="Event to send state of the App"> 
     <aura:attribute name="state" type="Integer"/>
+    <aura:attribute name="categories" type="AssessmentLineItem__c[]"/>
 </aura:event>
 
 <!-- REFERENCE: https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/events_component_example.htm -->

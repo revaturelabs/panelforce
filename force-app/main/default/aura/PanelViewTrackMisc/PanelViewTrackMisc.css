@@ -1,11 +1,7 @@
-.THIS.right-align {
+.THIS .right-align {
     text-align: right;
 }
 
-.THIS.lm-0 {
-    margin-left: 0;
-}
-
-.THIS.white {
+.THIS .white {
     color: white;
 }

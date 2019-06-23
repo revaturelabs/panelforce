@@ -88,23 +88,21 @@
         <div class="slds-grid slds-wrap slds-p-around_small">
           <div class="slds-col slds-size_12-of-12">
             <lightning:button
-              class="white"
-              variant="success"
+              aura:id="pass"
+              variant="neutral"
               label="P"
               title="Pass"
-              onclick="{! c.handlePass }"
-              value="{!v.pass == true}"
+              onclick="{!c.handlePass}"
             />
           </div>
 
           <div class="slds-col slds-size_12-of-12">
             <lightning:button
-              class="lm-0"
-              variant="destructive"
+              aura:id="fail"
+              variant="neutral"
               label="F"
               title="Fail"
-              onclick="{! c.handleFail }"
-              value="{!v.fail == false}"
+              onclick="{!c.handleFail}"
             />
           </div>
         </div>

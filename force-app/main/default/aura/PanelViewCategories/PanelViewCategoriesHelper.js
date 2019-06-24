@@ -3,6 +3,7 @@
 
     },
     addListItem: function(component, listItem, index) {
+        console.log("Adding a list item: " + listItem + "\nindex: " + index);
         $A.createComponents(
             [
                 // New list item

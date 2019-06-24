@@ -3,3 +3,18 @@
 .THIS .slds-form-element {
     display: contents;
 }
+
+.THIS .CategoryLayout {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+/* .THIS .slds-box:nth-child(1) {
+    margin: 25px 0px 25px 0px !important;
+} */
+
+.THIS .extraMargin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

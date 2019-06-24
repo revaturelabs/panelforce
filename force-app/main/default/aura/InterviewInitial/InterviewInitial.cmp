@@ -1,6 +1,8 @@
-<aura:component controller="TrackController" description="Interview Initial" implements="force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:appHostable" access="global" >
+<aura:component controller="TrackController" description="Interview Initial" implements="force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:appHostable"
+    access="global">
     <!-- Register Event for Interview App -->
     <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent" />
+    <aura:registerEvent name="assessmentEvent" type="c:PanelViewTrackMiscEvent" />
     <aura:attribute name="track" type="Object" />
 
     <aura:attribute name="record" type="Object" />
@@ -21,27 +23,28 @@
 
     <force:recordData recordId="{!v.recordId}" fields="Name" targetFields="{!v.contactRecord}" />
 
-    <force:recordData aura:id="recordDataCreate" layoutType="FULL" targetRecord="{!v.recordTemplate}"
-        targetError="{!v.error}" />
+    <force:recordData aura:id="recordDataCreate" layoutType="FULL" targetRecord="{!v.recordTemplate}" targetError="{!v.error}" />
 
     <aura:if isTrue="{!v.fetch}">
-        <force:recordData aura:id="recordDataCmp" recordId="{!v._recordId}" layoutType="FULL" mode="{!v.mode}"
-            targetRecord="{!v.record}" targetError="{!v.error}" recordUpdated="{!c.handleRecordUpdate}" />
- 
-        <force:recordData aura:id="trackDataCmp" recordId="{!v.PH_TrainingTrack__c}" layoutType="FULL" mode="{!v.mode}"
-            targetRecord="{!v.trackRecord}" targetError="{!v.error}" recordUpdated="{!c.handleRecordUpdate}" />
+        <force:recordData aura:id="recordDataCmp" recordId="{!v._recordId}" layoutType="FULL" mode="{!v.mode}" targetRecord="{!v.record}" targetError="{!v.error}" recordUpdated="{!c.handleRecordUpdate}" />
+
+        <force:recordData aura:id="trackDataCmp" recordId="{!v.PH_TrainingTrack__c}" layoutType="FULL" mode="{!v.mode}" targetRecord="{!v.trackRecord}" targetError="{!v.error}" recordUpdated="{!c.handleRecordUpdate}" />
     </aura:if>
 
     <aura:if isTrue="{! !empty(v.error)}">
         <div class="slds-box slds-theme--error">
-            <p><ui:outputText value="{!v.error}" /></p>
+            <p>
+                <ui:outputText value="{!v.error}" />
+            </p>
         </div>
     </aura:if>
     <br />
     <br />
-    <p><ui:outputText aura:id="logMessage" value="{!v.logMessage}" class="slds-text-heading--small" /></p>
+    <p>
+        <ui:outputText aura:id="logMessage" value="{!v.logMessage}" class="slds-text-heading--small" />
+    </p>
 
-<!--    <aura:handler name="getcontact" value="{!this}" action="{!c.getContact}" /> -->
+    <!--    <aura:handler name="getcontact" value="{!this}" action="{!c.getContact}" /> -->
 
     <aura:attribute name="contactRecord" type="Object" />
     <aura:attribute name="recordError" type="String" />
@@ -49,24 +52,16 @@
 
 
     <!-- Initial -->
-    <aura:handler name="init" value="{!this}" action="{!c.getTrackToo}" />
-
-    Contact
+    <aura:handler name="init" value="{!this}" action="{!c.getTrackToo}" /> Contact
     <aura:attribute name="contact" type="Contact" />
-    <lightning:input aura:id="contactInput" value="{!v.contactRecord.Name}" />
- 
-    Track
-    <lightning:input aura:id="trackInput" value="{!v.track.Name}" />
-   
-    Date
-    <lightning:input type="date" />
-
-    Comment
+    <lightning:input aura:id="contactInput" value="{!v.contactRecord.Name}" /> Track
+    <lightning:input aura:id="trackInput" value="{!v.track.Name}" /> Date
+    <lightning:input type="date" /> Comment
     <aura:attribute name="comment" type="String" />
     <lightning:input aura:id="commentInput" value="{!v.comment}" />
-    
+
     <!-- start -->
-    <lightning:button variant="neutral" label="cancel" name="cancel" onclick="{!c.cancel}" class="slds-m-top_medium"/>
-    <lightning:button variant="neutral" label="start" name="start" onclick="{!c.start}" class="slds-m-top_medium"/>
+    <lightning:button variant="neutral" label="cancel" name="cancel" onclick="{!c.cancel}" class="slds-m-top_medium" />
+    <lightning:button variant="neutral" label="start" name="start" onclick="{!c.appStateChange}" class="slds-m-top_medium" />
 
 </aura:component>

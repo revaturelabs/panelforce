@@ -1,11 +1,22 @@
 //handler click for adding +1
 ({
     doInit : function(cmp, event, helper) {
-        let allCats = cmp.get("v.categories");
+        let allCats = event.getParam("categories");
+        console.log("allCats: " + allCats);
         let indx = cmp.get("v.currentIndex");
         // cmp.set("v.Max_Score", allCats[indx].maxScore__c);
     },
-
+    
+   handleComponentEvent :function(cmp,event){
+       console.log("event handles in handleComponentEvent");
+       let index = event.getParam("current");
+       cmp.set("v.currentIndex",index);
+       let allCats = cmp.get("v.categories");
+       cmp.set("v.Max_Score", allCats[index].maxScore__c);
+       cmp.set("v.Current_Score",allCats[index].Score__c); 
+       console.log("done");
+    },
+    
     handleClickA1: function (cmp, event, helper) {
         var selectedButtonLabel = event.getSource().get("v.label");
         console.log("Button label: " + selectedButtonLabel);

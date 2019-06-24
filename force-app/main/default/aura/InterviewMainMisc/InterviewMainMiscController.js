@@ -1,6 +1,7 @@
 ({
 
     autoTimer: function(component, event, helper){
+        console.log("Auto timer got called");
         var getAppState = event.getParam("state"); 
         let startStopTime;
         let sst = component.get("v.totalInterviewTimeList");
@@ -68,6 +69,7 @@
     },
 
     startTime : function(component, event, helper) { 
+        console.log("Pause start got clicked");
         let timeButton = event.getSource();
         var tb = component.get("v.togglebtn");
         let pauseStart = component.get("v.pauseStartList");
@@ -174,7 +176,9 @@
     },
 
     setCurrentLineItem : function(component, event, helper) {
+        console.log("Set current line item was called");
         var lItemIndex = event.getParam("current");
+        console.log("Gotten current line item");
         var getCat = event.getParam("categories");
         component.set("v.lineItemIndex", lItemIndex);
         if(getCat.length != 0){

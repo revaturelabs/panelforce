@@ -42,6 +42,7 @@
                     categories : loli
                 });
                 console.log(compEvent);
+                console.log("event InterviewAppStateEvent about to fired");
                 compEvent.fire();
                 console.log("event InterviewAppStateEvent fired");
 

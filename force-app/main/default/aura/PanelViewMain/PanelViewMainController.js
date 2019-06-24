@@ -35,12 +35,9 @@
         $A.enqueueAction(action2);
     },
 
-    handlePanelTrackEvent: function (cmp, event) {
-        console.log("Event fired!");
-        var panelTrack = event.getParam("updateTrack");
-        cmp.set("v.trackFromEvent", panelTrack);
-        var tEvent = cmp.get("v.trackFromEvent");
-        console.log(tEvent);
+    handlePanelAssessmentEvent: function (cmp, event) {
+        var panelAssessment = event.getParam("updateAssessment");
+        cmp.set("v.assessmentFromEvent", panelAssessment);
     },    
     
     handlePanelCategoriesEvent : function(cmp, event) {
@@ -52,12 +49,12 @@
         var lEventCategories = component.get("v.listFromEvent");
         console.log(lEventCategories);
 
-        // var lEventTrack = component.get("v.trackFromEvent");
-        // console.log(lEventTrack);
+         var lEventassessment = component.get("v.assessmentFromEvent");
+         console.log(lEventassessment);
 
         var sCategories = component.get("c.saveAssessment");
-        sCategories.setParams({"pcList" : lEventCategories});//,
-                                // "track" : lEventTrack});
+        sCategories.setParams({"pcList" : lEventCategories,
+                                 "assessment" : lEventassessment});
         sCategories.setCallback(this,function(response){
             var state = response.getState();
             if (state === "SUCCESS") {

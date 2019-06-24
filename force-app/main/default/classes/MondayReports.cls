@@ -7,22 +7,20 @@ global with sharing class MondayReports implements Schedulable {
     public void sendmail()
     {
         Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
-        string [] toaddress= New string[]{[Select email from User u where u.UserRole.Name = 'CTO'][0].email};
+        string [] toaddress= new String[]{[Select email from User u where u.UserRole.Name = 'CTO'][0].email};
         email.setSubject('Candidates who have failed three consecutive panels.');
         
-        List<PH_Assessment__c> lCandidates = [SELECT Contact__r.Name, overAllPass__c
-                            FROM PH_Assessment__c];
-        Integer count;
-        String pName;
+    List<AggregateResult> arList = [SELECT Contact__r.Name, count(id), max(CreatedDate), overallpass__c
+                                    FROM PH_Assessment__c
+                                    GROUP BY Contact__r.Name, overallpass__c
+                                    ORDER BY max(createddate) desc];
+
 
         String sCase = 'Candidates who have failed three consecutive panels\n';
-        for (PH_Assessment__c c : lCandidates) {
-            if (c.Name != pName) {
-                pName = c.Name;
-                count = 0;
-            }
-            count++;
-            if (count == 3 && c.overAllPass__c == false) {
+        for (AggregateResult ar : arList) {
+            
+
+            if (count.count(id) >= 3 && pass.overAllPass__c == false) {
                 sCase += c.Contact__r.Name + '\n';
             }
         }

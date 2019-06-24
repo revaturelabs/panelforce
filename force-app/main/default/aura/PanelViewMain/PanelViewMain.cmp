@@ -10,7 +10,7 @@
     <aura:attribute name="track" type="String" />
     <aura:attribute name="numberofTries" type="Integer" />
     <aura:attribute name="listFromEvent" type="List" />
-    <aura:attribute name="trackFromEvent" type="Object" />
+    <aura:attribute name="assessmentFromEvent" type="Object" />
     
     <!-- Record data for contact -->
     <force:recordData recordId="{!v.recordId}" fields="Name" targetFields="{!v.contactRecord}" />
@@ -59,7 +59,7 @@
         </div>
     
     <!-- Event Handles for updating the assessment and category line items -->
-    <aura:handler name="updateTrackEvent" event="c:PanelViewTrackMiscEvent" action="{!c.handlePanelTrackEvent}" />
+    <aura:handler name="updateAssessmentEvent" event="c:PanelViewTrackMiscEvent" action="{!c.handlePanelAssessmentEvent}" />
     <aura:handler name="updateCategoriesEvent" event="c:PanelViewCategoriesEvent" action="{!c.handlePanelCategoriesEvent}" />
 
 </aura:component>

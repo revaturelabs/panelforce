@@ -15,7 +15,7 @@
 
 
  
-        <lightning:buttonGroup class="slds-grid button">
+        <lightning:buttonGroup class="slds-grid">
             <lightning:button class="slds-col buttonS5" label="-5" onclick="{!c.handleClickS5}" />
             <lightning:button class="slds-col" label="-3" onclick="{!c.handleClickS3}"/>
             <lightning:button class="slds-col" label="-1" onclick="{!c.handleClickS1}"/>

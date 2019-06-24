@@ -17,10 +17,7 @@
   <aura:attribute name="fail" type="boolean" />
   <aura:attribute name="assessmentId" type="string" />
 
-  <aura:registerEvent
-    name="updateAssessmentEvent"
-    type="c:PanelViewTrackMiscEvent"
-  />
+  <aura:registerEvent name="updateAssessmentEvent" type="c:PanelViewTrackMiscEvent" />
   <aura:handler name="init" value="{! this }" action="{! c.init }" />
   <aura:handler
     event="c:PanelViewTrackMiscEvent"
@@ -44,7 +41,6 @@
 
       <div class="slds-col slds-size_12-of-12 slds-large-size_6-of-12">
         <h1><strong>Type of Associate</strong></h1>
-
         <div class="slds-p-around_small">
           <lightning:checkboxGroup
             name="Checkbox Group"

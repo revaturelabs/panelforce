@@ -34,7 +34,6 @@
 
     // Componenet event that saves data from this component and sends it to the component with the save button.
     updateAssessment: function (cmp, event, helper) {
-
         // Get the component event by using the name value from aura:registerEvent.
         let updateAssessmentEvent = cmp.getEvent("updateAssessmentEvent");
 

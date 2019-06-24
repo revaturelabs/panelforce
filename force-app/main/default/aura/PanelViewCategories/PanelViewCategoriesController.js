@@ -6,9 +6,10 @@
         console.log("state: " + state);
         let categories = event.getParam("categories");
         console.log("categories: " + JSON.stringify(categories));
-        if (state != 2) {
-            return;
-        }
+        // if (state != 2) {
+        //     return;
+        // }
+        component.set("v.records", categories);
         categories.forEach((category, i) => {
             console.log("Category: " + category);
             helper.addListItem(component, category, i);

@@ -1,33 +1,33 @@
 ({
-    myAction : function(component, event, helper) {
+    myAction: function(component, event, helper) {
 
     },
 
-    cancel : function(component, event, helper) {
+    cancel: function(component, event, helper) {
         // cancel button for InterviewInitial window.
         $A.get("e.force:closeQuickAction").fire();
     },
 
-    start : function(component, event) {
+    appStateChange: function(component, event) {
         // create Assessment and AssessmentLineItems
         var action = component.get("c.createData");
         action.setParams({
-            "contactId" : component.get("v.recordId"),
-            "trackId" : component.get("v.track.Id")
+            "contactId": component.get("v.recordId"),
+            "trackId": component.get("v.track.Id")
         });
         console.log(action);
         action.setCallback(this, function(response) {
             var state = response.getState();
-             if(state === "SUCCESS") {
+            if (state === "SUCCESS") {
                 console.log('success with Assessment record creation.');
                 var loli = response.getReturnValue();
                 console.log("loli" + JSON.stringify(loli));
 
                 let sendAssessmentEvent = $A.get("e.c:PanelViewTrackMiscEvent");
                 sendAssessmentEvent.setParams({
-                    updateAssessment : {
-                        "sobjectType" : "PH_Assessment__c",
-                        "Id" : loli[0].PH_Assessment__c
+                    updateAssessment: {
+                        "sobjectType": "PH_Assessment__c",
+                        "Id": loli[0].PH_Assessment__c
                     }
                 });
                 //console.log(sendAssessmentEvent);
@@ -36,14 +36,15 @@
 
                 // open interview window
                 //window.open("InterviewApp");
-                let compEvent = $A.get("e.c:InterviewAppStateEvent");
-                compEvent.setParams({
-                    state : 1,
-                    categories : loli
+                let appStateChange = $A.get("e.c:InterviewAppStateEvent");
+                appStateChange.setParams({
+                    state: 1,
+                    categories: loli
                 });
-                console.log(compEvent);
-                compEvent.fire();
+                console.log(appStateChange);
+                appStateChange.fire();
                 console.log("event InterviewAppStateEvent fired");
+                appStateChange.fire();
 
             } else if (state === "ERROR") {
                 var errors = response.getError();
@@ -62,15 +63,15 @@
         // console.log("event fired");
     },
 
-    getTrackToo : function(component, event) {
+    getTrackToo: function(component, event) {
         // auto populate the Track Name field
         // console.log("in getTrack .");
         var action = component.get("c.getTrack");
-        action.setParams({"contactId" : component.get("v.recordId")});
+        action.setParams({ "contactId": component.get("v.recordId") });
         console.log(action);
         action.setCallback(this, function(response) {
-           var state = response.getState();
-            if(state === "SUCCESS") {
+            var state = response.getState();
+            if (state === "SUCCESS") {
                 component.set("v.track", response.getReturnValue());
                 console.log("I got the track: " + JSON.stringify(component.get("v.track")));
             } else {
@@ -80,15 +81,15 @@
         $A.enqueueAction(action);
     },
 
-    getContact : function(component, event) {
+    getContact: function(component, event) {
         // get the Contact record
         var action = component.get("c.getContact");
-        action.setParams({"contact": component.get("v.recordId")});
+        action.setParams({ "contact": component.get("v.recordId") });
         console.log(component.get("v.recordId") + ' ' + "c.getContact");
         console.log(action);
         action.setCallback(this, function(response) {
             var state = response.getState();
-            if(state === "SUCCESS") {
+            if (state === "SUCCESS") {
                 component.set("v.contact", response.getReturnValue());
             } else {
                 fireTheEvent();

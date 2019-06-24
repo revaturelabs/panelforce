@@ -1,24 +1,10 @@
-<aura:component controller="InterviewMainController" 
-                implements="force:lightningQuickAction,force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes"
-                access="global">
-    
-    
+<aura:component controller="InterviewMainController" implements="force:lightningQuickAction,force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes" access="global">
+
+
     <aura:html tag="style">
-        .slds-modal__container {
-        height : auto;
-        width: 70%;
-        max-width: 170rem;
-        }
-        .modal-body {
-        height : 500px !important;
-        max-height: 800px !important;
-        }
-        
-        .customFooter {
-        display: inline !important;
-        }
+        .slds-modal__container { height : auto; width: 70%; max-width: 170rem; } .modal-body { height : 500px !important; max-height: 800px !important; } .customFooter { display: inline !important; }
     </aura:html>
-    
+
     <!--aura:attribute name="recordId" type="String" /-->
     <aura:attribute name="assignmenttrain" type="PH_TrainingAssignment__c" />
     <aura:attribute name="assignment" type="PH_Assessment__c" />
@@ -26,44 +12,40 @@
     <aura:attribute name="categories" type="AssessmentLineItem__c[]" />
     <aura:attribute name="current" type="Integer" default="0" />
     <aura:attribute name="catsize" type="Integer" default="0" />
-    
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-    
-    <aura:handler name="Initial Setup" event="c:InterviewAppStateEvent" action="{!c.categoriesSetup}"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:handler name="Initial Setup" event="c:InterviewAppStateEvent" action="{!c.categoriesSetup}" />
     <!-- <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent"/> -->
-    <aura:registerEvent name="categoriesChange" type="c:InterviewMainEvent"/>
-    <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent"/>
-    
+    <aura:registerEvent name="categoriesChange" type="c:InterviewMainEvent" />
+    <!-- <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent"/> -->
+
     <lightning:formattedText value="{!'Assignment: ' + v.assignment.Name}" />
-    
+
     <!--c:InterviewMainProgress categories="v.categories" category="v.category" currentIndex="v.current"-->
-    <c:InterviewMainProgress allCategories="{!v.categories}"/>
-    
-    
-    <lightning:layout verticalAlign="stretch" class="slds-align_absolute-center slds-grid">    
+    <c:InterviewMainProgress allCategories="{!v.categories}" />
+
+
+    <lightning:layout verticalAlign="stretch" class="slds-align_absolute-center slds-grid">
         <div aura:id="leftbutton" class="slds-float_left" style="height:25%;">
-            <lightning:buttonIcon aura:id="backward" name="backwardButton" class="start button "
-                                  alternativeText="Previous Category" onclick="{!c.categoriesChange}" 
-                                  iconName="utility:chevronleft" disabled="true" variant="bare"
-                                  iconClass="icon arrow" size="large"/>
+            <lightning:buttonIcon aura:id="backward" name="backwardButton" class="start button " alternativeText="Previous Category" onclick="{!c.categoriesChange}" iconName="utility:chevronleft" disabled="true" variant="bare" iconClass="icon arrow" size="large"
+            />
         </div>
-        
+
         <div class="slds-p-around_medium">
             <!--c:InterviewMainScore categories="{!v.categories}" currentIndex="{!v.current}" -->
             <div class="slds-p-around_small interviewscore">
-                <c:InterviewMainScore categories="{!v.categories}"/>
+                <c:InterviewMainScore categories="{!v.categories}" />
             </div>
             <!--c:InterviewMainMisc categories="v.categories" category="v.category" currentIndex="v.current"-->
             <div class="slds-p-around_small interviewmisc">
                 <c:InterviewMainMisc />
             </div>
         </div>
-        
+
         <div aura:id="rightbutton" class="slds-float_right" style="height:25%;">
-            <lightning:buttonIcon aura:id="forward" name="forwardButton" class="next button"
-                                  alternativeText="Next Category" onclick="{!c.categoriesChange}" variant="bare"
-                                  iconName="utility:chevronright" iconClass="icon arrow" size="large"/>
+            <lightning:buttonIcon aura:id="forward" name="forwardButton" class="next button" alternativeText="Next Category" onclick="{!c.categoriesChange}" variant="bare" iconName="utility:chevronright" iconClass="icon arrow" size="large" />
         </div>
     </lightning:layout>
-    
+
 </aura:component>

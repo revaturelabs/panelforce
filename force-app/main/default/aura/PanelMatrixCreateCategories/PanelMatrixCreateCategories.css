@@ -1,16 +1,53 @@
 .THIS .add-new-btn {
-    padding-top: 3.6em;
+    padding-top: 1.6em;
 }
 
-.THIS .add-new-btn :hover {
+.THIS .btn-icon :hover {
     cursor: pointer;
 }
 
+.THIS .btn-right {
+    text-align: right;
+}
+
+.THIS .cat-head {
+    font-size: 1.4em;
+}
+
 .THIS .max-score-size {
-    font-size: 2.3em;
+    font-size: 2.0em;
+}
+
+.THIS .btn-color {
+    background-color: #95aec5;
+}
+
+.THIS .btn-edit {
+    display: inline-block;
+    padding-right: .25em;
+    padding-left: .25em;
+}
+
+.THIS .btn-add-new :hover {
+    cursor: pointer;
+    background-color: #33bce7;
+}
+
+.THIS .btn-edit :hover {
+    cursor: pointer;
+    background-color: #33bce7;
+}
+
+.THIS .btn-error {
+    padding-right: .25em;
+    padding-left: .25em;
+}
+
+.THIS .btn-error :hover {
+    cursor: pointer;
+    background-color: #ef6e64;
 }
 
 .THIS.footer-bg-color {
-    height: 10vh;
-    background-color: #ffffff;
+    padding-top: 5em;
 }

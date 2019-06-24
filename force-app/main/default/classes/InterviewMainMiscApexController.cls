@@ -26,9 +26,10 @@ insert tsList;
 
     @AuraEnabled
     public static void updatePass(String comment,  AssessmentLineItem__c AssLineItem){
+      System.debug('Pass function was called');
       ID AssessID = AssLineItem.id;
       AssessmentLineItem__c aliList = [Select Status__c, Interviewed__c, Comment__c from AssessmentLineItem__c where id =:AssessID]; 
-      aliList.Status__c = false;
+      aliList.Status__c = true;
       aliList.Interviewed__c = true;
       aliList.Comment__c = comment;
       update aliList;
@@ -36,6 +37,7 @@ insert tsList;
 
 @AuraEnabled
     public static void updateFailed(String comment, AssessmentLineItem__c AssLineItem){
+      System.debug('Failed function was called');
       ID AssessID = AssLineItem.id;
       AssessmentLineItem__c aliList = [Select Status__c, Interviewed__c, Comment__c from AssessmentLineItem__c where id =:AssessID]; 
       aliList.Status__c = false;

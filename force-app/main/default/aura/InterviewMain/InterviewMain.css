@@ -5,8 +5,19 @@
     background-color: white !important;
 }
 
+.THIS .slds-align_absolute-center{
+    height:10rem;
+    left:5rem;
+    right:5rem;
+}
+
+.THIS .padded{
+    padding-right: 4rem;
+    padding-left: 4rem;
+}
+
 .THIS .left{
-    left:3rem;
+    width:-50px;
 }
 
 .THIS .button svg{

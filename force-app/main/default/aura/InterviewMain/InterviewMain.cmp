@@ -27,7 +27,7 @@
     <aura:attribute name="current" type="Integer" default="0" />
     <aura:attribute name="catsize" type="Integer" default="0" />
     
-    <!-- <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     
     <aura:handler event="c:InterviewAppStateEvent" action="{!c.categoriesSetup}" />
     <!-- <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent"/> -->
@@ -41,25 +41,25 @@
     
     
     <lightning:layout verticalAlign="stretch" class="slds-align_absolute-center slds-grid">    
-        <div aura:id="leftbutton" class="slds-float_left" style="height:25%;">
+        <div aura:id="leftbutton" class="left" style="height:25%;">
             <lightning:buttonIcon aura:id="backward" name="backwardButton" class="start button "
                                   alternativeText="Previous Category" onclick="{!c.categoriesChange}" 
                                   iconName="utility:chevronleft" disabled="true" variant="bare"
                                   iconClass="icon arrow" size="large"/>
         </div>
         
-        <div class="slds-p-around_medium">
+        <div class="padded">
             <!--c:InterviewMainScore categories="{!v.categories}" currentIndex="{!v.current}" -->
-            <div class="slds-p-around_small interviewscore">
+            <div class="slds-p-around_medium interviewscore">
                 <c:InterviewMainScore categories="{!v.categories}"/>
             </div>
             <!--c:InterviewMainMisc categories="v.categories" category="v.category" currentIndex="v.current"-->
-            <div class="slds-p-around_small interviewmisc">
+            <div class="slds-p-around_medium interviewmisc">
                 <c:InterviewMainMisc />
             </div>
         </div>
         
-        <div aura:id="rightbutton" class="slds-float_right" style="height:25%;">
+        <div aura:id="rightbutton" class="right" style="height:25%;">
             <lightning:buttonIcon aura:id="forward" name="forwardButton" class="next button"
                                   alternativeText="Next Category" onclick="{!c.categoriesChange}" variant="bare"
                                   iconName="utility:chevronright" iconClass="icon arrow" size="large"/>

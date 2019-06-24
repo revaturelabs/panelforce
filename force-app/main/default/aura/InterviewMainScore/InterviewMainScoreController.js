@@ -4,11 +4,7 @@
         let allCats = event.getParam("categories");
         console.log("allCats: " + allCats);
         let indx = cmp.get("v.currentIndex");
-        console.log("Index: " + indx);
-        console.log("Category: " + allCats[indx]);
-        console.log("Max Score: " + allCats[indx].maxScore__c);
-        cmp.set("v.Max_Score", allCats[indx].maxScore__c);
-        cmp.set("v.Current_Score", allCats[indx].Score__c);
+        // cmp.set("v.Max_Score", allCats[indx].maxScore__c);
     },
     
    handleComponentEvent :function(cmp,event){

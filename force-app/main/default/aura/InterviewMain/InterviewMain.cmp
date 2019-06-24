@@ -34,7 +34,7 @@
     <aura:registerEvent name="categoriesChange" type="c:InterviewMainEvent"/>
     <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent"/>
     
-    <lightning:formattedText value="{!'Assignment: ' + v.assignment.Name}" />
+    <!-- <lightning:formattedText value="{!'Assignment: ' + v.assignment.Name}" /> -->
     
     <!--c:InterviewMainProgress categories="v.categories" category="v.category" currentIndex="v.current"-->
     <c:InterviewMainProgress allCategories="{!v.categories}"/>

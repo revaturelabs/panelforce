@@ -1,54 +1,51 @@
 ({
-    doInit: function (component, event, helper) {
+    doInit: function(component, event, helper) {
+        console.log("In PanelViewMain init function, categories: " + component.get("v.categories"));
         var contactID = component.get("v.recordId");
         var action = component.get("c.getTrack");
-        action.setParams({"contactID" : contactID});
+        action.setParams({ "contactID": contactID });
         action.setCallback(this, function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
                 component.set("v.track", response.getReturnValue());
-            }
-            else if (state === "INCOMPLETE") {
+            } else if (state === "INCOMPLETE") {
                 console.log("Incomplete.");
-            }
-            else if (state === "ERROR") {
+            } else if (state === "ERROR") {
                 console.log(response.getError()[0].message);
             }
         });
         $A.enqueueAction(action);
 
         var action2 = component.get("c.getNumberofTries");
-        action2.setParams({"contactID" : contactID});
+        action2.setParams({ "contactID": contactID });
         action2.setCallback(this, function(response2) {
             console.log(response2.getReturnValue());
             var state = response2.getState();
             if (state === "SUCCESS") {
                 component.set("v.numberofTries", response2.getReturnValue());
-            }
-            else if (state === "INCOMPLETE") {
+            } else if (state === "INCOMPLETE") {
                 console.log("Incomplete.");
-            }
-            else if (state === "ERROR") {
+            } else if (state === "ERROR") {
                 console.log(response2.getError()[0].message);
             }
         });
         $A.enqueueAction(action2);
     },
 
-    handlePanelTrackEvent: function (cmp, event) {
+    handlePanelTrackEvent: function(cmp, event) {
         console.log("Event fired!");
         var panelTrack = event.getParam("updateTrack");
         cmp.set("v.trackFromEvent", panelTrack);
         var tEvent = cmp.get("v.trackFromEvent");
         console.log(tEvent);
-    },    
-    
-    handlePanelCategoriesEvent : function(cmp, event) {
+    },
+
+    handlePanelCategoriesEvent: function(cmp, event) {
         var listOfCategories = event.getParam("updateCategories");
         cmp.set("v.listFromEvent", listOfCategories);
     },
 
-    save: function (component, event, helper) {
+    save: function(component, event, helper) {
         var lEventCategories = component.get("v.listFromEvent");
         console.log(lEventCategories);
 
@@ -56,28 +53,26 @@
         // console.log(lEventTrack);
 
         var sCategories = component.get("c.saveAssessment");
-        sCategories.setParams({"pcList" : lEventCategories});//,
-                                // "track" : lEventTrack});
-        sCategories.setCallback(this,function(response){
+        sCategories.setParams({ "pcList": lEventCategories }); //,
+        // "track" : lEventTrack});
+        sCategories.setCallback(this, function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
                 console.log("The save was successful.");
-            }
-            else if (state === "INCOMPLETE") {
+            } else if (state === "INCOMPLETE") {
                 console.log("Incomplete");
-            }
-            else if (state === "ERROR") {
+            } else if (state === "ERROR") {
                 var errors = response.getError();
                 if (errors) {
                     if (errors[0] && errors[0].message) {
-                        console.log("Error message: " + 
-                                 errors[0].message);
+                        console.log("Error message: " +
+                            errors[0].message);
                     }
                 } else {
                     console.log("Unknown error");
                 }
             }
-        });      
-        $A.enqueueAction(sCategories); 
+        });
+        $A.enqueueAction(sCategories);
     }
 })

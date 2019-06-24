@@ -67,6 +67,6 @@
     
     <!-- start -->
     <lightning:button variant="neutral" label="cancel" name="cancel" onclick="{!c.cancel}" class="slds-m-top_medium"/>
-    <lightning:button variant="neutral" label="start" name="start" onclick="{!c.start}" class="slds-m-top_medium"/>
+    <lightning:button variant="neutral" label="start" name="start" onclick="{!c.appStateChange}" class="slds-m-top_medium"/>
 
 </aura:component>

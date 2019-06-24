@@ -8,7 +8,7 @@
         $A.get("e.force:closeQuickAction").fire();
     },
 
-    start : function(component, event) {
+    appStateChange : function(component, event) {
         // create Assessment and AssessmentLineItems
         var action = component.get("c.createData");
         action.setParams({
@@ -36,14 +36,13 @@
 
                 // open interview window
                 //window.open("InterviewApp");
-                let compEvent = $A.get("e.c:InterviewAppStateEvent");
-                compEvent.setParams({
+                let appStateChange = $A.get("e.c:InterviewAppStateEvent");
+                appStateChange.setParams({
                     state : 1,
                     categories : loli
                 });
-                console.log(compEvent);
                 console.log("event InterviewAppStateEvent about to fired");
-                compEvent.fire();
+                appStateChange.fire();
                 console.log("event InterviewAppStateEvent fired");
 
             } else if (state === "ERROR") {

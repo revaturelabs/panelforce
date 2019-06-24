@@ -3,7 +3,7 @@
     doInit : function(cmp, event, helper) {
         let allCats = cmp.get("v.categories");
         let indx = cmp.get("v.currentIndex");
-        cmp.set("v.Max_Score", allCats[indx].maxScore__c);
+        // cmp.set("v.Max_Score", allCats[indx].maxScore__c);
     },
 
     handleClickA1: function (cmp, event, helper) {

@@ -1,18 +1,8 @@
 ({
 
-    // Fetches all the relevant categories, stores them in v.categories, and performs initial population.
+    // Loads and performs filtering acording to currently selected mode (All|Pass|Fail), and search text
     loadList: function(component, event, helper) {
-        console.log("PanelViewCategories init function called!");
-        component.set("v.searchText", "");
-        let categories = component.get("v.categories");
-        console.log("Inside loadlist, categories: " + JSON.stringify(categories));
-        categories.forEach((category, i) => {
-            helper.addListItem(component, category, i);
-        });
-    },
-
-    // Performs filtering acording to currently selected mode (All|Pass|Fail), and search text
-    filterResults: function(component, event, helper) {
+        console.log("In loadList");
         let buttonSelection = component.get("v.buttonSelection");
         let searchText = component.get("v.searchText");
         let categories = component.get("v.categories");
@@ -74,23 +64,18 @@
 
     // Enable editing when clicking the field
     labelClick: function(component, event, helper) {
-        console.log("label clicked!");
         event.getSource().set("v.readonly", false);
-        // console.log(source);
     },
 
     // Disable editing when field loses focus
     labelBlur: function(component, event, helper) {
-        console.log("label blurred!" + event.getSource().getLocalId());
+        // Reset readonly styling
         event.getSource().set("v.readonly", true);
-        // console.log(source);
-        let name = event.getSource().get("v.name");
-        console.log("Name: " + name);
+        // Setup for updating changes
         let id = String(event.getSource().getLocalId());
-        console.log("id: " + id);
-        console.log(id.includes('Score'));
+        let name = event.getSource().get("v.name");
         let record = component.get("v.categories")[name];
-        console.log("record: " + record);
+        // Determine which field to update
         if (id.includes('Comment')) {
             record["Comment__c"] = event.getSource().get("v.value");
         } else {
@@ -101,28 +86,17 @@
 
     // Show comments when li element clicked
     liClick: function(component, event, helper) {
-        console.log("Category list: " + component.find("CategoryList"));
-        let componentBody = component.get("v.body");
-        console.log("body: " + componentBody);
         // First hide all comments
+        let componentBody = component.get("v.body");
         componentBody.forEach(comp => {
-            console.log("Body type: " + typeof comp);
-            // Temp fix, body has a random empty string as first element, i think this is because I start by setting v.body = "", then later the elements get appended
-            if (typeof comp != 'string') {
-                console.log("Made it in");
-                let localId = comp.getLocalId();
-                let currComment = component.find("Comment " + localId);
-                if (currComment) {
-                    $A.util.addClass(currComment, "slds-hide");
-                }
+            let localId = comp.getLocalId();
+            let currComment = component.find("Comment " + localId);
+            if (currComment) {
+                $A.util.addClass(currComment, "slds-hide");
             }
-
         });
-
-        console.log("LI comment Clicked:" + component.find("Comment " + event.srcElement["id"]));
-        console.log("Source element id: " + event.srcElement["id"]);
+        // Show the corresponding comment
         let selectedComment = component.find("Comment " + event.srcElement["id"]);
         $A.util.removeClass(selectedComment, "slds-hide");
-        console.log("Class removed");
     }
 });

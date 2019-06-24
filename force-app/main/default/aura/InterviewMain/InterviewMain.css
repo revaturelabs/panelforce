@@ -1,2 +1,42 @@
-.THIS {
+.THIS .button{
+    height: 200px;
+    width: 200px;
+    font-size: 100px;
+    background-color: white !important;
+}
+
+.THIS .button svg{
+    fill: blue;
+}
+
+.THIS .icon {
+    width: 50%;
+    height: 50%;
+}
+
+.THIS .arrow svg {
+    fill: blue;
+}
+
+.THIS .finish svg {
+    fill: green;
+}
+
+.THIS .start {    
+    border-radius: 40px 0 0 40px !important;
+    margin: 0 0 0 20px;
+}
+.THIS .next {
+    border-radius: 0 40px 40px 0 !important;
+    margin: 0 20px 0 0;
+}
+.THIS .finish {
+    margin: 0 20px 0 0;
+
+}
+.THIS .interviewscore {
+    height: 50%;
+}
+.THIS .interviewmisc {
+    height: 75%;
 }

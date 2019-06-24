@@ -1,5 +1,5 @@
 ({
-    doInit: function(component, event, helper) {
+    doInit: function (component, event, helper) {
         var contactID = component.get("v.recordId");
         var action = component.get("c.getTrack");
         action.setParams({"contactID" : contactID});
@@ -33,9 +33,10 @@
             }
         });
         $A.enqueueAction(action2);
-      },
-      
-      handlePanelTrackEvent : function(cmp, event) {
+    },
+
+    handlePanelTrackEvent: function (cmp, event) {
+        console.log("Event fired!");
         var panelTrack = event.getParam("updateTrack");
         cmp.set("v.trackFromEvent", panelTrack);
         var tEvent = cmp.get("v.trackFromEvent");
@@ -44,18 +45,10 @@
     
     handlePanelCategoriesEvent : function(cmp, event) {
         var listOfCategories = event.getParam("updateCategories");
-        cmp.set("v.listFromEvent",listOfCategories);
-        var lEvent = cmp.get("v.listFromEvent");
-        console.log(lEvent[0]);
-  },    
-    
-    handleInterviewAppStateEvent : function(cmp, event) {
-        var interviewAppState = event.getParam("state");
-        console.log(JSON.stringify(interviewAppState));
-        // cmp.set("v.listFromEvent", JSON.stringify(interviewAppState));
+        cmp.set("v.listFromEvent", listOfCategories);
     },
 
-    save : function(component, event, helper) {
+    save: function (component, event, helper) {
         var lEventCategories = component.get("v.listFromEvent");
         console.log(lEventCategories);
 

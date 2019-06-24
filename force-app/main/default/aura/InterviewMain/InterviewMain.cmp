@@ -51,7 +51,7 @@
         <div class="slds-p-around_medium">
             <!--c:InterviewMainScore categories="{!v.categories}" currentIndex="{!v.current}" -->
             <div class="slds-p-around_small interviewscore">
-                <c:InterviewMainScore categories="{!v.categories}"/>
+                <c:InterviewMainScore />
             </div>
             <!--c:InterviewMainMisc categories="v.categories" category="v.category" currentIndex="v.current"-->
             <div class="slds-p-around_small interviewmisc">

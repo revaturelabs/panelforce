@@ -1,7 +1,7 @@
 <aura:component controller="TrackController" description="Interview Initial" implements="force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:appHostable" access="global" >
     <!-- Register Event for Interview App -->
     <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent" />
-    <aura:attribute name="track" type="Object" />
+    <aura:attribute name="trackName" type="String" />
 
     <aura:attribute name="record" type="Object" />
     <aura:attribute name="recordTemplate" type="Object" />
@@ -56,7 +56,7 @@
     <lightning:input aura:id="contactInput" value="{!v.contactRecord.Name}" />
  
     Track
-    <lightning:input aura:id="trackInput" value="{!v.track.Name}" />
+    <lightning:input aura:id="trackInput" value="{!v.trackName}" />
    
     Date
     <lightning:input type="date" />

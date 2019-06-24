@@ -1,12 +1,10 @@
 public with sharing class PanelCategories {
-    // Saving the assessment
     @AuraEnabled
-    public static void saveAssessment(List<AssessmentLineItem__c> aLIList, PH_Assessment__c assessment){
+    public static void saveAssessment(List<	AssessmentLineItem__c> aLIList, PH_Assessment__c assessment){
         upsert aLIList;
         upsert assessment;
     }
 
-    // Retrieve the track that a candidate is on
     @AuraEnabled
     public static String getTrack(ID contactID){
         return [SELECT PH_TrainingTrack__r.Name
@@ -14,7 +12,6 @@ public with sharing class PanelCategories {
         WHERE ID IN (SELECT PH_Training__c FROM PH_TrainingAssignment__c WHERE Contact__c = :contactID)][0].PH_TrainingTrack__r.Name;
     }
 
-    // Retrieving the number of panels that was taken by the candidate
     @AuraEnabled
     public static Integer getNumberofTries(ID contactID){
         return (Integer)[SELECT Contact__c, COUNT(ID) c 

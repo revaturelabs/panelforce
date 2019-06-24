@@ -8,9 +8,6 @@
         $A.get("e.force:closeQuickAction").fire();
     },
 
-<<<<<<< HEAD
-    start : function(cmp, event) {
-=======
     start : function(component, event) {
         // create Assessment and AssessmentLineItems
         var action = component.get("c.createData");
@@ -35,7 +32,7 @@
                 });
                 //console.log(sendAssessmentEvent);
                 sendAssessmentEvent.fire();
-                console.log("event fired");
+                console.log("event PanelViewTrackMiscEvent fired");
 
                 // open interview window
                 //window.open("InterviewApp");
@@ -46,7 +43,7 @@
                 });
                 console.log(compEvent);
                 compEvent.fire();
-                console.log("event fired");
+                console.log("event InterviewAppStateEvent fired");
 
             } else if (state === "ERROR") {
                 var errors = response.getError();
@@ -54,17 +51,15 @@
             }
         });
         $A.enqueueAction(action);
-
->>>>>>> parent of 72b5e6c... changes to console.log
         // open interview window
         //window.open("InterviewApp");
-        let compEvent = $A.get("e.c:InterviewAppStateEvent");
-        compEvent.setParams({
-            state : 1
-        });
-        console.log(compEvent);
-        compEvent.fire();
-        console.log("event fired");
+        //let compEvent = $A.get("e.c:InterviewAppStateEvent");
+        //compEvent.setParams({
+        //     state : 1
+        // });
+        // console.log(compEvent);
+        // compEvent.fire();
+        // console.log("event fired");
     },
 
     getTrackToo : function(component, event) {
@@ -76,7 +71,8 @@
         action.setCallback(this, function(response) {
            var state = response.getState();
             if(state === "SUCCESS") {
-                component.set("v.trackName", response.getReturnValue());
+                component.set("v.track", response.getReturnValue());
+                console.log("I got the track: " + JSON.stringify(component.get("v.track")));
             } else {
                 console.log('Problem getting track name, response state: ' + state);
             }

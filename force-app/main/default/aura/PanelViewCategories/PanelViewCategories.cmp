@@ -38,6 +38,10 @@
             <!--Scrollable content here -->
 
             <ul class="slds-has-dividers_top-space categoryList" id="CategoryList" name="CategoryList" aura:id="CategoryList">
+                <!-- <div onclick="{!c.liClick}"> asdfa asdfa sdf</div>
+                <ul>
+                    <li onclick="{!c.liClick}">asldkgjasdklj</li>
+                </ul> -->
                 {!v.body}
             </ul>
         </ui:scrollerWrapper>

@@ -8,11 +8,13 @@
     },
     
    handleComponentEvent :function(cmp,event){
+       console.log("event handles in handleComponentEvent");
        let index = event.getParam("current");
        cmp.set("v.currentIndex",index);
        let allCats = cmp.get("v.categories");
        cmp.set("v.Max_Score", allCats[index].maxScore__c);
        cmp.set("v.Current_Score",allCats[index].Score__c); 
+       console.log("done");
     },
     
     handleClickA1: function (cmp, event, helper) {

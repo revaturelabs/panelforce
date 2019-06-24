@@ -1,10 +1,11 @@
 //handler click for adding +1
 ({
     doInit : function(cmp, event, helper) {
-        let allCats = event.getParam("categories");
+        let allCats = cmp.get("v.categories");
         console.log("allCats: " + allCats);
-        let indx = cmp.get("v.currentIndex");
-        // cmp.set("v.Max_Score", allCats[indx].maxScore__c);
+        // let indx = cmp.get("v.currentIndex");
+        cmp.set("v.Max_Score", allCats[0].maxScore__c);
+        cmp.set("v.Current_Score", allCats[0].maxScore__c);
     },
     
    handleComponentEvent :function(cmp,event){

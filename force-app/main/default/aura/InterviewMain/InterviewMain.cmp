@@ -29,7 +29,7 @@
     
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     
-    <aura:handler event="c:InterviewAppStateEvent" action="{!c.categoriesSetup}"/>
+    <aura:handler name="Initial Setup" event="c:InterviewAppStateEvent" action="{!c.categoriesSetup}"/>
     <!-- <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent"/> -->
     <aura:registerEvent name="categoriesChange" type="c:InterviewMainEvent"/>
     <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent"/>

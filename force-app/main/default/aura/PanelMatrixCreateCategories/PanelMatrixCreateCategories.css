@@ -24,8 +24,7 @@
 
 .THIS .btn-edit {
     display: inline-block;
-    padding-right: .25em;
-    padding-left: .25em;
+    padding: .25em;
 }
 
 .THIS .btn-add-new :hover {
@@ -39,8 +38,7 @@
 }
 
 .THIS .btn-error {
-    padding-right: .25em;
-    padding-left: .25em;
+    padding: .25em;
 }
 
 .THIS .btn-error :hover {

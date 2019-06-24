@@ -15,14 +15,16 @@
     <aura:handler name="change" value="{!v.searchText}" action="{!c.filterResults}" />
     <aura:handler name="change" value="{!v.buttonSelection}" action="{!c.filterResults}" />
 
+    <aura:handler event="c:InterviewAppStateEvent" action="{!c.handleStatusChange}" />
+
     <!-- Event for passing saved info to parent component -->
     <aura:registerEvent name="updateCategoriesEvent" type="c:PanelViewCategoriesEvent" />
 
-    <div id="PanelViewCategoriesContainer">
+    <div class="slds-box slds-theme_default" id="PanelViewCategoriesContainer">
+        Filter:
+        <lightning:input class="extraMargin" type="text" aura:id="search" value="{!v.searchText}" />
 
-        <lightning:input type="text" aura:id="search" value="{!v.searchText}" />
-
-        <lightning:buttonGroup aura:id="filterButtons">
+        <lightning:buttonGroup aura:id="filterButtons" class="extraMargin">
             <lightning:button variant="brand" label="All" aura:id="allButton" onclick="{!c.buttonClick}" />
             <lightning:button variant="neutral" label="Passed" aura:id="passButton" onclick="{!c.buttonClick}" />
             <lightning:button variant="neutral" label="Failed" aura:id="failButton" onclick="{!c.buttonClick}" />
@@ -32,14 +34,10 @@
         <!-- <lightning:button label="Test" title="Test" onclick="{!c.loadList}" /> -->
         <!-- <lightning:button label="TestEvent" title="TestEvent" onclick="{!c.updateCategories}" /> -->
 
-        <ui:scrollerWrapper class="scrollerSize">
+        <ui:scrollerWrapper class="scrollerSize extraMargin">
             <!--Scrollable content here -->
 
             <ul class="slds-has-dividers_top-space categoryList" id="CategoryList" name="CategoryList" aura:id="CategoryList">
-                <!-- <div onclick="{!c.liClick}"> asdfa asdfa sdf</div>
-                <ul>
-                    <li onclick="{!c.liClick}">asldkgjasdklj</li>
-                </ul> -->
                 {!v.body}
             </ul>
         </ui:scrollerWrapper>

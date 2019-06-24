@@ -37,7 +37,7 @@
             </div>
             <!--c:InterviewMainMisc categories="v.categories" category="v.category" currentIndex="v.current"-->
             <div class="slds-p-around_small interviewmisc">
-                <c:InterviewMainMisc />
+                <c:InterviewMainMisc lineItemCategories="{!v.categories}" assessment="{!v.assignment}" />
             </div>
         </div>
 

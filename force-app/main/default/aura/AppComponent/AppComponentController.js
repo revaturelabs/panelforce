@@ -20,7 +20,8 @@
         if (newState == 1) {
             helper.generateElem(component, "c:InterviewMain", {
                 "recordId" : recordId,
-                "categories" : cats
+                "categories" : cats,
+                "assignment" : component.get("Assessment")
             });
             console.log("handleAppStateChange on appComponent newstate 1");
 
@@ -28,10 +29,17 @@
             helper.generateElem(component, "c:PanelViewMain", {
                 "recordId" : recordId,
                 "categories" : cats
+                // "assessment" : component.get("Assessment")
             });
             console.log("handleAppStateChange on appComponent newstate 2");
         }
         console.log("handleAppStateChange on appComponent done");
         
+    },
+
+    handleAssessmentCreation : function(component, event, helper) {
+        let ass = event.getParam("updateAssessment");
+        console.log("got ass: " + JSON.stringify(ass));
+        component.set("v.Assessment", ass);
     }
 })

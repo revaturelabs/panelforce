@@ -5,10 +5,13 @@
     </aura:html>
 
     <aura:attribute name="_recordId" type="String" />
+    <aura:attribute name="Assessment" type="PH_Assessment__c" />
     <aura:attribute name="appState" type="Integer" default="0" />
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler event="c:InterviewAppStateEvent" action="{!c.handleAppStateChange}" />
+    <aura:handler event="c:PanelViewTrackMiscEvent" action="{!c.handleAssessmentCreation}" />
+    
 
     {!v.body}
     <!-- <c:InterviewInitial recordId="{!v.recordId}" />

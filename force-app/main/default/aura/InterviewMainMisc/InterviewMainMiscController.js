@@ -74,7 +74,7 @@
         var tb = component.get("v.togglebtn");
         let pauseStart = component.get("v.pauseStartList");
        
-      
+
          if(tb == false){
             pauseStart.push([Date.now(), -1]);
             component.set("v.pauseStartList", pauseStart);
@@ -127,11 +127,18 @@
 
 
     closeModal2Pass : function(component, event, helper) {
-
+                    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
                     let handlePass = component.get("c.updatePass");
                     let com = component.get("v.commentAtt");
+                    console.log(JSON.stringify(com));
+                    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
                     let AssessLineCat = component.get("v.lineItemCategories");
-                    var lItemIndex = event.getParam("current");
+                    console.log(JSON.stringify(AssessLineCat));
+                    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                    let lItemIndex = component.get("v.lineItemIndex");
+                    console.log(JSON.stringify(lItemIndex));
+                    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
 
                         
                     handlePass.setParams({
@@ -156,7 +163,7 @@
         let handleFail = component.get("c.updateFailed");
         let com = component.get("v.commentAtt");
         let AssessLineCat = component.get("v.lineItemCategories");
-        var lItemIndex = event.getParam("current");
+        var lItemIndex = component.get("v.lineItemIndex");
 
 
         handleFail.setParams({
@@ -176,18 +183,9 @@
     },
 
     setCurrentLineItem : function(component, event, helper) {
-        console.log("Set current line item was called");
-        var lItemIndex = event.getParam("current");
-        console.log("Gotten current line item");
-        var getCat = event.getParam("categories");
+        console.log("////////////////////////////////////////////////////////////////////////////////////////");
+        var lItemIndex = event.getParam("current");   
+        console.log(JSON.stringify(lItemIndex));
         component.set("v.lineItemIndex", lItemIndex);
-        if(getCat.length != 0){
-            component.set("v.lineItemCategories", getCat);
-        }
-    },
-
-    setAssess : function(component, event, helper) {
-        var assess = event.getParam("updateAssessment");
-        component.set("v.assessment", assess);
     }
 })

@@ -1,5 +1,6 @@
 public with sharing class InterviewMainMiscApexController {
   
+
   @AuraEnabled
   public static void insertTimeStamp(List<Integer> sTimeStamp, PH_Assessment__c phAss){
       List<Time_Stamp__c> tsList = new List<Time_Stamp__c>();     
@@ -14,19 +15,21 @@ public with sharing class InterviewMainMiscApexController {
 insert tsList;
   }
 
-  @AuraEnabled
   public static void totalTimeDiff(Integer totalTime, PH_Assessment__c phAss){
         ID phAssID = phAss.id;
-        Time_Stamp__c updateTotal = [Select milliSecs__c, Total_Interview_Length__c from Time_Stamp__c where id =: phAssID];
+        Time_Stamp__c updateTotal = [Select milliSecs__c from Time_Stamp__c where id =: phAssID];
         updateTotal.Total_Interview_Length__c = totalTime - updateTotal.milliSecs__c;
         upsert updateTotal;
+
+    
   }
-  
+
     @AuraEnabled
-    public static void updatePass(String comment, AssessmentLineItem__c AssLineItem){
+    public static void updatePass(String comment,  AssessmentLineItem__c AssLineItem){
+      System.debug('Pass function was called');
       ID AssessID = AssLineItem.id;
       AssessmentLineItem__c aliList = [Select Status__c, Interviewed__c, Comment__c from AssessmentLineItem__c where id =:AssessID]; 
-      aliList.Status__c = false;
+      aliList.Status__c = true;
       aliList.Interviewed__c = true;
       aliList.Comment__c = comment;
       update aliList;
@@ -34,6 +37,7 @@ insert tsList;
 
 @AuraEnabled
     public static void updateFailed(String comment, AssessmentLineItem__c AssLineItem){
+      System.debug('Failed function was called');
       ID AssessID = AssLineItem.id;
       AssessmentLineItem__c aliList = [Select Status__c, Interviewed__c, Comment__c from AssessmentLineItem__c where id =:AssessID]; 
       aliList.Status__c = false;

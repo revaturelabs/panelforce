@@ -32,4 +32,4 @@
     <aura:if isTrue="{!v.appState == 2}">
         <c:PanelViewMain recordId="{!v.recordId}"/>
     </aura:if>
-</aura:component>
+</aura:component>	

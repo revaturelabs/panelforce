@@ -12,7 +12,7 @@ public class InterviewMainController {
                                        
         
         PH_Assessment__c assignment = [SELECT Id, Name, Contact__c
-                                       FROM PH_Assessment__c WHERE Id = :recId LIMIT 1];
+                                       FROM PH_Assessment__c LIMIT 1];
 
         return assignment;
     }
@@ -27,11 +27,11 @@ public class InterviewMainController {
         // List<AssessmentLineItem__c> categories = [SELECT Id, PanelCategory__c, Name, Score__c, Interviewed__c, Status__c
         //                                           FROM AssessmentLineItem__c WHERE PH_Assessment__c = :recId];
         
-        // PH_Assessment__c assignment = [SELECT Id, Name, Contact__c
-        //                                FROM PH_Assessment__c LIMIT 1];
-        // //recId = assignment.Id;
+        PH_Assessment__c assignment = [SELECT Id, Name, Contact__c
+                                       FROM PH_Assessment__c LIMIT 1];
+        recId = assignment.Id;
 
-        List<AssessmentLineItem__c> categories = [SELECT Id, PanelCategory__c, Name, Score__c, Interviewed__c, Status__c
+        List<AssessmentLineItem__c> categories = [SELECT Id, PanelCategory__c, Name, Score__c, maxScore__c, Interviewed__c, Status__c
                                                   FROM AssessmentLineItem__c WHERE PH_Assessment__c = :recId];
 
         return categories;

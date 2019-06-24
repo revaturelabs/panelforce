@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component controller = "InterviewMainScoreApexController">
 
         <aura:attribute name = "Current_Score" type = "Integer" default = "0"/> 
         <aura:attribute name = "Max_Score" type = "Integer" default="0"/>

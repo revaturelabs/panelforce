@@ -32,6 +32,10 @@
         categories[index].Score__c = curr_score;
         component.set("v.categories", categories);
         
+        var updateCat = component.get("c.updateCategories");
+        updateCat.setParams({"item" : categories[index]});
+        updateCat.setCallback(this, function(response) {});
+        $A.enqueueAction(updateCat);
 
         
     }

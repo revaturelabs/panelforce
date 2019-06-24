@@ -1,50 +1,21 @@
-// {!REQUIRESCRIPT('/soap/ajax/37.0/connection.js')}
 ({
-    handleStatusChange: function(component, event, helper) {
-        console.log("Event received ");
-        let state = event.getParam("state");
-        console.log("state: " + state);
-        let categories = event.getParam("categories");
-        console.log("categories: " + JSON.stringify(categories));
-        // if (state != 2) {
-        //     return;
-        // }
-        component.set("v.records", categories);
+
+    // Fetches all the relevant categories, stores them in v.categories, and performs initial population.
+    loadList: function(component, event, helper) {
+        console.log("PanelViewCategories init function called!");
+        component.set("v.searchText", "");
+        let categories = component.get("v.categories");
+        console.log("Inside loadlist, categories: " + JSON.stringify(categories));
         categories.forEach((category, i) => {
-            console.log("Category: " + category);
             helper.addListItem(component, category, i);
         });
-
-    },
-
-    // Fetches all the relevant records, stores them in v.records, and performs initial population.
-    loadList: function(component, event, helper) {
-        component.set("v.searchText", "");
-        let assessmentID = component.get("v.recordId");
-        var items;
-        // Performs the fetching using apex
-        var action = component.get("c.fetchLineItems");
-        action.setParams({ PanelId: assessmentID });
-        action.setCallback(this, function(response) {
-            var state = response.getState();
-            if (state === "SUCCESS") {
-                // Save records returned from apex SOQL
-                items = response.getReturnValue();
-                component.set("v.records", items);
-                // Populate the list, i is passed to later reference and update the list in v.records
-                items.forEach(function(listItem, i) {
-                    helper.addListItem(component, listItem, i);
-                });
-            }
-        });
-        $A.enqueueAction(action);
     },
 
     // Performs filtering acording to currently selected mode (All|Pass|Fail), and search text
     filterResults: function(component, event, helper) {
         let buttonSelection = component.get("v.buttonSelection");
         let searchText = component.get("v.searchText");
-        let records = component.get("v.records");
+        let categories = component.get("v.categories");
         // First clear v.body
         let vbody = component.get("v.body");
         vbody.forEach(elem => {
@@ -52,16 +23,16 @@
         });
         // component.set("v.body", []);
 
-        records.forEach((record, i) => {
-            // Don't add records without containing 'searchText' in the Name
+        categories.forEach((record, i) => {
+            // Don't add categories without containing 'searchText' in the Name
             if (!record["Name"].toUpperCase().includes(searchText.toUpperCase())) {
                 return;
             }
-            // Don't add failed records when filter mode is 'Pass'
+            // Don't add failed categories when filter mode is 'Pass'
             if (buttonSelection == "Pass" && record["Status__c"] == false) {
                 return;
             }
-            // Don't add passeded records when filter mode is 'Fail'
+            // Don't add passeded categories when filter mode is 'Fail'
             if (buttonSelection == "Fail" && record["Status__c"] == true) {
                 return;
             }
@@ -118,7 +89,7 @@
         let id = String(event.getSource().getLocalId());
         console.log("id: " + id);
         console.log(id.includes('Score'));
-        let record = component.get("v.records")[name];
+        let record = component.get("v.categories")[name];
         console.log("record: " + record);
         if (id.includes('Comment')) {
             record["Comment__c"] = event.getSource().get("v.value");

@@ -14,8 +14,9 @@
     <!-- Filter upon search text change -->
     <aura:handler name="change" value="{!v.searchText}" action="{!c.filterResults}" />
     <aura:handler name="change" value="{!v.buttonSelection}" action="{!c.filterResults}" />
+    <aura:attribute name="categories" type="AssessmentLineItem__c[]" />
 
-    <aura:handler event="c:InterviewAppStateEvent" action="{!c.handleStatusChange}" />
+    <!-- <aura:handler event="c:InterviewAppStateEvent" action="{!c.handleStatusChange}" /> -->
 
     <!-- Event for passing saved info to parent component -->
     <aura:registerEvent name="updateCategoriesEvent" type="c:PanelViewCategoriesEvent" />

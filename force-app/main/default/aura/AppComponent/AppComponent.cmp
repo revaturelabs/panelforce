@@ -7,13 +7,11 @@
     <aura:attribute name="_recordId" type="String" />
     <aura:attribute name="appState" type="Integer" default="0" />
 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler event="c:InterviewAppStateEvent" action="{!c.handleAppStateChange}" />
 
-    <aura:if isTrue="{!v.appState == 0}">
-        <c:InterviewInitial recordId="{!v.recordId}" />
-    </aura:if>
-    <aura:if isTrue="{!v.appState == 1}">
-        <c:InterviewMain recordId="{!v.recordId}" />
-    </aura:if>
-    <c:PanelViewMain recordId="{!v.recordId}" />
+    {!v.body}
+    <!-- <c:InterviewInitial recordId="{!v.recordId}" />
+    <c:InterviewMain recordId="{!v.recordId}" />
+    <c:PanelViewMain recordId="{!v.recordId}" /> -->
 </aura:component>

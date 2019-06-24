@@ -36,20 +36,21 @@
     updateAssessment: function (cmp, event, helper) {
 
         // Get the component event by using the name value from aura:registerEvent.
-        var updateAssessmentEvent = cmp.getEvent("updateAssessmentEvent");
+        let updateAssessmentEvent = cmp.getEvent("updateAssessmentEvent");
 
         //References Custom Field names that may not exist. 
-        var assessment = {
-            "sobjectType": "Assessment",
+        let assessment = {
+            "sobjectType": "PH_Assessment__c",
+            "id": "",
             "Types_of_Associates": cmp.get("v.options"),
             "Overall_Comment": cmp.get("v.comment"),
             "Pass": cmp.get("v.pass"),
             "Fail": cmp.get("v.fail"),
         };
 
-        //Updates assessment field with variables and values from component.
+        //Updates assessment object with fields and values from assessment variable.
         updateAssessmentEvent.setParams({
-            updateAssessment: assessment
+            Assessment: assessment
         });
 
         updateAssessmentEvent.fire();

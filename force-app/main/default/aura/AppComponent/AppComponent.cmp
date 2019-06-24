@@ -9,11 +9,7 @@
 
     <aura:handler event="c:InterviewAppStateEvent" action="{!c.handleAppStateChange}" />
 
-    <aura:if isTrue="{!v.appState == 0}">
-        <c:InterviewInitial recordId="{!v.recordId}" />
-    </aura:if>
-    <aura:if isTrue="{!v.appState == 1}">
-        <c:InterviewMain recordId="{!v.recordId}" />
-    </aura:if>
+    <c:InterviewInitial recordId="{!v.recordId}" />
+    <c:InterviewMain recordId="{!v.recordId}" />
     <c:PanelViewMain recordId="{!v.recordId}" />
 </aura:component>

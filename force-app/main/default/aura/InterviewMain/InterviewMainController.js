@@ -78,16 +78,20 @@
     },
     
     categoriesSetup: function(component, event, helper) {
+        console.log("event handled");
         //Get the current state
         let state = event.getParam("state");
+        console.log("Current state is " + state);
         //Make sure that we are in the correct state
         if(state == 1){
             //Get the categories from the parameters and set them
             let categories = event.getParam("categories");
             component.set("v.categories", categories);
+            console.log("categories are: " + categories);
             //Set the max number of categories
             let catsize = categories.length - 1;
             component.set("v.catsize", catsize);
+            console.log("size is: " + catsize);
             //Get the current index
             let current = component.get("current");
             //Get the current category

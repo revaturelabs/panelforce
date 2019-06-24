@@ -1,5 +1,21 @@
 // {!REQUIRESCRIPT('/soap/ajax/37.0/connection.js')}
 ({
+    handleStatusChange: function(component, event, helper) {
+        console.log("Event received ");
+        let state = event.getParam("state");
+        console.log("state: " + state);
+        let categories = event.getParam("categories");
+        console.log("categories: " + JSON.stringify(categories));
+        // if (state != 2) {
+        //     return;
+        // }
+        component.set("v.records", categories);
+        categories.forEach((category, i) => {
+            console.log("Category: " + category);
+            helper.addListItem(component, category, i);
+        });
+
+    },
 
     // Fetches all the relevant records, stores them in v.records, and performs initial population.
     loadList: function(component, event, helper) {

@@ -27,7 +27,7 @@
     <aura:attribute name="current" type="Integer" default="0" />
     <aura:attribute name="catsize" type="Integer" default="0" />
     
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> -->
     
     <aura:handler event="c:InterviewAppStateEvent" action="{!c.categoriesSetup}"/>
     <!-- <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent"/> -->

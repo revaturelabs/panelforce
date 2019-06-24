@@ -13,6 +13,8 @@
 
         let newState = event.getParam("state");
         let cats = event.getParam("categories");
+        let ass = component.get("v.Assessment");
+        console.log("ass in generate: " + JSON.stringify(ass));
 
         console.log('app state handled, new state: ' + newState);
         component.set("v.appState", newState);
@@ -21,15 +23,15 @@
             helper.generateElem(component, "c:InterviewMain", {
                 "recordId" : recordId,
                 "categories" : cats,
-                "assignment" : component.get("Assessment")
+                "assignment" : ass
             });
             console.log("handleAppStateChange on appComponent newstate 1");
 
         } else if (newState == 2) {
             helper.generateElem(component, "c:PanelViewMain", {
                 "recordId" : recordId,
-                "categories" : cats
-                // "assessment" : component.get("Assessment")
+                "categories" : cats,
+                "assessment" : ass
             });
             console.log("handleAppStateChange on appComponent newstate 2");
         }

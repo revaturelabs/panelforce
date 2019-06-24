@@ -8,7 +8,54 @@
         $A.get("e.force:closeQuickAction").fire();
     },
 
+<<<<<<< HEAD
     start : function(cmp, event) {
+=======
+    start : function(component, event) {
+        // create Assessment and AssessmentLineItems
+        var action = component.get("c.createData");
+        action.setParams({
+            "contactId" : component.get("v.recordId"),
+            "trackId" : component.get("v.track.Id")
+        });
+        console.log(action);
+        action.setCallback(this, function(response) {
+            var state = response.getState();
+             if(state === "SUCCESS") {
+                console.log('success with Assessment record creation.');
+                var loli = response.getReturnValue();
+                console.log("loli" + JSON.stringify(loli));
+
+                let sendAssessmentEvent = $A.get("e.c:PanelViewTrackMiscEvent");
+                sendAssessmentEvent.setParams({
+                    updateAssessment : {
+                        "sobjectType" : "PH_Assessment__c",
+                        "Id" : loli[0].PH_Assessment__c
+                    }
+                });
+                //console.log(sendAssessmentEvent);
+                sendAssessmentEvent.fire();
+                console.log("event fired");
+
+                // open interview window
+                //window.open("InterviewApp");
+                let compEvent = $A.get("e.c:InterviewAppStateEvent");
+                compEvent.setParams({
+                    state : 1,
+                    categories : loli
+                });
+                console.log(compEvent);
+                compEvent.fire();
+                console.log("event fired");
+
+            } else if (state === "ERROR") {
+                var errors = response.getError();
+                console.log("Error message: " + errors[0].message);
+            }
+        });
+        $A.enqueueAction(action);
+
+>>>>>>> parent of 72b5e6c... changes to console.log
         // open interview window
         //window.open("InterviewApp");
         let compEvent = $A.get("e.c:InterviewAppStateEvent");

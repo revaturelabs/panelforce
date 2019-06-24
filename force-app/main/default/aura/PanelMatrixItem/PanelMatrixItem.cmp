@@ -1,4 +1,5 @@
 <aura:component>
+    <aura:registerEvent name="categoryChange" type="c:PanelMatrixItemEvent" />
     <aura:attribute name="index" type="Integer"/>
     <aura:attribute name="category" type="PanelCategory__c" />
 
@@ -7,10 +8,11 @@
             <p class="slds-align_absolute-center max-score-size">{!v.category.maxScore__c}</p>
             <div class="slds-p-top_small">
                 <lightning:buttonGroup class="slds-grid_vertical">
-                    <lightning:button label="Edit" title="{!index}"/>
-                    <lightning:button label="Delete" title="{!index}"/>
+                    <lightning:button label="Edit" title="{!index}" onclick="{!c.categoryEdit}" />
+                    <lightning:button label="Delete" title="{!index}" onclick="{!c.categoryDelete}" />
                 </lightning:buttonGroup>
             </div>    
         </lightning:card>
     </div>
+
 </aura:component>

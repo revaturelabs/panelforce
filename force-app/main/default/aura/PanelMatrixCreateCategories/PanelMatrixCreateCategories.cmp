@@ -18,6 +18,7 @@
     </aura:html>
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="categoryChange" event="c:PanelMatrixItemEvent" action="{!c.editCategory}"/>
     <aura:attribute name="_recordId" type="String" />
     <aura:attribute name="categories" type="List" />
     <aura:attribute name="editName" type="String"/>
@@ -29,6 +30,7 @@
     <!-- Change Max_Score__c to maxScore__c -->
     <aura:attribute name="newCategory" type="PanelCategory__c" 
                     default="{ 'sobjectType':'PanelCategory__c','Name': '','maxScore__c': '' }"/>
+    
     <!-- Page Header -->
     <div class="slds-grid slds-gutters slds-wrap slds-p-bottom_small"> 
         <div class="slds-col slds-size_1-of-2">

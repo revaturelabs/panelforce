@@ -4,11 +4,11 @@
     <aura:html tag="style">
         .slds-modal__container {
             height : auto;
-            width: 70%;
+            width: 80%;
             max-width: 170rem;
         }
         .modal-body {
-            height : 500px !important;
+            height : 525px !important;
             max-height: 800px !important;
         }
 

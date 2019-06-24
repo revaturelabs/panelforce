@@ -8,12 +8,7 @@
             $A.get("e.force:closeQuickAction").fire();
         },
 
-        <<
-        << << < HEAD
-        appStateChange: function(component, event) { ===
-            === =
-            appStateChange: function(component, event) { >>>
-                    >>> > master
+        appStateChange: function(component, event) {
                     // create Assessment and AssessmentLineItems
                     var action = component.get("c.createData");
                     action.setParams({

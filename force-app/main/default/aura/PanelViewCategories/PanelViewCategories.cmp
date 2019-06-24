@@ -1,4 +1,5 @@
-<aura:component controller="PanelViewCategoriesController" implements="flexipage:availableForRecordHome,force:hasRecordId">
+<aura:component controller="PanelViewCategoriesController" implements="flexipage:availableForRecordHome, force:hasRecordId">
+    <!-- Testing for git -->
 
     <!-- Current assessment record id -->
     <aura:attribute name="recordId" type="String" />
@@ -26,6 +27,7 @@
             <lightning:button variant="neutral" label="Passed" aura:id="passButton" onclick="{!c.buttonClick}" />
             <lightning:button variant="neutral" label="Failed" aura:id="failButton" onclick="{!c.buttonClick}" />
         </lightning:buttonGroup>
+        <!-- <lightning:button onclick="{!c.updateCategories}" label="Test event" /> -->
 
         <!-- <lightning:button label="Test" title="Test" onclick="{!c.loadList}" /> -->
         <!-- <lightning:button label="TestEvent" title="TestEvent" onclick="{!c.updateCategories}" /> -->
@@ -33,7 +35,11 @@
         <ui:scrollerWrapper class="scrollerSize">
             <!--Scrollable content here -->
 
-            <ul class="slds-has-dividers_top-space" id="CategoryList" name="CategoryList" aura:id="CategoryList">
+            <ul class="slds-has-dividers_top-space categoryList" id="CategoryList" name="CategoryList" aura:id="CategoryList">
+                <!-- <div onclick="{!c.liClick}"> asdfa asdfa sdf</div>
+                <ul>
+                    <li onclick="{!c.liClick}">asldkgjasdklj</li>
+                </ul> -->
                 {!v.body}
             </ul>
         </ui:scrollerWrapper>

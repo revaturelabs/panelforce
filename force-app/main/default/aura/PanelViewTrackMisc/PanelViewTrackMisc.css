@@ -2,6 +2,9 @@
   text-align: right;
 }
 
+.THIS .lm-0 {
+    margin-left: 0px;
+}
 .THIS .white {
   color: white;
 }

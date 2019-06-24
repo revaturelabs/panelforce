@@ -90,7 +90,6 @@
           <div class="slds-col slds-size_12-of-12">
             <lightning:button
               aura:id="pass"
-              class="white"
               variant="neutral"
               label="P"
               title="Pass"
@@ -101,6 +100,7 @@
           <div class="slds-col slds-size_12-of-12">
             <lightning:button
               aura:id="fail"
+              class="lm-0"
               variant="neutral"
               label="F"
               title="Fail"

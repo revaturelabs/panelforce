@@ -1,5 +1,5 @@
 <aura:event
-  type="COMPONENT"
+  type="APPLICATION"
   description="Event to transfer assessment record to PanelViewMain"
 >
   <aura:attribute name="updateAssessment" type="PH_Assessment__c" />

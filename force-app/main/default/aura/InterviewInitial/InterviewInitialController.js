@@ -32,7 +32,7 @@
                 });
                 //console.log(sendAssessmentEvent);
                 sendAssessmentEvent.fire();
-                console.log("event fired");
+                console.log("event PanelViewTrackMiscEvent fired");
 
                 // open interview window
                 //window.open("InterviewApp");
@@ -43,7 +43,7 @@
                 });
                 console.log(compEvent);
                 compEvent.fire();
-                console.log("event fired");
+                console.log("event InterviewAppStateEvent fired");
 
             } else if (state === "ERROR") {
                 var errors = response.getError();

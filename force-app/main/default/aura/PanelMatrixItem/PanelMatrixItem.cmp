@@ -1,0 +1,16 @@
+<aura:component>
+    <aura:attribute name="index" type="Integer"/>
+    <aura:attribute name="category" type="PanelCategory__c" />
+
+    <div class="slds-col slds-medium-size_1-of-3 slds-small-size_3-of-3 slds-p-bottom_small">
+        <lightning:card title="{!v.category.Name}" class="slds-text-align_center">
+            <p class="slds-align_absolute-center max-score-size">{!v.category.maxScore__c}</p>
+            <div class="slds-p-top_small">
+                <lightning:buttonGroup class="slds-grid_vertical">
+                    <lightning:button label="Edit" title="{!index}"/>
+                    <lightning:button label="Delete" title="{!index}"/>
+                </lightning:buttonGroup>
+            </div>    
+        </lightning:card>
+    </div>
+</aura:component>

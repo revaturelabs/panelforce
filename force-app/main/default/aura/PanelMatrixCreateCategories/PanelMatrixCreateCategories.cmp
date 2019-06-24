@@ -1,5 +1,24 @@
-<aura:component controller="CreateCategoriesController">
+<aura:component controller="CreateCategoriesController" 
+    implements="force:lightningQuickAction,force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes"
+    access="global">
+    <aura:html tag="style">
+        .slds-modal__container {
+            height : auto;
+            width: 70%;
+            max-width: 170rem;
+        }
+        .modal-body {
+            height : 500px !important;
+            max-height: 800px !important;
+        }
+
+        .customFooter {
+            display: inline !important;
+        }
+    </aura:html>
+
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="_recordId" type="String" />
     <aura:attribute name="categories" type="List" />
     <aura:attribute name="editName" type="String"/>
     <aura:attribute name="modal" type="String"/>
@@ -22,17 +41,9 @@
     <h1 class="slds-align_absolute-center slds-text-heading_large slds-p-top_large slds-p-bottom_large">Categories</h1>
     <div class="slds-grid slds-gutters slds-wrap slds-p-bottom_small">
         <aura:iteration items="{!v.categories}" var="cat" indexVar="index">
-            <div class="slds-col slds-medium-size_1-of-3 slds-small-size_3-of-3 slds-p-bottom_small">
-                <lightning:card title="{!cat.Name}" class="slds-text-align_center">
-                    <p class="slds-align_absolute-center max-score-size">{!cat.maxScore__c}</p>
-                    <div class="slds-p-top_small">
-                        <lightning:buttonGroup class="slds-grid_vertical">
-                            <lightning:button label="Edit" title="{!index}" onclick="{!c.editCategory}"/>
-                            <lightning:button label="Delete" title="{!index}" onclick="{!c.deleteCategory}"/>
-                        </lightning:buttonGroup>
-                    </div>    
-                </lightning:card>
-            </div>
+            <!-- <div class="slds-col slds-medium-size_1-of-3 slds-small-size_3-of-3 slds-p-bottom_small"> -->
+                <c:PanelMatrixItem index="{!index}" category="{!cat}"/>
+            <!-- </div> -->
         </aura:iteration>
         <div class="slds-col slds-medium-size_1-of-3 slds-small-size_3-of-3 slds-p-bottom_small">
             <lightning:card title="Add New Category" class="slds-text-align_center">

@@ -1,8 +1,8 @@
 <aura:component controller="InterviewMainMiscApexController" >
 
 <aura:handler event="c:InterviewAppStateEvent" action="{!c.autoTimer}"/>
-<aura:handler event="c:PanelViewTrackMiscEvent" action="{!c.setAssess}"/>
-<aura:handler event="c:InterviewMainEvent" action="{!c.setCurrentLineItem}"/>
+<!-- <aura:handler event="c:PanelViewTrackMiscEvent" action="{!c.setAssess}"/>
+<aura:handler event="c:InterviewMainEvent" action="{!c.setCurrentLineItem}"/> -->
 
 <aura:attribute name="togglebtn" type="Boolean" default="false" />
 <aura:attribute name="pauseStartList" type="List"/>

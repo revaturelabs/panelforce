@@ -1,4 +1,10 @@
 ({
+    doInit : function(component, event, helper) {
+        console.log("progress got cats: " + JSON.stringify(component.get("v.allCategories")));
+
+        helper.generateButtons(component, component.get("v.allCategories"));
+    },
+
     handleStatusChange : function(component, event, helper) {
         let allCats = component.get("v.allCategories");
         let currId = component.get("v.currentCat");

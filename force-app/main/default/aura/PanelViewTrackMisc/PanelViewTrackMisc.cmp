@@ -7,9 +7,8 @@
   <aura:attribute name="typeOfAssociate" type="string" default="" />
   <aura:attribute name="comment" type="string" />
   <aura:attribute name="pass" type="boolean" />
-  <aura:attribute name="assessmentId" type="string" />
   <aura:attribute
-    name="ListOfAssessments"
+    name="Assessment"
     type="PH_Assessment__c[]"
     description="Store panels to display in panel history section"
   />
@@ -90,13 +89,12 @@
         <div class="slds-col slds-size_12-of-12">
           <h1 class="text-center"><strong>Overall Comment</strong></h1>
           <div class="slds-p-around_small">
-            <lightning:inputRichText
+            <lightning:textarea
               aura:id="richComment"
               placeholder="Enter Comment Here"
               onblur="{!c.updateAssessment}"
             >
-              <lightning:insertImageButton />
-            </lightning:inputRichText>
+            </lightning:textarea>
           </div>
         </div>
 
@@ -104,7 +102,7 @@
           <div class="slds-col slds-size_12-of-12">
             <h1 class="text-center"><strong>Overall Comment</strong></h1>
             <div class="slds-p-around_small">
-              <lightning:formattedText id="pComment" value="{!v.comment}" />
+              <lightning:textarea id="pComment" value="{!v.comment}" />
             </div>
           </div>
         </aura:set>
@@ -118,7 +116,7 @@
         <h1 class="text-center"><strong>Panel History</strong></h1>
         <div class="slds-p-around_small">
           <ul>
-            <aura:iteration items="{!v.ListOfAssessments}" var="a">
+            <aura:iteration items="{!v.Assessment}" var="a">
               <li type="dice">AssessmentName : {!a.Name}</li>
               <hr class="panel-history-margin" />
             </aura:iteration>

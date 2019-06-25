@@ -49,8 +49,8 @@
             //store state of response
             var state = response.getState();
             if (state === "SUCCESS") {
-                //set response value in ListOfAssessments attribute on component.
-                cmp.set('v.ListOfAssessments', response.getReturnValue());
+                //set response value in Assessment attribute on component.
+                cmp.set('v.Assessment', response.getReturnValue());
             }
         });
         $A.enqueueAction(action);
@@ -67,8 +67,8 @@
             sobjectType: "PH_Assessment__c",
             id: cmp.get("v.assessmentId"),
             Types_of_Associates: cmp.get("v.typeOfAssociate"),
-            Overall_Comment: cmp.get("v.comment"),
-            Overall_Pass: cmp.get("v.pass")
+            Comment: cmp.get("v.comment"),
+            OverallPass: cmp.get("v.pass")
         };
 
         //Updates assessment object with fields and values from assessment variable.

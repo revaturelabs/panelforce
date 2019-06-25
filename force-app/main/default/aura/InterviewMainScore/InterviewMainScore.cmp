@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component controller = "InterviewMainScoreApexController">
 
         <aura:attribute name = "Current_Score" type = "Integer" default = "0"/> 
         <aura:attribute name = "Max_Score" type = "Integer" default="0"/>
@@ -6,7 +6,7 @@
         <aura:attribute name = "currentIndex" type = "Integer" default="0"/>
         <aura:attribute name = "category_type" type = "PanelCategory__c"/> 
        
-        <!-- <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/> -->
+        <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
         <aura:handler event = "c:InterviewMainEvent" action = "{!c.handleComponentEvent}"/>
         <!-- Need an event from eli before we can update maxScore display?? -->
         <!-- <aura:handler event = "c:InterviewAppStateEvent" action = "{!c.doInit}"/> -->

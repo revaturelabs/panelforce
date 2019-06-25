@@ -27,8 +27,9 @@
                 let sendAssessmentEvent = $A.get("e.c:PanelViewTrackMiscEvent");
                 sendAssessmentEvent.setParams({
                     updateAssessment: {
-                        "sobjectType": "PH_Assessment__c",
-                        "Id": loli[0].PH_Assessment__c
+                        "sobjectType" : "PH_Assessment__c",
+                        "Id" : loli[0].PH_Assessment__c,
+                        "Contact__c" : component.get("v.recordId")
                     }
                 });
                 //console.log(sendAssessmentEvent);

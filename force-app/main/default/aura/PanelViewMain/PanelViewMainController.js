@@ -32,30 +32,24 @@
         $A.enqueueAction(action2);
     },
 
-    handlePanelTrackEvent: function(cmp, event) {
-        console.log("Event fired!");
-        var panelTrack = event.getParam("updateTrack");
-        cmp.set("v.trackFromEvent", panelTrack);
-        var tEvent = cmp.get("v.trackFromEvent");
-        console.log(tEvent);
-    },
-
-    handlePanelCategoriesEvent: function(cmp, event) {
+    handlePanelAssessmentEvent: function (cmp, event) {
+        var panelAssessment = event.getParam("updateAssessment");
+        cmp.set("v.assessment", panelAssessment);
+    },    
+    
+    handlePanelCategoriesEvent : function(cmp, event) {
         var listOfCategories = event.getParam("updateCategories");
-        cmp.set("v.listFromEvent", listOfCategories);
+        cmp.set("v.categories", listOfCategories);
     },
 
-    save: function(component, event, helper) {
-        var lEventCategories = component.get("v.listFromEvent");
-        console.log(lEventCategories);
-
-        // var lEventTrack = component.get("v.trackFromEvent");
-        // console.log(lEventTrack);
+    save: function (component, event, helper) {
+        var lEventCategories = component.get("v.categories");
+         var lEventassessment = component.get("v.assessment");
 
         var sCategories = component.get("c.saveAssessment");
-        sCategories.setParams({ "pcList": lEventCategories }); //,
-        // "track" : lEventTrack});
-        sCategories.setCallback(this, function(response) {
+        sCategories.setParams({"pcList" : lEventCategories,
+                                 "assessment" : lEventassessment});
+        sCategories.setCallback(this,function(response){
             var state = response.getState();
             if (state === "SUCCESS") {
                 console.log("The save was successful.");

@@ -53,6 +53,9 @@ public with sharing class TrackController {
             li.Name = pc.Name;
             li.maxScore__c = pc.maxScore__c;
             li.Score__c = pc.maxScore__c;
+            li.Interviewed__c = false;
+            li.Status__c = false;
+            li.Comment__c = '';
             loali.add(li);
         }
         insert loali;

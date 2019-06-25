@@ -25,8 +25,18 @@
         //retrieves the value from the component
         var action = component.set("v.Current_Score",curr_score);
 
-        var action = component.set("v.category.Score__c",curr_score);
+        component.set("v.category.Score__c",curr_score);
+
+        let categories = component.get("v.categories");
+        let index = component.get("v.currentIndex");
+        categories[index].Score__c = curr_score;
+        component.set("v.categories", categories);
         
+        var updateCat = component.get("c.updateCategories");
+        updateCat.setParams({"item" : categories[index]});
+        updateCat.setCallback(this, function(response) {});
+        $A.enqueueAction(updateCat);
+
         
     }
     

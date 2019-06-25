@@ -1,35 +1,20 @@
-<aura:component 
-    implements="force:lightningQuickAction,force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes"
-    access="global">
+<aura:component implements="force:lightningQuickAction,force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes" access="global">
 
     <aura:html tag="style">
-        .slds-modal__container {
-            height : auto;
-            width: 70%;
-            max-width: 170rem;
-        }
-        .modal-body {
-            height : 500px !important;
-            max-height: 800px !important;
-        }
-        
-        .customFooter {
-            display: inline !important;
-        }
-    </aura:html> 
+        .slds-modal__container { height : auto; width: 70%; max-width: 170rem; } .modal-body { height : 380px !important; max-height: 800px !important; } .customFooter { display: inline !important; }
+    </aura:html>
 
     <aura:attribute name="_recordId" type="String" />
-    <aura:attribute name="appState" type="Integer" default="0"/>
-    
-    <aura:handler event="c:InterviewAppStateEvent" action="{!c.handleAppStateChange}" />
+    <aura:attribute name="Assessment" type="PH_Assessment__c" />
+    <aura:attribute name="appState" type="Integer" default="0" />
 
-    <aura:if isTrue="{!v.appState == 0}">
-        <c:InterviewInitial recordId="{!v.recordId}"/>
-    </aura:if>
-    <aura:if isTrue="{!v.appState == 1}">
-        <c:InterviewMain recordId="{!v.recordId}"/>
-    </aura:if>
-    <aura:if isTrue="{!v.appState == 2}">
-        <c:PanelViewMain recordId="{!v.recordId}"/>
-    </aura:if>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:InterviewAppStateEvent" action="{!c.handleAppStateChange}" />
+    <aura:handler event="c:PanelViewTrackMiscEvent" action="{!c.handleAssessmentCreation}" />
+    
+
+    {!v.body}
+    <!-- <c:InterviewInitial recordId="{!v.recordId}" />
+    <c:InterviewMain recordId="{!v.recordId}" />
+    <c:PanelViewMain recordId="{!v.recordId}" /> -->
 </aura:component>

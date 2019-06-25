@@ -1,63 +1,110 @@
-<aura:component controller="timeStampClass" >
-<aura:handler name="init" action="{!c.doInit}" value="{!this}" />
-<aura:handler name="appStateChange" event="c:InterviewAppStateEvent" action="{!c.endPage}"/>
+<aura:component controller="InterviewMainMiscApexController" >
+
+<aura:handler event="c:InterviewAppStateEvent" action="{!c.autoTimer}"/>
+<!-- <aura:handler event="c:PanelViewTrackMiscEvent" action="{!c.setAssess}"/> -->
+<aura:handler event="c:InterviewMainEvent" action="{!c.setCurrentLineItem}"/>
+
 <aura:attribute name="togglebtn" type="Boolean" default="false" />
 <aura:attribute name="pauseStartList" type="List"/>
 <aura:attribute name="timeStampList" type="List"/>
-<aura:attribute name="assessment" type="PH_Assessment__c"/>
+<aura:attribute name="commentAtt" type="String" default=""/>
+<aura:attribute name="totalInterviewTimeList" type="List"/>
+<aura:attribute name="errorM" type="Boolean" default="false" />
+<aura:attribute name="openModal" type="Boolean" default="false" />
+<aura:attribute name="openModal2" type="Boolean" default="false" />
 
+<aura:attribute name="assessment" type="PH_Assessment__c" />
+<aura:attribute name="lineItemIndex" type="Integer" />
+<aura:attribute name="lineItemCategories" type="AssessmentLineItem__c[]" />
 
+	
+	<div class="slds-grid slds-gutters slds-grid_vertical">
+		<div class="slds-col slds-grid slds-gutters">
+			<div class="slds-col slds-size_9-of-12 slds-p-around_none">
+				<lightning:textarea aura:id="comm" name="comment" title="comment" placeholder="type comment here..." variant="label-hidden" value="{!v.commentAtt}" onblur="{!c.closeModal2}"/>			
+			</div>
+			<lightning:buttonGroup class="slds-col slds-grid slds-size_3-of-12 slds-grid_vertical slds-p-around_none">   
+				<lightning:button aura:id="pass" class="slds-col white-btn noround" label="Pass" title="btnPass" onclick="{!c.closeModal2}"/>
+				<lightning:button aura:id="fail" class="slds-col white-btn noround" label="Fail" title="btnFail" onclick="{!c.closeModal2}"/>  
+			</lightning:buttonGroup>
+		</div>
 
-<div class="slds-grid slds-gutters slds-align_absolute-center">
+		<lightning:buttonGroup class="slds-grid slds-col slds-gutters slds-p-around_small">
+			<lightning:button class="slds-col" variant="destructive" label="Terminate" title="terminate" onclick="{!c.openModal}"/>
+			<lightning:button class="slds-col" label="Time Stamp" title="timeStamp" onclick="{!c.timeStamp}"/>
+			<lightning:button class="slds-col" variant="destructive" label="Pause" title="startTime" onclick="{!c.startTime}"/>
+		</lightning:buttonGroup>
+	</div>    
 
-        <div class="slds-col slds-size_10-of-12">
-                        <lightning:layoutItem>
-                        <lightning:textarea name="comment" placeholder="type comment here..." variant="label-hidden"/>
-                        </lightning:layoutItem>                                  
-        </div>
-        <div class="slds-col slds-size_2-of-12 slds-border_right">
-                       <lightning:buttonGroup class="slds-grid slds-grid_vertical">
-                                <lightning:button class="slds-col" label="Pass" title="pass" onclick="{!c.handleClick}"/>
-                                <lightning:button class="slds-col" label="Fail" title="fail" onclick="{!c.handleClick}"/>
-                        </lightning:buttonGroup>
-        </div>
-        </div>
-                <div class="slds-size_12-of-12">
-                <div class="slds-grid">     
-                        <lightning:button class="slds-col" variant="destructive" label="Terminate" title="terminate" onclick="{!c.openModal}"/>
-                        <lightning:button class="slds-col" label="Time Stamp" title="timeStamp" onclick="{!c.timeStamp}"/>
-                        <lightning:button class="slds-col" variant="destructive" label="Pause" title="startTime" onclick="{!c.startTime}"/>  
-                </div>        
-        </div>
-
-
-        <!-- Boolean attribute to open/close the modal -->
-	<aura:attribute name="openModal" type="Boolean" default="false" />
-        <aura:if isTrue="{!v.openModal}" >
+	<aura:if isTrue="{!v.errorM}">
 		<div class="demo-only" style="height: 600px;">
 			<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-			    <div class="slds-modal__container">
-			    	<!-- Header of Modal -->
-				    <header class="slds-modal__header">
-				        <lightning:buttonIcon iconName="utility:close" class="slds-modal__close" size="large" variant="bare" alternativeText="Close" onclick="{! c.closeModal }"/>
-				        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Modal Header</h2>
-				    </header>
-				     <!-- Body of Modal -->
-				    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                                        <h1>Are you sure you want to close this page?</h1>    
-				    </div>
-				    <!-- Footer of Modal -->
-				    <footer class="slds-modal__footer">
-                                        <lightning:button class="slds-col slds-size_2-of-12" variant="brand" label="Close" title="Close" onclick="{! c.terminate }" />
-                                        <lightning:button class="slds-col slds-size_2-of-12" variant="brand" label="Cancel" title="Cancel" onclick="{! c.closeModal }" /> 
-                            
-				    </footer>
-			    </div>
+				<div class="slds-modal__container">
+					<!-- Header of Modal -->
+					<header class="slds-modal__header">
+						<lightning:buttonIcon iconName="utility:close" class="slds-modal__close" size="large" variant="bare" alternativeText="Close" onclick="{! c.closeerrorM}"/>
+	
+					</header>
+						<!-- Body of Modal -->
+					<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+										<h1>Please Fill In The Comment Box</h1>    
+					</div>
+					<!-- Footer of Modal -->
+					<footer class="slds-modal__footer">
+										<lightning:button class="slds-col slds-size_2-of-12" variant="brand" label="Ok" title="OK" onclick="{! c.closeerrorM}" /> 
+							
+					</footer>
+				</div>
 			</section>
 			<!-- Backdrop to set background slightly opaque. -->
 			<div class="slds-backdrop slds-backdrop_open"></div>
 		</div>
+	</aura:if> 
+
+	<!-- Boolean attribute to open/close the modal -->
+	<aura:if isTrue="{!v.openModal}" >
+	<div class="demo-only" style="height: 600px;">
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<!-- Header of Modal -->
+				<header class="slds-modal__header">
+					<lightning:buttonIcon iconName="utility:close" class="slds-modal__close" size="large" variant="bare" alternativeText="Close" onclick="{! c.closeModal}"/>
+				</header>
+					<!-- Body of Modal -->
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+					<h1>Are you sure you want to close this page?</h1>    
+				</div>
+				<!-- Footer of Modal -->
+				<footer class="slds-modal__footer">
+					<lightning:button class="slds-col slds-size_2-of-12" variant="brand" label="Close" title="Close" onclick="{! c.terminate }" />
+					<lightning:button class="slds-col slds-size_2-of-12" variant="brand" label="Cancel" title="Cancel" onclick="{! c.closeModal }" /> 
+				</footer>
+			</div>
+		</section>
+		<!-- Backdrop to set background slightly opaque. -->
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</div>
 	</aura:if>
 
+	<!-- <aura:if isTrue="{!v.openModal2}" >
+	<div class="demo-only" style="height: 600px;">
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<header class="slds-modal__header">
+					<lightning:buttonIcon iconName="utility:close" class="slds-modal__close" size="large" variant="bare" alternativeText="Close" onclick="{! c.closeModal2}"/>
+					
+				</header>
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+									<h1>Are you sure?</h1>    
+				</div>
+				<footer class="slds-modal__footer">
+					<lightning:button aura:id="pass" class="slds-col slds-size_2-of-12" variant="success" label="Pass" title="pass" onclick="{! c.closeModal2}" />
+					<lightning:button aura:id="fail" class="slds-col slds-size_2-of-12" variant="destructive" label="Fail" title="fail" onclick="{! c.closeModal2}" />
+				</footer>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</div>
+	</aura:if> -->
 
 </aura:component>

@@ -1,64 +1,46 @@
-// {!REQUIRESCRIPT('/soap/ajax/37.0/connection.js')}
 ({
 
+    // Loads and performs filtering acording to currently selected mode (All|Pass|Fail), and search text
     loadList: function(component, event, helper) {
-        console.log("loadList Fired!!");
-        component.set("v.searchText", "");
-        let assessmentID = component.get("v.recordId");
-        // console.log(assessmentID);
-        // result = sforce.connection.query("Select Name, Id FROM AssessmentLineItem__c WHERE PH_Assessment__c = " + assessmentID);
-        // records = result.getArray("AssessmentLineItem__c");
-        var action = component.get("c.fetchLineItems");
-        var items;
-        action.setParams({ PanelId: assessmentID });
-        action.setCallback(this, function(response) {
-            var state = response.getState();
-            if (state === "SUCCESS") {
-                console.log("Success!");
-                items = response.getReturnValue();
-                component.set("v.records", items);
-                items.forEach(listItem => {
-                    console.log("item: " + JSON.stringify(listItem));
-                    helper.addListItem(component, listItem);
-                });
-            }
-        });
-        $A.enqueueAction(action);
-    },
-
-    filterResults: function(component, event, helper) {
+        console.log("In loadList");
         let buttonSelection = component.get("v.buttonSelection");
         let searchText = component.get("v.searchText");
-        let records = component.get("v.records");
-        component.set("v.body", "");
-        records.forEach(record => {
-            // Only add records with name containing searchText
+        let categories = component.get("v.categories");
+        // First clear v.body
+        let vbody = component.get("v.body");
+        vbody.forEach(elem => {
+            elem.destroy();
+        });
+        // component.set("v.body", []);
+
+        categories.forEach((record, i) => {
+            // Don't add categories without containing 'searchText' in the Name
             if (!record["Name"].toUpperCase().includes(searchText.toUpperCase())) {
                 return;
             }
-            // console.log("selection: " + buttonSelection);
-            // console.log("status: " + record["Status__c"]);
+            // Don't add failed categories when filter mode is 'Pass'
             if (buttonSelection == "Pass" && record["Status__c"] == false) {
                 return;
             }
+            // Don't add passeded categories when filter mode is 'Fail'
             if (buttonSelection == "Fail" && record["Status__c"] == true) {
                 return;
             }
-            helper.addListItem(component, record);
-            // console.log("adding item");
-            // console.log("Name: " + record["Name"]);
+            // Add element if it passed through all previous filterings
+            helper.addListItem(component, record, i);
         });
-        // console.log(searchText);
     },
 
+    // Set button selection, and appropriate styling when a button is clicked
     buttonClick: function(component, event, helper) {
         let source = event.getSource().getLocalId();
-        console.log("Source: " + source);
         let buttonSelection = "";
         let buttonGroup = component.find("filterButtons").get("v.body");
+        // Reset buttons
         buttonGroup.forEach(button => {
             button.set("v.variant", "neutral");
         });
+        // Set corresponding button style and button filter mode
         switch (source) {
             case "allButton":
                 buttonSelection = "All";
@@ -76,32 +58,45 @@
                 console.log("error");
                 break;
         }
+        // Finalize button filter mode
         component.set("v.buttonSelection", buttonSelection);
     },
 
+    // Enable editing when clicking the field
     labelClick: function(component, event, helper) {
-        console.log("label clicked!");
         event.getSource().set("v.readonly", false);
-        // console.log(source);
-    },
-    labelBlur: function(component, event, helper) {
-        console.log("label clicked!");
-        event.getSource().set("v.readonly", true);
-        // console.log(source);
     },
 
-    updateCategories: function(component, event, helper) {
-        let customEvent = component.getEvent("updateCategoriesEvent");
-        // let records = [{...},{...}];
-        let records = [{
-            sobjectType: "Contact",
-            Param1: "I_am_a_param",
-            Param2: "I_am_another_param"
-        }];
-        customEvent.setParams({
-            // Some placeholder stuff here
-            updateCategories: records
+    // Disable editing when field loses focus
+    labelBlur: function(component, event, helper) {
+        // Reset readonly styling
+        event.getSource().set("v.readonly", true);
+        // Setup for updating changes
+        let id = String(event.getSource().getLocalId());
+        let name = event.getSource().get("v.name");
+        let record = component.get("v.categories")[name];
+        // Determine which field to update
+        if (id.includes('Comment')) {
+            record["Comment__c"] = event.getSource().get("v.value");
+        } else {
+            record["Score__c"] = event.getSource().get("v.value");
+        }
+        helper.updateCategories(component);
+    },
+
+    // Show comments when li element clicked
+    liClick: function(component, event, helper) {
+        // First hide all comments
+        let componentBody = component.get("v.body");
+        componentBody.forEach(comp => {
+            let localId = comp.getLocalId();
+            let currComment = component.find("Comment " + localId);
+            if (currComment) {
+                $A.util.addClass(currComment, "slds-hide");
+            }
         });
-        customEvent.fire();
+        // Show the corresponding comment
+        let selectedComment = component.find("Comment " + event.srcElement["id"]);
+        $A.util.removeClass(selectedComment, "slds-hide");
     }
 });

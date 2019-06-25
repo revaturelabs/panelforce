@@ -1,21 +1,20 @@
 .THIS {}
 
-.THIS .scrollerSize {
-    /* height: 200px; */
+.THIS .slds-form-element {
+    display: contents;
 }
 
-.THIS#PanelViewCategoriesContainer {
-    /* width: 30%; */
-}
-
-.THIS .sdls-col {
-    display: inline-block;
-    width: 30%;
+.THIS .CategoryLayout {
+    font-weight: bold;
+    font-size: 14px;
 }
 
 
-/* .THIS .flag {
-    width: 24px;
-    height: 24px;
-    align-content: center;
+/* .THIS .slds-box:nth-child(1) {
+    margin: 25px 0px 25px 0px !important;
 } */
+
+.THIS .extraMargin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

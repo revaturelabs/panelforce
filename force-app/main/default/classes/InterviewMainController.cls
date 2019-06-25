@@ -31,7 +31,7 @@ public class InterviewMainController {
                                        FROM PH_Assessment__c LIMIT 1];
         recId = assignment.Id;
 
-        List<AssessmentLineItem__c> categories = [SELECT Id, PanelCategory__c, Name, Score__c, Interviewed__c, Status__c
+        List<AssessmentLineItem__c> categories = [SELECT Id, PanelCategory__c, Name, Score__c, maxScore__c, Interviewed__c, Status__c
                                                   FROM AssessmentLineItem__c WHERE PH_Assessment__c = :recId];
 
         return categories;

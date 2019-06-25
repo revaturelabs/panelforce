@@ -29,7 +29,7 @@
             buttonIcon = "utility:check";
             buttonText = "Finish Interview";
             buttonAction = "c.appStateChange";
-            buttonClass = "finish button";
+            buttonClass = "finish button slds-float_right";
             iconClass = "icon checkmark";
 
         }else if(whichOne == "backward"){
@@ -39,7 +39,7 @@
             buttonIcon = "utility:chevronright";
             buttonText = "Next Category";
             buttonAction = "c.categoriesChange";
-            buttonClass = "next button";
+            buttonClass = "next button slds-float_right";
             iconClass = "icon arrow";
         }
         //Create the button

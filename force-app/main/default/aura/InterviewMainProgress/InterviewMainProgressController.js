@@ -1,4 +1,10 @@
 ({
+    doInit : function(component, event, helper) {
+        // console.log("progress got cats: " + JSON.stringify(component.get("v.allCategories")));
+
+        helper.generateButtons(component, component.get("v.allCategories"));
+    },
+
     handleStatusChange : function(component, event, helper) {
         let allCats = component.get("v.allCategories");
         let currId = component.get("v.currentCat");
@@ -14,6 +20,13 @@
         let prev = component.get("v.currentCat");
         let next = event.getParam("current");
         let cats = event.getParam("categories");
+
+        // console.log("cat form event: " + cats);
+
+        if (cats.length == 1) {
+            allCats[next] = cats;
+            component.set("v.allCategories", allCats);
+        }
 
         if (cats.length == 0) {
             // reset the color for old button
@@ -36,5 +49,17 @@
             helper.generateButtons(component, cats);
             component.set("v.allCategories", cats);
         }
+    },
+
+    buttonClick : function(component, event, helper) {
+        let indx = parseInt(event.getSource().getLocalId().split("-")[1]);
+
+        let compEvent = $A.get("e.c:InterviewMainEvent");
+        compEvent.setParams({
+            "current": indx,
+            "categories": []
+        });
+        compEvent.fire();
     }
+
 })

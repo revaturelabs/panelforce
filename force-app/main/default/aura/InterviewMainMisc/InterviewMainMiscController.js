@@ -133,14 +133,30 @@
         let AssessLineCat = component.get("v.lineItemCategories");
         // console.log(JSON.stringify(AssessLineCat));
         let lItemIndex = component.get("v.lineItemIndex");
-        console.log("lItemIndex: " + lItemIndex);
+        // console.log("lItemIndex: " + lItemIndex);
         let liToChange = AssessLineCat[lItemIndex];
 
-        liToChange.Status__c = (event.getSource().getLocalId() == 'pass') ? true : false;
-        liToChange.Interviewed__c = true;
         liToChange.Comment__c = com;
+        
+        let newStatus = (event.getSource().getLocalId() == 'pass') ? true : false;
+        if (liToChange.Interviewed__c && newStatus && liToChange.Status__c) {
+            liToChange.Status__c = false
+            liToChange.Interviewed__c = false;
+            helper.colorButtons(component, 2);
+        } else if (liToChange.Interviewed__c && (!newStatus) && (!liToChange.Status__c)) {
+            liToChange.Status__c = false
+            liToChange.Interviewed__c = false;
+            helper.colorButtons(component, 2);
+        } else {
+            liToChange.Status__c = newStatus;
+            liToChange.Interviewed__c = true;
+            if (liToChange.Status__c) helper.colorButtons(component, 1);
+            else helper.colorButtons(component, 0);
+        }
 
-        console.log("liToChange: " + liToChange);
+        
+
+        // console.log("liToChange: " + liToChange);
             
         handlePass.setParams({
             "AssLineItem": liToChange
@@ -149,10 +165,17 @@
         handlePass.setCallback(this, function(a) {
             var state = a.getState();
             if (state === "SUCCESS") {
+                AssessLineCat[lItemIndex] = liToChange;
+                component.set("v.lineItemCategories", AssessLineCat);
                 helper.fireInterviewMain(lItemIndex, liToChange);
             }
             if (state === "ERROR") {
                 console.log(a.getError()[0].message);
+                if (liToChange.Status__c) {
+                    helper.colorButtons(component, 2);
+                } else {
+                    helper.colorButtons(component, 2);
+                }
             } 
         });
 
@@ -163,5 +186,18 @@
     setCurrentLineItem : function(component, event, helper) {
         var lItemIndex = event.getParam("current");   
         component.set("v.lineItemIndex", lItemIndex);
+
+        let cat = component.get("v.lineItemCategories")[lItemIndex];
+        if (!cat.Interviewed__c) {
+            helper.colorButtons(component, 2);
+            return;
+        }
+        if (cat.Status__c) {
+            helper.colorButtons(component, 1);
+        } else {
+            helper.colorButtons(component, 0);
+        }
+
+        component.set("v.commentAtt", cat.Comment__c);
     }
 })

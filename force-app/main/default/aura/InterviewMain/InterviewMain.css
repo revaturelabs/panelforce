@@ -1,12 +1,8 @@
 .THIS .button{
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
     font-size: 100px;
     background-color: white !important;
-}
-
-.THIS .left{
-    left:3rem;
 }
 
 .THIS .button svg{
@@ -38,9 +34,15 @@
     margin: 0 20px 0 0;
 
 }
-.THIS .interviewscore {
+.THIS .cInterviewMainMisc {
+    z-index: 289;
+}
+.THIS .slds-button_icon-bare {
+    z-index: 1;
+}
+/* .THIS .interviewscore {
     height: 50%;
 }
 .THIS .interviewmisc {
     height: 75%;
-}
+} */

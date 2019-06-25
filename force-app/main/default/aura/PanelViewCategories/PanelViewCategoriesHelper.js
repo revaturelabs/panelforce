@@ -4,6 +4,10 @@
     },
     addListItem: function(component, listItem, index) {
         console.log("Adding a list item: " + listItem + "\nindex: " + index);
+        console.log("Name: " + listItem["Name"]);
+        console.log("Score__c: " + listItem["Score__c"]);
+        console.log("Status__c: " + listItem["Status__c"]);
+        console.log("Comment__c: " + listItem["Comment__c"]);
         $A.createComponents(
             [
                 // New list item
@@ -84,22 +88,10 @@
 
     // Fires the update event to the parent controller
     updateCategories: function(component, event, helper) {
-        // let compEvent = $A.get("e.c:InterviewMainEvent");
+        let categories = component.get("v.categories");
         let customEvent = component.getEvent("updateCategoriesEvent");
-        // let records = [{
-        //     sobjectType: "Contact",
-        //     Param1: "I_am_a_param",
-        //     Param2: "I_am_another_param"
-        // }];
-        let records = component.get("v.records");
-        console.log("records: " + records);
-        records.forEach(rec => {
-            console.log(Object.keys(rec));
-            console.log(rec["Score__c"]);
-        });
         customEvent.setParams({
-            // Some placeholder stuff here
-            updateCategories: records
+            updateCategories: categories
         });
         customEvent.fire();
     }

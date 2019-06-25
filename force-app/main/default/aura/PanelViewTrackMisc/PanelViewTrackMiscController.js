@@ -3,21 +3,6 @@
     init: function (cmp) {
         cmp.set('v.comment', null);
 
-        //call apex class method
-        console.log("fetchAssessments");
-        var action = cmp.get('c.fetchAssessments');
-        console.log(action);
-
-        console.log("get response");
-        action.setCallback(this, function (response) {
-            //store state of response
-            var state = response.getState();
-            if (state === "SUCCESS") {
-                //set response value in ListOfAssessments attribute on component.
-                cmp.set('v.ListOfAssessments', response.getReturnValue());
-            }
-        });
-        $A.enqueueAction(action);
     },
 
     // Pass button functionality.
@@ -51,6 +36,25 @@
     handleAssessment: function (cmp, event, helper) {
         let assessment = event.getParam("updateAssessment");
         cmp.set("v.assessmentId", assessment.id);
+
+        PanelViewTrackMiscController.fetchAssessments(assessment);
+
+        //call apex class method
+        console.log("fetchAssessments");
+        var action = cmp.get('c.fetchAssessments');
+        console.log(action);
+
+        console.log("get response");
+        action.setCallback(this, function (response) {
+            //store state of response
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                //set response value in ListOfAssessments attribute on component.
+                cmp.set('v.ListOfAssessments', response.getReturnValue());
+            }
+        });
+        $A.enqueueAction(action);
+
     },
 
     // Componenet event that saves data from this component and sends it to the component with the save button.

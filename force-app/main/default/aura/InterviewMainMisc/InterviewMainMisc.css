@@ -42,3 +42,7 @@
 .THIS .noround {
     border-radius: 0px !important;
 }
+
+.THIS .slds-textarea {
+    height: 140px !important;
+}

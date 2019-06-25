@@ -22,8 +22,9 @@
     <!-- <lightning:formattedText value="{!'Assignment: ' + v.assignment.Name}" /> -->
 
     <!--c:InterviewMainProgress categories="v.categories" category="v.category" currentIndex="v.current"-->
-    <c:InterviewMainProgress allCategories="{!v.categories}" />
-
+    <div class="slds-p-around_small">
+        <c:InterviewMainProgress allCategories="{!v.categories}" />
+    </div>
 
     <div class="slds-grid slds-gutters">
         <div aura:id="leftbutton" class="slds-col slds-size_2-of-12 slds-p-around_none slds-align-middle" style="height:25%;">

@@ -34,6 +34,12 @@
     margin: 0 20px 0 0;
 
 }
+.THIS .cInterviewMainMisc {
+    z-index: 289;
+}
+.THIS .slds-button_icon-bare {
+    z-index: 1;
+}
 /* .THIS .interviewscore {
     height: 50%;
 }

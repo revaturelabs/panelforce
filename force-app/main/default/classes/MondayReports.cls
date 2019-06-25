@@ -10,10 +10,16 @@ global with sharing class MondayReports implements Schedulable {
         string [] toaddress= new String[]{[Select email from User u where u.UserRole.Name = 'CTO'][0].email};
         email.setSubject('Candidates who have failed three consecutive panels.');
         
-        List<AggregateResult> arList = [SELECT Contact__r.Name, count(id), max(CreatedDate), overallpass__c
-                                        FROM PH_Assessment__c
-                                        GROUP BY Contact__r.name, overallpass__c
-                                        ORDER BY max(createddate) desc];
+
+        List<AggregateResult> arList = new List<AggregateResult>(); 
+        for (AggregateResult ar :   [SELECT Contact__r.Name, count(id), max(CreatedDate), overallpass__c
+                                    FROM PH_Assessment__c
+                                    WHERE recordtypeid in (SELECT id FROM recordtype WHERE name = 'Panel')
+                                    GROUP BY Contact__r.name, overallpass__c
+                                    ORDER BY max(createddate) desc]) 
+        {
+            arList.add(ar);
+        }
 
         List<String> nList;
         String cName;

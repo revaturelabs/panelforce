@@ -117,7 +117,7 @@
 
     openerrorM : function(component, event, helper) {
         let com = component.get("v.commentAtt");   
-        if(com == ""){
+        if(com == "") {
             component.set("v.errorM",true);
         }
         else{
@@ -127,35 +127,35 @@
 
 
     closeModal2Pass : function(component, event, helper) {
-                    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-                    let handlePass = component.get("c.updatePass");
-                    let com = component.get("v.commentAtt");
-                    console.log(JSON.stringify(com));
-                    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-                    let AssessLineCat = component.get("v.lineItemCategories");
-                    console.log(JSON.stringify(AssessLineCat));
-                    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-                    let lItemIndex = component.get("v.lineItemIndex");
-                    console.log(JSON.stringify(lItemIndex));
-                    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-
-
-                        
-                    handlePass.setParams({
-                        "comment": com,
-                        "AssLineItem": AssessLineCat[lItemIndex]
-                    });
-
-                    handlePass.setCallback(this, function(a) {
-                        var state = a.getState();
-                        if (state === "ERROR") {
-                            console.log(a.getError()[0].message);
-                         }  
-                     });
+        let handlePass = component.get("c.updatePass");
+        let com = component.get("v.commentAtt");
+        // console.log(JSON.stringify(com));
+        let AssessLineCat = component.get("v.lineItemCategories");
+        // console.log(JSON.stringify(AssessLineCat));
+        let lItemIndex = component.get("v.lineItemIndex");
+        console.log("lItemIndex: " + lItemIndex);
+        let liToChange = AssessLineCat[lItemIndex];
+        console.log("liToChange: " + liToChange);
             
-                    $A.enqueueAction(handlePass);
-                    component.set('v.openModal2',false);
-                },
+        handlePass.setParams({
+            "comment": com,
+            "AssLineItem": liToChange
+        });
+
+        handlePass.setCallback(this, function(a) {
+            var state = a.getState();
+            if (state === "SUCCESS") {
+                console.log("PASSED");
+            }
+            if (state === "ERROR") {
+                console.log("DIDN'T PASS")
+                console.log(a.getError()[0].message);
+            } 
+        });
+
+        $A.enqueueAction(handlePass);
+        component.set('v.openModal2',false);
+    },
                
     
     closeModal2Fail : function(component, event, helper) {

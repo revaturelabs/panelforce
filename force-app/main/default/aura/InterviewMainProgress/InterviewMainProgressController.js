@@ -1,6 +1,6 @@
 ({
     doInit : function(component, event, helper) {
-        console.log("progress got cats: " + JSON.stringify(component.get("v.allCategories")));
+        // console.log("progress got cats: " + JSON.stringify(component.get("v.allCategories")));
 
         helper.generateButtons(component, component.get("v.allCategories"));
     },

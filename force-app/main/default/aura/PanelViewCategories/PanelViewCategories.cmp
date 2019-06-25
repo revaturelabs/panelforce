@@ -24,13 +24,20 @@
 
     <div class="slds-box slds-theme_default" id="PanelViewCategoriesContainer">
         Filter:
-        <lightning:input class="extraMargin" type="text" aura:id="search" value="{!v.searchText}" />
+        <lightning:layout class="slds-align_absolute-center">
 
-        <lightning:buttonGroup aura:id="filterButtons" class="extraMargin">
-            <lightning:button variant="brand" label="All" aura:id="allButton" onclick="{!c.buttonClick}" />
-            <lightning:button variant="neutral" label="Passed" aura:id="passButton" onclick="{!c.buttonClick}" />
-            <lightning:button variant="neutral" label="Failed" aura:id="failButton" onclick="{!c.buttonClick}" />
-        </lightning:buttonGroup>
+            <lightning:layoutItem>
+                <lightning:input class="extraMargin" variant="label-hidden" type="text" aura:id="search" value="{!v.searchText}" /></lightning:layoutItem>
+
+            <lightning:layoutItem padding="horizontal-small">
+                <lightning:buttonGroup aura:id="filterButtons" class="extraMargin">
+                    <lightning:button variant="brand" label="All" aura:id="allButton" onclick="{!c.buttonClick}" />
+                    <lightning:button variant="neutral" label="Passed" aura:id="passButton" onclick="{!c.buttonClick}" />
+                    <lightning:button variant="neutral" label="Failed" aura:id="failButton" onclick="{!c.buttonClick}" />
+                </lightning:buttonGroup>
+            </lightning:layoutItem>
+
+        </lightning:layout>
         <!-- <lightning:button onclick="{!c.updateCategories}" label="Test event" /> -->
 
         <!-- <lightning:button label="Test" title="Test" onclick="{!c.loadList}" /> -->

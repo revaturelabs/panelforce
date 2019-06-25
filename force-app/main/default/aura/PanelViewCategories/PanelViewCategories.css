@@ -18,3 +18,16 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.THIS .slds-input {
+    /* background-color: lightgray; */
+    padding-left: 10px;
+}
+
+.THIS .slds-align_absolute-center {
+    text-align: left;
+}
+
+.THIS textarea {
+    height: 100px;
+}

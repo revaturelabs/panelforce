@@ -10,35 +10,38 @@
         console.log("Comment__c: " + listItem["Comment__c"]);
         $A.createComponents(
             [
-                // New list item
+                // [0] New list item
                 ["aura:html", { tag: "li", "aura:id": listItem["Name"], HTMLAttributes: { id: listItem["Name"], class: "slds-item CategoryItem", onclick: component.getReference("c.liClick") } }],
-                // Container inside the list item
-                ["lightning:layout", { "aura:id": "id", class: "CategoryLayout slds-align_absolute-center", name: listItem["Id"] }],
+                // [1] Container inside the list item
+                // ["lightning:layout", { "aura:id": "id", class: "CategoryLayout slds-align_absolute-center", name: listItem["Id"] }],
+                ["lightning:layout", { "aura:id": "id", class: "CategoryLayout slds-align_absolute-center", horizontalAlign: "spread", name: listItem["Id"] }],
 
-                // Category name
+                // [2] Category name
                 [
                     "lightning:layoutItem",
-                    { class: "CategoryName slds-align_absolute-center", padding: "around-small" }
+                    { class: "CategoryName slds-align_absolute-left", padding: "around-none", size: 7 }
                 ],
+                // [3]
                 ["lightning:formattedText", { type: "text", name: index, value: listItem["Name"], readonly: "true" }],
 
-                // Category Score
+                // [4] Category Score
                 [
                     "lightning:layoutItem",
-                    { class: "CategoryScore slds-align_absolute-center", flexibility: "no-grow", size: 3, padding: "around-small" }
+                    { class: "CategoryScore slds-align_absolute-center", flexibility: "no-grow", padding: "around-none" }
                 ],
-                ["lightning:input", { type: "text", name: index, "aura:id": "Score__c", value: listItem["Score__c"], readonly: "true", onblur: component.getReference("c.labelBlur"), onclick: component.getReference("c.labelClick") }],
+                // [5]
+                ["lightning:input", { type: "text", name: index, "aura:id": "Score__c", value: listItem["Score__c"] + "/" + listItem["maxScore__c"], readonly: "true", onblur: component.getReference("c.labelBlur"), onclick: component.getReference("c.labelClick") }],
 
-                // Icon container
+                // [6] Icon container
                 [
                     "lightning:layoutItem",
-                    { class: "CategoryResult slds-align_absolute-center", flexibility: "no-grow", size: 2, padding: "around-small" }
+                    { class: "CategoryResult slds-align_absolute-center", flexibility: "no-grow", padding: "around-none" }
                 ],
-                // Comment
-                ["lightning:input", { type: "text", class: "slds-hide", "aura:id": "Comment " + listItem["Name"], name: index, value: listItem["Comment__c"], readonly: "true", onblur: component.getReference("c.labelBlur"), onclick: component.getReference("c.labelClick") }],
+                // [7] Comment
+                ["lightning:textarea", { type: "text", class: "slds-hide", padding: "around-none", "aura:id": "Comment " + listItem["Name"], name: index, value: listItem["Comment__c"], readonly: "true", onblur: component.getReference("c.labelBlur"), onclick: component.getReference("c.labelClick"), style: "border-width: 1px; border-radius: 5px; border-color: lightgrey;" }],
 
-                // Icon
-                ["lightning:icon", { iconName: (listItem["Status__c"]) ? "action:approval" : "action:close", size: "xx-small" }]
+                // [8] Icon
+                ["lightning:icon", { iconName: (listItem["Status__c"]) ? "action:approval" : "action:close", size: "xx-small", style: "margin-left:3px;" }]
             ],
             function(subparts, status, errorMessage) {
                 //Add the new button to the body array
@@ -62,11 +65,11 @@
 
                     // Category flag icon
                     var iconItem = subparts[6];
-                    var comment = subparts[7];
-
-                    // console.log("Comment: " + listItem["Comment_c"]);
                     var icon = subparts[8];
                     iconItem.set("v.body", icon);
+
+                    var comment = subparts[7];
+
 
                     // Set, push, and commit
                     layout.set("v.body", [categoryNameItem, scoreItem, iconItem]);

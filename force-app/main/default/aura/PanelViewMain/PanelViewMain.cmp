@@ -10,6 +10,7 @@
     <aura:attribute name="numberofTries" type="Integer" />
     <aura:attribute name="categories" type="AssessmentLineItem__c[]" />
     <aura:attribute name="assessment" type="PH_Assessment__c" />
+    <aura:attribute name="startTime" type="Datetime" />
 
     <!-- Record data for contact -->
     <force:recordData recordId="{!v.recordId}" fields="Name" targetFields="{!v.contactRecord}" />
@@ -44,7 +45,7 @@
 
                 <!-- Panel View Assessment on the right side of the screen -->
                 <div class="slds-col slds-size_2-of-3 slds-card slds-has-top-magnet">
-                    <c:PanelViewTrackMisc Assessment="{!v.assessment}" />
+                    <c:PanelViewTrackMisc Assessment="{!v.assessment}" duration="160000" startTime="{v.startTime}"/>
                 </div>
 
             </div>

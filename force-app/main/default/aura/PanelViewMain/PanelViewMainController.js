@@ -37,20 +37,17 @@
 
     handlePanelAssessmentEvent: function (cmp, event) {
         var panelAssessment = event.getParam("updateAssessment");
-        cmp.set("v.assessmentFromEvent", panelAssessment);
+        cmp.set("v.assessment", panelAssessment);
     },    
     
     handlePanelCategoriesEvent : function(cmp, event) {
         var listOfCategories = event.getParam("updateCategories");
-        cmp.set("v.listFromEvent", listOfCategories);
+        cmp.set("v.categories", listOfCategories);
     },
 
     save: function (component, event, helper) {
-        var lEventCategories = component.get("v.listFromEvent");
-        console.log(lEventCategories);
-
-         var lEventassessment = component.get("v.assessmentFromEvent");
-         console.log(lEventassessment);
+        var lEventCategories = component.get("v.categories");
+         var lEventassessment = component.get("v.assessment");
 
         var sCategories = component.get("c.saveAssessment");
         sCategories.setParams({"pcList" : lEventCategories,

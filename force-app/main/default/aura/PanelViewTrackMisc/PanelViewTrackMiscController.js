@@ -2,6 +2,22 @@
     // Initialize component variables.
     init: function (cmp) {
         cmp.set('v.comment', null);
+
+        //call apex class method
+        console.log("fetchAssessments");
+        var action = cmp.get('c.fetchAssessments');
+        console.log(action);
+
+        console.log("get response");
+        action.setCallback(this, function (response) {
+            //store state of response
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                //set response value in ListOfAssessments attribute on component.
+                cmp.set('v.ListOfAssessments', response.getReturnValue());
+            }
+        });
+        $A.enqueueAction(action);
     },
 
     // Pass button functionality.
@@ -15,7 +31,6 @@
         failButton.set("v.variant", "neutral");
 
         cmp.set("v.pass", true);
-        cmp.set("v.fail", false);
     },
 
     // Fail button functionality.
@@ -29,7 +44,13 @@
         failButton.set("v.variant", "destructive");
 
         cmp.set("v.pass", false);
-        cmp.set("v.fail", true);
+    },
+
+    // Handle Assessment Event from other component to get Assessment Id.
+    // Need assessment Id for application to work.
+    handleAssessment: function (cmp, event, helper) {
+        let assessment = event.getParam("updateAssessment");
+        cmp.set("v.assessmentId", assessment.id);
     },
 
     // Componenet event that saves data from this component and sends it to the component with the save button.
@@ -39,24 +60,18 @@
 
         //References Custom Field names that may not exist. 
         let assessment = {
-            "sobjectType": "PH_Assessment__c",
-            "id": "",
-            "Types_of_Associates": cmp.get("v.options"),
-            "Overall_Comment": cmp.get("v.comment"),
-            "Pass": cmp.get("v.pass"),
-            "Fail": cmp.get("v.fail"),
+            sobjectType: "PH_Assessment__c",
+            id: cmp.get("v.assessmentId"),
+            Types_of_Associates: cmp.get("v.typeOfAssociate"),
+            Overall_Comment: cmp.get("v.comment"),
+            Overall_Pass: cmp.get("v.pass")
         };
 
         //Updates assessment object with fields and values from assessment variable.
         updateAssessmentEvent.setParams({
-            Assessment: assessment
+            "updateAssessment": assessment
         });
 
         updateAssessmentEvent.fire();
-    },
-
-    // Handle Assessment Event from other component to get Assessment Id.
-    // Need assessment Id for application to work.
-    handleAssessment: function (cmp, event, helper) {
     }
 });

@@ -1,23 +1,26 @@
-<aura:component implements="flexipage:availableForAllPageTypes" access="global">
-  
+<aura:component
+  controller="PanelViewTrackMiscController"
+  implements="flexipage:availableForAllPageTypes, force:hasRecordId"
+  access="global"
+>
   <!-- Variables -->
-  <aura:attribute
-    name="options"
-    type="List"
-    default="[
-    {'label': 'Bad Technical Skills', 'value': 'badTechnical'},
-    {'label': 'Bad Soft Skills', 'value': 'badSoft'},
-    {'label': 'Good Technical Skills', 'value': 'goodTechnical'},
-    {'label': 'Good Soft Skills', 'value': 'goodSoft'}
-      ]"
-  />
-  <aura:attribute name="value" type="List" default="" />
+  <aura:attribute name="typeOfAssociate" type="string" default="" />
   <aura:attribute name="comment" type="string" />
   <aura:attribute name="pass" type="boolean" />
-  <aura:attribute name="fail" type="boolean" />
   <aura:attribute name="assessmentId" type="string" />
+  <aura:attribute
+    name="ListOfAssessments"
+    type="PH_Assessment__c[]"
+    description="Store panels to display in panel history section"
+  />
 
-  <aura:registerEvent name="updateAssessmentEvent" type="c:PanelViewTrackMiscEvent" />
+  <!-- Events -->
+  <aura:registerEvent
+    name="updateAssessmentEvent"
+    type="c:PanelViewTrackMiscEvent"
+  />
+
+  <!-- Handlers -->
   <aura:handler name="init" value="{! this }" action="{! c.init }" />
   <aura:handler
     event="c:PanelViewTrackMiscEvent"
@@ -28,68 +31,35 @@
   <div id="container" class="slds-p-around_small">
     <!-- Grid Start -->
     <section class="slds-grid slds-wrap slds-grid_align-space">
-      <div class="slds-col slds-size_12-of-12 slds-large-size_6-of-12">
-        <h1><strong>Description</strong></h1>
-        <div class="slds-p-around_small">
-          <lightning:formattedText
-            class="slds-p-around_small"
-            value="This is Cody's panel interview. He passed with flying colors like
-          every superstar does."
-          />
-        </div>
-      </div>
-
-      <div class="slds-col slds-size_12-of-12 slds-large-size_6-of-12">
+      <div class="slds-col">
         <h1><strong>Type of Associate</strong></h1>
         <div class="slds-p-around_small">
-          <lightning:checkboxGroup
-            name="Checkbox Group"
-            options="{! v.options }"
-            value="{! v.value }"
+          <lightning:select
+            aura:id="select"
+            class="dropboxWidth label-hidden"
+            name="select"
+            onchange="{!v.typeOfAssociate}"
+            value="{!v.typeOfAssociate}"
             onblur="{!c.updateAssessment}"
-          />
+          >
+            <option value="">Select Type</option>
+            <option value="Bad Technical Skills">Bad Technical Skills</option>
+            <option value="Bad Soft Skills">Bad Soft Skills</option>
+            <option value="Good Technical Skills">Good Technical Skills</option>
+            <option value="Good Soft Skills">Good Soft Skills</option>
+          </lightning:select>
         </div>
       </div>
-    </section>
-    <!-- Grid End -->
 
-    <br />
-
-    <!-- Grid Start -->
-    <section class="slds-grid slds-wrap slds-grid_align-space">
-      <!-- Grid Start -->
-      <aura:if isTrue="{!v.comment == null}">
-        <div class="slds-col slds-small-size_12-of-12 slds-large-size_10-of-12">
-          <h1><strong>Overall Comment</strong></h1>
-          <div class="slds-p-around_small">
-            <lightning:inputRichText
-              aura:id="richComment"
-              placeholder="Enter Comment Here"
-              onblur="{!c.updateAssessment}"
-            >
-              <lightning:insertImageButton />
-            </lightning:inputRichText>
-          </div>
-        </div>
-        <!-- Grid Start -->
-
-        <aura:set attribute="else">
-          <div
-            class="slds-col slds-small-size_12-of-12 slds-large-size_10-of-12"
-          >
-            <h1><strong>Overall Comment</strong></h1>
-            <div class="slds-p-around_small">
-              <lightning:formattedText id="pComment" value="{!v.comment}" />
-            </div>
-          </div>
-        </aura:set>
-      </aura:if>
-      <div class="slds-col slds-small-size_12-of-12 slds-large-size_2-of-12">
+      <div class="slds-col">
         <h1><strong>Score:</strong> 30/30</h1>
-        <div class="slds-grid slds-wrap slds-p-around_small">
-          <div class="slds-col slds-size_12-of-12">
+        <div
+          class="slds-grid slds-wrap slds-p-around_small slds-grid_align-space"
+        >
+          <div class="slds-col slds-size_12-of-12 slds-grid_align-space">
             <lightning:button
               aura:id="pass"
+              class="buttonWidth"
               variant="neutral"
               label="P"
               title="Pass"
@@ -97,10 +67,10 @@
             />
           </div>
 
-          <div class="slds-col slds-size_12-of-12">
+          <div class="slds-col slds-size_12-of-12 slds-grid_align-space">
             <lightning:button
               aura:id="fail"
-              class="lm-0"
+              class="ml-0 buttonWidth"
               variant="neutral"
               label="F"
               title="Fail"
@@ -114,21 +84,63 @@
 
     <br />
 
+    <!-- Grid Start -->
+    <section class="slds-grid slds-wrap slds-grid_align-space mt-20">
+      <aura:if isTrue="{!v.comment == null}">
+        <div class="slds-col slds-size_12-of-12">
+          <h1 class="text-center"><strong>Overall Comment</strong></h1>
+          <div class="slds-p-around_small">
+            <lightning:inputRichText
+              aura:id="richComment"
+              placeholder="Enter Comment Here"
+              onblur="{!c.updateAssessment}"
+            >
+              <lightning:insertImageButton />
+            </lightning:inputRichText>
+          </div>
+        </div>
+
+        <aura:set attribute="else">
+          <div class="slds-col slds-size_12-of-12">
+            <h1 class="text-center"><strong>Overall Comment</strong></h1>
+            <div class="slds-p-around_small">
+              <lightning:formattedText id="pComment" value="{!v.comment}" />
+            </div>
+          </div>
+        </aura:set>
+      </aura:if>
+    </section>
+    <!-- Grid End -->
+
+    <!-- Grid Start -->
+    <section class="slds-grid slds-wrap slds-grid_align-space">
+      <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12 mt-20">
+        <h1 class="text-center"><strong>Panel History</strong></h1>
+        <div class="slds-p-around_small">
+          <ul>
+            <aura:iteration items="{!v.ListOfAssessments}" var="a">
+              <li type="dice">AssessmentName : {!a.Name}</li>
+              <hr class="panel-history-margin" />
+            </aura:iteration>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- Grid End -->
+
+    <br />
+
     <!-- Panel History -->
     <section>
-      <h1><strong>Panel History</strong></h1>
-      <div class="slds-p-around_small">
-        <lightning:listView
-          aura:id="listViewAssessments"
-          objectApiName="PH_Assessment__c"
-          listName="AllAssessments"
-          rows="5"
-          showSearchBar="true"
-          showActionBar="false"
-          enableInlineEdit="true"
-          showRowLevelActions="false"
+      <!-- the container element determine the height of the datatable
+      <div style="height: 300px">
+        <lightning:datatable
+          keyField="id"
+          data="{! v.data }"
+          columns="{! v.columns }"
+          hideCheckboxColumn="true"
         />
-      </div>
+      </div> -->
     </section>
   </div>
   <!-- Div Container End -->

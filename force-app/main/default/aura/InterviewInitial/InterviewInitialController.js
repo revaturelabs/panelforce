@@ -29,7 +29,8 @@
                     updateAssessment: {
                         "sobjectType" : "PH_Assessment__c",
                         "Id" : loli[0].PH_Assessment__c,
-                        "Contact__c" : component.get("v.recordId")
+                        "Contact__c" : component.get("v.recordId"),
+                        "Comment__c" : ""
                     }
                 });
                 //console.log(sendAssessmentEvent);

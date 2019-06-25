@@ -29,11 +29,11 @@
             <lightning:layoutItem>
                 <lightning:input class="extraMargin" variant="label-hidden" type="text" aura:id="search" value="{!v.searchText}" /></lightning:layoutItem>
 
-            <lightning:layoutItem padding="horizontal-small">
+            <lightning:layoutItem class="slds-p-left_x-small">
                 <lightning:buttonGroup aura:id="filterButtons" class="extraMargin">
                     <lightning:button variant="brand" label="All" aura:id="allButton" onclick="{!c.buttonClick}" />
-                    <lightning:button variant="neutral" label="Passed" aura:id="passButton" onclick="{!c.buttonClick}" />
-                    <lightning:button variant="neutral" label="Failed" aura:id="failButton" onclick="{!c.buttonClick}" />
+                    <lightning:button variant="neutral" label="Pass" aura:id="passButton" onclick="{!c.buttonClick}" />
+                    <lightning:button variant="neutral" label="Fail" aura:id="failButton" onclick="{!c.buttonClick}" />
                 </lightning:buttonGroup>
             </lightning:layoutItem>
 

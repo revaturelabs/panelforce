@@ -19,7 +19,7 @@
                 // [2] Category name
                 [
                     "lightning:layoutItem",
-                    { class: "CategoryName slds-align_absolute-left", padding: "around-none", size: 7 }
+                    { class: "CategoryName slds-align_absolute-left", padding: "around-none", size: 6 }
                 ],
                 // [3]
                 ["lightning:formattedText", { type: "text", name: index, value: listItem["Name"], readonly: "true" }],

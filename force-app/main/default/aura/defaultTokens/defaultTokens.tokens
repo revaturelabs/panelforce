@@ -2,7 +2,7 @@
 	<aura:token name="backgroundSuccess" value="{!colorBorderSuccess}" />
 	<aura:token name="backgroundFailure" value="{!colorBackgroundDestructive}" />
 	<aura:token name="backgroundCurrent" value="{!brandAccessibleActive}" />
-	<aura:token name="backgroundInactive" value="{!colorBackgroundDark}" />
+	<aura:token name="backgroundInactive" value="{!colorBackgroundAlt}" />
 
 	<aura:token name="greenBtnTextColor" value="{!colorTextInverse}" />
 	<aura:token name="redBtnTextColor" value="{!colorTextInverse}" />

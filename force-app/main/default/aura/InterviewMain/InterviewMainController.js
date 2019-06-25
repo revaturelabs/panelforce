@@ -176,10 +176,13 @@
             //Make sure the previous button is enabled
             let button = component.find('backward');
             button.set('v.disabled', false);
+
         } else {
             //Make sure the previous button is enabled
             let button = component.find('backward');
             button.set('v.disabled', false);
+            
+            helper.buttonChange(component, 'backward');
         }
     }
 

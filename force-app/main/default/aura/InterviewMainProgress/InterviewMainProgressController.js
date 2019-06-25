@@ -21,6 +21,13 @@
         let next = event.getParam("current");
         let cats = event.getParam("categories");
 
+        // console.log("cat form event: " + cats);
+
+        if (cats.length == 1) {
+            allCats[next] = cats;
+            component.set("v.allCategories", allCats);
+        }
+
         if (cats.length == 0) {
             // reset the color for old button
             let btn = component.find("btn-" + prev);

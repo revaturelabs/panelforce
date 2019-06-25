@@ -101,8 +101,8 @@
 				</div>
 				<!-- Footer of Modal -->
 				<footer class="slds-modal__footer">
-					<lightning:button class="slds-col slds-size_2-of-12" variant="success" label="Pass" title="pass" onclick="{! c.closeModal2Pass}" />
-					<lightning:button class="slds-col slds-size_2-of-12" variant="destructive" label="Fail" title="fail" onclick="{! c.closeModal2Fail}" />
+					<lightning:button aura:id="pass" class="slds-col slds-size_2-of-12" variant="success" label="Pass" title="pass" onclick="{! c.closeModal2}" />
+					<lightning:button aura:id="fail" class="slds-col slds-size_2-of-12" variant="destructive" label="Fail" title="fail" onclick="{! c.closeModal2}" />
 				</footer>
 			</div>
 		</section>

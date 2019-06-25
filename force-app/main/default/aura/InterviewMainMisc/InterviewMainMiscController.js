@@ -120,14 +120,14 @@
         if(com == "") {
             component.set("v.errorM",true);
         }
-        else{
+        else {
             component.set('v.openModal2',true);
         }
     },
 
 
-    closeModal2Pass : function(component, event, helper) {
-        let handlePass = component.get("c.updatePass");
+    closeModal2 : function(component, event, helper) {
+        let handlePass = component.get("c.updateCategory");
         let com = component.get("v.commentAtt");
         // console.log(JSON.stringify(com));
         let AssessLineCat = component.get("v.lineItemCategories");
@@ -135,20 +135,23 @@
         let lItemIndex = component.get("v.lineItemIndex");
         console.log("lItemIndex: " + lItemIndex);
         let liToChange = AssessLineCat[lItemIndex];
+
+        liToChange.Status__c = (event.getSource().getLocalId() == 'pass') ? true : false;
+        liToChange.Interviewed__c = true;
+        liToChange.Comment__c = com;
+
         console.log("liToChange: " + liToChange);
             
         handlePass.setParams({
-            "comment": com,
             "AssLineItem": liToChange
         });
 
         handlePass.setCallback(this, function(a) {
             var state = a.getState();
             if (state === "SUCCESS") {
-                console.log("PASSED");
+                helper.fireInterviewMain(lItemIndex, liToChange);
             }
             if (state === "ERROR") {
-                console.log("DIDN'T PASS")
                 console.log(a.getError()[0].message);
             } 
         });
@@ -156,36 +159,9 @@
         $A.enqueueAction(handlePass);
         component.set('v.openModal2',false);
     },
-               
-    
-    closeModal2Fail : function(component, event, helper) {
-
-        let handleFail = component.get("c.updateFailed");
-        let com = component.get("v.commentAtt");
-        let AssessLineCat = component.get("v.lineItemCategories");
-        var lItemIndex = component.get("v.lineItemIndex");
-
-
-        handleFail.setParams({
-            "comment": com,
-            "AssLineItem": AssessLineCat[lItemIndex]
-        });
-
-        handleFail.setCallback(this, function(a) {
-            var state = a.getState();
-             if (state === "ERROR") {
-                console.log(a.getError()[0].message);
-             }
-         });
-
-        $A.enqueueAction(handleFail);
-        component.set('v.openModal2',false);
-    },
 
     setCurrentLineItem : function(component, event, helper) {
-        console.log("////////////////////////////////////////////////////////////////////////////////////////");
         var lItemIndex = event.getParam("current");   
-        console.log(JSON.stringify(lItemIndex));
         component.set("v.lineItemIndex", lItemIndex);
     }
 })

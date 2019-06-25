@@ -21,7 +21,7 @@
 	<div class="slds-grid slds-gutters slds-grid_vertical">
 		<div class="slds-col slds-grid slds-gutters">
 			<div class="slds-col slds-size_9-of-12 slds-p-around_none">
-				<lightning:textarea name="comment" title="comment" placeholder="type comment here..." variant="label-hidden" value="{!v.commentAtt}"/>			
+				<lightning:textarea aura:id="comm" name="comment" title="comment" placeholder="type comment here..." variant="label-hidden" value="{!v.commentAtt}" onblur="{!c.closeModal2}"/>			
 			</div>
 			<lightning:buttonGroup class="slds-col slds-grid slds-size_3-of-12 slds-grid_vertical slds-p-around_none">   
 				<lightning:button aura:id="pass" class="slds-col white-btn noround" label="Pass" title="btnPass" onclick="{!c.closeModal2}"/>

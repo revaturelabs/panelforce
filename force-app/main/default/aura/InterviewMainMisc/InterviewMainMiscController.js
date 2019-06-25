@@ -138,7 +138,8 @@
 
         liToChange.Comment__c = com;
         
-        let newStatus = (event.getSource().getLocalId() == 'pass') ? true : false;
+        let aid = event.getSource().getLocalId();
+        let newStatus = (aid == 'pass') ? true : false;
         if (liToChange.Interviewed__c && newStatus && liToChange.Status__c) {
             liToChange.Status__c = false
             liToChange.Interviewed__c = false;
@@ -148,10 +149,12 @@
             liToChange.Interviewed__c = false;
             helper.colorButtons(component, 2);
         } else {
-            liToChange.Status__c = newStatus;
-            liToChange.Interviewed__c = true;
-            if (liToChange.Status__c) helper.colorButtons(component, 1);
-            else helper.colorButtons(component, 0);
+            if (aid != 'comm') {
+                liToChange.Status__c = newStatus;
+                liToChange.Interviewed__c = true;
+                if (liToChange.Status__c) helper.colorButtons(component, 1);
+                else helper.colorButtons(component, 0);
+            }
         }
 
         
@@ -184,10 +187,11 @@
     },
 
     setCurrentLineItem : function(component, event, helper) {
-        var lItemIndex = event.getParam("current");   
+        var lItemIndex = event.getParam("current");
         component.set("v.lineItemIndex", lItemIndex);
 
         let cat = component.get("v.lineItemCategories")[lItemIndex];
+        component.set("v.commentAtt", cat.Comment__c);
         if (!cat.Interviewed__c) {
             helper.colorButtons(component, 2);
             return;
@@ -198,6 +202,5 @@
             helper.colorButtons(component, 0);
         }
 
-        component.set("v.commentAtt", cat.Comment__c);
     }
 })

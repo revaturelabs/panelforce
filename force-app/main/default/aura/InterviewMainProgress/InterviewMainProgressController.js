@@ -42,5 +42,17 @@
             helper.generateButtons(component, cats);
             component.set("v.allCategories", cats);
         }
+    },
+
+    buttonClick : function(component, event, helper) {
+        let indx = parseInt(event.getSource().getLocalId().split("-")[1]);
+
+        let compEvent = $A.get("e.c:InterviewMainEvent");
+        compEvent.setParams({
+            "current": indx,
+            "categories": []
+        });
+        compEvent.fire();
     }
+
 })

@@ -155,6 +155,32 @@
         //Pass the current index to the child components
         helper.changeEvent(current, []);
 
+    },
+
+    indxChange : function(component, event, helper) {
+        let newIndex = event.getParam("current");
+
+        component.set("v.current", newIndex);
+
+        let categories = component.get("v.categories");
+        component.set("v.category", categories[newIndex]);
+
+        let catsize = component.get("v.catsize");
+        if (newIndex == 0) {
+            let button = component.find('backward');
+            button.set('v.disabled', true);
+            helper.buttonChange(component, 'backward');
+            
+        } else if(newIndex == catsize) {
+            helper.buttonChange(component, 'forward');
+            //Make sure the previous button is enabled
+            let button = component.find('backward');
+            button.set('v.disabled', false);
+        } else {
+            //Make sure the previous button is enabled
+            let button = component.find('backward');
+            button.set('v.disabled', false);
+        }
     }
 
 })

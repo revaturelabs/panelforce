@@ -7,29 +7,53 @@
 
     // Pass button functionality.
     handlePass: function (cmp, event, helper) {
-        alert("You clicked: " + event.getSource().get("v.label"));
-        let passClick = event.getSource();
-        let changeFail = cmp.get("v.fail");
+        let passButton = cmp.find("pass");
+        let failButton = cmp.find("fail");
 
-        passClick.iconName = "utility:success";
-        passClick.iconPosition = "right";
+        passButton.set("v.variant", "success");
+        $A.util.addClass(passButton, 'white');
 
-        changeFail.removeAttribute("iconName");
-        changeFail.removeAttribute("iconPosition");
+        failButton.set("v.variant", "neutral");
 
+        cmp.set("v.pass", true);
     },
 
     // Fail button functionality.
     handleFail: function (cmp, event, helper) {
-        alert("You clicked: " + event.getSource().get("v.label"));
-        let failClick = event.getSource();
-        let changePass = cmp.get("v.pass");
+        let passButton = cmp.find("pass");
+        let failButton = cmp.find("fail");
 
-        failClick.iconName = "utility:clear";
-        failClick.iconPosition = "right";
+        passButton.set("v.variant", "neutral");
+        $A.util.removeClass(passButton, 'white');
 
-        changePass.removeAttribute("iconName");
-        changePass.removeAttribute("iconPosition");
+        failButton.set("v.variant", "destructive");
+
+        cmp.set("v.pass", false);
+    },
+
+    // Handle Assessment Event from other component to get Assessment Id.
+    // Need assessment Id for application to work.
+    handleAssessment: function (cmp, event, helper) {
+        let assessment = event.getParam("updateAssessment");
+        cmp.set("v.assessmentId", assessment.id);
+
+        PanelViewTrackMiscController.fetchAssessments(assessment);
+
+        //call apex class method
+        console.log("fetchAssessments");
+        var action = cmp.get('c.fetchAssessments');
+        console.log(action);
+
+        console.log("get response");
+        action.setCallback(this, function (response) {
+            //store state of response
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                //set response value in ListOfAssessments attribute on component.
+                cmp.set('v.ListOfAssessments', response.getReturnValue());
+            }
+        });
+        $A.enqueueAction(action);
 
     },
 
@@ -41,24 +65,17 @@
         //References Custom Field names that may not exist. 
         let assessment = {
             sobjectType: "PH_Assessment__c",
-            id: "",
-            Types_of_Associates: cmp.get("v.options"),
+            id: cmp.get("v.assessmentId"),
+            Types_of_Associates: cmp.get("v.typeOfAssociate"),
             Overall_Comment: cmp.get("v.comment"),
-            Pass: cmp.get("v.pass"),
-            Fail: cmp.get("v.fail"),
+            Overall_Pass: cmp.get("v.pass")
         };
 
         //Updates assessment object with fields and values from assessment variable.
         updateAssessmentEvent.setParams({
-            "Assessment": assessment
+            "updateAssessment": assessment
         });
 
         updateAssessmentEvent.fire();
-    },
-
-    // Handle Assessment Event from other component to get Assessment Id.
-    // Need assessment Id for application to work.
-    handleAssessment: function (cmp, event, helper) {
-
     }
 });

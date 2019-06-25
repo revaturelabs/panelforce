@@ -29,7 +29,7 @@
 			</lightning:buttonGroup>
 		</div>
 
-		<lightning:buttonGroup class="slds-grid slds-col slds-gutters">
+		<lightning:buttonGroup class="slds-grid slds-col slds-gutters slds-p-around_small">
 			<lightning:button class="slds-col" variant="destructive" label="Terminate" title="terminate" onclick="{!c.openModal}"/>
 			<lightning:button class="slds-col" label="Time Stamp" title="timeStamp" onclick="{!c.timeStamp}"/>
 			<lightning:button class="slds-col" variant="destructive" label="Pause" title="startTime" onclick="{!c.startTime}"/>

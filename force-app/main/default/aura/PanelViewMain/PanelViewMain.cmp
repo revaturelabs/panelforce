@@ -8,10 +8,6 @@
     <!-- Attributes to store information based on aura:handler functions -->
     <aura:attribute name="track" type="String" />
     <aura:attribute name="numberofTries" type="Integer" />
-    <aura:attribute name="listFromEvent" type="List" />
-    <aura:attribute name="trackFromEvent" type="Object" />
-
-    <!-- NEW STUFF FROM 6-24-19 -->
     <aura:attribute name="categories" type="AssessmentLineItem__c[]" />
     <aura:attribute name="assessment" type="PH_Assessment__c" />
 

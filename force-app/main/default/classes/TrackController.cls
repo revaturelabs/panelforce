@@ -60,7 +60,6 @@ public with sharing class TrackController {
         }
         insert loali;
         return loali;
-        //return a.Id;
     }
 
     // There's no direct relationship in the data model

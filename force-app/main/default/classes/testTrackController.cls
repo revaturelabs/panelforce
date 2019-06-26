@@ -8,8 +8,8 @@ public class testTrackController {
         String s;
         PH_TrainingTrack__c tt = new PH_TrainingTrack__c();
 
-        c.Lastname = 'test';
-        tt.Name = 'test';
+        c.Lastname = 'test 1';
+        tt.Name = 'test 2';
         insert tt;
         insert c;
         // test 2 methods.
@@ -23,7 +23,6 @@ public class testTrackController {
             s = TrackController.getContact(c.Id);
         } catch (StringException e) {
             System.debug('getContact not returning string: ' + s);
-            s = 'test';
         }
 
         try {
@@ -58,6 +57,18 @@ public class testTrackController {
         loali = TrackController.createData(c.Id, tt.Id);
         System.assert(c.Id != null);
         System.assert(tt.Id != null);
+        System.assert(loali != null);
+
+        try {
+            for (AssessmentLineItem__c ali : loali) {
+                System.assert(ali.Name != null);
+                System.assert(ali.PanelCategory__c != null);
+            }
+        } catch (ListException e) {
+            System.debug('ListException: ' + e);
+        } catch (Exception e) {
+            System.debug('General Exception: ' + e);
+        }
 
         Database.delete(c);
         Database.delete(tt);

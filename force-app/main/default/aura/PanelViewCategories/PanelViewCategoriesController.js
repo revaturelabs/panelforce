@@ -65,6 +65,14 @@
     // Enable editing when clicking the field
     labelClick: function(component, event, helper) {
         event.getSource().set("v.readonly", false);
+        let id = String(event.getSource().getLocalId());
+        let name = event.getSource().get("v.name");
+        let record = component.get("v.categories")[name];
+        console.log("ID: " + id);
+        if (id.includes('Score')) {
+            event.getSource().set("v.value", record["Score__c"]);
+        }
+        event.stopPropagation();
     },
 
     // Disable editing when field loses focus
@@ -80,6 +88,7 @@
             record["Comment__c"] = event.getSource().get("v.value");
         } else {
             record["Score__c"] = event.getSource().get("v.value");
+            event.getSource().set("v.value", record["Score__c"] + "/" + record["maxScore__c"]);
         }
         helper.updateCategories(component);
     },
@@ -88,15 +97,25 @@
     liClick: function(component, event, helper) {
         // First hide all comments
         let componentBody = component.get("v.body");
+        console.log("Event info" + event.srcElement['Name']);
+        console.log("Event info" + event.target['Name']);
+        console.log("Event info" + JSON.stringify(Object.keys(event)));
+        console.log("Event info" + JSON.stringify(Object.keys(event.target)));
         componentBody.forEach(comp => {
             let localId = comp.getLocalId();
             let currComment = component.find("Comment " + localId);
+            if (event.srcElement["id"] == localId) {
+                console.log("I found a match here!!!!!!!!!!!!");
+                return;
+            }
             if (currComment) {
                 $A.util.addClass(currComment, "slds-hide");
             }
         });
         // Show the corresponding comment
         let selectedComment = component.find("Comment " + event.srcElement["id"]);
-        $A.util.removeClass(selectedComment, "slds-hide");
+        // $A.util.removeClass(selectedComment, "slds-hide");
+        $A.util.toggleClass(selectedComment, "slds-hide");
+        // $A.util.addClass(selectedComment, "commentStyle");
     }
 });

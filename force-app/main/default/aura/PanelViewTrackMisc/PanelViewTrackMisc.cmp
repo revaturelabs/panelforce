@@ -1,18 +1,24 @@
 <aura:component
   controller="PanelViewTrackMiscController"
-  implements="flexipage:availableForAllPageTypes, force:hasRecordId"
+  implements="flexipage:availableForAllPageTypes, flexipage:availableForRecordHome, force:hasRecordId"
   access="global"
 >
   <!-- Variables -->
-  <aura:attribute name="typeOfAssociate" type="string" default="" />
+  <aura:attribute name="currentAssessment" type="PH_Assessment__c" />
+  <aura:attribute name="recordID" type="string" />
+  <aura:attribute name="totalScore" type="integer" />
   <aura:attribute name="comment" type="string" />
   <aura:attribute name="result" type="boolean" />
   <aura:attribute name="softSkillsPass" type="boolean" />
+  <aura:attribute name="typeOfAssociate" type="string" default="" />
   <aura:attribute name="recordingType" type="string" />
-  <aura:attribute name="interviewStart" type="datetime" />
-  <aura:attribute name="duration" type="integer" />
-  <aura:attribute name="totalScore" type="integer" />
-  <aura:attribute name="assessmentId" type="string" />
+  <aura:attribute name="recordingConsent" type="string" />
+  <aura:attribute name="recordingLink" type="string" />
+  <aura:attribute name="interviewDate" type="date" />
+  <aura:attribute name="interviewStart" type="time" />
+  <aura:attribute name="interviewDuration" type="integer" />
+  <aura:attribute name="interviewMode" type="string" />
+  <aura:attribute name="internetConnectivity" type="string" />
 
   <aura:attribute
     name="Assessment"
@@ -35,128 +41,80 @@
 
   <!--Div Container Start -->
   <section id="container" class="slds-box">
-    <div class="slds-grid slds-wrap slds-grid_align-space">
+    <div class="slds-grid slds-wrap">
       <div class="slds-col">
         <h1><strong>Total Score: </strong>{!v.totalScore}</h1>
       </div>
     </div>
 
     <br />
-    
+
     <!-- Grid Start -->
-    <section class="slds-grid slds-wrap slds-grid_align-space">
-      <div class="slds-col">
-        <h1 class="text-center"><strong>Overall Comment</strong></h1>
+    <section class="slds-grid slds-wrap">
+      <!-- Column 1  FeedBack-->
+      <div
+        class="slds-col slds-small-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_6-of-12 slds-small-order_2 slds-medium-order_2 slds-large-order_1"
+      >
+        <h1><strong>Overall Feedback</strong></h1>
         <lightning:textarea
           aura:id="richComment"
+          class="comment-width"
           placeholder="Enter comment here..."
           onblur="{!c.updateAssessment}"
           variant="label-hidden"
+          value="{!v.comment}"
         >
         </lightning:textarea>
       </div>
 
-      <div class="slds-col">
-        <h1 class="text-center"><strong>Result:</strong></h1>
-        <lightning:buttonGroup>
-          <lightning:button
-            aura:id="pass"
-            class="buttonWidth"
-            variant="neutral"
-            label="P"
-            title="result"
-            onclick="{!c.handlePass}"
-          />
-
-          <lightning:button
-            aura:id="fail"
-            class="ml-0 buttonWidth"
-            variant="neutral"
-            label="F"
-            title="Fail"
-            onclick="{!c.handleFail}"
-          />
-        </lightning:buttonGroup>
-
-        <h1 class="text-center"><strong>Soft Skills:</strong></h1>
-        <lightning:buttonGroup>
-          <lightning:button
-            aura:id="softPass"
-            class="buttonWidth"
-            variant="neutral"
-            label="P"
-            title="Soft Skills Pass"
-            onclick="{!c.softPass}"
-          />
-
-          <lightning:button
-            aura:id="softFail"
-            class="ml-0 buttonWidth"
-            variant="neutral"
-            label="F"
-            title="Soft Skills Fail"
-            onclick="{!c.softFail}"
-          />
-        </lightning:buttonGroup>
-      </div>
-    </section>
-
-    <br />
-
-    <section>
-      <h1><strong>Recording Type</strong></h1>
-      <lightning:select
-        aura:id="select"
-        class="dropboxWidth label-hidden"
-        name="select"
-        onchange="{!v.recordingType}"
-        value="{!v.recordingType}"
-        onblur="{!c.updateAssessment}"
+      <!-- Column 2 Pass Buttons-->
+      <div
+        class="slds-col slds-small-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_6-of-12 slds-small-order_1 slds-medium-order_1 slds-large-order_2"
       >
-        <option value="">Select Type</option>
-        <option value="Audio">Audio</option>
-        <option value="Video">Video</option>
-      </lightning:select>
+        <div class="text-right">
+          <h1 class="inline-element"><strong>Result: </strong></h1>
+          <lightning:buttonGroup class="inline-element">
+            <lightning:button
+              aura:id="pass"
+              class="buttonWidth"
+              variant="neutral"
+              label="P"
+              title="result"
+              onclick="{!c.handlePass}"
+            />
 
-      <br />
+            <lightning:button
+              aura:id="fail"
+              class="ml-0 buttonWidth"
+              variant="neutral"
+              label="F"
+              title="Fail"
+              onclick="{!c.handleFail}"
+            />
+          </lightning:buttonGroup>
 
-      <h1><strong>Type of Associate</strong></h1>
-      <lightning:select
-        aura:id="select"
-        class="dropboxWidth label-hidden"
-        name="select"
-        onchange="{!v.typeOfAssociate}"
-        value="{!v.typeOfAssociate}"
-        onblur="{!c.updateAssessment}"
-      >
-        <option value="">Select Type</option>
-        <option value="Bad Technical Skills">Bad Technical Skills</option>
-        <option value="Bad Soft Skills">Bad Soft Skills</option>
-        <option value="Good Technical Skills">Good Technical Skills</option>
-        <option value="Good Soft Skills">Good Soft Skills</option>
-      </lightning:select>
+          <div><br /></div>
 
-      <br />
+          <h1 class="inline-element"><strong>Soft Skills: </strong></h1>
+          <lightning:buttonGroup class="inline-element">
+            <lightning:button
+              aura:id="softPass"
+              class="buttonWidth"
+              variant="neutral"
+              label="P"
+              title="Soft Skills Pass"
+              onclick="{!c.softPass}"
+            />
 
-      <h1><strong>Interview Started: </strong>{!v.interviewStart}</h1>
-      <br />
-      <h1><strong>Recording: </strong>{!v.interviewStart}</h1>
-    </section>
-
-    <!-- Grid End -->
-    <br />
-
-    <!-- Grid Start -->
-    <section class="slds-grid slds-wrap slds-grid_align-space">
-      <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12 mt-20">
-        <h1 class="text-center"><strong>Panel History</strong></h1>
-        <div class="slds-p-around_small">
-          <ul>
-            <aura:iteration items="{!v.Assessment}" var="a">
-              <li type="dice">AssessmentName : {!a.Name}</li>
-              <hr class="panel-history-margin" />
-            </aura:iteration>
-          </ul>
+            <lightning:button
+              aura:id="softFail"
+              class="ml-0 buttonWidth"
+              variant="neutral"
+              label="F"
+              title="Soft Skills Fail"
+              onclick="{!c.softFail}"
+            />
+          </lightning:buttonGroup>
         </div>
       </div>
     </section>
@@ -164,18 +122,174 @@
 
     <br />
 
-    <!-- Panel History -->
-    <section>
-      <!-- the container element determine the height of the datatable
-      <div style="height: 300px">
-        <lightning:datatable
-          keyField="id"
-          data="{! v.data }"
-          columns="{! v.columns }"
-          hideCheckboxColumn="true"
-        />
-      </div> -->
+    <!-- Grid Start -->
+    <section class="slds-grid slds-wrap">
+      <!-- Column 1 Picklists and Recording-->
+      <div
+        class="slds-col slds-small-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_6-of-12 slds-large-order_2"
+      >
+        <div class="float-right">
+          <h1><strong>Type of Associate</strong></h1>
+          <lightning:select
+            aura:id="select"
+            class="dropboxWidth label-hidden"
+            name="select"
+            onchange="{!v.typeOfAssociate}"
+            value="{!v.typeOfAssociate}"
+            onblur="{!c.updateAssessment}"
+          >
+            <option value="">Select Type</option>
+            <option value="Bad Technical Skills">Bad Technical Skills</option>
+            <option value="Bad Soft Skills">Bad Soft Skills</option>
+            <option value="Good Technical Skills">Good Technical Skills</option>
+            <option value="Good Soft Skills">Good Soft Skills</option>
+          </lightning:select>
+
+          <br />
+
+          <h1><strong>Recording Type</strong></h1>
+          <lightning:select
+            aura:id="select"
+            class="dropboxWidth label-hidden"
+            name="select"
+            onchange="{!v.recordingType}"
+            value="{!v.recordingType}"
+            onblur="{!c.updateAssessment}"
+          >
+            <option value="">Select Type</option>
+            <option value="Audio">Audio</option>
+            <option value="Video">Video</option>
+          </lightning:select>
+
+          <br />
+
+          <h1><strong>Recording Consent</strong></h1>
+          <lightning:select
+            aura:id="select"
+            class="dropboxWidth label-hidden"
+            name="select"
+            onchange="{!v.recordingConsent}"
+            value="{!v.recordingConsent}"
+            onblur="{!c.updateAssessment}"
+          >
+            <option value="">Select Type</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </lightning:select>
+
+          <br />
+
+          <h1><strong>Recording: </strong>{!v.recordingLink}</h1>
+
+          <br />
+        </div>
+      </div>
+
+      <!-- Column 2 Date, Time, Duration, Picklists. -->
+      <div
+        class="slds-col slds-small-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_6-of-12 slds-large-order_1"
+      >
+        <h1><strong>Interview Date: </strong>{!v.interviewDate}</h1>
+        <br />
+
+        <h1><strong>Interview Time: </strong>{!v.interviewStart}</h1>
+        <br />
+
+        <h1><strong>Interview Duration: </strong>{!v.interviewDuration}</h1>
+        <br />
+
+        <h1><strong>Interview Mode: </strong></h1>
+        <lightning:select
+          aura:id="select"
+          class="dropboxWidth label-hidden"
+          name="select"
+          onchange="{!v.interviewMode}"
+          value="{!v.interviewMode}"
+          onblur="{!c.updateAssessment}"
+        >
+          <option value="">Select Type</option>
+          <option value="Google Meet">Google Meet</option>
+          <option value="Cisco Webex">Cisco Webex</option>
+        </lightning:select>
+
+        <br />
+
+        <h1><strong>Internet Connectivity: </strong></h1>
+        <lightning:select
+          aura:id="select"
+          class="dropboxWidth label-hidden"
+          name="select"
+          onchange="{!v.internetConnectivity}"
+          value="{!v.internetConnectivity}"
+          onblur="{!c.updateAssessment}"
+        >
+          <option value="">Select Type</option>
+          <option value="Google Meet">Excellent</option>
+          <option value="Cisco Webex">Good</option>
+          <option value="Google Meet">Fair</option>
+          <option value="Cisco Webex">Poor</option>
+          <option value="Google Meet">Bad</option>
+        </lightning:select>
+      </div>
     </section>
+    <!-- Grid End -->
+
+    <br />
+
+    <!-- Grid Start -->
+    <section class="slds-grid slds-wrap">
+      <h1 class="text-center"><strong>Panel History</strong></h1>
+      <table
+        class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer slds-table_fixed-layout"
+      >
+        <!-- Table Headers -->
+        <thead>
+          <tr class="slds-text-heading_label">
+            <th scope="col">
+              <div class="slds-truncate" title="Date of Interview">Date</div>
+            </th>
+            <th scope="col">
+              <div class="slds-truncate" title="Start Time">Time</div>
+            </th>
+            <th scope="col">
+              <div class="slds-truncate" title="Total Score">Score</div>
+            </th>
+            <th scope="col">
+              <div class="slds-truncate" title="Result">Result</div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- Use the Apex model and controller to fetch server side data -->
+          <aura:iteration items="{!v.Assessment}" var="ass">
+            <tr>
+              <th scope="row">
+                <div class="slds-truncate" title="{!ass.Interview_Date__c}"
+                  >{!ass.Interview_Date__c}</div
+                >
+              </th>
+              <td>
+                <div class="slds-truncate" title="{!ass.Interview_Start__c}"
+                  >{!ass.Interview_Start__c}</div
+                >
+              </td>
+              <td>
+                <div class="slds-truncate" title="{!ass.Total_Score__c}"
+                  >{!ass.Total_Score__c}</div
+                >
+              </td>
+              <td>
+                <div class="slds-truncate" title="{!ass.OverallPass__c}"
+                  >{!ass.OverallPass__c}</div
+                >
+              </td>
+            </tr>
+          </aura:iteration>
+        </tbody>
+      </table>
+    </section>
+    <!-- Grid End -->
   </section>
   <!-- Div Container End -->
 </aura:component>

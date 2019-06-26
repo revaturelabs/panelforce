@@ -1,8 +1,24 @@
 ({
-    // Initialize component variables.
+    // Initialize with records for Panel History section.
     init: function (cmp) {
-        cmp.set('v.comment', null);
 
+        var action = cmp.get('c.fetchAssessments');
+
+        action.setParams({
+            "ass": cmp.get('v.currentAssessment')
+        })
+
+        console.log("Set Params was successful");
+
+        action.setCallback(this, function (response) {
+            //store state of response
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                //set response value in Assessment attribute on component.
+                cmp.set('v.Assessment', response.getReturnValue());
+            }
+        });
+        $A.enqueueAction(action);
     },
 
     // Pass button functionality.
@@ -61,43 +77,46 @@
     // Need assessment Id for application to work.
     handleAssessment: function (cmp, event, helper) {
         let assessment = event.getParam("updateAssessment");
-        cmp.set("v.assessmentId", assessment.id);
-
-        PanelViewTrackMiscController.fetchAssessments(assessment);
-
-        //call apex class method
-        console.log("fetchAssessments");
-        var action = cmp.get('c.fetchAssessments');
-        console.log(action);
-
-        console.log("get response");
-        action.setCallback(this, function (response) {
-            //store state of response
-            var state = response.getState();
-            if (state === "SUCCESS") {
-                //set response value in Assessment attribute on component.
-                cmp.set('v.Assessment', response.getReturnValue());
-            }
-        });
-        $A.enqueueAction(action);
-
+        cmp.set("v.currentAssessment", assessment);
     },
 
     // Componenet event that saves data from this component and sends it to the component with the save button.
     updateAssessment: function (cmp, event, helper) {
         // Get the component event by using the name value from aura:registerEvent.
         let updateAssessmentEvent = cmp.getEvent("updateAssessmentEvent");
+        //set action to call fetchRecordTypeId method from Server-side controller
+        var action = component.get("c.fetchRecordTypeId");
 
-        //References Custom Field names that may not exist. 
+        let RTId;
+        action.setCallback(this, function (a) {
+            if (a.getState() === "SUCCESS") {
+                RTId = a.getReturnValue();
+            }
+        });
+        $A.enqueueAction(action);
+
+        // References Custom Field names that may not exist. 
+        // Sets values of object fields and sends them to PanelViewMain component. 
         let assessment = {
             sobjectType: "PH_Assessment__c",
-            id: cmp.get("v.assessmentId"),
-            Types_of_Associates: cmp.get("v.typeOfAssociate"),
-            Comment: cmp.get("v.comment"),
-            OverallPass: cmp.get("v.result")
+            id: cmp.get("v.currentAssessment".id),
+            RecordTypeID: RTId,
+            Total_Score__c: cmp.get("v.totalScore"),
+            Comment__c: cmp.get("v.comment"),
+            OverallPass__c: cmp.get("v.result"),
+            Soft_Skills_Pass__c: cmp.get("v.softSkillsPass"),
+            Types_of_Associates__c: cmp.get("v.typeOfAssociate"),
+            Recording_Type__c: cmp.get("v.recordingType"),
+            Recording_Consent__c: cmp.get("v.recordingConsent"),
+            Recording_Link__c: cmp.get("v.recordingLink"),
+            Interview_Date__c: cmp.get("v.interviewDate"),
+            Interview_Start__c: cmp.get("v.interviewStart"),
+            Interview_Duration__c: cmp.get("v.interviewDuration"),
+            Interview_Mode__c: cmp.get("v.interviewMode"),
+            Internet_Connectivity__c: cmp.get("v.internetConnectivity")
         };
 
-        //Updates assessment object with fields and values from assessment variable.
+        // Updates assessment object of the event parameter to equal the object assessment from above.
         updateAssessmentEvent.setParams({
             "updateAssessment": assessment
         });

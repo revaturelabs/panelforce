@@ -3,7 +3,11 @@
 }
 
 .THIS .dropboxWidth {
-  max-width: 240px;
+  max-width: 200px;
+}
+
+.THIS .comment-width {
+  max-width: 200px;
 }
 
 .THIS .buttonWidth {
@@ -12,10 +16,6 @@
 
 .THIS .ml-0 {
   margin-left: 0px;
-}
-
-.THIS .mt-20 {
-  margin-top: 20px;
 }
 
 .THIS .text-center {
@@ -33,3 +33,16 @@
 .THIS .panel-history-margin {
     margin: 10px 0;
 }
+
+.THIS .inline-element {
+  display: inline;
+}
+
+.THIS .float-right {
+  float: right;
+}
+
+.THIS .text-right {
+  text-align: right;
+}
+

@@ -44,7 +44,7 @@
 
                 <!-- Panel View Assessment on the right side of the screen -->
                 <div class="slds-col slds-size_2-of-3 slds-card slds-has-top-magnet">
-                    <c:PanelViewTrackMisc Assessment="{!v.assessment}" />
+                    <c:PanelViewTrackMisc currentAssessment="{!v.assessment}" />
                 </div>
 
             </div>

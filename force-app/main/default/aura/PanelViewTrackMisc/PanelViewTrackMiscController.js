@@ -15,7 +15,7 @@
 
         failButton.set("v.variant", "neutral");
 
-        cmp.set("v.pass", true);
+        cmp.set("v.result", true);
     },
 
     // Fail button functionality.
@@ -28,7 +28,33 @@
 
         failButton.set("v.variant", "destructive");
 
-        cmp.set("v.pass", false);
+        cmp.set("v.result", false);
+    },
+
+    // Soft Skills Pass button functionality.
+    softPass: function (cmp, event, helper) {
+        let passButton = cmp.find("softPass");
+        let failButton = cmp.find("softFail");
+
+        passButton.set("v.variant", "success");
+        $A.util.addClass(passButton, 'white');
+
+        failButton.set("v.variant", "neutral");
+
+        cmp.set("v.softSkillsPass", true);
+    },
+
+    // Soft Skills Fail button functionality.
+    softFail: function (cmp, event, helper) {
+        let passButton = cmp.find("softPass");
+        let failButton = cmp.find("softFail");
+
+        passButton.set("v.variant", "neutral");
+        $A.util.removeClass(passButton, 'white');
+
+        failButton.set("v.variant", "destructive");
+
+        cmp.set("v.softSkillsPass", false);
     },
 
     // Handle Assessment Event from other component to get Assessment Id.
@@ -68,7 +94,7 @@
             id: cmp.get("v.assessmentId"),
             Types_of_Associates: cmp.get("v.typeOfAssociate"),
             Comment: cmp.get("v.comment"),
-            OverallPass: cmp.get("v.pass")
+            OverallPass: cmp.get("v.result")
         };
 
         //Updates assessment object with fields and values from assessment variable.

@@ -6,7 +6,14 @@
   <!-- Variables -->
   <aura:attribute name="typeOfAssociate" type="string" default="" />
   <aura:attribute name="comment" type="string" />
-  <aura:attribute name="pass" type="boolean" />
+  <aura:attribute name="result" type="boolean" />
+  <aura:attribute name="softSkillsPass" type="boolean" />
+  <aura:attribute name="recordingType" type="string" />
+  <aura:attribute name="interviewStart" type="datetime" />
+  <aura:attribute name="duration" type="integer" />
+  <aura:attribute name="totalScore" type="integer" />
+  <aura:attribute name="assessmentId" type="string" />
+
   <aura:attribute
     name="Assessment"
     type="PH_Assessment__c[]"
@@ -21,94 +28,123 @@
 
   <!-- Handlers -->
   <aura:handler name="init" value="{! this }" action="{! c.init }" />
-  <aura:handler
+  <!-- <aura:handler
     event="c:PanelViewTrackMiscEvent"
     action="{!c.handleAssessment}"
-  />
+  /> -->
 
   <!--Div Container Start -->
-  <div id="container" class="slds-p-around_small">
+  <section id="container" class="slds-box">
+    <div class="slds-grid slds-wrap slds-grid_align-space">
+      <div class="slds-col">
+        <h1><strong>Total Score: </strong>{!v.totalScore}</h1>
+      </div>
+    </div>
+
+    <br />
+    
     <!-- Grid Start -->
     <section class="slds-grid slds-wrap slds-grid_align-space">
       <div class="slds-col">
-        <h1><strong>Type of Associate</strong></h1>
-        <div class="slds-p-around_small">
-          <lightning:select
-            aura:id="select"
-            class="dropboxWidth label-hidden"
-            name="select"
-            onchange="{!v.typeOfAssociate}"
-            value="{!v.typeOfAssociate}"
-            onblur="{!c.updateAssessment}"
-          >
-            <option value="">Select Type</option>
-            <option value="Bad Technical Skills">Bad Technical Skills</option>
-            <option value="Bad Soft Skills">Bad Soft Skills</option>
-            <option value="Good Technical Skills">Good Technical Skills</option>
-            <option value="Good Soft Skills">Good Soft Skills</option>
-          </lightning:select>
-        </div>
+        <h1 class="text-center"><strong>Overall Comment</strong></h1>
+        <lightning:textarea
+          aura:id="richComment"
+          placeholder="Enter comment here..."
+          onblur="{!c.updateAssessment}"
+          variant="label-hidden"
+        >
+        </lightning:textarea>
       </div>
 
       <div class="slds-col">
-        <h1><strong>Score:</strong> 30/30</h1>
-        <div
-          class="slds-grid slds-wrap slds-p-around_small slds-grid_align-space"
-        >
-          <div class="slds-col slds-size_12-of-12 slds-grid_align-space">
-            <lightning:button
-              aura:id="pass"
-              class="buttonWidth"
-              variant="neutral"
-              label="P"
-              title="Pass"
-              onclick="{!c.handlePass}"
-            />
-          </div>
+        <h1 class="text-center"><strong>Result:</strong></h1>
+        <lightning:buttonGroup>
+          <lightning:button
+            aura:id="pass"
+            class="buttonWidth"
+            variant="neutral"
+            label="P"
+            title="result"
+            onclick="{!c.handlePass}"
+          />
 
-          <div class="slds-col slds-size_12-of-12 slds-grid_align-space">
-            <lightning:button
-              aura:id="fail"
-              class="ml-0 buttonWidth"
-              variant="neutral"
-              label="F"
-              title="Fail"
-              onclick="{!c.handleFail}"
-            />
-          </div>
-        </div>
+          <lightning:button
+            aura:id="fail"
+            class="ml-0 buttonWidth"
+            variant="neutral"
+            label="F"
+            title="Fail"
+            onclick="{!c.handleFail}"
+          />
+        </lightning:buttonGroup>
+
+        <h1 class="text-center"><strong>Soft Skills:</strong></h1>
+        <lightning:buttonGroup>
+          <lightning:button
+            aura:id="softPass"
+            class="buttonWidth"
+            variant="neutral"
+            label="P"
+            title="Soft Skills Pass"
+            onclick="{!c.softPass}"
+          />
+
+          <lightning:button
+            aura:id="softFail"
+            class="ml-0 buttonWidth"
+            variant="neutral"
+            label="F"
+            title="Soft Skills Fail"
+            onclick="{!c.softFail}"
+          />
+        </lightning:buttonGroup>
       </div>
     </section>
-    <!-- Grid End -->
 
     <br />
 
-    <!-- Grid Start -->
-    <section class="slds-grid slds-wrap slds-grid_align-space mt-20">
-      <aura:if isTrue="{!v.comment == null}">
-        <div class="slds-col slds-size_12-of-12">
-          <h1 class="text-center"><strong>Overall Comment</strong></h1>
-          <div class="slds-p-around_small">
-            <lightning:textarea
-              aura:id="richComment"
-              placeholder="Enter Comment Here"
-              onblur="{!c.updateAssessment}"
-            >
-            </lightning:textarea>
-          </div>
-        </div>
+    <section>
+      <h1><strong>Recording Type</strong></h1>
+      <lightning:select
+        aura:id="select"
+        class="dropboxWidth label-hidden"
+        name="select"
+        onchange="{!v.recordingType}"
+        value="{!v.recordingType}"
+        onblur="{!c.updateAssessment}"
+      >
+        <option value="">Select Type</option>
+        <option value="Audio">Audio</option>
+        <option value="Video">Video</option>
+      </lightning:select>
 
-        <aura:set attribute="else">
-          <div class="slds-col slds-size_12-of-12">
-            <h1 class="text-center"><strong>Overall Comment</strong></h1>
-            <div class="slds-p-around_small">
-              <lightning:textarea id="pComment" value="{!v.comment}" />
-            </div>
-          </div>
-        </aura:set>
-      </aura:if>
+      <br />
+
+      <h1><strong>Type of Associate</strong></h1>
+      <lightning:select
+        aura:id="select"
+        class="dropboxWidth label-hidden"
+        name="select"
+        onchange="{!v.typeOfAssociate}"
+        value="{!v.typeOfAssociate}"
+        onblur="{!c.updateAssessment}"
+      >
+        <option value="">Select Type</option>
+        <option value="Bad Technical Skills">Bad Technical Skills</option>
+        <option value="Bad Soft Skills">Bad Soft Skills</option>
+        <option value="Good Technical Skills">Good Technical Skills</option>
+        <option value="Good Soft Skills">Good Soft Skills</option>
+      </lightning:select>
+
+      <br />
+
+      <h1><strong>Interview Started: </strong>{!v.interviewStart}</h1>
+      <br />
+      <h1><strong>Recording: </strong>{!v.interviewStart}</h1>
     </section>
+
     <!-- Grid End -->
+    <br />
 
     <!-- Grid Start -->
     <section class="slds-grid slds-wrap slds-grid_align-space">
@@ -140,6 +176,6 @@
         />
       </div> -->
     </section>
-  </div>
+  </section>
   <!-- Div Container End -->
 </aura:component>

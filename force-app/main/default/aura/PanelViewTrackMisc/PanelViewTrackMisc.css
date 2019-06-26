@@ -1,11 +1,35 @@
-.THIS.right-align {
-    text-align: right;
+.THIS .right-align {
+  text-align: right;
 }
 
-.THIS.lm-0 {
-    margin-left: 0;
+.THIS .dropboxWidth {
+  max-width: 240px;
 }
 
-.THIS.white {
-    color: white;
+.THIS .buttonWidth {
+  width: 50px;
+}
+
+.THIS .ml-0 {
+  margin-left: 0px;
+}
+
+.THIS .mt-20 {
+  margin-top: 20px;
+}
+
+.THIS .text-center {
+  text-align: center;
+}
+
+.THIS .white {
+  color: white;
+}
+
+.THIS .label-hidden > label {
+  display: none;
+}
+
+.THIS .panel-history-margin {
+    margin: 10px 0;
 }

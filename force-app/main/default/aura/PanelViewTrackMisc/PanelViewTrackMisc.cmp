@@ -32,7 +32,7 @@
     type="c:PanelViewTrackMiscEvent"
   />
 
-  <aura:registerEvent name="updateAssessmentEvent" type="c:PanelViewTrackMiscEvent" />
+  <!-- Handlers -->
   <aura:handler name="init" value="{! this }" action="{! c.init }" />
   <!-- <aura:handler
     event="c:PanelViewTrackMiscEvent"
@@ -40,29 +40,13 @@
   /> -->
 
   <!--Div Container Start -->
-<<<<<<< HEAD
   <section id="container" class="slds-box">
     <div class="slds-grid slds-wrap">
       <div class="slds-col">
         <h1><strong>Total Score: </strong>{!v.totalScore}</h1>
-=======
-  <div id="container" class="slds-p-around_small">
-    <!-- Grid Start -->
-    <section class="slds-grid slds-wrap slds-grid_align-space">
-      <div class="slds-col slds-size_12-of-12 slds-large-size_6-of-12">
-        <h1><strong>Description</strong></h1>
-        <div class="slds-p-around_small">
-          <lightning:formattedText
-            class="slds-p-around_small"
-            value="This is Cody's panel interview. He passed with flying colors like
-        every superstar does."
-          />
-        </div>
->>>>>>> parent of bae2d14... Merge branch 'master' into James
       </div>
     </div>
 
-<<<<<<< HEAD
     <br />
 
     <!-- Grid Start -->
@@ -131,25 +115,14 @@
               onclick="{!c.softFail}"
             />
           </lightning:buttonGroup>
-=======
-      <div class="slds-col slds-size_12-of-12 slds-large-size_6-of-12">
-        <h1><strong>Type of Associate</strong></h1>
-        <div class="slds-p-around_small">
-          <lightning:checkboxGroup
-            name="Checkbox Group"
-            options="{! v.options }"
-            value="{! v.value }"
-            onblur="{!c.updateAssessment}"
-          />
->>>>>>> parent of bae2d14... Merge branch 'master' into James
         </div>
       </div>
     </section>
     <!-- Grid End -->
+
     <br />
 
     <!-- Grid Start -->
-<<<<<<< HEAD
     <section class="slds-grid slds-wrap">
       <!-- Column 1 Picklists and Recording-->
       <div
@@ -209,61 +182,6 @@
           <h1><strong>Recording: </strong>{!v.recordingLink}</h1>
 
           <br />
-=======
-    <section class="slds-grid slds-wrap slds-grid_align-space">
-      <!-- Grid Start -->
-      <aura:if isTrue="{!v.comment == null}">
-        <div class="slds-col slds-small-size_12-of-12 slds-large-size_10-of-12">
-          <h1><strong>Overall Comment</strong></h1>
-          <div class="slds-p-around_small">
-            <lightning:inputRichText
-              aura:id="richComment"
-              placeholder="Enter Comment Here"
-              onblur="{!c.updateAssessment}"
-            >
-              <lightning:insertImageButton />
-            </lightning:inputRichText>
-          </div>
-        </div>
-
-        <!-- Grid Start -->
-        <aura:set attribute="else">
-          <div
-            class="slds-col slds-small-size_12-of-12 slds-large-size_10-of-12"
-          >
-            <h1><strong>Overall Comment</strong></h1>
-            <div class="slds-p-around_small">
-              <lightning:formattedText id="pComment" value="{!v.comment}" />
-            </div>
-          </div>
-        </aura:set>
-      </aura:if>
-
-      <div class="slds-col slds-small-size_12-of-12 slds-large-size_2-of-12">
-        <h1><strong>Score:</strong> 30/30</h1>
-        <div class="slds-grid slds-wrap slds-p-around_small">
-          <div class="slds-col slds-size_12-of-12">
-            <lightning:button
-              class="white"
-              variant="success"
-              label="P"
-              title="Pass"
-              onclick="{! c.handlePass }"
-              value="{!v.pass == true}"
-            />
-          </div>
-
-          <div class="slds-col slds-size_12-of-12">
-            <lightning:button
-              class="lm-0"
-              variant="destructive"
-              label="F"
-              title="Fail"
-              onclick="{! c.handleFail }"
-              value="{!v.fail == false}"
-            />
-          </div>
->>>>>>> parent of bae2d14... Merge branch 'master' into James
         </div>
       </div>
 
@@ -318,7 +236,6 @@
 
     <br />
 
-<<<<<<< HEAD
     <!-- Grid Start -->
     <section class="slds-grid slds-wrap">
       <h1 class="text-center"><strong>Panel History</strong></h1>
@@ -371,23 +288,6 @@
           </aura:iteration>
         </tbody>
       </table>
-=======
-    <!-- Panel History -->
-    <section>
-      <h1><strong>Panel History</strong></h1>
-      <div class="slds-p-around_small">
-        <lightning:listView
-          aura:id="listViewAssessments"
-          objectApiName="PH_Assessment__c"
-          listName="AllAssessments"
-          rows="5"
-          showSearchBar="true"
-          showActionBar="false"
-          enableInlineEdit="true"
-          showRowLevelActions="false"
-        />
-      </div>
->>>>>>> parent of bae2d14... Merge branch 'master' into James
     </section>
     <!-- Grid End -->
   </section>

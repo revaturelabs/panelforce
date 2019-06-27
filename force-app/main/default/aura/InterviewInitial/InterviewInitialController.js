@@ -30,7 +30,20 @@
                         "sobjectType" : "PH_Assessment__c",
                         "Id" : loli[0].PH_Assessment__c,
                         "Contact__c" : component.get("v.recordId"),
-                        "Comment__c" : ""
+                        "Comment__c" : "",
+                        "Duration__c" : 0,
+                        "StartTime__c" : null,
+                        "TotalScore__c" : 0,
+                        "Result__c" : false,
+                        "SoftSkillsPass__c": false,
+                        "TypeOfAssociate__c" : "",
+                        "RecordingType__c" : "",
+                        "RecordingConsent__c" : "",
+                        "RecordingLink__c" : "",
+                        "InterviewStart__c" : "",
+                        "InterviewDuration__c" : 0,
+                        "InterviewMode__c" : "",
+                        "InternetConnectivity__c" : ""
                     }
                 });
                 //console.log(sendAssessmentEvent);

@@ -8,7 +8,7 @@
   <aura:attribute name="recordID" type="string" />
   <aura:attribute name="duration" type="Integer" />
   <aura:attribute name="startTime" type="Datetime" />
-  
+
   <aura:attribute name="totalScore" type="integer" />
   <aura:attribute name="comment" type="string" />
   <aura:attribute name="result" type="boolean" />
@@ -16,7 +16,7 @@
   <aura:attribute name="typeOfAssociate" type="string" default="" />
   <aura:attribute name="recordingType" type="string" />
   <aura:attribute name="recordingConsent" type="string" />
-  <aura:attribute name="recordingLink" type="string"/>
+  <aura:attribute name="recordingLink" type="string" />
   <aura:attribute name="interviewDate" type="date" />
   <aura:attribute name="interviewStart" type="Datetime" />
   <aura:attribute name="interviewDuration" type="integer" />
@@ -53,12 +53,12 @@
     <br />
 
     <!-- Grid Start -->
-    <section class="slds-grid slds-gutters">
+    <section class="slds-grid slds-wrap">
       <!-- Column 1  FeedBack-->
       <div
         class="slds-col slds-small-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_6-of-12 slds-small-order_2 slds-medium-order_2 slds-large-order_1"
       >
-        <!-- <h1><strong>Overall Feedback</strong></h1> -->
+        <h1><strong>Overall Feedback</strong></h1>
         <lightning:textarea
           aura:id="richComment"
           placeholder="Enter overall feedback here..."
@@ -77,7 +77,7 @@
             <lightning:buttonGroup class="slds-col">
               <lightning:button
                 aura:id="pass"
-                class="buttonWidth"
+                class="buttonWidth text-center"
                 variant="neutral"
                 label="Pass"
                 title="result"
@@ -86,7 +86,7 @@
 
               <lightning:button
                 aura:id="fail"
-                class="ml-0 buttonWidth"
+                class="ml-0 buttonWidth text-center"
                 variant="neutral"
                 label="Fail"
                 title="Fail"
@@ -101,7 +101,7 @@
             <lightning:buttonGroup class="slds-col">
               <lightning:button
                 aura:id="softPass"
-                class="buttonWidth"
+                class="buttonWidth text-center"
                 variant="neutral"
                 label="Pass"
                 title="Soft Skills Pass"
@@ -110,7 +110,7 @@
 
               <lightning:button
                 aura:id="softFail"
-                class="ml-0 buttonWidth"
+                class="ml-0 buttonWidth text-center"
                 variant="neutral"
                 label="Fail"
                 title="Soft Skills Fail"
@@ -181,10 +181,6 @@
           </lightning:select>
 
           <br />
-
-          <h1><strong>Recording: </strong>{!v.recordingLink}</h1>
-
-          <br />
         </div>
       </div>
 
@@ -239,58 +235,75 @@
 
     <br />
 
+    <section class="slds-grid slds-wrap">
+      <div class="slds-col">
+        <h1><strong>Recording Link URL</strong></h1>
+        <lightning:input
+          type="url"
+          name="Recording Link"
+          variant="label-hidden"
+          placeholder="Enter valid URL here..."
+          value="{!v.typeOfAssociate}"
+          onblur="{!c.updateAssessment}"
+        />
+      </div>
+    </section>
+    <br />
+
     <!-- Grid Start -->
     <section class="slds-grid slds-wrap">
-      <h1 class="text-center"><strong>Panel History</strong></h1>
-      <table
-        class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer slds-table_fixed-layout"
-      >
-        <!-- Table Headers -->
-        <thead>
-          <tr class="slds-text-heading_label">
-            <th scope="col">
-              <div class="slds-truncate" title="Date of Interview">Date</div>
-            </th>
-            <th scope="col">
-              <div class="slds-truncate" title="Start Time">Time</div>
-            </th>
-            <th scope="col">
-              <div class="slds-truncate" title="Total Score">Score</div>
-            </th>
-            <th scope="col">
-              <div class="slds-truncate" title="Result">Result</div>
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <!-- Use the Apex model and controller to fetch server side data -->
-          <aura:iteration items="{!v.Assessment}" var="ass">
-            <tr>
-              <th scope="row">
-                <div class="slds-truncate" title="{!ass.Interview_Date__c}"
-                  >{!ass.Interview_Date__c}</div
-                >
+      <div class="slds-col">
+        <h1 class="text-center"><strong>Panel History</strong></h1>
+        <table
+          class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer slds-table_fixed-layout"
+        >
+          <!-- Table Headers -->
+          <thead>
+            <tr class="slds-text-heading_label">
+              <th scope="col">
+                <div class="slds-truncate" title="Date of Interview">Date</div>
               </th>
-              <td>
-                <div class="slds-truncate" title="{!ass.Interview_Start__c}"
-                  >{!ass.Interview_Start__c}</div
-                >
-              </td>
-              <td>
-                <div class="slds-truncate" title="{!ass.Total_Score__c}"
-                  >{!ass.Total_Score__c}</div
-                >
-              </td>
-              <td>
-                <div class="slds-truncate" title="{!ass.OverallPass__c}"
-                  >{!ass.OverallPass__c}</div
-                >
-              </td>
+              <th scope="col">
+                <div class="slds-truncate" title="Start Time">Time</div>
+              </th>
+              <th scope="col">
+                <div class="slds-truncate" title="Total Score">Score</div>
+              </th>
+              <th scope="col">
+                <div class="slds-truncate" title="Result">Result</div>
+              </th>
             </tr>
-          </aura:iteration>
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            <!-- Use the Apex model and controller to fetch server side data -->
+            <aura:iteration items="{!v.Assessment}" var="ass">
+              <tr>
+                <th scope="row">
+                  <div class="slds-truncate" title="{!ass.Interview_Date__c}"
+                    >{!ass.Interview_Date__c}</div
+                  >
+                </th>
+                <td>
+                  <div class="slds-truncate" title="{!ass.Interview_Start__c}"
+                    >{!ass.Interview_Start__c}</div
+                  >
+                </td>
+                <td>
+                  <div class="slds-truncate" title="{!ass.Total_Score__c}"
+                    >{!ass.Total_Score__c}</div
+                  >
+                </td>
+                <td>
+                  <div class="slds-truncate" title="{!ass.OverallPass__c}"
+                    >{!ass.OverallPass__c}</div
+                  >
+                </td>
+              </tr>
+            </aura:iteration>
+          </tbody>
+        </table>
+      </div>
     </section>
     <!-- Grid End -->
   </section>

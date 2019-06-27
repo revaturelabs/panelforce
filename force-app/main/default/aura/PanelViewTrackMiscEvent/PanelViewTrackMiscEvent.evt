@@ -1,8 +1,5 @@
-<aura:event
-  type="APPLICATION"
-  description="Event to transfer assessment record to PanelViewMain"
->
-  <aura:attribute name="updateAssessment" type="PH_Assessment__c" />
+<aura:event type="APPLICATION" description="Event to transfer assessment record to PanelViewMain"> 
+    <aura:attribute name="updateAssessment" type="PH_Assessment__c"/>
 </aura:event>
 
 <!-- REFERENCE: https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/events_component_example.htm -->

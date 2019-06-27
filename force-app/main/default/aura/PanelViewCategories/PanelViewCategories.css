@@ -9,20 +9,12 @@
     font-size: 14px;
 }
 
+
+/* .THIS .slds-box:nth-child(1) {
+    margin: 25px 0px 25px 0px !important;
+} */
+
 .THIS .extraMargin {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.THIS .slds-input {
-    /* background-color: lightgray; */
-    padding-left: 10px;
-}
-
-.THIS .slds-align_absolute-center {
-    text-align: left;
-}
-
-.THIS textarea {
-    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

@@ -8,6 +8,10 @@
     <!-- Attributes to store information based on aura:handler functions -->
     <aura:attribute name="track" type="String" />
     <aura:attribute name="numberofTries" type="Integer" />
+    <aura:attribute name="listFromEvent" type="List" />
+    <aura:attribute name="trackFromEvent" type="Object" />
+
+    <!-- NEW STUFF FROM 6-24-19 -->
     <aura:attribute name="categories" type="AssessmentLineItem__c[]" />
     <aura:attribute name="assessment" type="PH_Assessment__c" />
     <aura:attribute name="startTime" type="Datetime" />
@@ -39,7 +43,7 @@
             <div class="slds-col slds-grid slds-gutters">
 
                 <!-- Panel View Categories on the left side of the screen -->
-                <div class="slds-col slds-size_1-of-3 slds-card">
+                <div class="slds-col slds-size_3-of-7 slds-card">
                     <c:PanelViewCategories categories="{!v.categories}" recordId="{!v.recordId}" />
                 </div>
 
@@ -54,7 +58,7 @@
     </div>
 
     <!-- Event Handles for updating the assessment and category line items -->
-    <aura:handler name="updateAssessmentEvent" event="c:PanelViewTrackMiscEvent" action="{!c.handlePanelAssessmentEvent}" />
+    <aura:handler name="updateTrackEvent" event="c:PanelViewTrackMiscEvent" action="{!c.handlePanelTrackEvent}" />
     <aura:handler name="updateCategoriesEvent" event="c:PanelViewCategoriesEvent" action="{!c.handlePanelCategoriesEvent}" />
 
 </aura:component>

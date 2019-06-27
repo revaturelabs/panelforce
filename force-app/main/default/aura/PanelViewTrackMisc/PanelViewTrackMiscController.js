@@ -23,24 +23,27 @@
 
     // Pass button functionality.
     handlePass: function (cmp, event, helper) {
-        let passButton = cmp.find("pass");
-        let failButton = cmp.find("fail");
+        alert("You clicked: " + event.getSource().get("v.label"));
+        let passClick = event.getSource();
+        let changeFail = cmp.get("v.fail");
 
-        passButton.set("v.variant", "success");
-        $A.util.addClass(passButton, 'white');
+        passClick.iconName = "utility:success";
+        passClick.iconPosition = "right";
 
-        failButton.set("v.variant", "neutral");
+        changeFail.removeAttribute("iconName");
+        changeFail.removeAttribute("iconPosition");
 
         cmp.set("v.result", true);
     },
 
     // Fail button functionality.
     handleFail: function (cmp, event, helper) {
-        let passButton = cmp.find("pass");
-        let failButton = cmp.find("fail");
+        alert("You clicked: " + event.getSource().get("v.label"));
+        let failClick = event.getSource();
+        let changePass = cmp.get("v.pass");
 
-        passButton.set("v.variant", "neutral");
-        $A.util.removeClass(passButton, 'white');
+        failClick.iconName = "utility:clear";
+        failClick.iconPosition = "right";
 
         failButton.set("v.variant", "destructive");
 
@@ -118,9 +121,15 @@
 
         // Updates assessment object of the event parameter to equal the object assessment from above.
         updateAssessmentEvent.setParams({
-            "updateAssessment": assessment
+            "Assessment": assessment
         });
 
         updateAssessmentEvent.fire();
+    },
+
+    // Handle Assessment Event from other component to get Assessment Id.
+    // Need assessment Id for application to work.
+    handleAssessment: function (cmp, event, helper) {
+
     }
 });

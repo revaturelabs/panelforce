@@ -171,8 +171,7 @@
                 AssessLineCat[lItemIndex] = liToChange;
                 component.set("v.lineItemCategories", AssessLineCat);
                 helper.fireInterviewMain(lItemIndex, liToChange);
-            }
-            if (state === "ERROR") {
+            } else if (state === "ERROR") {
                 console.log(a.getError()[0].message);
                 if (liToChange.Status__c) {
                     helper.colorButtons(component, 2);

@@ -16,6 +16,8 @@
             if (state === "SUCCESS") {
                 //set response value in Assessment attribute on component.
                 cmp.set('v.Assessment', response.getReturnValue());
+            } else if (state === "ERROR") {
+                console.log(a.getError()[0].message);
             }
         });
         $A.enqueueAction(action);

@@ -6,8 +6,8 @@
   max-width: 200px;
 }
 
-.THIS .comment-width {
-  max-width: 200px;
+.THIS .slds-textarea {
+  height: 5rem !important;
 }
 
 .THIS .buttonWidth {

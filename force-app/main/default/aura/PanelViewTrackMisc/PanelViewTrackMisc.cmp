@@ -6,6 +6,9 @@
   <!-- Variables -->
   <aura:attribute name="currentAssessment" type="PH_Assessment__c" />
   <aura:attribute name="recordID" type="string" />
+  <aura:attribute name="duration" type="Integer" />
+  <aura:attribute name="startTime" type="Datetime" />
+  
   <aura:attribute name="totalScore" type="integer" />
   <aura:attribute name="comment" type="string" />
   <aura:attribute name="result" type="boolean" />
@@ -13,7 +16,7 @@
   <aura:attribute name="typeOfAssociate" type="string" default="" />
   <aura:attribute name="recordingType" type="string" />
   <aura:attribute name="recordingConsent" type="string" />
-  <aura:attribute name="recordingLink" type="string" />
+  <aura:attribute name="recordingLink" type="string"/>
   <aura:attribute name="interviewDate" type="date" />
   <aura:attribute name="interviewStart" type="time" />
   <aura:attribute name="interviewDuration" type="integer" />
@@ -50,71 +53,71 @@
     <br />
 
     <!-- Grid Start -->
-    <section class="slds-grid slds-wrap">
+    <section class="slds-grid slds-gutters">
       <!-- Column 1  FeedBack-->
       <div
         class="slds-col slds-small-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_6-of-12 slds-small-order_2 slds-medium-order_2 slds-large-order_1"
       >
-        <h1><strong>Overall Feedback</strong></h1>
+        <!-- <h1><strong>Overall Feedback</strong></h1> -->
         <lightning:textarea
           aura:id="richComment"
-          class="comment-width"
-          placeholder="Enter comment here..."
-          onblur="{!c.updateAssessment}"
+          placeholder="Enter overall feedback here..."
           variant="label-hidden"
           value="{!v.comment}"
-        >
-        </lightning:textarea>
+        />
       </div>
 
       <!-- Column 2 Pass Buttons-->
       <div
         class="slds-col slds-small-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_6-of-12 slds-small-order_1 slds-medium-order_1 slds-large-order_2"
       >
-        <div class="text-right">
-          <h1 class="inline-element"><strong>Result: </strong></h1>
-          <lightning:buttonGroup class="inline-element">
-            <lightning:button
-              aura:id="pass"
-              class="buttonWidth"
-              variant="neutral"
-              label="P"
-              title="result"
-              onclick="{!c.handlePass}"
-            />
+        <div class="slds-grid slds-grid_vertical">
+          <div class="slds-col slds-grid slds-grid_align-spread">
+            <strong class="slds-col slds-align-middle">Result:</strong>
+            <lightning:buttonGroup class="slds-col">
+              <lightning:button
+                aura:id="pass"
+                class="buttonWidth"
+                variant="neutral"
+                label="Pass"
+                title="result"
+                onclick="{!c.handlePass}"
+              />
 
-            <lightning:button
-              aura:id="fail"
-              class="ml-0 buttonWidth"
-              variant="neutral"
-              label="F"
-              title="Fail"
-              onclick="{!c.handleFail}"
-            />
-          </lightning:buttonGroup>
-
+              <lightning:button
+                aura:id="fail"
+                class="ml-0 buttonWidth"
+                variant="neutral"
+                label="Fail"
+                title="Fail"
+                onclick="{!c.handleFail}"
+              />
+            </lightning:buttonGroup>
+          </div>
           <div><br /></div>
 
-          <h1 class="inline-element"><strong>Soft Skills: </strong></h1>
-          <lightning:buttonGroup class="inline-element">
-            <lightning:button
-              aura:id="softPass"
-              class="buttonWidth"
-              variant="neutral"
-              label="P"
-              title="Soft Skills Pass"
-              onclick="{!c.softPass}"
-            />
+          <div class="slds-col slds-grid slds-grid_align-spread">
+            <strong class="slds-col slds-align-middle">Soft Skills:</strong>
+            <lightning:buttonGroup class="slds-col">
+              <lightning:button
+                aura:id="softPass"
+                class="buttonWidth"
+                variant="neutral"
+                label="Pass"
+                title="Soft Skills Pass"
+                onclick="{!c.softPass}"
+              />
 
-            <lightning:button
-              aura:id="softFail"
-              class="ml-0 buttonWidth"
-              variant="neutral"
-              label="F"
-              title="Soft Skills Fail"
-              onclick="{!c.softFail}"
-            />
-          </lightning:buttonGroup>
+              <lightning:button
+                aura:id="softFail"
+                class="ml-0 buttonWidth"
+                variant="neutral"
+                label="Fail"
+                title="Soft Skills Fail"
+                onclick="{!c.softFail}"
+              />
+            </lightning:buttonGroup>
+          </div>
         </div>
       </div>
     </section>

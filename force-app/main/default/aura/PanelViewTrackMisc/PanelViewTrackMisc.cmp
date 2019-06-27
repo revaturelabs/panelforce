@@ -16,9 +16,9 @@
   <aura:attribute name="typeOfAssociate" type="string" default="" />
   <aura:attribute name="recordingType" type="string" />
   <aura:attribute name="recordingConsent" type="string" />
-  <aura:attribute name="recordingLink" type="string" default="https://playful-hawk-vok3a3-dev-ed.lightning.force.com/lightning/r/Contact/0034P00002U25HuQAJ/view"/>
+  <aura:attribute name="recordingLink" type="string"/>
   <aura:attribute name="interviewDate" type="date" />
-  <aura:attribute name="interviewStart" type="time" />
+  <aura:attribute name="interviewStart" type="Datetime" />
   <aura:attribute name="interviewDuration" type="integer" />
   <aura:attribute name="interviewMode" type="string" />
   <aura:attribute name="internetConnectivity" type="string" />

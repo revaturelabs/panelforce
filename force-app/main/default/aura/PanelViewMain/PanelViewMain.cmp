@@ -15,7 +15,7 @@
     <force:recordData recordId="{!v.recordId}" fields="Name" targetFields="{!v.contactRecord}" />
 
     <!-- All encompasing Margin -->
-    <div class="slds-m-around_xx-large">
+    <div class="slds-m-around_small">
 
         <!-- The Header of the component -->
         <div class="slds-grid slds-grid_vertical">
@@ -35,15 +35,15 @@
                 <lightning:button class="slds-col slds-align_right slds-button" variant="neutral" label="Save" title="Base action" onclick="{! c.save }" />
             </div>
 
-            <div class="slds-col slds-grid slds-gutters">
+            <div class="slds-col slds-grid slds-gutters slds-p-top_small">
 
                 <!-- Panel View Categories on the left side of the screen -->
-                <div class="slds-col slds-size_1-of-3 slds-card">
+                <div class="slds-col slds-size_1-of-3 slds-card slds-p-left_none">
                     <c:PanelViewCategories categories="{!v.categories}" recordId="{!v.recordId}" />
                 </div>
 
                 <!-- Panel View Assessment on the right side of the screen -->
-                <div class="slds-col slds-size_2-of-3 slds-card slds-has-top-magnet">
+                <div class="slds-col slds-size_2-of-3 slds-card slds-has-top-magnet slds-p-right_none">
                     <c:PanelViewTrackMisc currentAssessment="{!v.assessment}" />
                 </div>
 

@@ -2,6 +2,8 @@
     // Initialize with records for Panel History section.
     init: function (cmp) {
 
+        cmp.set('v.recordingLink', null);
+
         var action = cmp.get('c.fetchAssessments');
 
         action.setParams({
@@ -87,40 +89,39 @@
         //set action to call fetchRecordTypeId method from Server-side controller
         var action = component.get("c.fetchRecordTypeId");
 
-        let RTId;
         action.setCallback(this, function (a) {
             if (a.getState() === "SUCCESS") {
-                RTId = a.getReturnValue();
+            let RTId = a.getReturnValue();
+
+                // References Custom Field names that may not exist. 
+                // Sets values of object fields and sends them to PanelViewMain component. 
+                let assessment = {
+                    sobjectType: "PH_Assessment__c",
+                    id: cmp.get("v.currentAssessment".id),
+                    RecordTypeID: RTId,
+                    Total_Score__c: cmp.get("v.totalScore"),
+                    Comment__c: cmp.get("v.comment"),
+                    OverallPass__c: cmp.get("v.result"),
+                    Soft_Skills_Pass__c: cmp.get("v.softSkillsPass"),
+                    Types_of_Associates__c: cmp.get("v.typeOfAssociate"),
+                    Recording_Type__c: cmp.get("v.recordingType"),
+                    Recording_Consent__c: cmp.get("v.recordingConsent"),
+                    Recording_Link__c: cmp.get("v.recordingLink"),
+                    Interview_Date__c: cmp.get("v.interviewDate"),
+                    Interview_Start__c: cmp.get("v.interviewStart"),
+                    Interview_Duration__c: cmp.get("v.interviewDuration"),
+                    Interview_Mode__c: cmp.get("v.interviewMode"),
+                    Internet_Connectivity__c: cmp.get("v.internetConnectivity")
+                };
+
+                // Updates assessment object of the event parameter to equal the object assessment from above.
+                updateAssessmentEvent.setParams({
+                    "updateAssessment": assessment
+                });
+
+                updateAssessmentEvent.fire();
             }
         });
         $A.enqueueAction(action);
-
-        // References Custom Field names that may not exist. 
-        // Sets values of object fields and sends them to PanelViewMain component. 
-        let assessment = {
-            sobjectType: "PH_Assessment__c",
-            id: cmp.get("v.currentAssessment".id),
-            RecordTypeID: RTId,
-            Total_Score__c: cmp.get("v.totalScore"),
-            Comment__c: cmp.get("v.comment"),
-            OverallPass__c: cmp.get("v.result"),
-            Soft_Skills_Pass__c: cmp.get("v.softSkillsPass"),
-            Types_of_Associates__c: cmp.get("v.typeOfAssociate"),
-            Recording_Type__c: cmp.get("v.recordingType"),
-            Recording_Consent__c: cmp.get("v.recordingConsent"),
-            Recording_Link__c: cmp.get("v.recordingLink"),
-            Interview_Date__c: cmp.get("v.interviewDate"),
-            Interview_Start__c: cmp.get("v.interviewStart"),
-            Interview_Duration__c: cmp.get("v.interviewDuration"),
-            Interview_Mode__c: cmp.get("v.interviewMode"),
-            Internet_Connectivity__c: cmp.get("v.internetConnectivity")
-        };
-
-        // Updates assessment object of the event parameter to equal the object assessment from above.
-        updateAssessmentEvent.setParams({
-            "updateAssessment": assessment
-        });
-
-        updateAssessmentEvent.fire();
     }
 });

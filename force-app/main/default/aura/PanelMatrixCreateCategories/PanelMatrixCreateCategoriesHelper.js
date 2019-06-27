@@ -36,20 +36,27 @@
     },
 
     editCategoryHelper : function(component, event, helper) {
-        let btnTitle = event.getSource().get('v.title');
-        let category = component.get('v.categories');
-        component.set('v.newCategory','');
-        component.set('v.newCategory', category[btnTitle]);
-        helper.scoreErrorHelper(component, event, helper);
-        helper.totalScoreHelper(component);
-        component.set('v.modal', 'Edit Category');
-        component.set('v.viewModal', true);
+        let eventCat = event.getParam("category");
+        console.log(JSON.stringify(eventCat));
+        if (eventCat.Id == null) {
+            helper.deleteCategoryHelper(component, event, helper);
+        } else {
+            let category = component.get('v.categories');
+            let btnTitle = event.getParam("index");
+            category[btnTitle] = eventCat;
+            component.set('v.newCategory','');
+            component.set('v.newCategory', category[btnTitle]);
+            helper.scoreErrorHelper(component, event, helper);
+            helper.totalScoreHelper(component);
+            component.set('v.modal', 'Edit Category');
+            component.set('v.viewModal', true);
+        }
     },
 
     deleteCategoryHelper : function(component, event, helper) {
         let deleteCat = component.get('c.removeCategory');
         let allCats = component.get('v.categories');
-        let index = event.getSource().get('v.title');
+        let index = event.getParam("index");
         let catToRemove = allCats[index];
         deleteCat.setParams({'panel': catToRemove});
         deleteCat.setCallback(this, function(response) {

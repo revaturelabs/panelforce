@@ -1,0 +1,28 @@
+<aura:component>
+    <aura:registerEvent name="categoryChange" type="c:PanelMatrixItemEvent" />
+    <aura:attribute name="index" type="Integer"/>
+    <aura:attribute name="category" type="PanelCategory__c" />
+
+    <div class="slds-col slds-medium-size_1-of-3 slds-small-size_3-of-3 slds-p-bottom_small">
+        <lightning:card>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_2-of-3">
+                    <h1 class="cat-head">{!v.category.Name}</h1>  
+                </div>
+                <div class="btn-icon btn-right slds-col slds-size_1-of-3">
+                        <span class="btn-edit">
+                            <lightning:icon class="btn-color" iconName="action:edit" size="xx-small" alternativeText="Edit" onclick="{!c.categoryEdit}"/>
+                        </span>
+                        <span class="btn-error">
+                            <lightning:icon class="btn-color" iconName="action:close" size="xx-small" alternativeText="Delete" onclick="{!c.categoryDelete}"/>
+                        </span>
+                    </div>
+                <div class="slds-p-top_small slds-col slds-size_2-of-2">
+                    <p class="max-score-size slds-align_absolute-center">{!v.category.maxScore__c}</p>
+                </div> 
+            </div>
+               
+        </lightning:card>
+    </div>
+
+</aura:component>

@@ -1,4 +1,4 @@
-<aura:component controller="PanelViewCategoriesController" implements="flexipage:availableForRecordHome, force:hasRecordId">
+<aura:component implements="flexipage:availableForRecordHome, force:hasRecordId">
     <!-- Testing for git -->
 
     <!-- Current assessment record id -->

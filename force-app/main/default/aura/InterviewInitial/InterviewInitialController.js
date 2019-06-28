@@ -32,7 +32,7 @@
                         "Contact__c" : component.get("v.recordId"),
                         "Comment__c" : "",
                         "Duration__c" : 0,
-                        "StartTime__c" : null,
+                        "StartTime__c" : Date(Date.now()),
                         "TotalScore__c" : 0,
                         "Result__c" : false,
                         "SoftSkillsPass__c": false,

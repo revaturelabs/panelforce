@@ -6,6 +6,16 @@
 
         var action = cmp.get('c.fetchAssessments');
 
+        console.log("Assessment from misc" + JSON.stringify(cmp.get('v.currentAssessment')));
+
+        // months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        let d = cmp.get("v.currentAssessment").StartTime__c;
+        console.log(d);
+        let darr = d.split(' ');
+        let res = '';
+        res += darr[1] + ' ' + darr[2] + ' ' + darr[3];
+        cmp.set("v.interviewStart", res);
+        cmp.set("v.interviewStarttime", darr[4]);
         action.setParams({
             "ass": cmp.get('v.currentAssessment')
         })
@@ -17,7 +27,7 @@
             var state = response.getState();
             if (state === "SUCCESS") {
                 //set response value in Assessment attribute on component.
-                cmp.set('v.Assessment', response.getReturnValue());
+                // cmp.set('v.Assessment', response.getReturnValue());
             } else if (state === "ERROR") {
                 console.log(a.getError()[0].message);
             }

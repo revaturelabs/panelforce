@@ -120,9 +120,6 @@
         if(com == "") {
             component.set("v.errorM",true);
         }
-        else {
-            component.set('v.openModal2',true);
-        }
     },
 
 
@@ -140,20 +137,25 @@
         
         let aid = event.getSource().getLocalId();
         let newStatus = (aid == 'pass') ? true : false;
-        if (liToChange.Interviewed__c && newStatus && liToChange.Status__c) {
-            liToChange.Status__c = false
-            liToChange.Interviewed__c = false;
-            helper.colorButtons(component, 2);
-        } else if (liToChange.Interviewed__c && (!newStatus) && (!liToChange.Status__c)) {
-            liToChange.Status__c = false
-            liToChange.Interviewed__c = false;
-            helper.colorButtons(component, 2);
-        } else {
-            if (aid != 'comm') {
-                liToChange.Status__c = newStatus;
-                liToChange.Interviewed__c = true;
-                if (liToChange.Status__c) helper.colorButtons(component, 1);
-                else helper.colorButtons(component, 0);
+        if (aid != 'comm') {
+            if (liToChange.Interviewed__c && newStatus && liToChange.Status__c) {
+                liToChange.Status__c = false
+                liToChange.Interviewed__c = false;
+                helper.colorButtons(component, 2);
+            } else if (liToChange.Interviewed__c && (!newStatus) && (!liToChange.Status__c)) {
+                    liToChange.Status__c = false
+                    liToChange.Interviewed__c = false;
+                    helper.colorButtons(component, 2);
+            } else {
+                // this does that (just read the code, duh)
+                if (com.length == 0 && (!newStatus)) {
+                    component.set("v.errorM", true);
+                } else {   
+                    liToChange.Status__c = newStatus;
+                    liToChange.Interviewed__c = true;
+                    if (liToChange.Status__c) helper.colorButtons(component, 1);
+                    else helper.colorButtons(component, 0);
+                }
             }
         }
 

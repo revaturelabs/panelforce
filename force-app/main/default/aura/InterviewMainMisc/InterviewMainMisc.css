@@ -1,3 +1,4 @@
+/* RED */
 .THIS .red-btn {
     background: token(backgroundFailure);
     color: token(redBtnTextColor);

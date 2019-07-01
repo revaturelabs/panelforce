@@ -8,7 +8,6 @@
   <aura:attribute name="recordID" type="string" />
   <aura:attribute name="duration" type="Integer" />
   <aura:attribute name="startTime" type="Datetime" />
-  <aura:attribute name="interviewDate" type="date" />
 
   <aura:attribute name="totalScore" type="integer" />
   <aura:attribute name="comment" type="string" />
@@ -18,9 +17,9 @@
   <aura:attribute name="recordingType" type="string" />
   <aura:attribute name="recordingConsent" type="string" />
   <aura:attribute name="recordingLink" type="string" />
-  <aura:attribute name="interviewStart" type="String" />
-  <aura:attribute name="interviewStarttime" type="String" />
-  <aura:attribute name="interviewDuration" type="String" default="7 minutes"/>
+  <aura:attribute name="interviewDate" type="date" />
+  <aura:attribute name="interviewStart" type="time" />
+  <aura:attribute name="interviewDuration" type="integer" />
   <aura:attribute name="interviewMode" type="string" />
   <aura:attribute name="internetConnectivity" type="string" />
 
@@ -28,16 +27,6 @@
     name="Assessment"
     type="PH_Assessment__c[]"
     description="Store panels to display in panel history section"
-    default="[{
-      'Interview_Date__c' : '06/25/2019',
-      'Total_Score__c' : 67,
-      'OverallPass__c' : 'Fail'
-    },
-    {
-      'Interview_Date__c' : '06/26/2019',
-      'Total_Score__c' : 79,
-      'OverallPass__c' : 'Fail'
-    }]"
   />
 
   <!-- Events -->
@@ -199,10 +188,10 @@
       <div
         class="slds-col slds-small-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_6-of-12 slds-large-order_1"
       >
-        <h1><strong>Interview Date: </strong>{!v.interviewStart}</h1>
+        <h1><strong>Interview Date: </strong>{!v.interviewDate}</h1>
         <br />
 
-        <h1><strong>Interview Time: </strong>{!v.interviewStarttime}</h1>
+        <h1><strong>Interview Time: </strong>{!v.interviewStart}</h1>
         <br />
 
         <h1><strong>Interview Duration: </strong>{!v.interviewDuration}</h1>
@@ -274,6 +263,9 @@
                 <div class="slds-truncate" title="Date of Interview">Date</div>
               </th>
               <th scope="col">
+                <div class="slds-truncate" title="Start Time">Time</div>
+              </th>
+              <th scope="col">
                 <div class="slds-truncate" title="Total Score">Score</div>
               </th>
               <th scope="col">
@@ -291,6 +283,11 @@
                     >{!ass.Interview_Date__c}</div
                   >
                 </th>
+                <td>
+                  <div class="slds-truncate" title="{!ass.Interview_Start__c}"
+                    >{!ass.Interview_Start__c}</div
+                  >
+                </td>
                 <td>
                   <div class="slds-truncate" title="{!ass.Total_Score__c}"
                     >{!ass.Total_Score__c}</div

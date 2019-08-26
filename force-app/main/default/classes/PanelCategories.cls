@@ -1,9 +1,11 @@
-public with sharing class PanelCategories {
+public without sharing class PanelCategories {
     // Saving the assessment
     @AuraEnabled
     public static void saveAssessment(List<AssessmentLineItem__c> aLIList, PH_Assessment__c assessment){
-        upsert aLIList;
-        upsert assessment;
+        System.debug('aLIList: ' + aLIList);
+        System.debug('assessment: ' + assessment);
+        insert aLIList;
+        insert assessment;
     }
 
     // Retrieve the track that a candidate is on

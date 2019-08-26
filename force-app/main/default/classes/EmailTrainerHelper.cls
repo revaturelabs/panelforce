@@ -1,43 +1,54 @@
-public with sharing class EmailTrainerHelper {
-    public static void ETrainer(List<PH_Assessment__c> phAList) {
-        List<ID> cIDList = new List<ID>();
-        ID rID = [SELECT id FROM recordtype WHERE name = 'Panel'][0].id;
-        for (PH_Assessment__c phA : phAList) {
-            if (phA.recordtypeID == rID) cIDList.add(phA.Contact__c);
+public without sharing class EmailTrainerHelper {
+    public static void ETrainer(List<PH_Assessment__c> assessmentList) {
+        
+        List<Id> listOfContactIds = new List<Id>();
+        
+        ID panelRecordTypeId = [SELECT Id FROM RecordType WHERE Name = 'Panel'][0].Id;
+        
+        // Get a list of the Associate IDs using the Assessments that are Panels; not QC.
+        for (PH_Assessment__c assessment : assessmentList) {
+            if (assessment.recordTypeID == panelRecordTypeId)
+                listOfContactIds.add(assessment.Contact__c);
         }
-        List<Contact> cList = new List<Contact>();
-        for (Contact c : [SELECT Name FROM Contact where ID IN :cIDList]) {
-            cList.add(c);
+        
+        // List of Associates
+        List<Contact> contactList = new List<Contact>();
+        for (Contact associate : [SELECT Name FROM Contact where Id IN :listOfContactIds]) {
+            contactList.add(associate);
         }
-        List<ph_trainingassignment__c> phTList = new List<ph_trainingassignment__c>();
-        for (ph_trainingassignment__c phT : [SELECT contact__c, PH_Training__r.ownerID
-                                                FROM ph_trainingassignment__c
-                                                WHERE Contact__c IN :cIDList]) {
-            phTList.add(phT);
+        
+        // List of Training Assignments given the above list of Associates
+        List<PH_TrainingAssignment__c> associateTrainingAssignments = new List<PH_TrainingAssignment__c>();
+        for (PH_TrainingAssignment__c trainingAssignment : [SELECT Contact__c, PH_Training__r.ownerID
+                                                            FROM PH_TrainingAssignment__c
+                                                            WHERE Contact__c IN :listOfContactIds]) {
+            associateTrainingAssignments.add(trainingAssignment);
         }
-        List<ID> phTIDList = new List<ID>();
-        for (Ph_TrainingAssignment__c phT : phTList) {
-            phTIDList.add(phT.PH_Training__r.ownerID);
+        
+        List<Id> trainerIds = new List<Id>();
+        for (PH_TrainingAssignment__c trainingAssignment : associateTrainingAssignments ) {
+            trainerIds.add(trainingAssignment.PH_Training__r.ownerId);
         }
-        List<User> uList = new List<User>();
-        for (User u : [SELECT id, email FROM user WHERE id in :phTIDList]) {
-            uList.add(u);
+        List<User> userList = new List<User>();
+        for (User trainer : [SELECT Id, Email FROM User WHERE Id in :trainerIds]) {
+            userList.add(trainer);
         }
     
 
-        for (Contact c : cList) {
-            string [] toaddress;
-            for (ph_trainingassignment__c phT : phTList) {
-                if (phT.contact__c == c.id) {
-                    for (User u : uList) {
-                        if (u.id == phT.PH_Training__r.ownerID) toaddress= new String[]{u.email}; 
+        for (Contact associate : contactList) {
+            String [] toaddress;
+            for (PH_TrainingAssignment__c trainingAssignment : associateTrainingAssignments) {
+                if (trainingAssignment.Contact__c == associate.id) {
+                    for (User trainer : userList) {
+                        if (trainer.Id == trainingAssignment.PH_Training__r.ownerId)
+                            toaddress = new String[]{trainer.email}; 
                     }
                 }
             }
             Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
             email.setSubject('Candidate has taken their panel.');
 
-            String sCandidate = 'Candidate has taken their panel.\n' + c.Name;
+            String sCandidate = 'Candidate has taken their panel.\n' + associate.Name;
    
             email.setPlainTextBody(sCandidate);
             email.setToAddresses(toaddress);

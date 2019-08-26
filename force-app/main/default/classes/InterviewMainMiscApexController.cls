@@ -1,4 +1,4 @@
-public with sharing class InterviewMainMiscApexController {
+public without sharing class InterviewMainMiscApexController {
   
     @AuraEnabled
     public static void insertTimeStamp(List<Integer> sTimeStamp, PH_Assessment__c phAss){
@@ -16,12 +16,10 @@ public with sharing class InterviewMainMiscApexController {
     }
 
     public static void totalTimeDiff(Integer totalTime, PH_Assessment__c phAss){
-        ID phAssID = phAss.id;
-        Time_Stamp__c updateTotal = [Select milliSecs__c from Time_Stamp__c where id =: phAssID];
-        updateTotal.Total_Interview_Length__c = totalTime - updateTotal.milliSecs__c;
-        upsert updateTotal;
-
-
+       // ID phAssID = phAss.id;
+       // Time_Stamp__c updateTotal = [Select milliSecs__c from Time_Stamp__c where id =: phAssID];
+       // updateTotal.Total_Interview_Length__c = totalTime - updateTotal.milliSecs__c;
+       // upsert updateTotal;
     }
 
     @AuraEnabled

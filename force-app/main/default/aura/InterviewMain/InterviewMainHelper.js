@@ -1,5 +1,5 @@
 ({
-
+    
     changeEvent : function(currIndex, categories) {
         //Get the event
         let compEvent = $A.get("e.c:InterviewMainEvent");
@@ -12,56 +12,75 @@
         compEvent.fire();
     },
     
-    buttonChange : function(component, whichOne){
-        let buttonId;
-        let buttonName;
-        let buttonIcon;
-        let buttonText;
-        let buttonAction;
-        let buttonClass;
-        let iconClass;
-
-        //Figure out which button to change
-        if(whichOne == "forward"){
-            //Create the finish button parameters
-            buttonId = "finish";
-            buttonName = "finishButton";
-            buttonIcon = "utility:check";
-            buttonText = "Finish Interview";
-            buttonAction = "c.appStateChange";
-            buttonClass = "finish button slds-float_right";
-            iconClass = "icon checkmark";
-
-        }else if(whichOne == "backward"){
-            //Create the forward button parameters
-            buttonId = "forward";
-            buttonName = "forwardButton";
-            buttonIcon = "utility:chevronright";
-            buttonText = "Next Category";
-            buttonAction = "c.categoriesChange";
-            buttonClass = "next button slds-float_right";
-            iconClass = "icon arrow";
-        }
-        //Create the button
-        $A.createComponent(
-            "lightning:buttonIcon",
-            {
-                "aura:id": buttonId,
-                "name": buttonName,
-                "iconName": buttonIcon,
-                "iconClass": iconClass,
-                "alternativeText": buttonText,
+    buttonChange : function(component, buttonPressed) {
+        //let button = (buttonPressed === "forward") ? this.createFinishButon(component) : this.createForwardButton(component);
+        //console.log('here');
+        //$A.createComponent("lightning:buttonIcon", button, setNewButton());
+        //console.log('not here');
+        var button;
+        if (buttonPressed === "forward") {
+            button = {
+                "aura:id" : "finish",
+                "name" : "finishButton",
+                "iconName" : "utility:check",
+                "iconClass" : "icon checkmark",
+                "alternativeText" : "Finish Interview",
                 "size" : "large",
-                "variant": "bare",
-                "class" : buttonClass,
-                "onclick": component.getReference(buttonAction)
-            },
-            function(newButton){
-                var divComponent = component.find("rightbutton");
-                divComponent.set("v.body",newButton);
-            }
-        );
-
-    }
-
+                "variant" : "bare",
+                "class" : "finish button slds-float_right",
+                "onclick" : component.getReference("c.appStateChange")
+            };
+        } else {
+            button = {
+                "aura:id" : "forward",
+                "name" : "forwardButton",
+                "iconName" : "utility:chevronright",
+                "iconClass" : "icon arrow",
+                "alternativeText" : "Next Category",
+                "size" : "large",
+                "variant" : "bare",
+                "class" : "next button slds-float_right",
+                "onclick" : component.getReference("c.categoriesChange")
+            };
+        }
+        
+        $A.createComponent("lightning:buttonIcon", button, function(newButton) {
+            let buttonContainer = component.find("rightbutton");
+            buttonContainer.set("v.body", newButton);
+        });
+    },        
+    
+    setNewButton : function(component, newButton) {
+        let buttonContainer = component.find("rightbutton");
+        buttonContainer.set("v.body", newButton);
+    },
+    
+    createForwardButton: function(component) {
+        return {
+            "aura:id" : "forward",
+            "name" : "forwardButton",
+            "iconName" : "utility:chevronright",
+            "iconClass" : "icon arrow",
+            "alternativeText" : "Next Category",
+            "size" : "large",
+            "variant" : "bare",
+            "class" : "next button slds-float_right",
+            "onclick" : component.getReference("c.categoriesChange")
+        }
+    },
+    
+    createFinishButon: function(component) {
+        return {
+            "aura:id" : "finish",
+            "name" : "finishButton",
+            "iconName" : "utility:check",
+            "iconClass" : "icon checkmark",
+            "alternativeText" : "Finish Interview",
+            "size" : "large",
+            "variant" : "bare",
+            "class" : "finish button slds-float_right",
+            "onclick" : component.getReference("c.appStateChange")
+        }
+    },
+    
 })

@@ -1,4 +1,4 @@
-public class CreateCategoriesController {
+public without sharing class CreateCategoriesController {
  
     @AuraEnabled
     public static List<PanelCategory__c> getCategories(){

@@ -1,6 +1,6 @@
 <aura:component
   controller="PanelViewTrackMiscController"
-  implements="flexipage:availableForAllPageTypes, flexipage:availableForRecordHome, force:hasRecordId"
+  implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
   access="global"
 >
   <!-- Variables -->

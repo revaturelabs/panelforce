@@ -3,7 +3,7 @@
     <!-- Register Event for Interview App -->
     <aura:registerEvent name="appStateChange" type="c:InterviewAppStateEvent" />
     <aura:registerEvent name="assessmentEvent" type="c:PanelViewTrackMiscEvent" />
-    <aura:attribute name="track" type="Object" />
+    <aura:attribute name="track" type="Object" description="Training Track for current Associate."/>
 
     <aura:attribute name="record" type="Object" />
     <aura:attribute name="recordTemplate" type="Object" />

@@ -15,7 +15,7 @@
             }
         });
         $A.enqueueAction(action);
-
+        
         var action2 = component.get("c.getNumberofTries");
         action2.setParams({ "contactID": contactID });
         action2.setCallback(this, function(response2) {
@@ -31,7 +31,7 @@
         });
         $A.enqueueAction(action2);
     },
-
+    
     handlePanelAssessmentEvent: function (cmp, event) {
         var panelAssessment = event.getParam("updateAssessment");
         cmp.set("v.assessment", panelAssessment);
@@ -41,14 +41,16 @@
         var listOfCategories = event.getParam("updateCategories");
         cmp.set("v.categories", listOfCategories);
     },
-
+    
     save: function (component, event, helper) {
+        console.log('saving getting called');
         var lEventCategories = component.get("v.categories");
-         var lEventassessment = component.get("v.assessment");
-
+        console.log('lEventCategories: ' + lEventCategories);
+        var lEventassessment = component.get("v.assessment");
+        console.log('lEventassessment: ' + lEventassessment);
         var sCategories = component.get("c.saveAssessment");
         sCategories.setParams({"pcList" : lEventCategories,
-                                 "assessment" : lEventassessment});
+                               "assessment" : lEventassessment});
         sCategories.setCallback(this,function(response){
             var state = response.getState();
             if (state === "SUCCESS") {
@@ -60,7 +62,7 @@
                 if (errors) {
                     if (errors[0] && errors[0].message) {
                         console.log("Error message: " +
-                            errors[0].message);
+                                    errors[0].message);
                     }
                 } else {
                     console.log("Unknown error");

@@ -1,6 +1,6 @@
 @isTest(SeeAllData=True)
 public with sharing class testData {
-    @isTest(SeeAllData=True)
+   /* @isTest(SeeAllData=True)
     public Static Void testData() {
         PH_TrainingTrack__c tt = new PH_TrainingTrack__c();
         tt.Name = 'test';
@@ -74,5 +74,5 @@ public with sharing class testData {
         insert ts;
 
         // or for each object insert 'test';
-    }
+    }*/
 }

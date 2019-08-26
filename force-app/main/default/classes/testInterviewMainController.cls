@@ -1,5 +1,5 @@
 @isTest
-public with sharing class testInterviewMainController {
+public without sharing class testInterviewMainController {
     
     @isTest static void TestgetUpdatedCategories() {
         List<AssessmentLineItem__c> assLI = [SELECT Id FROM AssessmentLineItem__c LIMIT 2];

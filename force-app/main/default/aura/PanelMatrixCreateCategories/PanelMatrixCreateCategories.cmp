@@ -1,6 +1,6 @@
-<aura:component controller="CreateCategoriesController" 
+<aura:component 
     implements="force:lightningQuickAction,force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes"
-    access="global">
+    access="global" controller="CreateCategoriesController">
     <aura:html tag="style">
         .slds-modal__container {
             height : auto;

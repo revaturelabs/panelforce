@@ -1,4 +1,4 @@
-public with sharing class ProgressBarController {
+public without sharing class ProgressBarController {
     
     @AuraEnabled
     public static List<AssessmentLineItem__c> getCategories(){

@@ -1,4 +1,4 @@
-public with sharing class TrackController {
+public without sharing class TrackController {
     // class for passing information back to InterviewInitial component.
     @AuraEnabled
     public static Account getAccount(Id accountId) {
@@ -61,14 +61,6 @@ public with sharing class TrackController {
         insert loali;
         return loali;
     }
-
-    // There's no direct relationship in the data model
-    // hence the SOQL statement below.
-    //public cody() {
-    //    [SELECT PH_TrainingTrack__r.Name FROM PH_Training__c
-    //    WHERE Id IN (SELECT PH_Training__c FROM PH_TrainingAssignment__c WHERE Contact__c = :contactId)][0].PH_TrainingTrack__r.Name;
-    //}
-
     public TrackController() {
 
     }

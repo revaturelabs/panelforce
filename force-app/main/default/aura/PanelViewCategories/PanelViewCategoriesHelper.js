@@ -92,6 +92,7 @@
     // Fires the update event to the parent controller
     updateCategories: function(component, event, helper) {
         let categories = component.get("v.categories");
+        System.debug('categories updateCategories: ' + categories);
         let customEvent = component.getEvent("updateCategoriesEvent");
         customEvent.setParams({
             updateCategories: categories

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="force.apex" timestamp="2019-08-27T15:39:56-04:00" hostname="https://sppanelforce-dev-ed.my.salesforce.com" tests="1" failures="1"  errors="0"  time="0.02">
+        <properties>
+            <property name="outcome" value="Failed"/>
+            <property name="testsRan" value="1"/>
+            <property name="passing" value="0"/>
+            <property name="failing" value="1"/>
+            <property name="skipped" value="0"/>
+            <property name="passRate" value="0%"/>
+            <property name="failRate" value="100%"/>
+            <property name="testStartTime" value="Aug 27, 2019 3:39 PM"/>
+            <property name="testExecutionTime" value="0.02 s"/>
+            <property name="testTotalTime" value="0.02 s"/>
+            <property name="commandTime" value="4.04 s"/>
+            <property name="hostname" value="https://sppanelforce-dev-ed.my.salesforce.com"/>
+            <property name="orgId" value="00D3i000000uSoYEAU"/>
+            <property name="username" value="sp@p3.com"/>
+            <property name="testRunId" value="7073i000008ydzy"/>
+            <property name="userId" value="0053i000002NdsxAAC"/>
+        </properties>
+        <testcase name="testAll" classname="InterviewMainMiscApexControllerTests" time="0.02">
+            <failure message="System.QueryException: List has no rows for assignment to SObject"><![CDATA[Class.InterviewMainMiscApexControllerTests.testAll: line 5, column 1]]></failure>
+        </testcase>
+    </testsuite>
+</testsuites>

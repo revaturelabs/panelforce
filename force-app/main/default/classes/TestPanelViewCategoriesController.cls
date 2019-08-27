@@ -1,7 +1,7 @@
 @isTest
-public class TestProgressBarController {
+public class TestPanelViewCategoriesController {
     
-    @TestSetup
+    @testSetup
     public static void setup() {
         PH_TrainingTrack__c testRecordPH_TrainingTrack = new PH_TrainingTrack__c();
         testRecordPH_TrainingTrack.Name = 'testRecordPH_TrainingTrack';
@@ -24,11 +24,11 @@ public class TestProgressBarController {
         insert testRecordAssessmentLineItem;
     }
     
-    
     @isTest
-    public static void testGetCategories() {
-        List<AssessmentLineItem__c> testResultsList = ProgressBarController.getCategories();
-        System.AssertEquals('testRecordAssessmentLineItem',testResultsList[0].Name);
+    public static void testFetchLineItems() {
+        PH_Assessment__c testRecordPH_AssessmentId = [SELECT Id, Name FROM PH_Assessment__c WHERE Name = 'testRecordtestRecordPH_Assessment' LIMIT 1];
+        List<AssessmentLineItem__c> testResultList = PanelViewCategoriesController.fetchLineItems(testRecordPH_AssessmentId.Id );
+        System.assertEquals('testRecordAssessmentLineItem', testResultList[0].name);
     }
     
 }

@@ -52,6 +52,7 @@
         <members>*</members>
         <name>CustomTab</name>
     </types>
+
     <types>
         <members>*</members>
         <name>QuickAction</name>

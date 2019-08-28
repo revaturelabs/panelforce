@@ -35,7 +35,6 @@ public without sharing class TrackController {
         PH_Assessment__c a = new PH_Assessment__c();
         // populate Name and Contact__c
         
-        a.Name = 'Panel';
         a.Contact__c = contactId;
         insert a;
 
@@ -50,7 +49,6 @@ public without sharing class TrackController {
             System.debug(pc.Id);
             li.PH_Assessment__c = a.Id;
             li.PanelCategory__c = pc.Id;
-            li.Name = pc.Name;
             li.maxScore__c = pc.maxScore__c;
             li.Score__c = pc.maxScore__c;
             li.Interviewed__c = false;

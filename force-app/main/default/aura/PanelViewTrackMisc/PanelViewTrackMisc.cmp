@@ -64,6 +64,7 @@
           placeholder="Enter overall feedback here..."
           variant="label-hidden"
           value="{!v.comment}"
+          label="Overall Feedback"
         />
       </div>
 
@@ -140,6 +141,7 @@
             onchange="{!v.typeOfAssociate}"
             value="{!v.typeOfAssociate}"
             onblur="{!c.updateAssessment}"
+            label="Type of Associate"
           >
             <option value="">Select Type</option>
             <option value="Bad Technical Skills">Bad Technical Skills</option>
@@ -158,6 +160,7 @@
             onchange="{!v.recordingType}"
             value="{!v.recordingType}"
             onblur="{!c.updateAssessment}"
+            label="Recording Type"
           >
             <option value="">Select Type</option>
             <option value="Audio">Audio</option>
@@ -174,6 +177,7 @@
             onchange="{!v.recordingConsent}"
             value="{!v.recordingConsent}"
             onblur="{!c.updateAssessment}"
+            label="Recording Consent"
           >
             <option value="">Select Type</option>
             <option value="Yes">Yes</option>
@@ -205,6 +209,7 @@
           onchange="{!v.interviewMode}"
           value="{!v.interviewMode}"
           onblur="{!c.updateAssessment}"
+          label="Interview Mode"
         >
           <option value="">Select Type</option>
           <option value="Google Meet">Google Meet</option>
@@ -221,6 +226,7 @@
           onchange="{!v.internetConnectivity}"
           value="{!v.internetConnectivity}"
           onblur="{!c.updateAssessment}"
+          label="Interview Connectivity"
         >
           <option value="">Select Type</option>
           <option value="Google Meet">Excellent</option>
@@ -244,6 +250,7 @@
           variant="label-hidden"
           placeholder="Enter valid URL here..."
           value="{!v.typeOfAssociate}"
+          label="Recording Link URL"
         />
       </div>
     </section>

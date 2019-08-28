@@ -15,6 +15,7 @@
         <members>PanelCategories</members>
         <members>PanelCategoriesTests</members>
         <members>PanelForceDataCreator</members>
+        <members>PanelForceTestDataCreator</members>
         <members>PanelViewCategoriesController</members>
         <members>PanelViewTrackMiscController</members>
         <members>ProgressBarController</members>

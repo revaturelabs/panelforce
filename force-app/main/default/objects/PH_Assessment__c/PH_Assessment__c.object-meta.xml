@@ -157,9 +157,10 @@
     <enableStreamingApi>true</enableStreamingApi>
     <label>PH_Assessment</label>
     <nameField>
+        <displayFormat>A-{0000000}</displayFormat>
         <label>PH_Assesment Name</label>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>PH_Assessments</pluralLabel>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>

@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>*</members>
+        <members>CreateCategoriesController</members>
+        <members>EmailTrainerHelper</members>
+        <members>InterviewControllerTest</members>
+        <members>InterviewMainController</members>
+        <members>InterviewMainControllerTests</members>
+        <members>InterviewMainMiscApexController</members>
+        <members>InterviewMainMiscApexControllerTests</members>
+        <members>InterviewMainScoreApexController</members>
+        <members>InterviewMainScoreApexControllerTests</members>
+        <members>MondayReports</members>
+        <members>MondayReportsTests</members>
+        <members>PanelCategories</members>
+        <members>PanelCategoriesTests</members>
+        <members>PanelViewCategoriesController</members>
+        <members>PanelViewTrackMiscController</members>
+        <members>ProgressBarController</members>
+        <members>testData</members>
+        <members>TestEmailTrainerHelper</members>
+        <members>testInterviewMainController</members>
+        <members>testIntervirewMainComponents</members>
+        <members>testTrackController</members>
+        <members>TrackController</members>
+        <members>TrackControllerTests</members>
+        <members>PanelForceDataCreator</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -32,31 +55,40 @@
         <members>*</members>
         <name>StaticResource</name>
     </types>
-
     <types>
         <members>*</members>
         <name>CustomObject</name>
-    </types>   
-
+    </types>
     <types>
         <members>*</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>PanelForce_UtilityBar</members>
+        <members>PH_Assessment_Record_Page</members>
         <name>FlexiPage</name>
     </types>
-
     <types>
         <members>*</members>
+        <name>StaticResource</name>
+    </types>
+    <types>
+        <members>Assessment__c-Assessment Layout</members>
+        <members>AssessmentLineItem__c-Assessment Line Item Layout</members>
+        <members>Contact-Contact Layout</members>
+        <members>PanelCategory__c-Panel Category Layout</members>
+        <members>PH_Assessment__c-PH_Assessment Layout</members>
+        <members>PH_Training__c-PH_Training Layout</members>
+        <members>PH_TrainingAssignment__c-PH_TrainingAssignment Layout</members>
+        <members>PH_TrainingTrack__c-PH_TrainingTrack Layout</members>
+        <members>Time_Stamp__c-Time Stamp Layout</members>
         <name>Layout</name>
     </types>
-
     <types>
-        <members>*</members>
+        <members>Contact.Conduct_Interview</members>
+        <members>PH_TrainingTrack__c.Create_Panel_Matrix</members>
+        <members>SendEmail</members>
         <name>QuickAction</name>
     </types>
-
-    <types>
-       <members>*</members>
-       <name>CustomTab</name>
-   </types>
-    
     <version>46.0</version>
 </Package>

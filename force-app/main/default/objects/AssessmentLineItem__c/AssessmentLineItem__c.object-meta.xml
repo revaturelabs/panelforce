@@ -154,9 +154,10 @@
     <enableStreamingApi>true</enableStreamingApi>
     <label>Assessment Line Item</label>
     <nameField>
-        <label>Category Line Item Name</label>
+        <displayFormat>ALI-{0000000}</displayFormat>
+        <label>Assessment Line Item</label>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Assessment Line Items</pluralLabel>
     <searchLayouts/>

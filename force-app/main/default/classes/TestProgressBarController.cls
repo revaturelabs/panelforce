@@ -26,7 +26,7 @@ public class TestProgressBarController {
     @isTest
     public static void testGetCategories() {
         List<AssessmentLineItem__c> testResultsList = ProgressBarController.getCategories();
-        System.AssertEquals('testRecordAssessmentLineItem',testResultsList[0].Name);
+        System.AssertEquals(1,testResultsList.size());
     }
     
 }

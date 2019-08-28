@@ -24,9 +24,9 @@ public class TestPanelViewCategoriesController {
     
     @isTest
     public static void testFetchLineItems() {
-        PH_Assessment__c testRecordPH_AssessmentId = [SELECT Id, Name FROM PH_Assessment__c LIMIT 1];
+        PH_Assessment__c testRecordPH_AssessmentId = [SELECT Id, Name FROM PH_Assessment__c];
         List<AssessmentLineItem__c> testResultList = PanelViewCategoriesController.fetchLineItems(testRecordPH_AssessmentId.Id );
-        System.assertEquals('testRecordAssessmentLineItem', testResultList[0].name);
+        System.assertEquals(1, testResultList.size());
     }
     
 }

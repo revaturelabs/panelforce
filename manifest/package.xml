@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>*</members>
+        <members>CreateCategoriesController</members>
+        <members>EmailTrainerHelper</members>
+        <members>InterviewControllerTests</members>
+        <members>InerviewMainController</members>
+        <members>InerviewMainControllerTests</members>
+        <members>InterviewMainMiscApexController</members>
+        <members>InterviewMainMiscApexControllerTests</members>
+        <members>InterviewMainScoreApexController</members>
+        <members>InterviewMainScoreApexControllerTests</members>
+        <members>MondayReports</members>
+        <members>MondayReportsTests</members>
+        <members>PanelCategories</members>
+        <members>PanelCategoriesTests</members>
+        <members>PanelViewCategoriesController</members>
+        <members>PanelViewCategoriesControllerTests</members>
+        <members>PanelViewTrackMiscController</members>
+        <members>ProgressBarController</members>
+        <members>TestData</members>
+        <members>TestEmailTrainerHelper</members>
+        <members>testInterviewMainController</members>
+        <members>testIntervirewMainComponents</members>
+        <members>testTrackController</members>
+        <members>TrackController</members>
+        <members>TrackControllerTests</members>
+        <members>PanelForceDataCreator</members>
         <name>ApexClass</name>
     </types>
     <types>

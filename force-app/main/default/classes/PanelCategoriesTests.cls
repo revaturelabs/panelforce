@@ -1,8 +1,20 @@
-@isTest(seeAllData=true)
+@isTest
 public class PanelCategoriesTests {
-	@isTest
-    static void testAll() {
-        PanelCategories.getTrack('0032K00002HY4jbQAD');
-        PanelCategories.getNumberofTries('0032K00002HY4jbQAD');
+    
+    @testSetup
+    static void setup() {
+        // created one test contact 
+        Contact newContact = new Contact(FirstName = 'Billy', LastName = 'Bob');
+        insert newContact;
+        // created one test Assessment
+        PH_Assessment__c newAssessment = new PH_Assessment__c( Contact__c = newContact.Id);
+        insert newAssessment;
+    }
+    
+    
+    @isTest
+    static void testgetNumberofTries() {
+        Contact c = [SELECT Id FROM Contact];
+        PanelCategories.getNumberofTries(c.Id);
     }
 }

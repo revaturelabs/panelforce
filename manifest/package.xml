@@ -101,7 +101,6 @@
     </types>
     <types>
         <members>Admin</members>
-        <members>PanelForce User</members>
         <name>Profile</name>
     </types>
     <version>46.0</version>

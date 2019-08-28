@@ -152,11 +152,13 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
     <label>PH_Training</label>
     <nameField>
+        <displayFormat>TRNG-{00000000}</displayFormat>
         <label>PH_ Name</label>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>PH_Trainings</pluralLabel>
     <searchLayouts/>

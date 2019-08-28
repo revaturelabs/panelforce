@@ -3,31 +3,31 @@ FORMAT  FILE
 ──────  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 txt     c:\Users\Rose\Documents\Revature\PanelForce\panelforce\.sfdx\tools\testresults\apex\test-result.txt
 txt     c:\Users\Rose\Documents\Revature\PanelForce\panelforce\.sfdx\tools\testresults\apex\test-run-id.txt
-junit   c:\Users\Rose\Documents\Revature\PanelForce\panelforce\.sfdx\tools\testresults\apex\test-result-7073i000008ye4t-junit.xml
-json    c:\Users\Rose\Documents\Revature\PanelForce\panelforce\.sfdx\tools\testresults\apex\test-result-7073i000008ye4t.json
+junit   c:\Users\Rose\Documents\Revature\PanelForce\panelforce\.sfdx\tools\testresults\apex\test-result-7073i000009QY0q-junit.xml
+json    c:\Users\Rose\Documents\Revature\PanelForce\panelforce\.sfdx\tools\testresults\apex\test-result-7073i000009QY0q.json
 
 === Test Results
-TEST NAME                                                 OUTCOME  MESSAGE                                                                                   RUNTIME (MS)
-────────────────────────────────────────────────────────  ───────  ────────────────────────────────────────────────────────────────────────────────────────  ────────────
-InterviewMainMiscApexControllerTests.testInsertTimeStamp  Skip     Method testInsertTimeStamp does not exist in the the apex class with Id :01p3i000009ZlTf
+TEST NAME                                                 OUTCOME  MESSAGE  RUNTIME (MS)
+────────────────────────────────────────────────────────  ───────  ───────  ────────────
+InterviewMainMiscApexControllerTests.testInsertTimeStamp  Pass              198
 
 === Test Summary
 NAME                 VALUE
 ───────────────────  ──────────────────────────────────────────────
 Outcome              Passed
 Tests Ran            1
-Passing              0
+Passing              1
 Failing              0
-Skipped              1
-Pass Rate            NaN%
-Fail Rate            NaN%
-Test Start Time      Aug 27, 2019 3:41 PM
-Test Execution Time  0 ms
-Test Total Time      0 ms
-Command Time         46879 ms
+Skipped              0
+Pass Rate            100%
+Fail Rate            0%
+Test Start Time      Aug 28, 2019 4:00 PM
+Test Execution Time  198 ms
+Test Total Time      198 ms
+Command Time         3403 ms
 Hostname             https://sppanelforce-dev-ed.my.salesforce.com
 Org Id               00D3i000000uSoYEAU
 Username             sp@p3.com
-Test Run Id          7073i000008ye4t
+Test Run Id          7073i000009QY0q
 User Id              0053i000002NdsxAAC
 

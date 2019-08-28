@@ -3,9 +3,9 @@
     <types>
         <members>CreateCategoriesController</members>
         <members>EmailTrainerHelper</members>
-        <members>InterviewControllerTests</members>
-        <members>InerviewMainController</members>
-        <members>InerviewMainControllerTests</members>
+        <members>InterviewControllerTest</members>
+        <members>InterviewMainController</members>
+        <members>InterviewMainControllerTests</members>
         <members>InterviewMainMiscApexController</members>
         <members>InterviewMainMiscApexControllerTests</members>
         <members>InterviewMainScoreApexController</members>
@@ -15,10 +15,9 @@
         <members>PanelCategories</members>
         <members>PanelCategoriesTests</members>
         <members>PanelViewCategoriesController</members>
-        <members>PanelViewCategoriesControllerTests</members>
         <members>PanelViewTrackMiscController</members>
         <members>ProgressBarController</members>
-        <members>TestData</members>
+        <members>testData</members>
         <members>TestEmailTrainerHelper</members>
         <members>testInterviewMainController</members>
         <members>testIntervirewMainComponents</members>

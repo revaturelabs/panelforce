@@ -9,6 +9,7 @@ public without sharing class PanelCategories {
     }
 
     // Retrieve the track that a candidate is on
+    // Question: there are multiple tracks per candidate why do we only select the first one
     @AuraEnabled
     public static String getTrack(ID contactID){
         return [SELECT PH_TrainingTrack__r.Name

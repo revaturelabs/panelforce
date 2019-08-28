@@ -15,13 +15,6 @@ public without sharing class InterviewMainMiscApexController {
         insert tsList;
     }
 
-    public static void totalTimeDiff(Integer totalTime, PH_Assessment__c phAss){
-       // ID phAssID = phAss.id;
-       // Time_Stamp__c updateTotal = [Select milliSecs__c from Time_Stamp__c where id =: phAssID];
-       // updateTotal.Total_Interview_Length__c = totalTime - updateTotal.milliSecs__c;
-       // upsert updateTotal;
-    }
-
     @AuraEnabled
     public static void updateCategory(AssessmentLineItem__c AssLineItem){
         update AssLineItem;

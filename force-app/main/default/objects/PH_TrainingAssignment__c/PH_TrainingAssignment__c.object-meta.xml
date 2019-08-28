@@ -152,11 +152,13 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>PH_TrainingAssignment</label>
     <nameField>
+        <displayFormat>TA-{00000000}</displayFormat>
         <label>PH_Training  Name</label>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>PH_TrainingAssignments</pluralLabel>
     <searchLayouts/>

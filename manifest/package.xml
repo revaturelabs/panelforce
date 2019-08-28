@@ -38,15 +38,34 @@
     </types>
     <types>
         <members>*</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>PanelForce_UtilityBar</members>
+        <members>PH_Assessment_Record_Page</members>
         <name>FlexiPage</name>
     </types>
     <types>
         <members>*</members>
-        <name>QuickAction</name>
+        <name>StaticResource</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Assessment__c-Assessment Layout</members>
+        <members>AssessmentLineItem__c-Assessment Line Item Layout</members>
+        <members>Contact-Contact Layout</members>
+        <members>PanelCategory__c-Panel Category Layout</members>
+        <members>PH_Assessment__c-PH_Assessment Layout</members>
+        <members>PH_Training__c-PH_Training Layout</members>
+        <members>PH_TrainingAssignment__c-PH_TrainingAssignment Layout</members>
+        <members>PH_TrainingTrack__c-PH_TrainingTrack Layout</members>
+        <members>Time_Stamp__c-Time Stamp Layout</members>
         <name>Layout</name>
+    </types>
+    <types>
+        <members>Contact.Conduct_Interview</members>
+        <members>PH_TrainingTrack__c.Create_Panel_Matrix</members>
+        <members>SendEmail</members>
+        <name>QuickAction</name>
     </types>
     <version>46.0</version>
 </Package>

@@ -14,6 +14,7 @@
         <members>MondayReportsTests</members>
         <members>PanelCategories</members>
         <members>PanelCategoriesTests</members>
+        <members>PanelForceDataCreator</members>
         <members>PanelViewCategoriesController</members>
         <members>PanelViewTrackMiscController</members>
         <members>ProgressBarController</members>
@@ -21,35 +22,42 @@
         <members>TestEmailTrainerHelper</members>
         <members>testInterviewMainController</members>
         <members>testIntervirewMainComponents</members>
+        <members>TestPanelViewCategoriesController</members>
+        <members>TestProgressBarController</members>
         <members>testTrackController</members>
         <members>TrackController</members>
         <members>TrackControllerTests</members>
-        <members>PanelForceDataCreator</members>
         <name>ApexClass</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexComponent</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexPage</name>
     </types>
     <types>
         <members>*</members>
         <name>ApexTestSuite</name>
     </types>
     <types>
-        <members>*</members>
-        <name>ApexTrigger</name>
-    </types>
-    <types>
-        <members>*</members>
+        <members>AppComponent</members>
+        <members>defaultTokens</members>
+        <members>InterviewApp</members>
+        <members>InterviewAppStateEvent</members>
+        <members>InterviewInitial</members>
+        <members>InterviewMain</members>
+        <members>InterviewMainEvent</members>
+        <members>InterviewMainMisc</members>
+        <members>InterviewMainMiscEvent</members>
+        <members>InterviewMainProgress</members>
+        <members>InterviewMainScore</members>
+        <members>PanelMatrixApp</members>
+        <members>PanelMatrixCreateCategories</members>
+        <members>PanelMatrixItem</members>
+        <members>PanelMatrixItemEvent</members>
+        <members>PanelViewCategories</members>
+        <members>PanelViewCategoriesEvent</members>
+        <members>PanelViewMain</members>
+        <members>PanelViewTrackMisc</members>
+        <members>PanelViewTrackMiscEvent</members>
+        <members>Test_App</members>
+        <members>testingThings</members>
+        <members>TestPMCC</members>
         <name>AuraDefinitionBundle</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>LightningComponentBundle</name>
     </types>
     <types>
         <members>*</members>
@@ -89,6 +97,11 @@
         <members>PH_TrainingTrack__c.Create_Panel_Matrix</members>
         <members>SendEmail</members>
         <name>QuickAction</name>
+    </types>
+    <types>
+        <members>Admin</members>
+        <members>PanelForce User</members>
+        <name>Profile</name>
     </types>
     <version>46.0</version>
 </Package>

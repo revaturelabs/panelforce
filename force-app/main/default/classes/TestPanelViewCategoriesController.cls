@@ -14,11 +14,9 @@ public class TestPanelViewCategoriesController {
         
         
         PH_Assessment__c testRecordPH_Assessment = new PH_Assessment__c();
-        testRecordPH_Assessment.Name = 'testRecordtestRecordPH_Assessment';
         insert testRecordPH_Assessment;
         
         AssessmentLineItem__c testRecordAssessmentLineItem = new AssessmentLineItem__c();
-        testRecordAssessmentLineItem.Name = 'testRecordAssessmentLineItem';
         testRecordAssessmentLineItem.PanelCategory__c = testRecordPanelCategory.Id;
         testRecordAssessmentLineItem.PH_Assessment__c = testRecordPH_Assessment.Id;    
         insert testRecordAssessmentLineItem;
@@ -26,7 +24,7 @@ public class TestPanelViewCategoriesController {
     
     @isTest
     public static void testFetchLineItems() {
-        PH_Assessment__c testRecordPH_AssessmentId = [SELECT Id, Name FROM PH_Assessment__c WHERE Name = 'testRecordtestRecordPH_Assessment' LIMIT 1];
+        PH_Assessment__c testRecordPH_AssessmentId = [SELECT Id, Name FROM PH_Assessment__c LIMIT 1];
         List<AssessmentLineItem__c> testResultList = PanelViewCategoriesController.fetchLineItems(testRecordPH_AssessmentId.Id );
         System.assertEquals('testRecordAssessmentLineItem', testResultList[0].name);
     }

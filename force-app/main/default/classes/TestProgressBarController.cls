@@ -14,11 +14,9 @@ public class TestProgressBarController {
         
         
         PH_Assessment__c testRecordPH_Assessment = new PH_Assessment__c();
-        testRecordPH_Assessment.Name = 'testRecordtestRecordPH_Assessment';
         insert testRecordPH_Assessment;
         
         AssessmentLineItem__c testRecordAssessmentLineItem = new AssessmentLineItem__c();
-        testRecordAssessmentLineItem.Name = 'testRecordAssessmentLineItem';
         testRecordAssessmentLineItem.PanelCategory__c = testRecordPanelCategory.Id;
         testRecordAssessmentLineItem.PH_Assessment__c = testRecordPH_Assessment.Id;    
         insert testRecordAssessmentLineItem;

@@ -152,7 +152,6 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>PH_TrainingAssignment</label>
     <nameField>
         <displayFormat>TA-{00000000}</displayFormat>

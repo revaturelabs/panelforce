@@ -1,8 +1,25 @@
-@isTest(seeAllData=true)
+@isTest
 public class TestEmailTrainerHelper {
-
+    @testSetup
+    public static void setup(){
+        PH_Assessment__c tempRecord1 = new PH_Assessment__c();
+        insert tempRecord1;
+        PH_Assessment__c tempRecord2 = new PH_Assessment__c();
+        insert tempRecord2;
+        PH_Assessment__c tempRecord3 = new PH_Assessment__c();
+        insert tempRecord3;
+        contact c = new contact();
+        c.lastName = 'Joe';
+        insert c;
+    }
+    
     @isTest
-    static void testEmailTrainer() {
-        EmailTrainerHelper.ETrainer(new List<PH_Assessment__c>{[SELECT Contact__c, RecordTypeId FROM PH_Assessment__c WHERE Contact__c = '0032K00002HY4jbQAD' LIMIT 1]});
+    Public static void testETrainer () {
+        List<PH_Assessment__c> myList = new List<PH_Assessment__c>();
+        myList = [SELECT Id, recordTypeID FROM PH_Assessment__c];    
+        
+        EmailTrainerHelper.ETrainer(myList); {
+            
+        }
     }
 }

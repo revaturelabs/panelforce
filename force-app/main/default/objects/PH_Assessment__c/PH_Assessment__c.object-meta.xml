@@ -155,13 +155,11 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
     <label>PH_Assessment</label>
     <nameField>
-        <displayFormat>A-{0000000}</displayFormat>
         <label>PH_Assesment Name</label>
         <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
+        <type>Text</type>
     </nameField>
     <pluralLabel>PH_Assessments</pluralLabel>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>

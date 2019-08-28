@@ -1,26 +1,13 @@
 public without sharing class TrackController {
     // class for passing information back to InterviewInitial component.
-    @AuraEnabled
-    public static Account getAccount(Id accountId) {
-        // may be needed later
-        return [SELECT Id, Name  FROM Account LIMIT 1];
-    }
 
     @AuraEnabled
-    Public Static String getContact(Id contactId) {
+    Public Static String getAssociateLastName(Id contactId) { //This was changed from getContact, another 'getContact' exists in 
         // method to get the Contact record for InterviewInitial component.
-        List<Contact> cl = new List<Contact>();
+        Contact associate = new Contact();
         String lastName;
-
-        cl = [SELECT Id, Lastname, Firstname FROM Contact WHERE Id = :contactId];
-        for (Contact c : cl) {
-                System.debug(c.Lastname);
-                if (c.Id == contactId) {
-                    System.debug(c.Id + ' ' + c.Lastname);
-                    lastName = c.Lastname;
-                }
-        }
-        return lastName;
+        associate = [SELECT Id, Lastname, Firstname FROM Contact WHERE Id = :contactId]; //All Ids must be unique, so can only ever return one contact.
+        return associate.lastName; //returns the last name of an associate.
     }
 
     @AuraEnabled

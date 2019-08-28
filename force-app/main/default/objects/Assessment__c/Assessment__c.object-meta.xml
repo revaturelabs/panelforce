@@ -152,7 +152,6 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
     <label>Assessment</label>
     <nameField>
         <label>Assessment Name</label>

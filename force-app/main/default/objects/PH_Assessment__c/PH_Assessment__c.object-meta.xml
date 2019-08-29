@@ -155,14 +155,14 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <label>PH_Assessment</label>
+    <label>Assessment</label>
     <nameField>
         <displayFormat>A-{0000000}</displayFormat>
         <label>PH_Assesment Name</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>PH_Assessments</pluralLabel>
+    <pluralLabel>Assessments</pluralLabel>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>

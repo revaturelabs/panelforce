@@ -75,6 +75,7 @@
     <types>
         <members>PanelForce_UtilityBar</members>
         <members>PH_Assessment_Record_Page</members>
+        <members>PanelForce_UtilityBar1</members>
         <name>FlexiPage</name>
     </types>
     <types>
@@ -102,6 +103,10 @@
     <types>
         <members>Admin</members>
         <name>Profile</name>
+    </types>
+    <types>
+        <members>PanelForce</members>
+        <name>CustomApplication</name>
     </types>
     <version>46.0</version>
 </Package>

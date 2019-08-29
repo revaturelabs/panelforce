@@ -36,6 +36,8 @@
     </types>
     <types>
         <members>AppComponent</members>
+        <members>ConductPanel</members>
+        <members>ConductPanelApp</members>
         <members>defaultTokens</members>
         <members>InterviewApp</members>
         <members>InterviewAppStateEvent</members>
@@ -46,6 +48,8 @@
         <members>InterviewMainMiscEvent</members>
         <members>InterviewMainProgress</members>
         <members>InterviewMainScore</members>
+        <members>PanelHistory</members>
+        <members>PanelHistoryApp</members>
         <members>PanelMatrixApp</members>
         <members>PanelMatrixCreateCategories</members>
         <members>PanelMatrixItem</members>
@@ -76,6 +80,7 @@
         <members>PanelForce_UtilityBar</members>
         <members>PH_Assessment_Record_Page</members>
         <members>PanelForce_UtilityBar1</members>
+        <members>Contact_Record_Page</members>
         <name>FlexiPage</name>
     </types>
     <types>

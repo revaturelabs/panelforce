@@ -87,6 +87,7 @@
         <members>*</members>
         <name>StaticResource</name>
     </types>
+    
     <types>
         <members>Assessment__c-Assessment Layout</members>
         <members>AssessmentLineItem__c-Assessment Line Item Layout</members>

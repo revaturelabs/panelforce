@@ -1,0 +1,17 @@
+<aura:component >
+        <aura:attribute name="assessment" type="PH_Assessment__c[]" />
+        <aura:attribute name="contact" type="Contact[]" />
+    
+        <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+        
+        <aura:iteration items="{!v.assessment}" var="as">
+            <ui:outputText value="{!as.Name}" /> 
+            <br />
+        </aura:iteration>
+
+        <aura:iteration items="{!v.contact}" var="co">
+            <ui:outputText value="{!co.Name}" /> 
+            <br />
+        </aura:iteration>
+	
+</aura:component>

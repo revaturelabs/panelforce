@@ -62,6 +62,7 @@
         <members>Test_App</members>
         <members>testingThings</members>
         <members>TestPMCC</members>
+        <members>AssessmentHistory</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

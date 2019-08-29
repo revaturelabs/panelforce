@@ -152,13 +152,13 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <label>PH_TrainingTrack</label>
+    <label>Training Track</label>
     <nameField>
         <label>PH_TrainingTrack Name</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
-    <pluralLabel>PH_TrainingTracks</pluralLabel>
+    <pluralLabel>Training Tracks</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

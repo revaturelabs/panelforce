@@ -1,7 +1,7 @@
 public class PanelForceDataCreator {
     public static void createData() {
         // 1) Delete all existing Data
-        deleteExistingData();
+       // deleteExistingData();
         
         // 2) Create Training Tracks
         createTrainingTracks();

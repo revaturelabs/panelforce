@@ -17,7 +17,11 @@ This application uses the **Org Development Model** in which each Developer has 
 2. Push the files specified in the [Manifest File](https://github.com/revaturelabs/panelforce/blob/master/manifest/package.xml) to your org.
     - sfdx force:source:deploy -x manifest/package.xml -u <insertUsernameHere>
         
-#### Please go into execute anonymous when you first enter and org and execute PanelForceDataCreator.createData(); ####
+        
+        
+#### Please go into execute anonymous when you first enter and org and execute: ####
+    PanelForceDataCreator.createData();
+- This will add default data to the org. Note that it does not currently (8/30/19) create Assessments and as a result, Assessment Line Items.
 
 
 

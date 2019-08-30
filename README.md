@@ -12,11 +12,12 @@ This guide helps Salesforce developers who are new to Visual Studio Code go from
 
 This application uses the **Org Development Model** in which each Developer has their own **Salesforce Org** in which **Dev Hub** is enabled.
 
-####Steps to get this file in this repo to your org####
+#### Steps to get this file in this repo to your org ####
 1. Clone this repo to your local machine.
 2. Push the files specified in the [Manifest File](https://github.com/revaturelabs/panelforce/blob/master/manifest/package.xml) to your org.
     - sfdx force:source:deploy -x manifest/package.xml -u <insertUsernameHere>
         
+#### Please go into execute anonymous when you first enter and org and execute PanelForceDataCreator.createData(); ####
 
 
 

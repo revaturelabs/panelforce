@@ -1,6 +1,6 @@
-# Salesforce App
+# Panelforce
 
-This guide helps Salesforce developers who are new to Visual Studio Code go from zero to a deployed app using Salesforce Extensions for VS Code and Salesforce CLI.
+Panelforce is designed to streamline the panel-conductin process. Integrated within Salesforce, Panelist can quickly and efficiently conduct a Panel for a given associate.
 
 ### Assumptions
 1. [Visual Studio Code](https://code.visualstudio.com/) and [SFDX Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) has already been downloaded.

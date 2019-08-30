@@ -2,6 +2,8 @@
 
 Panelforce is designed to streamline the Revature Panel process. Integrated within Salesforce, Panelist can quickly and efficiently conduct a Panel for a given associate.
 
+Please see [Panelforce Trello](https://trello.com/b/ItNJXSBS/panelforce) to follow the developmental progress.
+
 ### Assumptions
 1. [Visual Studio Code](https://code.visualstudio.com/) and [SFDX Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) has already been downloaded.
 2. Developer has a **Developer Edition** which is connected to a local **SFDX Project**.

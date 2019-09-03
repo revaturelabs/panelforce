@@ -1,0 +1,25 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="currentPageContactRecordId" type="String" default="0033i000005cz1SAAQ"/>
+    <aura:attribute name="saveMessage" type="String" default="not saved" /> 
+    
+    <aura:handler name="init" value="{!this}" action="c.doInit" />    
+    
+    
+    
+    <div onmouseout="{!c.handleChangeEventForForm}" >
+        <lightning:recordForm
+                              aura:id="contactInputForm"
+                              recordId="{!v.currentPageContactRecordId}"
+                              objectApiName="Contact"
+                              layoutType="Compact"
+                              columns="2"
+                              onblur="{!c.handleChangeEventForForm}"
+                              mode="edit">
+        </lightning:recordForm>
+    </div>
+    
+    
+    
+</aura:component>

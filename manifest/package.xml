@@ -28,6 +28,7 @@
         <members>testTrackController</members>
         <members>TrackController</members>
         <members>TrackControllerTests</members>
+        <members>TestController</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -62,6 +63,13 @@
         <members>Test_App</members>
         <members>testingThings</members>
         <members>TestPMCC</members>
+        <members>tonyTest</members>
+        <members>shaneTest</members>
+        <members>solomonTest</members>
+        <members>shaneRefactor</members>
+        <members>shaneRefactorpanelcategory</members>
+        <members>PanelCategoryTest</members>
+        <members>panelTest</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

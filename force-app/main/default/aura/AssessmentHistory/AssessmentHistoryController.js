@@ -1,43 +1,33 @@
 ({
-	doInit : function(component, event, helper) {
-		
-		// Step1- Get a reference to server-side controller method
-		var getAssesments = component.get("c.getAssesments");
-		var assessmentInfo = component.get("c.assessmentInfo");
-
-		// Step2- Optionally set parameters
-		getAssesments.getParam({
-			"contactId" : contactId
-		}); // Pass Contact Id  as param
-
-		assessmentInfo.getParam({
-			"assessmentId" : getAssesments
-		}); // Pass Assessment Id as param
-		
-		// Step3- Set the function to execute when the server gives a response (callback)
-		assessmentInfo.setCallback(this, function(response) {
-			var state = response.getState();
-
-			if(state === "SUCCESS") {
-				component.set("v.assessment".getReturnValue()); 
-			} else if (state === "ERROR") {
-				console.log("Error");
-			}
-		});
-
-		getAssesments.setCallback(this, function(response) {
-			var state = response.getState();
-
-			if(state === "SUCCESS") {
-				component.set("v.contact".getReturnValue()); 
-			} else if (state === "ERROR") {
-				console.log("Error");
-			}
-		});
-
-		 // Step4- Tell SF to execute this action when the resources become available
-		 $A.enqueueAction(assessmentInfo);
-		 $A.enqueueAction(getAssessments);
-
-	},
+    doInit : function(component, event, helper) {
+        // grabbing the attribute from the cmp
+        var IdComponent = component.get("v.IdComponent");
+        // calling and setting params for the helper
+        let assessments = helper.getAssessmentHelper(component, IdComponent);
+        
+        //helper.getAssessmentInfoHelper(component);  
+        
+        component.set('v.columns', [
+            {label: 'Assessment Name', fieldName: 'Name', type: 'text'},
+            {label: 'Date', fieldName: 'Interview_Date__c', type: 'Date'},
+            {label: 'Panelist', fieldName: 'CreatedById', type: 'text'},
+            {label: 'Overall-feedback', fieldName: 'Comment__c', type: 'text'},
+        ])
+     },
+            
 })
+
+
+/*
+public static List<String> assessmentInfo(List<Id> assessmentIds)
+{
+List<String> infoOnAssessments = new List<String>();
+//
+PH_Assessment__c currentAssessment = [SELECT Id, Name, Interview_Date__c, CreatedById, Comment__c FROM PH_Assessment__c WHERE Id=: AssessmentIds[0] LIMIT 1];
+String AssessmentInfo = (currentAssessment.Name + ' ' + currentAssessment.Interview_Date__c + ' ');
+Contact Panellist = [SELECT Id, firstName, lastName FROM Contact WHERE Id=: currentAssessment.CreatedById LIMIT 1];
+AssessmentInfo += (Panellist.firstName + ' ' + Panellist.lastName + ' ' + currentAssessment.Comment__c);
+//
+infoOnAssessments.add(AssessmentInfo);
+return infoOnAssessments;
+} */

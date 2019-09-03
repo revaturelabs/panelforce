@@ -29,6 +29,7 @@
         <members>testTrackController</members>
         <members>TrackController</members>
         <members>TrackControllerTests</members>
+        <members>AssessmentHistoryControllerTest</members>
         <name>ApexClass</name>
     </types>
     <types>

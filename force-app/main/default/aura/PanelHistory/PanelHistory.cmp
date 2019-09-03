@@ -3,6 +3,7 @@
 		<lightning:card title="Panel History">
         	Info Here
             <!-- Don't forget about your friend: Mr. SLDS -->
+            <c:PanelHistoryButtonComponent />
         </lightning:card>
     </div>
 </aura:component>

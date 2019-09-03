@@ -1,45 +1,24 @@
 ({
-	callReturnAssessments : function(component) {
-		var getReturnAssessments = component.get("c.returnAssessments");
-        
-        getReturnAssessments.setParams({
-
-        });
-        
-        getReturnAssessments.setCallback(this, function(response){
-        	var state = response.getState();
+    callReturnAssessments : function(component, contactId) {
+            var getReturnAssessments = component.get("c.returnAssessments");
             
-            if(state === "SUCCESS"){
-            	component.set("v.", response.getReturnValue());
-            }
-            else if (state === "ERROR"){
+            getReturnAssessments.setParams({
+                contactId : contactId
+            });
+            getReturnAssessments.setCallback(this, function(response){
                 
-            }
-        });
-        
-
-		$A.enqueueAction(getReturnAssessment);
-	},
-    
-    callGetAssessmentId : function(component){
-        var getAssessmentId = component.get("c.getAssessmentId");
-        
-        getReturnAssessments.setParams({
-
-        });
-        
-        getReturnAssessments.setCallback(this, function(response){
-        	var state = response.getState();
+                var state = response.getState();
+                console.log("Response: " + JSON.stringify(response.getReturnValue()));
+                if(state === "SUCCESS"){
+                    //Sets the failed panel categories to the component
+                    component.set("v.failedPanels", response.getReturnValue());
+                }
+                else if (state === "ERROR"){
+                    console.log("ERROR");
+                }
+            });
             
-            if(state === "SUCCESS"){
-            	component.set("v.", response.getReturnValue());
-            }
-            else if (state === "ERROR"){
-                
-            }
-        });
+            $A.enqueueAction(getReturnAssessments);
         
-
-		$A.enqueueAction(getReturnAssessment);
     },
 })

@@ -28,6 +28,8 @@
         <members>testTrackController</members>
         <members>TrackController</members>
         <members>TrackControllerTests</members>
+
+        <members>ConductPanelApexController</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -62,6 +64,10 @@
         <members>Test_App</members>
         <members>testingThings</members>
         <members>TestPMCC</members>
+
+        <members>ConductPanelApp</members>
+        <members>ConductPanel</members>
+        
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

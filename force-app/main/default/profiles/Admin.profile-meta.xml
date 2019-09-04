@@ -7,6 +7,15 @@
     </applicationVisibilities>
     <classAccesses>
         <apexClass>AssessmentHistoryController</apexClass>
+        <apexClass>AssessmentController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AssessmentControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AssessmentServer</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>

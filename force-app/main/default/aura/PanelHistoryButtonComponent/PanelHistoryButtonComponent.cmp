@@ -1,0 +1,19 @@
+<aura:component controller="AssessmentController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="failedPanels" type="AssessmentLineItem__c[]"/>
+    <aura:attribute name="assessment" type="PH_Assessment__c"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <hr/>
+    <p><b>Failed Categories</b></p>
+    <!-- Prints out each individual box to display --> 
+        <lightning:layout multipleRows="true">
+            <aura:iteration items="{!v.failedPanels}" var="fp">
+                    <lightning:layoutItem class="button-item">
+                        <div class="custom-box"><a href="{!'https://panelforcesebp3-dev-ed.lightning.force.com/lightning/r/AssessmentLineItem__c/' + fp.Id + '/view'}"
+                                                   target="_blank">
+                            {!fp.PanelCategory__r.Name}</a></div>
+                    </lightning:layoutItem>
+            </aura:iteration>
+        </lightning:layout>
+</aura:component>

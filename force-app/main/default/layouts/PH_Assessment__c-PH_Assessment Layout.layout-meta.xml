@@ -99,7 +99,7 @@
         <fields>PanelCategory__c.NAME</fields>
         <fields>Score__c</fields>
         <fields>maxScore__c</fields>
-        <fields>Interviewed__c</fields>
+        <fields>Status__c</fields>
         <fields>Comment__c</fields>
         <relatedList>AssessmentLineItem__c.PH_Assessment__c</relatedList>
     </relatedLists>
@@ -113,7 +113,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h17000003UPYx</masterLabel>
+        <masterLabel>00h3i00000353Ez</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

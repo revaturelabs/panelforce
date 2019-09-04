@@ -30,6 +30,10 @@
         <members>TrackController</members>
         <members>TrackControllerTests</members>
         <members>AssessmentHistoryControllerTest</members>
+        <members>AssessmentServer</members>
+        <members>AssessmentControllerTest</members>
+        <members>AssessmentController</members>
+
         <name>ApexClass</name>
     </types>
     <types>
@@ -65,6 +69,7 @@
         <members>testingThings</members>
         <members>TestPMCC</members>
         <members>AssessmentHistory</members>
+        <members>PanelHistoryButtonComponent</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

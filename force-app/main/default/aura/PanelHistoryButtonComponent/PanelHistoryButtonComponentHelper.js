@@ -1,9 +1,10 @@
 ({
-    callReturnAssessments : function(component, contactId) {
+    callReturnAssessments : function(component, contactId, assessment) {
             var getReturnAssessments = component.get("c.returnAssessments");
             
             getReturnAssessments.setParams({
-                contactId : contactId
+                contactId : contactId,
+                assessment : assessment
             });
             getReturnAssessments.setCallback(this, function(response){
                 

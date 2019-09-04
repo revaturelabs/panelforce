@@ -1,5 +1,7 @@
 public class ConductPanelApexController {
     
+    public static Id currentRecordAssessmentId;
+    
     @auraEnabled
     public static String apexMakeNewAssessementRecord(Id associateId) {
         
@@ -19,6 +21,7 @@ public class ConductPanelApexController {
         newAssessment.OverallPass__c = true;
         
         insert newAssessment;
+        currentRecordAssessmentId = newAssessment.Id;
         return newAssessment.Id;
     }
     
@@ -45,7 +48,7 @@ public class ConductPanelApexController {
     
     
     
-        @auraEnabled
+    @auraEnabled
     public static Integer apexGetNumberOfPreviousPanelRounds(Id associateId) {
         // start with id of associate
         // we want to find count of previous panels
@@ -57,6 +60,24 @@ public class ConductPanelApexController {
         system.debug (countOfPreviousPanelRounds);
         
         return countOfPreviousPanelRounds;
+    }
+    
+    
+    
+    @auraEnabled
+    public static Time apexSetNewStartTime(Id assessmentId) {
+        // query for record
+        PH_Assessment__c workingAssessment = [SELECT Id, Interview_Start__c FROM PH_Assessment__c WHERE Id = :assessmentId];
+        
+        // update time
+        Time currentTime = System.now().time();
+        workingAssessment.Interview_Start__c = currentTime;
+        
+        // debug
+        system.debug(workingAssessment);
+        
+        update workingAssessment;
+        return currentTime;
     }
     
     

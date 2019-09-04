@@ -8,9 +8,7 @@
         // calling apexMakeNewAssessementRecord
         var action = component.get("c.apexMakeNewAssessementRecord");
         // set parameters
-        //  debug
         var contactId = component.get("v.recordId");
-        console.log("recordID is " + contactId);
         action.setParams({
             "associateId" : contactId,
         });
@@ -21,9 +19,8 @@
             if(state == 'SUCCESS') {
                 // set component value
                 var results = responseFromApexController.getReturnValue();
-                // debug
-                console.log("results is " + results);
                 component.set("v.AssessmentId", results);
+                console.log("Success: " + results);
                 // reload data on page
                 component.find("AssessmentLoader").reloadRecord(true);
             }
@@ -33,8 +30,6 @@
         });
         // enqueue action
         $A.enqueueAction(action);
-        // reload data on page
-        component.find("AssessmentLoader").reloadRecord(true);
     },
     
     
@@ -47,10 +42,39 @@
                 console.log("NOT able to saved...");
             }
         }));
-        // reload data on page
-        component.find("AssessmentLoader").reloadRecord(true);
     },
     
+    
+    
+    setNewTimeForAssessment : function(component) {      
+        // call apex to update assessment with current time
+        var action = component.get("c.apexSetNewStartTime");
+        // set parameters
+        var assessmentId = component.get("v.AssessmentId");
+        // debug
+        console.log(assessmentId);
+        action.setParams({
+            "assessmentId" : assessmentId,
+        });
+        // set callback to handle response
+        action.setCallback(this, function(responseFromApexController){
+            // get the response state
+            var state = responseFromApexController.getState();
+            if(state == 'SUCCESS') {
+                // set component value
+                var results = responseFromApexController.getReturnValue();
+                console.log("Success: " + results);
+                // reload data on page
+                component.find("AssessmentLoader").reloadRecord(true);
+                console.log("Success: " + results);
+            }
+            else {
+                console.log("Failed with state: " + state);
+            }
+        });
+        // enqueue action
+        $A.enqueueAction(action);    
+    },   
     
     
 })

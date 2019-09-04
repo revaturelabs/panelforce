@@ -17,21 +17,19 @@
     <aura:attribute name="overallRepanel" type="String" />
     <aura:attribute name="overallPass" type="String" />
     
-    
     <aura:handler name="init" value="{!this}" action="c.doInit" />  
     
+    <aura:handler name="change" value="{!v.Assessment.OverallPass__c}" action="{!c.handleAutoSave}"/>    
     <aura:handler name="change" value="{!v.Assessment.Comment__c}" action="{!c.handleAutoSave}" update="change" />
     <aura:handler name="change" value="{!v.Assessment.ConsentedToRecording__c}" action="{!c.handleAutoSave}"/>
     <aura:handler name="change" value="{!v.Assessment.RecordingLink__c}" action="{!c.handleAutoSave}"/>
-    <aura:handler name="change" value="{!v.Assessment.InterviewDuration__c}" action="{!c.handleAutoSave}"/>
-    <aura:handler name="change" value="{!v.Assessment.OverallPass__c}" action="{!c.handleAutoSave}"/>    
     
     <aura:attribute name="AssessmentId" type="Object"/>
     <aura:attribute name="Assessment" type="Object"/>
     <aura:attribute name="AssessmentLoaderError" type="String"/>
     <force:recordData aura:id="AssessmentLoader"
                       recordId="{!v.AssessmentId}"
-                      fields="Contact__r.Name, Panelist__r.Name, TrainingTrack__r.Name, Interview_Date__c, Interview_Start__c, Comment__c, OverallPass__c, InternetConnectivity__c, InterviewDuration__c, PanelRound__c, RecordingConsent__c, RecordingLink__c, Score_Total__c"
+                      fields="Id, Contact__r.Name, Panelist__r.Name, TrainingTrack__r.Name, Interview_Date__c, Interview_Start__c, Comment__c, OverallPass__c, InternetConnectivity__c, InterviewDuration__c, PanelRound__c, RecordingConsent__c, RecordingLink__c, Score_Total__c"
                       targetFields="{!v.Assessment}"
                       targetError="{!v.AssessmentLoaderError}"
                       mode="EDIT"
@@ -39,34 +37,31 @@
     
     <div class="column"> 
         <lightning:card aura:id="AssessmentEditorForce" iconName="standard:account" title="Assessment" >
-            <div class="slds-p-horizontal--small">
+            <div class="slds-p-horizontal--medium">
                 
                 <div class="column">
-                    
+                    <lightning:button variant="brand" label="Start Assessment" title="Start Assessment" onclick="{!c.handleStartPanelButton}"  />
+                    <hr />
                     <p class="slds-text-heading--medium">Associate: <lightning:formattedText title="Contact" value="{!v.Assessment.Contact__r.Name}" /></p>
                     <hr />
                     <p class="slds-text-heading--medium">Panelist: <lightning:formattedText title="Panelist" value="{!v.Assessment.Panelist__r.Name}" /></p>
                     <hr />
                     <p class="slds-text-heading--medium">Training Track: <lightning:formattedText title="TrainingTrack" value="{!v.Assessment.TrainingTrack__r.Name}" /></p>
                     <hr />
-                    <p class="slds-text-heading--medium" >Panel Round: <lightning:formattedText title="PanelRound" value="{!v.Assessment.PanelRound__c}" /></p>
+                    <p class="slds-text-heading--medium" >Panel Round: <lightning:formattedNumber title="PanelRound" value="{!v.Assessment.PanelRound__c}" /></p>
                     <hr />
-                    <p class="slds-text-heading--medium">
+                    <p class="slds-text-heading--large">
                         <lightning:button variant="destructive" label="{!v.overallRepanel}" title="Repanel"  />
                         <lightning:button variant="success" label="{!v.overallPass}" title="Pass" />
                         <br />
                         Overall Pass:
-                        <br />
-                        <lightning:button variant="destructive" label="Re-panel" title="Repanel" onclick="{! c.handleRepanel }"  />
-                        <lightning:button variant="success" label="Pass" title="Pass" value="{!v.Assessment.OverallPass__c}"  onclick="{!c.handleOverallPass}" />
-                        
-                        <!--
-                        <ui:inputRadio aura:id="r0" name="OverallPass" label="Re-Panel" change="{!c.handleRepanel}"/>
-                        <ui:inputRadio aura:id="r1" name="OverallPass" label="Overall Pass" change="{!c.handleOverallPass}" value="true"/>
--->
+                    </p>
+                    <p class="slds-text-heading--medium">
+                        <lightning:button variant="destructive" label="Re-panel" title="Repanel" onclick="{! c.handleRepanelButton }"  />
+                        <lightning:button variant="success" label="Pass" title="Pass" value="{!v.Assessment.OverallPass__c}"  onclick="{!c.handlePassButton}" />
                     </p>
                     <hr />
-                    <p class="slds-text-heading--medium" >Total Score: <lightning:formattedText title="Panelist" value="{!v.Assessment.Score_Total__c}" /></p>
+                    <p class="slds-text-heading--medium" >Total Score: <lightning:formattedText title="Score_Total__c" value="{!v.Assessment.Score_Total__c}" /></p>
                     <hr />
                     <p class="slds-text-heading--medium" >Comment: <ui:inputText class="field" value="{!v.Assessment.Comment__c}" /></p>
                     
@@ -74,44 +69,28 @@
                 <div class="column">
                     <div class="slds-m-around_medium">
                         <p class="slds-text-heading--medium">Consent for Recording:  
-                            
-                            <ui:inputRadio aura:id="r10" name="ConsentGiven" label="Consent Given" change="{!c.handleConsentedToRecording}" value="true"/>
-                            <ui:inputRadio aura:id="r11" name="ConsentGiven" label="Consent Not Given" change="{!c.handleNotConsentedToRecording}"/>
-                            <!--                        
-                        Consent for Recording given: <lightning:buttonIconStateful iconName="utility:like" selected="{! v.Assessment.ConsentedToRecording__c }" onclick="{! c.handleAutoSave }" alternativeText="Not Given" />
--->
+                            <ui:inputRadio aura:id="r10" name="ConsentGiven" label="Consent Given" change="{!c.handleConsentedToRecordingOption}" value="true"/>
+                            <ui:inputRadio aura:id="r11" name="ConsentGiven" label="Consent Not Given" change="{!c.handleNotConsentedToRecordingOption}"/>
                         </p>
+                        <hr />
+                        <p class="slds-text-heading--medium" >Recording Link: <ui:inputURL class="field" value="{!v.Assessment.RecordingLink__c}" /></p>
+                        <hr />
+                        <p class="slds-text-heading--medium" >InternetConnectivity: <ui:inputText class="field" value="{!v.Assessment.InternetConnectivity__c}" /></p>
                     </div>
-                    <hr />
-                    <p class="slds-text-heading--medium" >Recording Link: <ui:inputText class="field" value="{!v.Assessment.RecordingLink__c}" /></p>
-                    <hr />
-                    <lightning:inputField fieldName="InternetConnectivity" />
-                    <p>
-                        <lightning:select aura:id="select" name="select" label="Internet Connectivity" onchange="{!c.handleAutoSave}">
-                            <option value="">choose one...</option>
-                            <option value="apple">apple</option>
-                            <option value="pumpkin">pumpkin</option>
-                            <option value="cherry">cherry</option>
-                            <option value="blueberry">blueberry</option>
-                            <option value="pickle">pickle</option>
-                        </lightning:select>
-                    </p>
-                    <hr />
                 </div>    
-                
             </div>
             
             <div class="column">
                 
-                <p class="slds-text-heading--medium">Panel Date: <lightning:formattedText title="Interview_Date__c" value="{!v.Assessment.Interview_Date__c}" /></p>
+                <p class="slds-text-heading--medium">Panel Date: <lightning:formattedText title="Interview Date" value="{!v.Assessment.Interview_Date__c}" /></p>
                 <hr />
-                <p class="slds-text-heading--medium">Start Time: <lightning:formattedTime title="Interview_Start__c" value="{!v.Assessment.Interview_Start__c}" hour="2-digit" minute="2-digit" /></p>
+                <p class="slds-text-heading--medium">Panel Time: <lightning:formattedTime value="{!v.Assessment.Interview_Start__c}" hour="2-digit" minute="2-digit"/></p>
                 <hr />
-                <p class="slds-text-heading--medium" >Interview Duration: <ui:inputText class="field" value="{!v.Assessment.InterviewDuration__c}"/></p>
+                <p class="slds-text-heading--medium" >Interview Duration: <lightning:formattedNumber title="InterviewDuration__c" value="{!v.Assessment.InterviewDuration__c}" default="60" /></p>
             </div>
         </lightning:card>
         <hr />
-        <lightning:button variant="Brand" label="Save" title="Save" onclick="{! c.handleSave }"/>
+        <lightning:button variant="Brand" label="Save" title="Save" onclick="{! c.handleSaveButton }"/>
     </div>
     
     

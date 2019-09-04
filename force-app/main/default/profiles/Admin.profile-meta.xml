@@ -14,8 +14,15 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>AssessmentServer</apexClass>
         <apexClass>AssessmentHistoryController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AssessmentHistoryControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AssessmentServer</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>

@@ -30,7 +30,7 @@ public class AssessmentHistoryControllerTest {
         
         return testContact;
     }
-    
+    /**
     @isTest(SeeAllData=True)
 	public static void getMapAssessmentsToALIsTest()
     {
@@ -41,9 +41,9 @@ public class AssessmentHistoryControllerTest {
         String firstKey = keys[0];
         List<AssessmentLineItem__c> testLineItems = testMap.get(firstKey);
         System.debug('MapALIs Test: ' + testLineItems);
-        */
+        
 	}
-    
+    /**
     @isTest(SeeAllData=True)
     public static void getMapOfAssessmentsToInfoMapTest()
     {
@@ -56,9 +56,9 @@ public class AssessmentHistoryControllerTest {
         Set<String> secondarykeys = testInfo.keySet();
         String secondKey = secondarykeys[0];
         System.debug('MapAssessInfo Test: ' + testInfo);
-		*/
+		
 	}
-    
+    */
     
 	@isTest(SeeAllData=True)
 	public static void getAssessmentsTest()
@@ -67,7 +67,7 @@ public class AssessmentHistoryControllerTest {
         List<PH_Assessment__c> testList = AssessmentHistoryController.getAssessments(testContact.Id);
         System.debug('getAssess Test: 0' + testList);
     }
-    
+    /**
     @isTest(SeeAllData=True)
     public static void getFailedAssessmentLineItemsTest()
     {
@@ -76,4 +76,5 @@ public class AssessmentHistoryControllerTest {
         List<AssessmentLineItem__c> testList = AssessmentHistoryController.getFailedAssessmentLineItems(someAssessment);
         System.debug('getFaliedALIs Test: 0' + testList);
     }
+    **/
 }

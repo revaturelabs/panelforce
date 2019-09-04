@@ -2,5 +2,17 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>QC</fullName>
     <active>true</active>
+    <compactLayoutAssignment>Compact001</compactLayoutAssignment>
     <label>QC</label>
+    <picklistValues>
+        <picklist>InternetConnectivity__c</picklist>
+        <values>
+            <fullName>Poor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stable</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
 </RecordType>

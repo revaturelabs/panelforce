@@ -29,6 +29,8 @@
         <members>TrackController</members>
         <members>TrackControllerTests</members>
         <members>TestController</members>
+        <members>ConductPanelApexController</members>
+
         <name>ApexClass</name>
     </types>
     <types>

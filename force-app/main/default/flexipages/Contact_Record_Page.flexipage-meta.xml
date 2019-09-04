@@ -61,7 +61,10 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
-            <componentName>ConductPanel</componentName>
+            <componentName>tonyTest</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentName>shaneRefactor</componentName>
         </componentInstances>
         <name>Facet-29c0b1bd-efb0-448a-bb40-98fbffd69a2b</name>
         <type>Facet</type>

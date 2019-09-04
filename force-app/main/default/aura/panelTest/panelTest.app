@@ -1,5 +1,5 @@
 <aura:application extends="force:slds">
-    <!--c:tonyTest/-->
+    <c:tonyTest/>
     <!--c:shaneTest/-->
     <!--c:solomonTest/-->
     <c:shaneRefactor/>

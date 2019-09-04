@@ -2,30 +2,26 @@
 <aura:component >
     <aura:attribute name="category" type="AssessmentLineItem__c"/>
     
-    <aura:attribute name="score" type="Integer" default="5"/>
+    <aura:attribute name="score" type="Integer" default="null"/>
     <aura:attribute name="maxScore" type="Integer" default="10"/>
     <aura:attribute name="repanel" type="Boolean" default="false"/>
-    <aura:attribute name="comments" type="String" default="Bad"/>
+    <aura:attribute name="comments" type="String" default=""/>
     
-    <!--lightning:accordion aura:id="accordion" activeSectionName="B">
-        <lightning:accordionSection name="B" label="Accordion Title B"-->
     <!-- Form for collecting Actual Score, Repanel, and Comments -->
     <form class="slds-form--stacked">
         <lightning:input type="number" aura:id="aliform" label="Actual Score"
                          name="actualscore"
-                         value="{!v.newCategory.Score__c}"
+                         value="{!v.score}"
+                         min="0"
                          required="true"/>
         <lightning:input type="checkbox" aura:id="aliform" label="Repanel?"
                          name="repanelcat"
-                         value="{!v.newCategory.Interviewed__c}"
+                         value="{!v.repanel}"
                          />
         <lightning:input aura:id="aliform" label="Comments"
                          name="catcomment"
-                         value="{!v.newCategory.Comment__c}"
+                         value="{!v.comments}"
                          />
     </form>
-    <!--/lightning:accordionSection>
-
-    </lightning:accordion-->
     
 </aura:component>

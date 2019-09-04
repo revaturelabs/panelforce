@@ -9,12 +9,6 @@
     
     <ui:outputText value="{!v.IdContact}" />
 
-    <lightning:datatable keyField="" data="{!v.data}" columns="{!v.columns}" hideCheckboxColumn="true"/>
-    
-    
-    
-    
-    
-    
+    <lightning:datatable keyField="id" data="{!v.data}" columns="{!v.columns}" hideCheckboxColumn="true"/>
     
 </aura:component>

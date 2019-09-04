@@ -10,10 +10,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>AssessmentHistoryControllerTest</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>CreateCategoriesController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -170,6 +166,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>PH_Assessment__c.OverallPass__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PH_Assessment__c.Panelist__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

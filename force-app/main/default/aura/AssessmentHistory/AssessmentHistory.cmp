@@ -1,0 +1,14 @@
+<aura:component controller="AssessmentHistoryController" implements="flexipage:availableForRecordHome,force:hasRecordId">
+    <!--<div style="max-width: 426px;"> Please leave this div as it is needed to mimic actual component size. -->
+    
+    <aura:attribute name="IdContact" type="Contact[]"/>
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <ui:outputText value="{!v.IdContact}" />
+
+    <lightning:datatable keyField="id" data="{!v.data}" columns="{!v.columns}" hideCheckboxColumn="true"/>
+    
+</aura:component>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>AssessmentHistoryController</members>
         <members>CreateCategoriesController</members>
         <members>EmailTrainerHelper</members>
         <members>InterviewControllerTest</members>
@@ -31,6 +32,7 @@
         <members>AssessmentServer</members>
         <members>AssessmentControllerTest</members>
         <members>AssessmentController</members>
+        <members>AssessmentHistoryControllerTest</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -65,7 +67,11 @@
         <members>Test_App</members>
         <members>testingThings</members>
         <members>TestPMCC</members>
+<<<<<<< HEAD
         <members>PanelHistoryButtonComponent</members>
+=======
+        <members>AssessmentHistory</members>
+>>>>>>> baezHarold
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

@@ -15,6 +15,8 @@ public class ConductPanelApexController {
         newAssessment.Interview_Date__c = System.today();
         newAssessment.Interview_Start__c = System.now().time();
         newAssessment.TrainingTrack__c = apexGetTrainingTrack(associateId);
+        newAssessment.PanelRound__c = apexGetNumberOfPreviousPanelRounds(associateId) + 1;        
+        newAssessment.OverallPass__c = true;
         
         insert newAssessment;
         return newAssessment.Id;
@@ -28,7 +30,7 @@ public class ConductPanelApexController {
         // we want to find PH_TrainingTrack__c and return this value
         Id targetTrainingTrack;
         // get (1 record) most recent PH_TrainingAssignment__c for associate
-        PH_TrainingAssignment__c mostRecentTrainingAssignmentForAssociate = [SELECT Id, Name, Contact__c, PH_Training__r.PH_TrainingTrack__c  FROM PH_TrainingAssignment__c WHERE Contact__c = :associateId ORDER BY CreatedDate LIMIT 1];
+        PH_TrainingAssignment__c mostRecentTrainingAssignmentForAssociate = [SELECT Id, Name, Contact__c, PH_Training__r.PH_TrainingTrack__c  FROM PH_TrainingAssignment__c WHERE Contact__c = :associateId ORDER BY CreatedDate DESC LIMIT 1];
         
         // debug
         System.debug(mostRecentTrainingAssignmentForAssociate);
@@ -40,5 +42,23 @@ public class ConductPanelApexController {
         system.debug(targetTrainingTrack);
         return targetTrainingTrack;
     }
+    
+    
+    
+        @auraEnabled
+    public static Integer apexGetNumberOfPreviousPanelRounds(Id associateId) {
+        // start with id of associate
+        // we want to find count of previous panels
+        Id targetTrainingTrack;
+        // get (1 record) most recent PH_TrainingAssignment__c for associate
+        Integer countOfPreviousPanelRounds = [SELECT COUNT() FROM PH_Assessment__c WHERE Contact__c = :associateId];
+        
+        // debug
+        system.debug (countOfPreviousPanelRounds);
+        
+        return countOfPreviousPanelRounds;
+    }
+    
+    
     
 }

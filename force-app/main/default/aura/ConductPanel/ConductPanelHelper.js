@@ -39,7 +39,7 @@
     
     
     
-    saveAssessment : function(component) {
+    saveAssessment : function(component) {       
         component.find("AssessmentLoader").saveRecord($A.getCallback(function(saveResult) {
             if (saveResult.state === "SUCCESS") {
                 console.log("Success... Saved");

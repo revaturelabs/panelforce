@@ -67,13 +67,8 @@
         <members>Test_App</members>
         <members>testingThings</members>
         <members>TestPMCC</members>
-<<<<<<< HEAD
-        <members>AssessmentHistory</members>
-        <members>PanelHistoryButtonComponent</members>
-=======
         <members>PanelHistoryButtonComponent</members>
         <members>AssessmentHistory</members>
->>>>>>> pannutoSebastian
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

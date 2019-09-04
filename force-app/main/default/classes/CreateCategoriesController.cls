@@ -7,23 +7,24 @@ public without sharing class CreateCategoriesController {
     }
     
     @AuraEnabled
-    public static PanelCategory__c saveCategories(PanelCategory__c panel) {
+    public static void saveCategories(PanelCategory__c category) {
         // Need to ask if this is correct way of doing this. This will save all new panels to database and we
         // want to create new categories for tracks without seeing exisiting categories.
         // Fix so user has ability to save a category to the proper track.
-        if (panel.PH_TrainingTrack__c == null) {
-            panel.PH_TrainingTrack__c = [SELECT Id FROM PH_TrainingTrack__c LIMIT 1].Id;
+        // 
+        /*
+        if (category.PH_TrainingTrack__c == null) {
+            category.PH_TrainingTrack__c = [SELECT Id FROM PH_TrainingTrack__c LIMIT 1].Id;
         }
         PanelCategory__c result;
-        if (panel.Id == null) {
-            result = panel;
+        if (category.Id == null) {
+            result = category;
         } else {
             result = null;
         }
-
-        upsert panel;
-        return result;
-    }
+*/
+        upsert category;
+            }
 
     @AuraEnabled
     public static PanelCategory__c removeCategory(PanelCategory__c panel) {

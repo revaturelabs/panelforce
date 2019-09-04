@@ -1,0 +1,10 @@
+<aura:component controller="AssessmentHistoryController" implements="flexipage:availableForRecordHome,force:hasRecordId">
+    <aura:attribute name="panels" type="PH_Assessment__c[]"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:iteration items="{!v.panels}" var="panel">
+        <c:AssessmentHistory assessment="{!panel}" />
+    	<c:PanelHistoryButtonComponent assessment="{!panel}"/>
+    </aura:iteration>
+</aura:component>

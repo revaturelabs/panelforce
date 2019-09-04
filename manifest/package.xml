@@ -69,6 +69,7 @@
         <members>TestPMCC</members>
         <members>PanelHistoryButtonComponent</members>
         <members>AssessmentHistory</members>
+        <members>PanelHistoryBox</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

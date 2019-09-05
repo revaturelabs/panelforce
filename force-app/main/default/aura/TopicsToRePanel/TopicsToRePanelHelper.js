@@ -9,10 +9,10 @@
             getReturnAssessments.setCallback(this, function(response){
                 
                 var state = response.getState();
-                console.log("This is the Response: " + JSON.stringify(response.getReturnValue()));
+                console.log("Response: " + JSON.stringify(response.getReturnValue()));
                 if(state === "SUCCESS"){
                     //Sets the failed panel categories to the component
-                    component.set("v.failedPanels", response.getReturnValue());
+                    component.set("v.topics", response.getReturnValue());
                 }
                 else if (state === "ERROR"){
                     console.log("ERROR");

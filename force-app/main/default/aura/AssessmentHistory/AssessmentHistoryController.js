@@ -1,10 +1,12 @@
 ({
     doInit : function(component, event, helper) {
         // grabbing the attribute from the cmp
-        var IdComponent = component.get("v.IdComponent");
+        //var IdComponent = component.get("v.IdComponent");
         // calling and setting params for the helper
-        let assessments = helper.getAssessmentHelper(component, IdComponent);
+        //let assessments = helper.getAssessmentHelper(component, IdComponent);
         //let assessmentss = helper.getAssessmentInfoHelper(component, IdComponent);  
+
+        component.set("v.data", component.get("v.assessment"));
         
         component.set('v.columns', [
             {label: 'Assessment Name', fieldName: 'Name', type: 'text'},

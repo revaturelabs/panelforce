@@ -8,8 +8,7 @@
     
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     
-    <ui:outputText value="{!v.IdContact}" />
 
-    <lightning:datatable keyField="id" data="{!v.data}" onrowaction="{!c.handleRowAction}" columns="{!v.columns}" hideCheckboxColumn="true"/>
+    <lightning:datatable keyField="id" data="{!v.data}" onrowaction="{!c.createRecord}" columns="{!v.columns}" hideCheckboxColumn="true"/>
     
 </aura:component>

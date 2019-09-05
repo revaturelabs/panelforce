@@ -5,7 +5,6 @@
         
         // Get a reference to server-side controller method
         var getAssessments = component.get("c.getAssessments");
-        console.log("Assessments: " + getAssessments);   
         
         // set parameters
         getAssessments.setParams({
@@ -23,7 +22,7 @@
                 component.set("v.panels", listOfAssessments);
                 var firstPanel = listOfAssessments[0];
                 console.log("First panel: " + JSON.stringify(firstPanel));
-                component.set("v.firstPanel", firstPanel);
+                component.set("v.firstPanel", firstPanel);           
             } else if (state === "ERROR") {
                 console.log("Error");
             }

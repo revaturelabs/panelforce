@@ -1,7 +1,12 @@
 <aura:component controller="AssessmentHistoryController" implements="flexipage:availableForRecordHome,force:hasRecordId">
     <aura:attribute name="panels" type="PH_Assessment__c[]"/>
     
+
+    
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+        <!-- topic to repanel -->
+        <!-- <c:topicsToRepanel topics=panels[0]/> -->
     
     <aura:iteration items="{!v.panels}" var="panel">
         <c:AssessmentHistory assessment="{!panel}" />

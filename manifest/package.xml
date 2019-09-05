@@ -71,7 +71,6 @@
         <members>AssessmentHistory</members>
         <members>PanelHistoryBox</members>
         <members>TopicsToRePanel</members>
-        <members>GetContactId</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

@@ -6,13 +6,14 @@
     
     doInit : function(component, event, helper) {
         helper.makeANewAssessmentRecord(component);
+        helper.startTimer(component);
     },
     
     
     
     handleStartPanelButton : function(component, event, helper) {
         helper.setNewTimeForAssessment(component);
-        helper.saveAssessment(component);
+        helper.startTimer(component);
     },
     
     
@@ -74,7 +75,6 @@
     
     handleAdequateConnection : function(component, event, helper) {
         var varAdequateConnection = "Adequate";
-        console.log("after setting: " + varAdequateConnection);
         component.set("v.Assessment.InternetConnectivity__c", varAdequateConnection);
         helper.saveAssessment(component);
     },
@@ -83,7 +83,6 @@
     
     handleWeakConnection : function(component, event, helper) {
         var varAdequateConnection = "Weak";
-        console.log("after setting: " + varAdequateConnection);
         component.set("v.Assessment.InternetConnectivity__c", varAdequateConnection);
         helper.saveAssessment(component);
     },

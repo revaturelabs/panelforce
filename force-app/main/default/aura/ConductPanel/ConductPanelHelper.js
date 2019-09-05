@@ -74,4 +74,34 @@
     },   
     
     
+    
+    startTimer : function(component) {       
+        var varCurrentTime = Date.now();
+        component.set("v.timerStartTime", varCurrentTime);
+        component.set("v.timerLastCheckTime", varCurrentTime);
+        component.set("v.timerRunningTime", "0");
+        this.updateTimer(component);
+    },
+    
+    
+    
+    updateTimer : function(component) {       
+        var varCurrentTime = Date.now();
+        var varTimerLastCheckTime = component.get("v.timerLastCheckTime");
+        var varTimeDifference = varCurrentTime - varTimerLastCheckTime;
+        // debug
+        console.log (varTimeDifference);
+        // if varLastSaveTime difference is more than 60 seconds, then change timer and lastTimerTime
+        if (varTimeDifference > 60000) {
+            var varTimerStartTime = component.get("v.timerStartTime");
+            var varTimerRunningTime = varCurrentTime-varTimerStartTime;
+            // debug
+            console.log(varTimerRunningTime);
+            component.set("v.timerLastCheckTime", varCurrentTime);
+            component.set("v.timerRunningTime", Math.floor(varTimerRunningTime/60000));
+        }
+        setTimeout($A.getCallback(() => this.updateTimer(component)), 10000);
+    },
+    
+    
 })

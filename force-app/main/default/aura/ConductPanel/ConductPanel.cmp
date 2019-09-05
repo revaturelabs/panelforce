@@ -13,6 +13,9 @@
     
     
     
+    <aura:attribute name="timerRunningTime" type="Integer" default="0"/>
+    <aura:attribute name="timerLastCheckTime" type="DateTime" default="0"/>
+    <aura:attribute name="timerStartTime" type="DateTime" default="0"/>
     <aura:attribute name="lastSaveTime" type="DateTime" />
     <aura:attribute name="overallRepanel" type="String" />
     <aura:attribute name="overallPass" type="String" />
@@ -36,8 +39,9 @@
     <div class="column"> 
         <lightning:card aura:id="AssessmentEditorForce" iconName="standard:account" title="Assessment" >
             <div class="slds-p-horizontal--medium">
-                
                 <div class="column">
+                    <lightning:button label="{!v.timerRunningTime}" title="{!v.timerRunningTime}"/>
+                    <hr />
                     <lightning:button variant="brand" label="Start Assessment" title="Start Assessment" onclick="{!c.handleStartPanelButton}"  />
                     <hr />
                     <p class="slds-text-heading--medium">Associate: <lightning:formattedText title="Contact" value="{!v.Assessment.Contact__r.Name}" /></p>

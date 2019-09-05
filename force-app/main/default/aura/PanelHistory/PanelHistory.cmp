@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<div style="max-width: 426px;"> <!-- Please leave this div as it is needed to mimic actual component size. -->
+		<lightning:card title="Panel History">
+        	Info Here
+            <!-- Don't forget about your friend: Mr. SLDS -->
+        </lightning:card>
+    </div>
+</aura:component>

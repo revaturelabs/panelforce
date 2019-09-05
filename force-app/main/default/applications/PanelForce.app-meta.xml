@@ -9,8 +9,15 @@
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <label>PanelForce</label>
     <navType>Standard</navType>
-    <tabs>PH_TrainingTrack__c</tabs>
     <tabs>standard-Contact</tabs>
+    <tabs>PH_Assessment__c</tabs>
+    <tabs>AssessmentLineItem__c</tabs>
+    <tabs>PH_Training__c</tabs>
+    <tabs>PH_TrainingTrack__c</tabs>
+    <tabs>PH_TrainingAssignment__c</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>Time_Stamp__c</tabs>
     <uiType>Lightning</uiType>
-    <utilityBar>PanelForce_UtilityBar</utilityBar>
+    <utilityBar>PanelForce_UtilityBar1</utilityBar>
 </CustomApplication>

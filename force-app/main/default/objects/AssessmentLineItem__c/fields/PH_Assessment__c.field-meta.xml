@@ -4,6 +4,7 @@
     <externalId>false</externalId>
     <label>PH_Assessment</label>
     <referenceTo>PH_Assessment__c</referenceTo>
+    <relationshipLabel>Panel Categories</relationshipLabel>
     <relationshipName>Assessment_Line_Items</relationshipName>
     <relationshipOrder>1</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>

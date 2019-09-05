@@ -92,7 +92,7 @@
         <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>NAME</fields>
+        <fields>PanelCategory__c.NAME</fields>
         <fields>Score__c</fields>
         <fields>maxScore__c</fields>
         <fields>Interviewed__c</fields>
@@ -109,7 +109,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2K00000bUeqp</masterLabel>
+        <masterLabel>00h17000003UPYx</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

@@ -20,7 +20,7 @@ public class testTrackController {
         }
 
         try {
-            s = TrackController.getContact(c.Id);
+            s = TrackController.getAssociateLastName(c.Id);
         } catch (StringException e) {
             System.debug('getContact not returning string: ' + s);
         }

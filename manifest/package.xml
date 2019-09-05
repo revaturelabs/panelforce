@@ -3,9 +3,9 @@
     <types>
         <members>CreateCategoriesController</members>
         <members>EmailTrainerHelper</members>
-        <members>InterviewControllerTests</members>
-        <members>InerviewMainController</members>
-        <members>InerviewMainControllerTests</members>
+        <members>InterviewControllerTest</members>
+        <members>InterviewMainController</members>
+        <members>InterviewMainControllerTests</members>
         <members>InterviewMainMiscApexController</members>
         <members>InterviewMainMiscApexControllerTests</members>
         <members>InterviewMainScoreApexController</members>
@@ -14,43 +14,57 @@
         <members>MondayReportsTests</members>
         <members>PanelCategories</members>
         <members>PanelCategoriesTests</members>
+        <members>PanelForceDataCreator</members>
+        <members>PanelForceTestDataCreator</members>
         <members>PanelViewCategoriesController</members>
-        <members>PanelViewCategoriesControllerTests</members>
         <members>PanelViewTrackMiscController</members>
         <members>ProgressBarController</members>
-        <members>TestData</members>
+        <members>testData</members>
         <members>TestEmailTrainerHelper</members>
         <members>testInterviewMainController</members>
         <members>testIntervirewMainComponents</members>
+        <members>TestPanelViewCategoriesController</members>
+        <members>TestProgressBarController</members>
         <members>testTrackController</members>
         <members>TrackController</members>
         <members>TrackControllerTests</members>
-        <members>PanelForceDataCreator</members>
+        <members>createTimestampController</members>
         <name>ApexClass</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexComponent</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexPage</name>
     </types>
     <types>
         <members>*</members>
         <name>ApexTestSuite</name>
     </types>
     <types>
-        <members>*</members>
-        <name>ApexTrigger</name>
-    </types>
-    <types>
-        <members>*</members>
+        <members>AppComponent</members>
+        <members>ConductPanel</members>
+        <members>ConductPanelApp</members>
+        <members>defaultTokens</members>
+        <members>InterviewApp</members>
+        <members>InterviewAppStateEvent</members>
+        <members>InterviewInitial</members>
+        <members>InterviewMain</members>
+        <members>InterviewMainEvent</members>
+        <members>InterviewMainMisc</members>
+        <members>InterviewMainMiscEvent</members>
+        <members>InterviewMainProgress</members>
+        <members>InterviewMainScore</members>
+        <members>PanelHistory</members>
+        <members>PanelHistoryApp</members>
+        <members>PanelMatrixApp</members>
+        <members>PanelMatrixCreateCategories</members>
+        <members>PanelMatrixItem</members>
+        <members>PanelMatrixItemEvent</members>
+        <members>PanelViewCategories</members>
+        <members>PanelViewCategoriesEvent</members>
+        <members>PanelViewMain</members>
+        <members>PanelViewTrackMisc</members>
+        <members>PanelViewTrackMiscEvent</members>
+        <members>Test_App</members>
+        <members>testingThings</members>
+        <members>TestPMCC</members>
+        <members>TimeStampButton</members>
         <name>AuraDefinitionBundle</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>LightningComponentBundle</name>
     </types>
     <types>
         <members>*</members>
@@ -67,6 +81,8 @@
     <types>
         <members>PanelForce_UtilityBar</members>
         <members>PH_Assessment_Record_Page</members>
+        <members>PanelForce_UtilityBar1</members>
+        <members>Contact_Record_Page</members>
         <name>FlexiPage</name>
     </types>
     <types>
@@ -90,6 +106,14 @@
         <members>PH_TrainingTrack__c.Create_Panel_Matrix</members>
         <members>SendEmail</members>
         <name>QuickAction</name>
+    </types>
+    <types>
+        <members>Admin</members>
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>PanelForce</members>
+        <name>CustomApplication</name>
     </types>
     <version>46.0</version>
 </Package>

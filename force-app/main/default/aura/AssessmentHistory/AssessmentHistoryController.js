@@ -9,17 +9,13 @@
         component.set("v.data", component.get("v.assessment"));
         
         component.set('v.columns', [
-            {label: 'Attempts', fieldName: 'Attempts__c', type: 'Integer'},
-            {label: 'Date', fieldName: 'Interview_Date__c', type: 'date'},
+            {label: 'Assessment Name', fieldName: 'Name', type: 'text'},
+            {label: 'Date', fieldName: 'Interview_Date__c', type: 'Date'},
             {label: 'Panelist', fieldName: 'Panelist__c', type: 'text'},
-            {label: 'Status', fieldName: 'OverallStatus__c', type: 'text'},
+            {label: 'Status', fieldName: 'OverallPass__c', type: 'text'},
             
         ]);
+                  
+     },
             
-            
-                        
-            let actualAssessment = component.get("v.assessment");
-            component.set("v.data", actualAssessment);  
-            },
-            
-            })
+})

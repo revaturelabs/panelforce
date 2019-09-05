@@ -2,8 +2,6 @@
     <aura:attribute name="panels" type="PH_Assessment__c[]"/>
     <aura:attribute name="firstPanel" type="PH_Assessment__c"/>
     
-
-    
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     
     <br/>
@@ -12,10 +10,12 @@
  <c:TopicsToRePanel assessment="{!v.firstPanel}"/>-->
     <div>
         <aura:iteration items="{!v.panels}" var="panel">
-            <div class="panel-box">
+            <div class="new-panel-box">
+                    
                 <c:AssessmentHistory assessment="{!panel}" />
                 <c:PanelHistoryButtonComponent assessment="{!panel}"/>
             </div>
+            <br/>
         </aura:iteration>
     </div>
 </aura:component>

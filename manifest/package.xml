@@ -111,7 +111,7 @@
         <members>PH_TrainingTrack__c-PH_TrainingTrack Layout</members>
         <members>Time_Stamp__c-Time Stamp Layout</members>
 
-        <members>PH_Assessment__c-Compact001 Layout</members>
+        <!--<members>PH_Assessment__c-Compact001 Layout</members>-->
 
         <name>Layout</name>
     </types>

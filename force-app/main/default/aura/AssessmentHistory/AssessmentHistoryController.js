@@ -9,7 +9,7 @@
         component.set("v.data", component.get("v.assessment"));
         
         component.set('v.columns', [
-            {label: 'Assessment Name', type: 'button', initialWidth: 100, typeAttributes: { label: {fieldName: 'Name'}, name: 'view_details', }},
+            {label: 'Attempt', type: 'button', initialWidth: 100, typeAttributes: { label: {fieldName: 'Attempts__c'}, name: 'view_details', }},
             {label: 'Date', fieldName: 'Interview_Date__c', type: 'Date'},
             {label: 'Panelist', fieldName: 'Panelist__c', type: 'text'},
             {label: 'Status', fieldName: 'OverallPass__c', type: 'text'},

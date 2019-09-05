@@ -1,7 +1,6 @@
 <aura:component controller="AssessmentHistoryController" implements="flexipage:availableForRecordHome,force:hasRecordId">
     <!--<div style="max-width: 426px;"> Please leave this div as it is needed to mimic actual component size. -->
     
-    <aura:attribute name="IdContact" type="Contact[]"/>
     <aura:attribute name="data" type="PH_Assessment__c[]"/>
     <aura:attribute name="columns" type="List"/>
     <aura:attribute name="assessment" type="PH_Assessment__c"/>

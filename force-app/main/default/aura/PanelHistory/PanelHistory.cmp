@@ -5,4 +5,6 @@
             <c:PanelHistoryBox/>
         </lightning:card>
     </div>
+           <aura:handler name="GetContactId" value="{!v.contactId}" action="{!c.myAction}"/>
+
 </aura:component>

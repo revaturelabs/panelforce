@@ -75,6 +75,7 @@
         <members>PanelCategoryTest</members>
         <members>panelTest</members>
         <members>TimeStampButton</members>
+        <members>ConductPanelWrapper</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

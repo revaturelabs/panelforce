@@ -32,6 +32,7 @@
         <members>ConductPanelApexController</members>
 
         <members>createTimestampController</members>
+        
         <name>ApexClass</name>
     </types>
     <types>
@@ -109,6 +110,9 @@
         <members>PH_TrainingAssignment__c-PH_TrainingAssignment Layout</members>
         <members>PH_TrainingTrack__c-PH_TrainingTrack Layout</members>
         <members>Time_Stamp__c-Time Stamp Layout</members>
+
+        <members>PH_Assessment__c-Compact001 Layout</members>
+
         <name>Layout</name>
     </types>
     <types>

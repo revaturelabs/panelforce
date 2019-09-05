@@ -8,18 +8,17 @@
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
-        <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Stable</fullName>
+                <fullName>Adequate</fullName>
                 <default>false</default>
-                <label>Stable</label>
+                <label>Adequate</label>
             </value>
             <value>
-                <fullName>Poor</fullName>
+                <fullName>Weak</fullName>
                 <default>false</default>
-                <label>Poor</label>
+                <label>Weak</label>
             </value>
         </valueSetDefinition>
     </valueSet>

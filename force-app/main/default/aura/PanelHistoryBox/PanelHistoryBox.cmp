@@ -7,9 +7,7 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     
     <br/>
-    <!--
-    <b><h1>Failed Panels:</h1></b>
- <c:TopicsToRePanel assessment="{!v.firstPanel}"/>-->
+
     <div>
         <aura:iteration items="{!v.panels}" var="panel">
             <div class="panel-box">

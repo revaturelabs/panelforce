@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>AssessmentServer</members>
+
         <members>CreateCategoriesController</members>
         <members>EmailTrainerHelper</members>
         <members>InterviewControllerTest</members>
@@ -55,6 +57,7 @@
         <members>PanelMatrixCreateCategories</members>
         <members>PanelMatrixItem</members>
         <members>PanelMatrixItemEvent</members>
+        <members>GetContactId</members>
         <members>PanelViewCategories</members>
         <members>PanelViewCategoriesEvent</members>
         <members>PanelViewMain</members>

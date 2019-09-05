@@ -6,9 +6,9 @@ public class AssessmentServer
         //grab assessment line items where assessment = id
         List<AssessmentLineItem__c> assessments = new List <AssessmentLineItem__c>();
         
-        List<AssessmentLineItem__c> assesmentLineItem = [SELECT Status__c FROM AssessmentLineItem__c WHERE PH_Assessment__c =: assessment.Id];
+        List<AssessmentLineItem__c> assessmentLineItem = [SELECT Status__c FROM AssessmentLineItem__c WHERE PH_Assessment__c =: assessment.Id];
 
-        for(AssessmentLineItem__c lineItem : assesmentLineItem)
+        for(AssessmentLineItem__c lineItem : assessmentLineItem)
         {
             if(lineItem.Status__c == False)
             {

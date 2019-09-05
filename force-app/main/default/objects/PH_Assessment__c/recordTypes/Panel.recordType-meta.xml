@@ -7,11 +7,11 @@
     <picklistValues>
         <picklist>InternetConnectivity__c</picklist>
         <values>
-            <fullName>Poor</fullName>
+            <fullName>Adequate</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Stable</fullName>
+            <fullName>Weak</fullName>
             <default>false</default>
         </values>
     </picklistValues>

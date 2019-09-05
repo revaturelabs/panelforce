@@ -20,12 +20,12 @@
                 // set component value
                 var results = responseFromApexController.getReturnValue();
                 component.set("v.AssessmentId", results);
-                console.log("Success: " + results);
                 // reload data on page
                 component.find("AssessmentLoader").reloadRecord(true);
+                console.log("Success: " + results);
             }
             else {
-                console.log("Failed with state: " + state);
+                console.log("Failed: " + state);
             }
         });
         // enqueue action
@@ -37,9 +37,9 @@
     saveAssessment : function(component) {       
         component.find("AssessmentLoader").saveRecord($A.getCallback(function(saveResult) {
             if (saveResult.state === "SUCCESS") {
-                console.log("Success... Saved");
+                console.log("Success, saved");
             } else {
-                console.log("NOT able to saved...");
+                console.log("NOT able to save!");
             }
         }));
     },
@@ -51,8 +51,6 @@
         var action = component.get("c.apexSetNewStartTime");
         // set parameters
         var assessmentId = component.get("v.AssessmentId");
-        // debug
-        console.log(assessmentId);
         action.setParams({
             "assessmentId" : assessmentId,
         });
@@ -63,13 +61,12 @@
             if(state == 'SUCCESS') {
                 // set component value
                 var results = responseFromApexController.getReturnValue();
-                console.log("Success: " + results);
                 // reload data on page
                 component.find("AssessmentLoader").reloadRecord(true);
                 console.log("Success: " + results);
             }
             else {
-                console.log("Failed with state: " + state);
+                console.log("Failed: " + state);
             }
         });
         // enqueue action

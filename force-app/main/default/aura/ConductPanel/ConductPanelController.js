@@ -1,7 +1,15 @@
 ({
+    doInit : function(component, event, helper) {
+        console.log('firing event');
+        var compEvent = $A.get("e.c:GetContactIdEvent");
+        var contact  = compEvent.setParams({
+            "contactId" : component.get("v.recordId")
+        });
+        compEvent.fire();
+        console.log('event fired');
+    },
     
-    myAction : function(component, event, helper) {
-        var compEvent = component.getEvent("GetContactId");
-        compEvent.fire('v.tempContactId');
+    registerContactId : function(component, event, helper) {
+        
     }
 })

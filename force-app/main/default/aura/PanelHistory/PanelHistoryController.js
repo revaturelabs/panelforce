@@ -1,6 +1,8 @@
 ({
 	myAction : function(component, event, helper) {
-		var contact  = event.getParam("v.contactId");
+        console.log('c.myaction');
+		var contact  = event.getParam("contactId");
+	
         console.log('contact id : ' + contact);
 	}
 })

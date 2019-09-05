@@ -34,6 +34,29 @@
     
     
     
+    deleteAssessment : function(component) {
+        component.find("AssessmentLoader").deleteRecord($A.getCallback(function(ResultFromCallback) {
+            if (ResultFromCallback.state === "SUCCESS" || ResultFromCallback.state === "DRAFT") {
+                // record is deleted
+                // debug
+                console.log("Record is deleted.");
+                // try redirecting to contact detail page
+                var recordId = component.get("v.recordId");
+                var url = '/lightning/?id=' + recordId;
+                window.open(url, '_self');
+                console.log("Record is deleted.");
+            } else if (ResultFromCallback.state === "INCOMPLETE") {
+                console.log("User is offline, device doesn't support drafts.");
+            } else if (ResultFromCallback.state === "ERROR") {
+                console.log('Problem deleting record, error: ' + JSON.stringify(ResultFromCallback.error));
+            } else {
+                console.log('Unknown problem, state: ' + ResultFromCallback.state + ', error: ' + JSON.stringify(ResultFromCallback.error));
+            }
+        }));
+    },
+    
+    
+    
     saveAssessment : function(component) {       
         component.find("AssessmentLoader").saveRecord($A.getCallback(function(saveResult) {
             if (saveResult.state === "SUCCESS") {

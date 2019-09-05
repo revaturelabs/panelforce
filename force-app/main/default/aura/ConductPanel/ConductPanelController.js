@@ -5,14 +5,12 @@
     
     
     doInit : function(component, event, helper) {
-        helper.makeANewAssessmentRecord(component);
-        helper.startTimer(component);
     },
     
     
     
     handleStartPanelButton : function(component, event, helper) {
-        helper.setNewTimeForAssessment(component);
+        helper.makeANewAssessmentRecord(component);
         helper.startTimer(component);
     },
     
@@ -22,6 +20,11 @@
         helper.saveAssessment(component);
     },
     
+    
+    
+    handleCancelButton : function(component, event, helper) {
+        helper.deleteAssessment(component);
+    },
     
     
     handleAutoSave : function(component, event, helper) {

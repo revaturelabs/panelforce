@@ -1,4 +1,4 @@
-<aura:component controller="ConductPanelApexController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+<aura:component controller="ConductPanelApexController" implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable" access="global" >
     <div style="max-width: 910px;"> <!-- Please leave this div as it is needed to mimic actual component size. -->
         <lightning:card title="General Panel Information">
             Info Here
@@ -44,7 +44,7 @@
                         <lightning:button label="{!v.timerRunningTime + ' minutes'}" title="{!v.timerRunningTime}"/> 
                     </p>
                     <hr />
-                    <lightning:button variant="brand" label="Start Assessment" title="Start Assessment" onclick="{!c.handleStartPanelButton}"  />
+                    <lightning:button variant="brand" label="START Interview / CREATE Assessment" title="Start Interview and Create Assessment" onclick="{!c.handleStartPanelButton}"  />
                     <hr />
                     <p class="slds-text-heading--medium">Associate: <lightning:formattedText title="Contact" value="{!v.Assessment.Contact__r.Name}" /></p>
                     <hr />
@@ -101,7 +101,10 @@
                 </div>    
             </div>   
         </lightning:card>
-        <lightning:button variant="Brand" label="Save" title="Save" onclick="{! c.handleSaveButton }"/>
+        <lightning:button variant="Brand" label="SAVE Assessment" title="Save Assessment" onclick="{! c.handleSaveButton }"/>
+        <hr />
+        <lightning:button variant="Brand" label="CANCEL Interview / DELETE current Assessment" title="Cancel" onclick="{! c.handleCancelButton }"/>
+
     </div>
     
     

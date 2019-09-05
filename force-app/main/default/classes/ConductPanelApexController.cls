@@ -34,7 +34,7 @@ public class ConductPanelApexController {
         PH_TrainingAssignment__c mostRecentTrainingAssignmentForAssociate = [SELECT Id, Name, Contact__c, PH_Training__r.PH_TrainingTrack__c  FROM PH_TrainingAssignment__c WHERE Contact__c = :associateId ORDER BY CreatedDate DESC LIMIT 1];
         // get PH_TrainingTrack__c from PH_TrainingAssignment__c for associate
         targetTrainingTrack = mostRecentTrainingAssignmentForAssociate.PH_Training__r.PH_TrainingTrack__c;
-		//return targetTrainingTrack
+        //return targetTrainingTrack
         return targetTrainingTrack;
     }
     
@@ -45,7 +45,7 @@ public class ConductPanelApexController {
         // start with id of associate
         // we want to find count() of previous panels of associateId
         Integer countOfPreviousPanelRounds = [SELECT COUNT() FROM PH_Assessment__c WHERE Contact__c = :associateId];
-		// return countOfPreviousPanelRounds
+        // return countOfPreviousPanelRounds
         return countOfPreviousPanelRounds;
     }
     
@@ -61,6 +61,22 @@ public class ConductPanelApexController {
         update workingAssessment;
         // return currentTime
         return currentTime;
+    }
+    
+    
+    
+    @auraEnabled
+    public static String apexDeleteAssessement(Id assessmentId) {
+        // query for assessment
+        PH_Assessment__c workingAssessment = [SELECT Id, Interview_Start__c FROM PH_Assessment__c WHERE Id = :assessmentId];
+        try {
+            // delete assessment
+            delete workingAssessment;
+        } catch (Exception e) {
+            return e.getMessage();
+        } 
+        // return string
+        return 'deleted: ' + assessmentId;
     }
     
     

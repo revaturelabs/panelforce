@@ -59,6 +59,7 @@
         <members>PanelMatrixCreateCategories</members>
         <members>PanelMatrixItem</members>
         <members>PanelMatrixItemEvent</members>
+        <members>GetContactId</members>
         <members>PanelViewCategories</members>
         <members>PanelViewCategoriesEvent</members>
         <members>PanelViewMain</members>

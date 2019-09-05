@@ -1,12 +1,6 @@
 ({
     doInit : function(component, event, helper) {
-        // grabbing the attribute from the cmp
-        //var IdComponent = component.get("v.IdComponent");
-        // calling and setting params for the helper
-        //let assessments = helper.getAssessmentHelper(component, IdComponent);
-        //let assessmentss = helper.getAssessmentInfoHelper(component, IdComponent);  
 
-        component.set("v.data", component.get("v.assessment"));
         
         component.set('v.columns', [
             {label: 'Attempt', type: 'button', initialWidth: 100, typeAttributes: { label: {fieldName: 'Attempts__c'}, name: 'view_details', }},

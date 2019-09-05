@@ -3,3 +3,10 @@
     padding: 10px;
     border: 3px solid #d8dde6;
 }
+
+.THIS .new-panel-box {
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #dddbda;
+	border-radius: 5px;
+}

@@ -4,8 +4,8 @@
     
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     
-    
-    <p><b>Failed Categories</b></p>
+    <br/>
+    <p><b>Topics to Repanel</b></p>
     <!-- Prints out each individual box to display --> 
     <lightning:layout multipleRows="true">
         <aura:iteration items="{!v.failedPanels}" var="fp">
@@ -16,5 +16,5 @@
             </lightning:layoutItem>
         </aura:iteration>
     </lightning:layout>
-    <hr/>
+    
 </aura:component>

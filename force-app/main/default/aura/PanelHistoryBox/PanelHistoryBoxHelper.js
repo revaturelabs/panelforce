@@ -21,6 +21,9 @@
                 console.log('Assessments from response: ' + response.getReturnValue());
                 console.log('Assessments from response: ' + JSON.stringify(response.getReturnValue()));
                 component.set("v.panels", listOfAssessments);
+                var firstPanel = listOfAssessments[0];
+                console.log("First panel: " + JSON.stringify(firstPanel));
+                component.set("v.firstPanel", firstPanel);
             } else if (state === "ERROR") {
                 console.log("Error");
             }

@@ -6,15 +6,9 @@ public class AssessmentServer
         //grab assessment line items where assessment = id
         List<AssessmentLineItem__c> assessments = new List <AssessmentLineItem__c>();
         
-<<<<<<< HEAD
         List<AssessmentLineItem__c> assesmentLineItem = [SELECT Status__c FROM AssessmentLineItem__c WHERE PH_Assessment__c =: assessment.Id];
         
         for(AssessmentLineItem__c lineItem : assesmentLineItem)
-=======
-        List<AssessmentLineItem__c> assessmentLineItem = [SELECT Status__c FROM AssessmentLineItem__c WHERE PH_Assessment__c =: assessment.Id];
-
-        for(AssessmentLineItem__c lineItem : assessmentLineItem)
->>>>>>> derejeAbiel
         {
             if(lineItem.Status__c == False)
             {

@@ -9,7 +9,7 @@
         
         // set parameters
         getAssessments.setParams({
-            "contactId" : "0033i000005ES39AAG" // component.get("v.recordId")
+            "contactId" : component.get("v.contactId")
         }); // Pass Contact Id  as param 
         
         // Set the function to execute when the server gives a response (callback)

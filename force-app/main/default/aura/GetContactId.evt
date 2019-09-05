@@ -1,4 +1,0 @@
-<aura:event type="APPLICATION" description="Event template">
-    <aura:attribute name="contactId" type="String" default="v.tempContactId" description="The result of the search, which could be an empty array"/>
-
-</aura:event>

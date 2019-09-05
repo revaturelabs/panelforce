@@ -5,11 +5,10 @@
         
         // Get a reference to server-side controller method
         var getAssessments = component.get("c.getAssessments");
-        console.log("Assessments: " + getAssessments);   
         
         // set parameters
         getAssessments.setParams({
-            "contactId" : "0033i000005ES39AAG" // component.get("v.recordId")
+            "contactId" : "0033i000004MKRSAA4" // component.get("v.recordId")
         }); // Pass Contact Id  as param 
         
         // Set the function to execute when the server gives a response (callback)
@@ -23,7 +22,7 @@
                 component.set("v.panels", listOfAssessments);
                 var firstPanel = listOfAssessments[0];
                 console.log("First panel: " + JSON.stringify(firstPanel));
-                component.set("v.firstPanel", firstPanel);
+                component.set("v.firstPanel", firstPanel);           
             } else if (state === "ERROR") {
                 console.log("Error");
             }

@@ -1,4 +1,5 @@
 <aura:component controller="createTimestampController">
     <aura:attribute name="AssessmentId" type="Id" default="a023i000005XXycAAG"/>
+    <aura:attribute name="PanelCategoryId" type="Id" default="a063i000000hkPEAAY"/>
     <lightning:button label="TimeStamp" title="Neutral action" onclick="{!c.createTimestamp}" />
 </aura:component>

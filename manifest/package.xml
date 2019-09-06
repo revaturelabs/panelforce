@@ -32,7 +32,7 @@
         <members>ConductPanelApexController</members>
 
         <members>createTimestampController</members>
-        
+        <members>createTimestampControllerTest</members>
         <name>ApexClass</name>
     </types>
     <types>

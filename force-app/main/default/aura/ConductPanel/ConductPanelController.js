@@ -1,6 +1,4 @@
 ({
-<<<<<<< HEAD
-=======
     myAction : function(component, event, helper) {
     },
     
@@ -91,5 +89,4 @@
     
     
     
->>>>>>> danielNoah
 })

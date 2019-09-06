@@ -6,7 +6,6 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
-<<<<<<< HEAD
         <apexClass>AssessmentController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -24,13 +23,11 @@
     </classAccesses>
     <classAccesses>
         <apexClass>AssessmentServer</apexClass>
-=======
         <apexClass>ALIWrapper</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ConductPanelApexController</apexClass>
->>>>>>> danielNoah
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -211,11 +208,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-<<<<<<< HEAD
         <editable>false</editable>
         <field>PH_Assessment__c.OverallStatus__c</field>
         <readable>false</readable>
-=======
         <editable>true</editable>
         <field>PH_Assessment__c.InternetConnectivity__c</field>
         <readable>true</readable>
@@ -229,7 +224,6 @@
         <editable>true</editable>
         <field>PH_Assessment__c.Interview_Date__c</field>
         <readable>true</readable>
->>>>>>> danielNoah
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>

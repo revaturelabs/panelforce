@@ -32,11 +32,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-<<<<<<< HEAD
-                <field>Panelist__c</field>
-=======
                 <field>Comment__c</field>
->>>>>>> danielNoah
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -123,11 +119,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-<<<<<<< HEAD
-        <masterLabel>00h3i00000353Ez</masterLabel>
-=======
         <masterLabel>00h3i000002Tmxo</masterLabel>
->>>>>>> danielNoah
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

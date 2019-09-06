@@ -71,6 +71,7 @@
         <members>AssessmentHistory</members>
         <members>PanelHistoryBox</members>
         <members>TopicsToRePanel</members>
+        <members>PanelHistoryLink</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

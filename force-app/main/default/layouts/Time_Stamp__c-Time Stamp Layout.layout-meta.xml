@@ -26,6 +26,10 @@
                 <behavior>Edit</behavior>
                 <field>Total_Interview_Length__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>PanelCategory__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

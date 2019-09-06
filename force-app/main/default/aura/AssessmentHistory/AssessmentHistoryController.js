@@ -4,9 +4,9 @@
          * Sets the columns for the data table that is displayed in each box.
          */
         component.set('v.columns', [
-            {label: 'Attempt', type: 'button', initialWidth: 100, typeAttributes: { label: {fieldName: 'Attempts__c'}, name: 'view_details', }},
+            {label: 'Attempt', type: 'button', initialWidth: 100, typeAttributes: { label: {fieldName: 'PanelRound__c'}, name: 'view_details', }},
             {label: 'Date', fieldName: 'Interview_Date__c', type: 'Date'},
-            {label: 'Panelist', fieldName: 'Panelist__c', type: 'text'},
+            {label: 'Panelist', fieldName: 'PanelistName__c', type: 'text'},
             {label: 'Status', fieldName: 'OverallStatus__c', type: 'text'},
             
         ]);

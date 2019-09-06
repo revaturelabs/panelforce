@@ -26,10 +26,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>ALIWrapper</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>ConductPanelApexController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -183,7 +179,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PH_Assessment__c.Attempts__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -193,6 +189,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>PH_Assessment__c.Contact__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PH_Assessment__c.InternetConnectivity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PH_Assessment__c.InterviewDuration__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -217,28 +223,13 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>PH_Assessment__c.InternetConnectivity__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>PH_Assessment__c.InterviewDuration__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>PH_Assessment__c.Interview_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>PH_Assessment__c.Panelist__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>PH_Assessment__c.PanelRound__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PH_Assessment__c.PanelistName__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>

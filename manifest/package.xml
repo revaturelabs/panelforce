@@ -142,5 +142,9 @@
         <members>PanelForce</members>
         <name>CustomApplication</name>
     </types>
+    <types>
+        <members>*</members>
+        <name>Workflow</name>
+    </types>
     <version>46.0</version>
 </Package>

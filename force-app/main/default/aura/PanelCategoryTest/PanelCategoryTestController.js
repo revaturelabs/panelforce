@@ -12,7 +12,7 @@
             console.log("Progress Saved");
         });
         
-        $A.enqueAction(action);
+        $A.enqueueAction(action);
         
     },
 })

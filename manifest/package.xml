@@ -30,7 +30,7 @@
         <members>TrackControllerTests</members>
         <members>TestController</members>
         <members>ConductPanelApexController</members>
-
+        <members>AssessmentLineItemController</members>
         <members>createTimestampController</members>
         <members>createTimestampControllerTest</members>
         <name>ApexClass</name>

@@ -1,25 +1,32 @@
 ({
     callReturnAssessments : function(component, contactId, assessment) {
-            var getReturnAssessments = component.get("c.returnAssessments");
+        var getReturnAssessments = component.get("c.returnAssessments");
+        
+        getReturnAssessments.setParams({
+            contactId : contactId,
+            assessment : assessment
+        });
+        getReturnAssessments.setCallback(this, function(response){
             
-            getReturnAssessments.setParams({
-                contactId : contactId,
-                assessment : assessment
-            });
-            getReturnAssessments.setCallback(this, function(response){
-                
-                var state = response.getState();
-                console.log("This is the Response: " + JSON.stringify(response.getReturnValue()));
-                if(state === "SUCCESS"){
-                    //Sets the failed panel categories to the component
-                    component.set("v.failedPanels", response.getReturnValue());
+            var state = response.getState();
+            if(state === "SUCCESS"){
+                //Sets the failed panel categories to the component
+                component.set("v.failedPanels", response.getReturnValue());
+            }
+            else if (state === "ERROR") {
+                var errors = response.getError();
+                if (errors) {
+                    if (errors[0] && errors[0].message) {
+                        console.log("Error message: " + 
+                                    errors[0].message);
+                    }
+                } else {
+                    console.log("Unknown error");
                 }
-                else if (state === "ERROR"){
-                    console.log("ERROR");
-                }
-            });
-            
-            $A.enqueueAction(getReturnAssessments);
+            }
+        });
+        
+        $A.enqueueAction(getReturnAssessments);
         
     },
 })

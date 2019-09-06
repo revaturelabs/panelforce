@@ -1,5 +1,5 @@
 ({
-	getAssessmentHelper : function(component, IdComponent) {
+    getAssessmentHelper : function(component, IdComponent) {
         
         let listOfAssessments = []; 
         
@@ -17,18 +17,23 @@
             
             if(state === "SUCCESS") {
                 listOfAssessments = response.getReturnValue();
-                console.log('Assessments from response: ' + response.getReturnValue());
-                console.log('Assessments from response: ' + JSON.stringify(response.getReturnValue()));
                 component.set("v.panels", listOfAssessments);
                 var firstPanel = listOfAssessments[0];
-                console.log("First panel: " + JSON.stringify(firstPanel));
                 component.set("v.firstPanel", firstPanel);           
             } else if (state === "ERROR") {
-                console.log("Error");
+                var errors = response.getError();
+                if (errors) {
+                    if (errors[0] && errors[0].message) {
+                        console.log("Error message: " + 
+                                    errors[0].message);
+                    }
+                } else {
+                    console.log("Unknown error");
+                }
             }
         }); 
         
         // Tell SF to execute this action when the resources become available
         $A.enqueueAction(getAssessments);
-	}, 
+    }, 
 })

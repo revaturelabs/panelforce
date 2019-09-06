@@ -1,15 +1,3 @@
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-    <aura:registerEvent name="GetContactIdEvent" type="c:GetContactIdEvent"/>
-    
-    
-    <div style="max-width: 910px;"> <!-- Please leave this div as it is needed to mimic actual component size. -->
-		<lightning:card title="General Panel Information">
-        	Info Here
-            <!-- Don't forget about your friend: Mr. SLDS -->
-        </lightning:card>
-    </div>
-	<!-- Register the event -->
-    
 
 </aura:component>

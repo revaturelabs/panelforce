@@ -1,5 +1,5 @@
 ({
-	getAssessmentHelper : function(component, IdComponent) {
+    getAssessmentHelper : function(component, IdComponent) {
         
         let listOfAssessments = []; 
         
@@ -21,11 +21,19 @@
                 var firstPanel = listOfAssessments[0];
                 component.set("v.firstPanel", firstPanel);           
             } else if (state === "ERROR") {
-                console.log("Error");
+                var errors = response.getError();
+                if (errors) {
+                    if (errors[0] && errors[0].message) {
+                        console.log("Error message: " + 
+                                    errors[0].message);
+                    }
+                } else {
+                    console.log("Unknown error");
+                }
             }
         }); 
         
         // Tell SF to execute this action when the resources become available
         $A.enqueueAction(getAssessments);
-	}, 
+    }, 
 })

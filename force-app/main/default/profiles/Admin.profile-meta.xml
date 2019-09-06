@@ -162,7 +162,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PH_Assessment__c.Attempts__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -192,7 +192,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PH_Assessment__c.OverallStatus__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>

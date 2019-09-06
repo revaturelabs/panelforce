@@ -92,4 +92,11 @@
     
     
     
+    handleStopPanelButton : function(component, event, helper) {
+        helper.stopTimer(component);
+        helper.setNewStopTimeForAssessment(component);
+    },
+    
+    
+    
 })

@@ -10,7 +10,6 @@ public class ConductPanelApexController {
         if (associateId != null) {
             newAssessment.Contact__c = associateId;
         }
-        newAssessment.Panelist__c = UserInfo.getUserId();
         newAssessment.Interview_Date__c = System.today();
         newAssessment.Interview_Start__c = System.now().time();
         newAssessment.TrainingTrack__c = apexGetTrainingTrack(associateId);
@@ -18,6 +17,15 @@ public class ConductPanelApexController {
         newAssessment.OverallPass__c = true;
         // insert newAssessment
         insert newAssessment;
+        
+        // query newly created record to find owner and fill in the panelist field
+        Id newAssessmentId = newAssessment.Id;
+        system.debug(newAssessmentId);
+        PH_Assessment__c newlyCreatedAssessment = [SELECT Id, Owner.Id FROM PH_Assessment__c WHERE Id = :newAssessmentId ];
+        newAssessment.Panelist__c = newlyCreatedAssessment.Owner.Id;
+        
+        // update newAssessment
+        update newAssessment;
         //return Id of newAssessment
         currentRecordAssessmentId = newAssessment.Id;
         return newAssessment.Id;
@@ -78,7 +86,22 @@ public class ConductPanelApexController {
         // return string
         return 'deleted: ' + assessmentId; 
     }
-
+    
+    
+    
+    @auraEnabled
+    // end inteview and calculate duration
+    public static Time apexSetNewStopTimeForAssessment(Id assessmentId) {
+        system.debug(assessmentId);
+        PH_Assessment__c finishedAssessment = [SELECT Id, Interview_End_Time__c, Interview_Start__c, InterviewDuration__c FROM PH_Assessment__c WHERE Id =: assessmentId];
+        Time endTime = System.now().time();
+        finishedAssessment.Interview_End_Time__c = endTime;
+        double minuteDuration = finishedAssessment.Interview_end_time__c.minute() - finishedAssessment.Interview_start__c.minute();
+        finishedAssessment.InterviewDuration__c = minuteDuration;
+        update finishedAssessment;
+        return endTime;
+    }
+    
     
     
 }

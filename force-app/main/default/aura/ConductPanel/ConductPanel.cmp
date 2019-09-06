@@ -2,7 +2,7 @@
     
     <!--lightning:button variant="neutral" label="start" name="start" onclick="{!c.startTimer}" class="slds-m-top_medium" /-->
     
-    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="recordId" type="Id" />
     
     <aura:attribute name="timerRunningTime" type="Integer" default="0"/>
     <aura:attribute name="timerLastCheckTime" type="DateTime" default="0"/>
@@ -98,6 +98,7 @@
         
     </lightning:card>
     <lightning:button variant="Brand" label="Save" title="Save" onclick="{! c.handleSaveButton }"/>
+    <p>"{!v.AssessmentId}"</p>
     <hr/>
-    <c:shaneRefactor AssessmentId="{!v.AssessmentId}"/>
+    <c:shaneRefactor ContactId="{!v.recordId}" AssessmentId="{!v.AssessmentId}"/>
 </aura:component>

@@ -1,3 +1,9 @@
 ({
-    doInit : function(component, event, helper) {}
+    doInit : function(component, event, helper) {
+        
+    },
+    
+    saveALI : function(component, event, helper) {
+        
+    }
 })

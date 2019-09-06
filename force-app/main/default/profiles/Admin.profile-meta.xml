@@ -6,6 +6,10 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>ALIWrapper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ConductPanelApexController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -134,6 +138,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AssessmentLineItem__c.Interviewed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AssessmentLineItem__c.PanelCategoryName__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

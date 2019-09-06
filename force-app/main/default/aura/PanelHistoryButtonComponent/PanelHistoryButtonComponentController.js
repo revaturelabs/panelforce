@@ -5,4 +5,5 @@
         var assessment = component.get("v.assessment");
         helper.callReturnAssessments(component, contactId, assessment);
     },
+    
 })

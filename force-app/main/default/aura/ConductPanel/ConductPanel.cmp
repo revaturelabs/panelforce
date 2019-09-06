@@ -5,15 +5,14 @@
             <!-- Don't forget about your friend: Mr. SLDS -->
         </lightning:card>
     </div>
+
     
     
     
     
     
-    
-    
-    
-    <aura:attribute name="timerRunningTime" type="Integer" default="0"/>
+
+	<aura:attribute name="timerRunningTime" type="Integer" default="0"/>
     <aura:attribute name="timerLastCheckTime" type="DateTime" default="0"/>
     <aura:attribute name="timerStartTime" type="DateTime" default="0"/>
     <aura:attribute name="lastSaveTime" type="DateTime" />
@@ -24,10 +23,11 @@
     
     <aura:handler name="change" value="{!v.Assessment.Comment__c}" action="{!c.handleAutoSave}" update="change" />
     <aura:handler name="change" value="{!v.Assessment.RecordingLink__c}" action="{!c.handleAutoSave}"/>    
-    
+   
     <aura:attribute name="AssessmentId" type="Object"/>
     <aura:attribute name="Assessment" type="Object"/>
     <aura:attribute name="AssessmentLoaderError" type="String"/>
+
     <force:recordData aura:id="AssessmentLoader"
                       recordId="{!v.AssessmentId}"
                       fields="Id, Contact__r.Name, Panelist__r.Name, TrainingTrack__r.Name, Interview_Date__c, Interview_Start__c, Comment__c, OverallPass__c, InternetConnectivity__c, InterviewDuration__c, PanelRound__c, RecordingConsent__c, RecordingLink__c, Score_Total__c"
@@ -104,8 +104,13 @@
         <lightning:button variant="Brand" label="SAVE Assessment" title="Save Assessment" onclick="{! c.handleSaveButton }"/>
         <hr />
         <lightning:button variant="Brand" label="CANCEL Interview / DELETE current Assessment" title="Cancel" onclick="{! c.handleCancelButton }"/>
-
+        
     </div>
+    
+    
+    
+    
+    
     
     
     

@@ -76,9 +76,9 @@ public class ConductPanelApexController {
             return e.getMessage();
         } 
         // return string
-        return 'deleted: ' + assessmentId;
+        return 'deleted: ' + assessmentId; 
     }
-    
+
     
     
 }

@@ -108,7 +108,7 @@
     
     
     
-    updateTimer : function(component) {       
+    updateTimer : function(component) {     
         var varCurrentTime = Date.now();
         var varTimerLastCheckTime = component.get("v.timerLastCheckTime");
         var varTimeDifference = varCurrentTime - varTimerLastCheckTime;
@@ -123,8 +123,15 @@
             component.set("v.timerLastCheckTime", varCurrentTime);
             component.set("v.timerRunningTime", Math.floor(varTimerRunningTime/60000));
         }
+        
+        // periodic save
+        this.saveAssessment(component);
+        console.log("trying to save.");
+        
         setTimeout($A.getCallback(() => this.updateTimer(component)), 10000);
+        
     },
+    
     
     
 })

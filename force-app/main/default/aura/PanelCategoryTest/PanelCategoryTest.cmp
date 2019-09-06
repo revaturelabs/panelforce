@@ -1,5 +1,5 @@
 <!-- instance of a single Assessment Line Item, treated as a panel category -->
-<aura:component >
+<aura:component controller="AssessmentLineItemController">
     <aura:attribute name="category" type="AssessmentLineItem__c"/>
     <aura:attribute name="ALIId" type="Id"/>
     <aura:attribute name="score" type="Integer" default="null"/>
@@ -13,16 +13,16 @@
                          value="{!v.score}"
                          min="0"
                          required="true" 
-                         onblur="{c.SaveALI}"/>
+                         onblur="{!c.SaveALI}"/>
         <lightning:input type="checkbox" aura:id="aliform" label="Repanel?"
                          name="repanelcat"
                          value="{!v.repanel}"
-                         onblur="{c.SaveALI}"
+                         onblur="{!c.SaveALI}"
                          />
         <lightning:input aura:id="aliform" label="Comments"
                          name="catcomment"
                          value="{!v.comments}"
-                         onblur="{c.SaveALI}"
+                         onblur="{!c.SaveALI}"
                          />
     </form>
     

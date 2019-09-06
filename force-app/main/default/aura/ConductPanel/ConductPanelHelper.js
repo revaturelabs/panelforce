@@ -100,8 +100,48 @@
             component.set("v.timerLastCheckTime", varCurrentTime);
             component.set("v.timerRunningTime", Math.floor(varTimerRunningTime/60000));
         }
+        if(component.get("v.timerStopTime") == null){
         setTimeout($A.getCallback(() => this.updateTimer(component)), 10000);
+        }
     },
+    
+     setNewStopTimeForAssessment : function(component) {      
+        // call apex to update assessment with current time
+        var action = component.get("c.setNewStopTimeForAssessment");
+        // set parameters
+        var assessmentId = component.get("v.AssessmentId");
+        action.setParams({
+            "assessmentId" : assessmentId,
+        });
+        // set callback to handle response
+        action.setCallback(this, function(responseFromApexController){
+            // get the response state
+            var state = responseFromApexController.getState();
+            if(state == 'SUCCESS') {
+                // set component value
+                var results = responseFromApexController.getReturnValue();
+                // reload data on page
+                component.find("AssessmentLoader").reloadRecord(true);
+                console.log("Success: " + results);
+            }
+            else {
+                console.log("Failed: " + state);
+            }
+        });
+        // enqueue action
+        $A.enqueueAction(action);    
+    },   
+
+    stopTimer : function(component) {       
+        var varEndTime = Date.now();
+        //component.set("v.timerStopClick", varEndTime);
+       // component.set("v.timerLastCheckTime", varCurrentTime);
+       component.set("v.timerStopTime", varEndTime);
+        console.log(component.get("v.timerStopTime"));
+        //component.set("v.timerRunningTime", "0");
+        this.updateTimer(component);
+    },
+    
     
     
 })

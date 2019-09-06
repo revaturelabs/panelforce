@@ -7,6 +7,7 @@
     <aura:attribute name="timerRunningTime" type="Integer" default="0"/>
     <aura:attribute name="timerLastCheckTime" type="DateTime" default="0"/>
     <aura:attribute name="timerStartTime" type="DateTime" default="0"/>
+    <aura:attribute name="timerStopTime" type="DateTime" />
     <aura:attribute name="lastSaveTime" type="DateTime" />
     <aura:attribute name="overallRepanel" type="String" />
     <aura:attribute name="overallPass" type="String" />
@@ -84,7 +85,7 @@
                 <hr />
                
                 <lightning:button variant="brand" label="Start Assessment" title="Start Assessment" onclick="{!c.handleStartPanelButton}"  />
-                
+                <lightning:button variant="brand" label="Stop Assessment" title="Stop Assessment" onclick="{!c.handleStopPanelButton}" />
                 <p class="slds-text-heading--large">
                     <lightning:button label="{!v.timerRunningTime + ' minutes'}" title="{!v.timerRunningTime}"/> 
                 </p>

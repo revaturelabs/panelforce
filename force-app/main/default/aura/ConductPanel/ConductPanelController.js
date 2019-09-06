@@ -16,8 +16,11 @@
         helper.startTimer(component);
     },
     
+    handleStopPanelButton : function(component, event, helper) {
+        helper.setNewStopTimeForAssessment(component);
+        helper.stopTimer(component);
     
-    
+},
     handleSaveButton : function(component, event, helper) {
         helper.saveAssessment(component);
     },

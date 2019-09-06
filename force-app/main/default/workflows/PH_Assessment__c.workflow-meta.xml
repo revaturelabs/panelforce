@@ -15,7 +15,7 @@
             <name>UpdatePanelistName</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>true</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>

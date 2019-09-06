@@ -23,6 +23,9 @@
     </classAccesses>
     <classAccesses>
         <apexClass>AssessmentServer</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ALIWrapper</apexClass>
         <enabled>true</enabled>
     </classAccesses>

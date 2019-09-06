@@ -63,6 +63,14 @@ public class ConductPanelApexController {
         return currentTime;
     }
     
-    
+    @auraEnabled
+    public static Time setNewStopTimeForAssessment(Id assessmentId) {
+        PH_Assessment__c finishedAssessment = [SELECT Id, Interview_End_Time__c FROM PH_Assessment__c WHERE Id =: assessmentId];
+        Time endTime = System.now().time();
+        finishedAssessment.Interview_End_Time__c = endTime;
+        update finishedAssessment;
+        return endTime;
+        
+    }
     
 }

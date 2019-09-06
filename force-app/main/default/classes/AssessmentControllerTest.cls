@@ -22,5 +22,30 @@ public class AssessmentControllerTest
             System.assertEquals(lineItem.PH_Assessment__r.Contact__c, panelist.Id);
         }
     }
-  
+  	@isTest
+    public static void testFailedReturnAssesments()
+    {
+		
+        
+        PH_TrainingTrack__c newTrack = new PH_TrainingTrack__c(Name = 'Track1');
+        insert newTrack;
+        PanelCategory__c category = new PanelCategory__c(PH_TrainingTrack__c = newTrack.Id);
+        insert category;
+        PH_Assessment__c assessments = new PH_Assessment__c();
+        insert assessments;
+        
+        AssessmentLineItem__c assessmentLineItems = new AssessmentLineItem__c(PanelCategory__c=category.Id,PH_Assessment__c=assessments.Id,Status__c=TRUE);
+        List<AssessmentLineItem__c> passedAssessments = new List <AssessmentLineItem__c>();
+        passedAssessments.add(assessmentLineItems);
+		insert passedAssessments;        
+    		//create passed assessment case for failing test
+            for(AssessmentLineItem__c assessment : passedAssessments)
+            {
+
+            //make sure status is false: panelist failed
+            System.assertEquals(false, assessment.Status__c);
+    
+            }
+        }
+    
 }

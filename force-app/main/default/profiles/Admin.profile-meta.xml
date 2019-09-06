@@ -6,6 +6,7 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+<<<<<<< HEAD
         <apexClass>AssessmentController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -23,6 +24,13 @@
     </classAccesses>
     <classAccesses>
         <apexClass>AssessmentServer</apexClass>
+=======
+        <apexClass>ALIWrapper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ConductPanelApexController</apexClass>
+>>>>>>> danielNoah
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -98,6 +106,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TestController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TestEmailTrainerHelper</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -115,6 +127,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TrackControllerTests</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>createTimestampController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -142,6 +158,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AssessmentLineItem__c.Interviewed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AssessmentLineItem__c.PanelCategoryName__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -190,9 +211,25 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+<<<<<<< HEAD
         <editable>false</editable>
         <field>PH_Assessment__c.OverallStatus__c</field>
         <readable>false</readable>
+=======
+        <editable>true</editable>
+        <field>PH_Assessment__c.InternetConnectivity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PH_Assessment__c.InterviewDuration__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PH_Assessment__c.Interview_Date__c</field>
+        <readable>true</readable>
+>>>>>>> danielNoah
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -200,8 +237,33 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>PH_Assessment__c.PanelRound__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PH_Assessment__c.Panelist__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PH_Assessment__c.RecordingConsent__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PH_Assessment__c.RecordingLink__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>PH_Assessment__c.Score_Total__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PH_Assessment__c.TrainingTrack__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

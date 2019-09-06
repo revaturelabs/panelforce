@@ -1,0 +1,121 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="isTechVisible" type="Boolean" default="false"/>
+    <lightning:button onclick="{! c.handleToggleTech }" label="Toggle Tech"/>
+    <aura:attribute name="categories" type="PanelCategory__c[]"/>
+    
+    <div style="max-width: 910px;"> <!-- Please leave this div as it is needed to mimic actual component size. -->
+        <lightning:card title="General Panel Information">
+            <lightning:accordion aura:id="Technology" activeSectionName="Technology">
+                <!-- aura:if to dynamically display categories.-->
+                <!-- <aura:if isTrue="{!v.isTECHVisible}"> -->
+                <lightning:accordionSection name="Project Explanation" label="Project Explanation">
+                    <p></p>
+                    <p>Max Score</p>
+                    <p>Respond</p>
+                    <p>Comments</p>
+                </lightning:accordionSection>
+                <!-- </aura:if> -->
+                <aura:if isTrue="{!v.isTechVisible}">
+                    <lightning:accordionSection name="Fundementals" label="Fundementals">
+                        <p></p>
+                        <p>Max Score</p>
+                        <p>Respond</p>
+                        <p>Comments</p>
+                    </lightning:accordionSection>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.isTechVisible}">
+                    <lightning:accordionSection name="Workflows &amp; Reports" label="Workflows &amp; Reports">
+                        <p></p>
+                        <p>Max Score</p>
+                        <p>Respond</p>
+                        <p>Comments</p>
+                    </lightning:accordionSection>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.isTechVisible}">
+                    <lightning:accordionSection name="Apex Programming" label="Apex Programming">
+                        <p></p>
+                        <p>Max Score</p>
+                        <p>Respond</p>
+                        <p>Comments</p>
+                    </lightning:accordionSection>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.isTechVisible}">
+                    <lightning:accordionSection name="SOQL/SOSL" label="SOQL/SOSL">
+                        <p></p>
+                        <p>Max Score</p>
+                        <p>Respond</p>
+                        <p>Comments</p>
+                    </lightning:accordionSection>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.isTechVisible}">
+                    <lightning:accordionSection name="Visualforce" label="Visualforce">
+                        <p></p>
+                        <p>Max Score</p>
+                        <p>Respond</p>
+                        <p>Comments</p>
+                    </lightning:accordionSection>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.isTechVisible}">
+                    <lightning:accordionSection name="Testing" label="Testing">
+                        <p></p>
+                        <p>Max Score</p>
+                        <p>Respond</p>
+                        <p>Comments</p>
+                    </lightning:accordionSection>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.isTechVisible}">
+                    <lightning:accordionSection name="Debug &amp; Deployment" label="Debug &amp; Deployment">
+                        <p></p>
+                        <p>Max Score</p>
+                        <p>Respond</p>
+                        <p>Comments</p>
+                    </lightning:accordionSection>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.isTechVisible}">
+                    <lightning:accordionSection name="Lightning" label="Lightning">
+                        <p></p>
+                        <p>Max Score</p>
+                        <p>Respond</p>
+                        <p>Comments</p>
+                    </lightning:accordionSection>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.isTechVisible}">
+                    <lightning:accordionSection name="SDLC/Agile" label="SDLC/Agile">
+                        <p></p>
+                        <p>Max Score</p>
+                        <p>Respond</p>
+                        <p>Comments</p>
+                    </lightning:accordionSection>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.isTechVisible}">
+                    <lightning:accordionSection name="Soft Skills" label="Soft Skills">
+                        <p></p>
+                        <p>Max Score</p>
+                        <p>Respond</p>
+                        <p>Comments</p>
+                    </lightning:accordionSection>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.isTechVisible}">
+                    <lightning:accordionSection name="SOA" label="SOA">
+                        <p></p>
+                        <p>Max Score</p>
+                        <p>Respond</p>
+                        <p>Comments</p>
+                    </lightning:accordionSection>
+                </aura:if>
+                
+            </lightning:accordion>
+            <!-- Don't forget about your friend: Mr. SLDS -->
+        </lightning:card>
+    </div>
+</aura:component>

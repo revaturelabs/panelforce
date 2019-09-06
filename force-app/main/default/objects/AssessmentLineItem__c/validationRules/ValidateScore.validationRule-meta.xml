@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ValidateScore</fullName>
+    <active>true</active>
+    <description>Does not allow user to enter a score greater than the max score.</description>
+    <errorConditionFormula>Score__c &gt;  maxScore__c</errorConditionFormula>
+    <errorDisplayField>Score__c</errorDisplayField>
+    <errorMessage>The actual score can not be greater than the max score.</errorMessage>
+</ValidationRule>

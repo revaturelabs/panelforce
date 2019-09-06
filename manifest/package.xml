@@ -29,12 +29,20 @@
         <members>testTrackController</members>
         <members>TrackController</members>
         <members>TrackControllerTests</members>
+<<<<<<< HEAD
         <members>AssessmentControllerTest</members>
         <members>AssessmentController</members>
         <members>AssessmentServer</members>
         <members>AssessmentControllerTest</members>
         <members>AssessmentController</members>
         <members>AssessmentHistoryControllerTest</members>
+=======
+        <members>TestController</members>
+        <members>ConductPanelApexController</members>
+
+        <members>createTimestampController</members>
+        
+>>>>>>> danielNoah
         <name>ApexClass</name>
     </types>
     <types>
@@ -69,11 +77,23 @@
         <members>Test_App</members>
         <members>testingThings</members>
         <members>TestPMCC</members>
+<<<<<<< HEAD
         <members>PanelHistoryButtonComponent</members>
         <members>AssessmentHistory</members>
         <members>PanelHistoryBox</members>
         <members>TopicsToRePanel</members>
         <members>PanelHistoryLink</members>
+=======
+        <members>tonyTest</members>
+        <members>shaneTest</members>
+        <members>solomonTest</members>
+        <members>shaneRefactor</members>
+        <members>shaneRefactorpanelcategory</members>
+        <members>PanelCategoryTest</members>
+        <members>panelTest</members>
+        <members>TimeStampButton</members>
+        <members>ConductPanelWrapper</members>
+>>>>>>> danielNoah
         <name>AuraDefinitionBundle</name>
     </types>
     <types>
@@ -109,6 +129,9 @@
         <members>PH_TrainingAssignment__c-PH_TrainingAssignment Layout</members>
         <members>PH_TrainingTrack__c-PH_TrainingTrack Layout</members>
         <members>Time_Stamp__c-Time Stamp Layout</members>
+
+        <!--<members>PH_Assessment__c-Compact001 Layout</members>-->
+
         <name>Layout</name>
     </types>
     <types>

@@ -214,6 +214,8 @@
         <editable>false</editable>
         <field>PH_Assessment__c.OverallStatus__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>PH_Assessment__c.InternetConnectivity__c</field>
         <readable>true</readable>

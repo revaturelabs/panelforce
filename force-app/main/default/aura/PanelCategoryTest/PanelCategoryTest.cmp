@@ -1,0 +1,29 @@
+<!-- instance of a single Assessment Line Item, treated as a panel category -->
+<aura:component >
+    <aura:attribute name="category" type="AssessmentLineItem__c"/>
+    <aura:attribute name="ALIId" type="Id"/>
+    <aura:attribute name="score" type="Integer" default="null"/>
+    <aura:attribute name="repanel" type="Boolean" default="false"/>
+    <aura:attribute name="comments" type="String" default=""/>
+    
+    <!-- Form for collecting Actual Score, Repanel, and Comments -->
+    <form class="slds-form--stacked">
+        <lightning:input type="number" aura:id="aliform" label="Actual Score"
+                         name="actualscore"
+                         value="{!v.score}"
+                         min="0"
+                         required="true" 
+                         onblur="{c.SaveALI}"/>
+        <lightning:input type="checkbox" aura:id="aliform" label="Repanel?"
+                         name="repanelcat"
+                         value="{!v.repanel}"
+                         onblur="{c.SaveALI}"
+                         />
+        <lightning:input aura:id="aliform" label="Comments"
+                         name="catcomment"
+                         value="{!v.comments}"
+                         onblur="{c.SaveALI}"
+                         />
+    </form>
+    
+</aura:component>

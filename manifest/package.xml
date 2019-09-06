@@ -30,6 +30,8 @@
         <members>testTrackController</members>
         <members>TrackController</members>
         <members>TrackControllerTests</members>
+        <members>AssessmentControllerTest</members>
+        <members>AssessmentController</members>
         <members>AssessmentServer</members>
         <name>ApexClass</name>
     </types>

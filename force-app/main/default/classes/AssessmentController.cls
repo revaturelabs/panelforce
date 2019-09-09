@@ -8,9 +8,9 @@ public class AssessmentController {
      */
     @AuraEnabled
     public static List<AssessmentLineItem__c> returnAssessments(Id contactId, PH_Assessment__c assessment){
-        return [SELECT PanelCategory__r.Name, Status__c 
+        return [SELECT PanelCategory__r.Name, Interviewed__c 
                 FROM AssessmentLineItem__c 
-                WHERE (PH_Assessment__c =: assessment.Id AND Status__c = false)];
+                WHERE (PH_Assessment__c =: assessment.Id AND Interviewed__c = false)];
 
     }
 }

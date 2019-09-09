@@ -17,7 +17,7 @@ public class AssessmentControllerTest
             //validate ids are equal
             System.assertEquals(newAssessment.Id, lineItem.Id);
             //make sure status is false: panelist failed
-            System.assertEquals(lineItem.Status__c, false);
+            System.assertEquals(lineItem.Interviewed__c, false);
             //validate that the contact passed in is the same contact for the assessment
             System.assertEquals(lineItem.PH_Assessment__r.Contact__c, panelist.Id);
         }
@@ -34,7 +34,7 @@ public class AssessmentControllerTest
         PH_Assessment__c assessments = new PH_Assessment__c();
         insert assessments;
         
-        AssessmentLineItem__c assessmentLineItems = new AssessmentLineItem__c(PanelCategory__c=category.Id,PH_Assessment__c=assessments.Id,Status__c=TRUE);
+        AssessmentLineItem__c assessmentLineItems = new AssessmentLineItem__c(PanelCategory__c=category.Id,PH_Assessment__c=assessments.Id,Interviewed__c=TRUE);
         List<AssessmentLineItem__c> passedAssessments = new List <AssessmentLineItem__c>();
         passedAssessments.add(assessmentLineItems);
 		insert passedAssessments;        
@@ -43,7 +43,7 @@ public class AssessmentControllerTest
             {
 
             //make sure status is false: panelist failed
-            System.assertEquals(false, assessment.Status__c);
+            System.assertEquals(false, assessment.Interviewed__c);
     
             }
         }

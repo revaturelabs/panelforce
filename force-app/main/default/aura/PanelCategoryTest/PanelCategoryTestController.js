@@ -1,7 +1,8 @@
 ({
     SaveALI : function(component, event, helper) {
         var action = component.get("c.saveALI");
-        
+        var isChecked = component.find("alirepanel").get("v.checked");
+        component.set
         console.log('saveALI' + component.get("v.category"));
         console.log('saveALI' + component.get("v.score"));
         console.log('saveALI' + component.get("v.repanel"));
@@ -10,7 +11,7 @@
         action.setParams({
             "ALIId" : component.get("v.category").Id,
             "score" : component.get("v.score"), 
-            "repanel" : component.get("v.repanel"), 
+            "repanel" : isChecked, 
             "comments" : component.get("v.comments")
         });
         action.setCallback(this, function(response) {

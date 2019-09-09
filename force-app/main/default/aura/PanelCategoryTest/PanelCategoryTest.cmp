@@ -14,10 +14,10 @@
                          min="0"
                          required="true" 
                          onblur="{!c.SaveALI}"/>
-        <lightning:input type="checkbox" aura:id="aliform" label="Repanel?"
-                         name="repanelcat"
-                         value="{!v.repanel}"
-                         onblur="{!c.SaveALI}"
+        <lightning:input type="checkbox" aura:id="alirepanel" label="Repanel?"
+                         checked="{!v.repanel}"
+                         name="{!v.repanel}"
+                         onchange="{!c.SaveALI}"
                          />
         <lightning:input aura:id="aliform" label="Comments"
                          name="catcomment"

@@ -14,7 +14,7 @@ public class ConductPanelApexController {
         newAssessment.Interview_Start__c = System.now().time();
         newAssessment.TrainingTrack__c = apexGetTrainingTrack(associateId);
         newAssessment.PanelRound__c = apexGetNumberOfPreviousPanelRounds(associateId) + 1;        
-        newAssessment.OverallPass__c = true;
+        
         // insert newAssessment
         insert newAssessment;
         

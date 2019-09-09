@@ -2,17 +2,15 @@
     
     <!--lightning:button variant="neutral" label="start" name="start" onclick="{!c.startTimer}" class="slds-m-top_medium" /-->
     
-
+    
     <aura:attribute name="recordId" type="Id" />
     
-    
-
     <aura:attribute name="timerRunningTime" type="Integer" default="0"/>
     <aura:attribute name="timerLastCheckTime" type="DateTime" default="null"/>
     <aura:attribute name="timerStartTime" type="DateTime" default="null"/>
     <aura:attribute name="lastSaveTime" type="DateTime" default="null" />
     <aura:attribute name="timerStopTime" type="DateTime" default="null"/>
-
+    
     <aura:attribute name="overallRepanel" type="String" />
     <aura:attribute name="overallPass" type="String" />
     
@@ -33,27 +31,13 @@
                       mode="EDIT"
                       />
     
-    <div class="column"> 
-        <lightning:card aura:id="AssessmentEditorForce" iconName="standard:account" title="Assessment" >
-            <div class="slds-p-horizontal--medium">
-                <div class="column">
-                    <p class="slds-text-heading--large">
-                        <lightning:button label="{!v.timerRunningTime + ' minutes'}" title="{!v.timerRunningTime}"/> 
-                    </p>
-                    <hr />
-                    <lightning:button variant="brand" label="START Interview / CREATE Assessment" title="Start Interview and Create Assessment" onclick="{!c.handleStartPanelButton}"  />
-                    <hr />
-                    <lightning:button variant="brand" label="Stop Assessment" title="Stop Assessment" onclick="{!c.handleStopPanelButton}" />
-                    <hr />
-                    <p class="slds-text-heading--medium">Associate: <lightning:formattedText title="Contact" value="{!v.Assessment.Contact__r.Name}" /></p>
-                    <hr />
-                    <p class="slds-text-heading--medium">Panelist: <lightning:formattedText title="Panelist" value="{!v.Assessment.Panelist__r.Name}" /></p>
-                    <hr />
-                    <p class="slds-text-heading--medium">Training Track: <lightning:formattedText title="TrainingTrack" value="{!v.Assessment.TrainingTrack__r.Name}" /></p>
-                    <hr />
-                    <p class="slds-text-heading--medium" >Panel Round: <lightning:formattedNumber title="PanelRound" value="{!v.Assessment.PanelRound__c}" /></p>
-                    <hr />
-                </div>
+    <lightning:card aura:id="AssessmentEditorForce" iconName="standard:account" title="Assessment" >
+        <div class="slds-grid slds-gutters"> 
+            
+            <div class="slds-col">
+                
+                <lightning:button variant="brand" label="START Interview / CREATE Assessment" title="Start Interview and Create Assessment" onclick="{!c.handleStartPanelButton}"  />
+                <hr />
                 
                 <p class="slds-text-heading--medium">Associate: <lightning:formattedText title="Contact" value="{!v.Assessment.Contact__r.Name}" /></p>
                 <hr />
@@ -63,59 +47,62 @@
                 <hr />
                 <p class="slds-text-heading--medium" >Panel Round: <lightning:formattedNumber title="PanelRound" value="{!v.Assessment.PanelRound__c}" /></p>
                 <hr />
-                <p class="slds-text-heading--medium">Consent for Recording:  
-                    <ui:inputRadio aura:id="r10" name="ConsentGiven" label="Consent Given" change="{!c.handleConsentedToRecordingOption}" value="true"/>
-                    <ui:inputRadio aura:id="r11" name="ConsentGiven" label="Consent Not Given" change="{!c.handleNotConsentedToRecordingOption}"/>
-                </p>
-                <hr/>
-                <p class="slds-text-heading--medium" >Recording Link: <ui:inputURL class="field" value="{!v.Assessment.RecordingLink__c}" /></p>
-                <hr />
+                <lightning:button variant="brand" label="Stop Assessment and Save" title="Stop Assessment" onclick="{!c.handleStopPanelButton}" />
+                
                 <!-- Bottom Section -->
                 <br/><br/>
                 <hr /><hr />
-                <p class="slds-text-heading--medium" >Total Score: <lightning:formattedText title="Score_Total__c" value="{!v.Assessment.Score_Total__c}" /></p>
+                <lightning:button variant="Brand" label="CANCEL Interview / DELETE current Assessment" title="Cancel" onclick="{! c.handleCancelButton }"/>
                 
+                
+                <p class="slds-text-heading--medium" >Total Score: <lightning:formattedText title="Score_Total__c" value="{!v.Assessment.Score_Total__c}" /></p>
+                <br/><br/>
+                <p class="slds-text-heading--large">
+                    <lightning:button variant="destructive" label="{!v.overallRepanel}" title="Repanel"  />
+                    <lightning:button variant="success" label="{!v.overallPass}" title="Pass" />
+                    <br />
+                    Overall Pass:
+                </p>
+                <p class="slds-text-heading--medium">
+                    <lightning:button variant="destructive" label="Re-panel" title="Repanel" onclick="{! c.handleRepanelButton }"  />
+                    <lightning:button variant="success" label="Pass" title="Pass" value="{!v.Assessment.OverallPass__c}"  onclick="{!c.handlePassButton}" />
+                </p>
             </div>
             <!-- /First Column -->
             <!-- Second Column -->
             <div class="slds-col">
+                <p class="slds-text-heading--large">
+                    <lightning:button label="{!v.timerRunningTime + ' minutes'}" title="{!v.timerRunningTime}"/> 
+                </p>
+                <hr />
                 
-                <div class="column">
-                    <p class="slds-text-heading--medium">Interview Date: <lightning:formattedText title="Interview Date" value="{!v.Assessment.Interview_Date__c}" /></p>
-                    <hr />
-                    <p class="slds-text-heading--medium">Interview Start Time: <lightning:formattedTime value="{!v.Assessment.Interview_Start__c}" hour="2-digit" minute="2-digit"/></p>
-                    <hr />
-                    <p class="slds-text-heading--medium">Interview End Time: <lightning:formattedTime value="{!v.Assessment.Interview_End_Time__c}" hour="2-digit" minute="2-digit"/></p>
-                    <hr />
-                    <p class="slds-text-heading--medium" >Interview Duration: <lightning:formattedNumber title="InterviewDuration__c" value="{!v.Assessment.InterviewDuration__c}" default="60" /></p>
-                </div>
+                <p class="slds-text-heading--medium">Interview Date: <lightning:formattedText title="Interview Date" value="{!v.Assessment.Interview_Date__c}" /></p>
+                <hr />
+                <p class="slds-text-heading--medium">Interview Start Time: <lightning:formattedTime value="{!v.Assessment.Interview_Start__c}" hour="2-digit" minute="2-digit"/></p>
+                <hr />
+                <p class="slds-text-heading--medium">Interview End Time: <lightning:formattedTime value="{!v.Assessment.Interview_End_Time__c}" hour="2-digit" minute="2-digit"/></p>
+                <hr />
+                <p class="slds-text-heading--medium" >Interview Duration: <lightning:formattedNumber title="InterviewDuration__c" value="{!v.Assessment.InterviewDuration__c}" default="60" /></p>
                 
-                <div class="column">
-                    <hr />
-                    <p class="slds-text-heading--medium">Internet Connectivity:  
-                        <ui:inputRadio aura:id="r20" name="InternetConnectivity" label="Adequate" change="{!c.handleAdequateConnection}" value="true"/>
-                        <ui:inputRadio aura:id="r21" name="InternetConnectivity" label="Weak" change="{!c.handleWeakConnection}"/>
-                    </p>
-                    <hr />
-                    <p class="slds-text-heading--medium">Consent for Recording:  
-                        <ui:inputRadio aura:id="r10" name="ConsentGiven" label="Consent Given" change="{!c.handleConsentedToRecordingOption}" value="true"/>
-                        <ui:inputRadio aura:id="r11" name="ConsentGiven" label="Consent Not Given" change="{!c.handleNotConsentedToRecordingOption}"/>
-                    </p>
-                    <hr />
-                    <p class="slds-text-heading--medium" >Recording Link: <ui:inputURL class="field" value="{!v.Assessment.RecordingLink__c}" /></p>
-                </div>    
-            </div>   
-        </lightning:card>
-        <lightning:button variant="Brand" label="SAVE Assessment" title="Save Assessment" onclick="{! c.handleSaveButton }"/>
-        <hr />
-        <lightning:button variant="Brand" label="CANCEL Interview / DELETE current Assessment" title="Cancel" onclick="{! c.handleCancelButton }"/>
-        
-    </div>
+                
+                <hr />
+                <p class="slds-text-heading--medium">Internet Connectivity:  
+                    <ui:inputRadio aura:id="r20" name="InternetConnectivity" label="Adequate" change="{!c.handleAdequateConnection}" value="true"/>
+                    <ui:inputRadio aura:id="r21" name="InternetConnectivity" label="Weak" change="{!c.handleWeakConnection}"/>
+                </p>
+                <hr />
+                <p class="slds-text-heading--medium">Consent for Recording:  
+                    <ui:inputRadio aura:id="r10" name="ConsentGiven" label="Consent Given" change="{!c.handleConsentedToRecordingOption}" value="true"/>
+                    <ui:inputRadio aura:id="r11" name="ConsentGiven" label="Consent Not Given" change="{!c.handleNotConsentedToRecordingOption}"/>
+                </p>
+                <hr />
+                <p class="slds-text-heading--medium" >Recording Link: <ui:inputURL class="field" value="{!v.Assessment.RecordingLink__c}" /></p>
+            </div>    
+        </div>   
+    </lightning:card>
+    <!--<lightning:button variant="Brand" label="SAVE Assessment" title="Save Assessment" onclick="{! c.handleSaveButton }"/>-->
+    <hr />
     
-    
-    
-    
-    
-    
-    
+    <hr />
+    <c:shaneRefactor ContactId="{!v.recordId}" AssessmentId="{!v.AssessmentId}" />
 </aura:component>

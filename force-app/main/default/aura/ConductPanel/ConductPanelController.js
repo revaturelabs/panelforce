@@ -10,8 +10,11 @@
     
     
     handleStartPanelButton : function(component, event, helper) {
+        // check to see if start time already exists (does not work if start time exists)
+        if (component.get("v.timerStartTime")==null) {
         helper.makeANewAssessmentRecord(component);
         helper.startTimer(component);
+        }
     },
     
     handleStopPanelButton : function(component, event, helper) {

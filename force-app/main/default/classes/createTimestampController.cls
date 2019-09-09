@@ -1,7 +1,6 @@
 public class createTimestampController {
     @AuraEnabled
-    public static void saveTimestamp(Id assessmentId, Id panelCategoryId){
-        String panelCategory = [SELECT Name FROM PanelCategory__c WHERE Id =: panelCategoryId LIMIT 1].Name;
+    public static void saveTimestamp(Id assessmentId, String panelCategory){
         datetime currentDateTime = System.now();
         double epochTime = currentDateTime.getTime();
         String timeStampName = 'timeStamp' + String.valueOf(epochTime);

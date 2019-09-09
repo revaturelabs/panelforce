@@ -1,11 +1,11 @@
 ({
 createTimestamp: function(component, event, helper) {
     var assessmentId = component.get('v.AssessmentId');
-    var panelCategoryId = component.get('v.PanelCategoryId');
+    var panelCategory = component.get('v.PanelCategory');
     var action = component.get('c.saveTimestamp');
      action.setParams({ 
         'assessmentId': assessmentId,
-        'panelCategoryId' : panelCategoryId
+        'panelCategory' : panelCategory
     });
      action.setCallback(this, function(a) {
            var state = a.getState();

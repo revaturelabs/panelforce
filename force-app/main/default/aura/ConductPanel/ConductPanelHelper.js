@@ -47,7 +47,7 @@
                 console.log("Record is deleted.");
                // try redirecting to contact detail page
                 var recordId = component.get("v.recordId");
-                var url = '/lightning/?id=' + recordId;
+                var url = '/' + recordId;
                 window.open(url, '_self');
             } else if (ResultFromCallback.state === "INCOMPLETE") {
                 console.log("User is offline, device doesn't support drafts.");

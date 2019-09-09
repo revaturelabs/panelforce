@@ -1,4 +1,4 @@
-@isTest //Note: You must have at least one Assessment assigned to one Contact in order for this to work.
+@isTest
 public class AssessmentHistoryControllerTest {
     /*@testSetup
     public static void AHCtestSetup()
@@ -6,6 +6,7 @@ public class AssessmentHistoryControllerTest {
         PanelForceTestDataCreator.createData();
     }*/
     
+    //Takes a test contact from existing data that is known to have Assessments.
     @isTest(SeeAllData=True)
     public static Contact getTestContact()
     {
@@ -31,12 +32,13 @@ public class AssessmentHistoryControllerTest {
         return testContact;
     }
     
-    
+    //Takes a contact that one should definitely be able to retrieve Assessments from and tests to see if they are
+    //successfully retrieved.  Note: You must have at least one Assessment assigned to one Contact in order for this to work.
 	@isTest(SeeAllData=True)
 	public static void getAssessmentsTest()
     {
-        Contact testContact = getTestContact();
+        Contact testContact = getTestContact(); //Takes a test contact from existing data that is known to have Assessments.
         List<PH_Assessment__c> testList = AssessmentHistoryController.getAssessments(testContact.Id);
-        System.debug('getAssess Test: 0' + testList);
+        System.assert(testList.Size() > 0); //Checks to ensure that the Assessment List is indeed being populated.
     }
 }

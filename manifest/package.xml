@@ -33,7 +33,10 @@
         <members>PanelForceDataCreator</members>
         <members>PanelForceTestDataCreator</members>
 
+        
+
         <!-- Conduct Panel -->
+        <members>AssessmentHistoryController</members>
         <members>CreateAliController</members>
         <members>CreateAliControllerTest</members>
         <members>ConductPanelApexController</members>
@@ -43,7 +46,16 @@
         <members>AssessmentLineItemControllerTest</members>
         <members>createTimestampController</members>
         <members>createTimestampControllerTest</members>
-        
+
+        <!-- Panel History -->
+        <members>AssessmentControllerTest</members>
+        <members>AssessmentController</members>
+        <members>AssessmentServer</members>
+        <members>AssessmentControllerTest</members>
+        <members>AssessmentController</members>
+        <members>AssessmentHistoryControllerTest</members>
+        <members>TestController</members>
+        <members>ConductPanelApexController</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -80,6 +92,11 @@
         <members>ConductPanelApp</members>
         
         
+        <members>PanelHistoryButtonComponent</members>
+        <members>AssessmentHistory</members>
+        <members>PanelHistoryBox</members>
+        <members>TopicsToRePanel</members>
+        <members>PanelHistoryLink</members>
         <members>tonyTest</members>
         <members>shaneTest</members>
         <members>solomonTest</members>
@@ -146,6 +163,10 @@
     <types>
         <members>PanelForce</members>
         <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Workflow</name>
     </types>
     <version>46.0</version>
 </Package>

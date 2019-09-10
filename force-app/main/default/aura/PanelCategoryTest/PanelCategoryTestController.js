@@ -2,7 +2,6 @@
     SaveALI : function(component, event, helper) {
         var action = component.get("c.saveALI");
         var isChecked = component.find("alirepanel").get("v.checked");
-        component.set
         console.log('saveALI' + component.get("v.category"));
         console.log('saveALI' + component.get("v.score"));
         console.log('saveALI' + component.get("v.repanel"));

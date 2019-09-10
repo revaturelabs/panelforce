@@ -6,11 +6,31 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>AssessmentController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AssessmentControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AssessmentHistoryController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AssessmentHistoryControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>AssessmentLineItemController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>AssessmentLineItemControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AssessmentServer</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -29,58 +49,6 @@
         <apexClass>CreateAliControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <!-- <classAccesses>
-        <apexClass>CreateCategoriesController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>EmailTrainerHelper</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>InterviewControllerTest</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>InterviewMainController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>InterviewMainControllerTests</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>InterviewMainMiscApexController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>InterviewMainMiscApexControllerTests</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>InterviewMainScoreApexController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>InterviewMainScoreApexControllerTests</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>MondayReports</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>MondayReportsTests</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>PanelCategories</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>PanelCategoriesTests</apexClass>
-        <enabled>true</enabled>
-    </classAccesses> -->
     <classAccesses>
         <apexClass>PanelForceDataCreator</apexClass>
         <enabled>true</enabled>
@@ -89,42 +57,14 @@
         <apexClass>PanelForceTestDataCreator</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <!-- <classAccesses>
-        <apexClass>PanelViewCategoriesController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>PanelViewTrackMiscController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>ProgressBarController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses> -->
     <classAccesses>
         <apexClass>TestConductPanelApexController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <!-- <classAccesses>
-        <apexClass>TestEmailTrainerHelper</apexClass>
+    <classAccesses>
+        <apexClass>TestController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>TestPanelViewCategoriesController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestProgressBarController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TrackController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TrackControllerTests</apexClass>
-        <enabled>true</enabled>
-    </classAccesses> -->
     <classAccesses>
         <apexClass>createTimestampController</apexClass>
         <enabled>true</enabled>
@@ -133,22 +73,6 @@
         <apexClass>createTimestampControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <!-- <classAccesses>
-        <apexClass>testData</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>testInterviewMainController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>testIntervirewMainComponents</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>testTrackController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses> -->
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
@@ -291,6 +215,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>PH_Assessment__c.Attempts__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>PH_Assessment__c.Comment__c</field>
         <readable>true</readable>
@@ -331,9 +260,19 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>PH_Assessment__c.OverallStatus__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>PH_Assessment__c.PanelRound__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PH_Assessment__c.PanelistName__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -1116,10 +1055,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>SubscribeToLightningReports</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>TraceXdsQueries</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

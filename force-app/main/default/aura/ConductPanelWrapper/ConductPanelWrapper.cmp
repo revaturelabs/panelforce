@@ -1,5 +1,5 @@
 <aura:component controller="ConductPanelApexController" implements="flexipage:availableForRecordHome,force:hasRecordId">
-	<div style="max-width: 910px;"> <!-- Please leave this div as it is needed to mimic actual component size. -->
+	<div> <!-- Please leave this div as it is needed to mimic actual component size. -->
         <lightning:card title="General Panel Information">
             <c:ConductPanel recordId="{!v.recordId}"/>
             <!--hr/-->

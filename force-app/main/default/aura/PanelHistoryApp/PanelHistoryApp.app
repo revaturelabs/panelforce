@@ -1,3 +1,3 @@
 <aura:application extends="force:slds">
-    <c:PanelHistory />
+     <c:PanelHistory />
 </aura:application>

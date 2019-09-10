@@ -1,0 +1,10 @@
+<aura:component controller="AssessmentController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="topics" type="AssessmentLineItem__c[]"/>
+    <aura:attribute name="assessment" type="PH_Assessment__c"/>
+    
+    <aura:handler name="change" value="{!v.assessment}" action="{!c.doInit}"/>
+    <!--<aura:handler name="init" value="{!this}" action="{!c.doInit}" />-->
+    <aura:iteration items="{!v.topics}" var="t">
+        <span><ui:outputText value="{!t.PanelCategory__r.Name + '; '}"/></span>
+    </aura:iteration>
+</aura:component>

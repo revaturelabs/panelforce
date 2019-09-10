@@ -1,0 +1,19 @@
+<aura:component controller="AssessmentHistoryController" implements="flexipage:availableForRecordHome">
+    <aura:attribute name="panels" type="PH_Assessment__c[]"/>
+    <aura:attribute name="firstPanel" type="PH_Assessment__c"/>
+    <aura:attribute name="contactId" type="ID"/><!-- Value is passed in from PanelHistory -->
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <br/>
+
+    <div>
+        <aura:iteration items="{!v.panels}" var="panel">
+            <div class="new-panel-box">
+                <c:AssessmentHistory contactID="{!v.contactId}" assessment="{!panel}" />
+                <c:PanelHistoryButtonComponent contactID="{!v.contactId}" assessment="{!panel}"/>
+            </div>
+            <br/>
+        </aura:iteration>
+    </div>
+</aura:component>

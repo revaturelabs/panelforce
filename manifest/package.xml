@@ -54,7 +54,6 @@
         <members>AssessmentControllerTest</members>
         <members>AssessmentController</members>
         <members>AssessmentHistoryControllerTest</members>
-        <members>TestController</members>
         <members>ConductPanelApexController</members>
         <name>ApexClass</name>
     </types>

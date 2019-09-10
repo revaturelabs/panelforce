@@ -1,0 +1,18 @@
+<aura:component description="List of AssessmentLineItems">
+    <aura:attribute name="panelCategories" type="AssessmentLineItem__c[]"/>
+    <aura:attribute name="AssessmentId" type="Id" />
+    <lightning:card title="Panel Categories">
+        <p class="slds-p-horizontal--small">
+            <lightning:accordion aura:id="accordion" activeSectionName="B">
+                <aura:iteration items="{!v.panelCategories}" var="cat">
+                    <lightning:accordionSection name="{!cat}" label="{!cat.PanelCategoryName__c}">
+                        <p>Max Score: {!cat.maxScore__c}</p>
+                        <c:PanelCategoryTest category="{!cat}"/>
+                        <c:TimeStampButton PanelCategory="{!cat.PanelCategoryName__c}" 
+                                           AssessmentId="{!v.AssessmentId}"/>
+                    </lightning:accordionSection>
+                </aura:iteration>
+            </lightning:accordion>
+        </p>
+    </lightning:card>
+</aura:component>

@@ -61,9 +61,9 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
-            <componentName>ConductPanel</componentName>
+            <componentName>ConductPanelWrapper</componentName>
         </componentInstances>
-        <name>Facet-29c0b1bd-efb0-448a-bb40-98fbffd69a2b</name>
+        <name>Facet-8a199148-64e5-4474-9545-7c71c52c7f20</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -107,7 +107,7 @@
         <componentInstances>
             <componentInstanceProperties>
                 <name>body</name>
-                <value>Facet-29c0b1bd-efb0-448a-bb40-98fbffd69a2b</value>
+                <value>Facet-8a199148-64e5-4474-9545-7c71c52c7f20</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>title</name>

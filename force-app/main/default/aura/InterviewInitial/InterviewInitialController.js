@@ -59,7 +59,7 @@
                 });
                 appStateChange.fire();
                 console.log("event InterviewAppStateEvent fired");
-                appStateChange.fire();
+                //appStateChange.fire();
 
             } else if (state === "ERROR") {
                 var errors = response.getError();

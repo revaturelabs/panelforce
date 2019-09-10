@@ -28,6 +28,15 @@
         <members>testTrackController</members>
         <members>TrackController</members>
         <members>TrackControllerTests</members>
+        <members>CreateAliController</members>
+        <members>CreateAliControllerTest</members>
+        <members>ConductPanelApexController</members>
+        <members>TestConductPanelApexController</members>
+        <members>ConductPanelApexControllerTest</members>
+        <members>AssessmentLineItemController</members>
+        <members>AssessmentLineItemControllerTest</members>
+        <members>createTimestampController</members>
+        <members>createTimestampControllerTest</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -62,6 +71,15 @@
         <members>Test_App</members>
         <members>testingThings</members>
         <members>TestPMCC</members>
+        <members>tonyTest</members>
+        <members>shaneTest</members>
+        <members>solomonTest</members>
+        <members>shaneRefactor</members>
+        <members>shaneRefactorpanelcategory</members>
+        <members>PanelCategoryTest</members>
+        <members>panelTest</members>
+        <members>TimeStampButton</members>
+        <members>ConductPanelWrapper</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>
@@ -98,6 +116,9 @@
         <members>PH_TrainingAssignment__c-PH_TrainingAssignment Layout</members>
         <members>PH_TrainingTrack__c-PH_TrainingTrack Layout</members>
         <members>Time_Stamp__c-Time Stamp Layout</members>
+
+        <!--<members>PH_Assessment__c-Compact001 Layout</members>-->
+
         <name>Layout</name>
     </types>
     <types>

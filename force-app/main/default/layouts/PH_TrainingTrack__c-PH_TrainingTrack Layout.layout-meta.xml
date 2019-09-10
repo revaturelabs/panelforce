@@ -55,11 +55,11 @@
             <actionType>StandardButton</actionType>
             <sortOrder>7</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
+        <!-- <platformActionListItems>
             <actionName>PH_TrainingTrack__c.Create_Panel_Matrix</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>0</sortOrder>
-        </platformActionListItems>
+        </platformActionListItems> -->
         <platformActionListItems>
             <actionName>ChangeRecordType</actionName>
             <actionType>StandardButton</actionType>

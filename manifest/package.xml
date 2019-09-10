@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <!--
         <members>CreateCategoriesController</members>
         <members>EmailTrainerHelper</members>
         <members>InterviewControllerTest</members>
@@ -14,8 +15,6 @@
         <members>MondayReportsTests</members>
         <members>PanelCategories</members>
         <members>PanelCategoriesTests</members>
-        <members>PanelForceDataCreator</members>
-        <members>PanelForceTestDataCreator</members>
         <members>PanelViewCategoriesController</members>
         <members>PanelViewTrackMiscController</members>
         <members>ProgressBarController</members>
@@ -28,6 +27,13 @@
         <members>testTrackController</members>
         <members>TrackController</members>
         <members>TrackControllerTests</members>
+        -->
+
+        <!-- Data Factories -->
+        <members>PanelForceDataCreator</members>
+        <members>PanelForceTestDataCreator</members>
+
+        <!-- Conduct Panel -->
         <members>CreateAliController</members>
         <members>CreateAliControllerTest</members>
         <members>ConductPanelApexController</members>
@@ -37,6 +43,7 @@
         <members>AssessmentLineItemControllerTest</members>
         <members>createTimestampController</members>
         <members>createTimestampControllerTest</members>
+        
         <name>ApexClass</name>
     </types>
     <types>
@@ -44,9 +51,7 @@
         <name>ApexTestSuite</name>
     </types>
     <types>
-        <members>AppComponent</members>
-        <members>ConductPanel</members>
-        <members>ConductPanelApp</members>
+        <!--<members>AppComponent</members>
         <members>defaultTokens</members>
         <members>InterviewApp</members>
         <members>InterviewAppStateEvent</members>
@@ -57,8 +62,6 @@
         <members>InterviewMainMiscEvent</members>
         <members>InterviewMainProgress</members>
         <members>InterviewMainScore</members>
-        <members>PanelHistory</members>
-        <members>PanelHistoryApp</members>
         <members>PanelMatrixApp</members>
         <members>PanelMatrixCreateCategories</members>
         <members>PanelMatrixItem</members>
@@ -69,8 +72,14 @@
         <members>PanelViewTrackMisc</members>
         <members>PanelViewTrackMiscEvent</members>
         <members>Test_App</members>
-        <members>testingThings</members>
         <members>TestPMCC</members>
+        <members>testingThings</members>
+        -->
+
+        <members>ConductPanel</members>
+        <members>ConductPanelApp</members>
+        
+        
         <members>tonyTest</members>
         <members>shaneTest</members>
         <members>solomonTest</members>
@@ -80,6 +89,9 @@
         <members>panelTest</members>
         <members>TimeStampButton</members>
         <members>ConductPanelWrapper</members>
+
+        <members>PanelHistory</members>
+        <members>PanelHistoryApp</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>
@@ -122,9 +134,9 @@
         <name>Layout</name>
     </types>
     <types>
-        <members>Contact.Conduct_Interview</members>
+        <!-- <members>Contact.Conduct_Interview</members>
         <members>PH_TrainingTrack__c.Create_Panel_Matrix</members>
-        <members>SendEmail</members>
+        <members>SendEmail</members> -->
         <name>QuickAction</name>
     </types>
     <types>

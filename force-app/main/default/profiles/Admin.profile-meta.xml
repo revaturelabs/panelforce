@@ -29,7 +29,7 @@
         <apexClass>CreateAliControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
+    <!-- <classAccesses>
         <apexClass>CreateCategoriesController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -80,7 +80,7 @@
     <classAccesses>
         <apexClass>PanelCategoriesTests</apexClass>
         <enabled>true</enabled>
-    </classAccesses>
+    </classAccesses> -->
     <classAccesses>
         <apexClass>PanelForceDataCreator</apexClass>
         <enabled>true</enabled>
@@ -89,7 +89,7 @@
         <apexClass>PanelForceTestDataCreator</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
+    <!-- <classAccesses>
         <apexClass>PanelViewCategoriesController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -100,12 +100,12 @@
     <classAccesses>
         <apexClass>ProgressBarController</apexClass>
         <enabled>true</enabled>
-    </classAccesses>
+    </classAccesses> -->
     <classAccesses>
         <apexClass>TestConductPanelApexController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
+    <!-- <classAccesses>
         <apexClass>TestEmailTrainerHelper</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -124,7 +124,7 @@
     <classAccesses>
         <apexClass>TrackControllerTests</apexClass>
         <enabled>true</enabled>
-    </classAccesses>
+    </classAccesses> -->
     <classAccesses>
         <apexClass>createTimestampController</apexClass>
         <enabled>true</enabled>
@@ -133,7 +133,7 @@
         <apexClass>createTimestampControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
+    <!-- <classAccesses>
         <apexClass>testData</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -148,7 +148,7 @@
     <classAccesses>
         <apexClass>testTrackController</apexClass>
         <enabled>true</enabled>
-    </classAccesses>
+    </classAccesses> -->
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>

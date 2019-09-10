@@ -110,11 +110,11 @@
             <actionType>ProductivityAction</actionType>
             <sortOrder>15</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
+        <!-- <platformActionListItems>
             <actionName>Contact.Conduct_Interview</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>0</sortOrder>
-        </platformActionListItems>
+        </platformActionListItems> -->
         <platformActionListItems>
             <actionName>SendEmail</actionName>
             <actionType>QuickAction</actionType>

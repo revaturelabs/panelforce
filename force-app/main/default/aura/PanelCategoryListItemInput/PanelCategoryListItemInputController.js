@@ -1,14 +1,8 @@
 ({
     SaveALI : function(component, event, helper) {
-        console.log('saveali');
         var action = component.get("c.saveALI");
-        console.log('Its the v.repanel');
         var isChecked = component.find("alirepanel").get("v.value");
-        console.log('saveALI' + component.get("v.category"));
-        console.log('saveALI' + component.get("v.score"));
-        console.log('saveALI repanel' + component.get("v.repanel"));
-        console.log('saveALI' + component.get("v.comments"));
-        //action.setStorable();
+     
         action.setParams({
             "ALIId" : component.get("v.category").Id,
             "score" : component.get("v.score"), 

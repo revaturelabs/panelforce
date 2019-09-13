@@ -1,60 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <!--
-        <members>CreateCategoriesController</members>
-        <members>EmailTrainerHelper</members>
-        <members>InterviewControllerTest</members>
-        <members>InterviewMainController</members>
-        <members>InterviewMainControllerTests</members>
-        <members>InterviewMainMiscApexController</members>
-        <members>InterviewMainMiscApexControllerTests</members>
-        <members>InterviewMainScoreApexController</members>
-        <members>InterviewMainScoreApexControllerTests</members>
-        <members>MondayReports</members>
-        <members>MondayReportsTests</members>
-        <members>PanelCategories</members>
-        <members>PanelCategoriesTests</members>
-        <members>PanelViewCategoriesController</members>
-        <members>PanelViewTrackMiscController</members>
-        <members>ProgressBarController</members>
-        <members>testData</members>
-        <members>TestEmailTrainerHelper</members>
-        <members>testInterviewMainController</members>
-        <members>testIntervirewMainComponents</members>
-        <members>TestPanelViewCategoriesController</members>
-        <members>TestProgressBarController</members>
-        <members>testTrackController</members>
-        <members>TrackController</members>
-        <members>TrackControllerTests</members>
-        -->
-
         <!-- Data Factories -->
         <members>PanelForceDataCreator</members>
         <members>PanelForceTestDataCreator</members>
 
-        
-
         <!-- Conduct Panel -->
-        <members>AssessmentHistoryController</members>
+        <members>AssessmentLineItemController</members>
+        <members>AssessmentLineItemControllerTest</members>
         <members>CreateAliController</members>
         <members>CreateAliControllerTest</members>
         <members>ConductPanelApexController</members>
-        <members>TestConductPanelApexController</members>
         <members>ConductPanelApexControllerTest</members>
-        <members>AssessmentLineItemController</members>
-        <members>AssessmentLineItemControllerTest</members>
+        <members>TestConductPanelApexController</members>
         <members>createTimestampController</members>
         <members>createTimestampControllerTest</members>
 
         <!-- Panel History -->
-        <members>AssessmentControllerTest</members>
         <members>AssessmentController</members>
-        <members>AssessmentServer</members>
         <members>AssessmentControllerTest</members>
-        <members>AssessmentController</members>
+        <members>AssessmentHistoryController</members>
         <members>AssessmentHistoryControllerTest</members>
-        <members>ConductPanelApexController</members>
+
         <name>ApexClass</name>
     </types>
     <types>
@@ -62,52 +29,26 @@
         <name>ApexTestSuite</name>
     </types>
     <types>
-        <!--<members>AppComponent</members>
-        <members>defaultTokens</members>
-        <members>InterviewApp</members>
-        <members>InterviewAppStateEvent</members>
-        <members>InterviewInitial</members>
-        <members>InterviewMain</members>
-        <members>InterviewMainEvent</members>
-        <members>InterviewMainMisc</members>
-        <members>InterviewMainMiscEvent</members>
-        <members>InterviewMainProgress</members>
-        <members>InterviewMainScore</members>
-        <members>PanelMatrixApp</members>
-        <members>PanelMatrixCreateCategories</members>
-        <members>PanelMatrixItem</members>
-        <members>PanelMatrixItemEvent</members>
-        <members>PanelViewCategories</members>
-        <members>PanelViewCategoriesEvent</members>
-        <members>PanelViewMain</members>
-        <members>PanelViewTrackMisc</members>
-        <members>PanelViewTrackMiscEvent</members>
-        <members>Test_App</members>
-        <members>TestPMCC</members>
-        <members>testingThings</members>
-        -->
-
-        <members>ConductPanel</members>
-        <members>ConductPanelApp</members>
-        
-        
-        <members>PanelHistoryButtonComponent</members>
-        <members>AssessmentHistory</members>
-        <members>PanelHistoryBox</members>
-        <members>TopicsToRePanel</members>
-        <members>PanelHistoryLink</members>
-        <members>tonyTest</members>
-        <members>shaneTest</members>
-        <members>solomonTest</members>
-        <members>shaneRefactor</members>
-        <members>shaneRefactorpanelcategory</members>
-        <members>PanelCategoryTest</members>
-        <members>panelTest</members>
-        <members>TimeStampButton</members>
+        <!-- Conduct Panel -->
         <members>ConductPanelWrapper</members>
+        <members>ConductPanel</members>
+        <members>PanelCategoryTest</members>
+        <members>TimeStampButton</members>
+        <members>ConductPanelApp</members>
 
+        <members>PanelCategoryList</members>
+        <members>PanelCategoryListItem</members>
+        <members>PanelCategoryListItemInput</members>
+
+        <!-- Panel History -->
+        <members>AssessmentHistory</members>
         <members>PanelHistory</members>
+        <members>PanelHistoryBox</members>
+        <members>PanelHistoryLink</members>
+        <members>PanelHistoryButtonComponent</members>
+        <members>TopicsToRePanel</members>
         <members>PanelHistoryApp</members>
+
         <name>AuraDefinitionBundle</name>
     </types>
     <types>
@@ -135,7 +76,6 @@
     </types>
     
     <types>
-        <members>Assessment__c-Assessment Layout</members>
         <members>AssessmentLineItem__c-Assessment Line Item Layout</members>
         <members>Contact-Contact Layout</members>
         <members>PanelCategory__c-Panel Category Layout</members>
@@ -145,15 +85,7 @@
         <members>PH_TrainingTrack__c-PH_TrainingTrack Layout</members>
         <members>Time_Stamp__c-Time Stamp Layout</members>
 
-        <!--<members>PH_Assessment__c-Compact001 Layout</members>-->
-
         <name>Layout</name>
-    </types>
-    <types>
-        <!-- <members>Contact.Conduct_Interview</members>
-        <members>PH_TrainingTrack__c.Create_Panel_Matrix</members>
-        <members>SendEmail</members> -->
-        <name>QuickAction</name>
     </types>
     <types>
         <members>Admin</members>

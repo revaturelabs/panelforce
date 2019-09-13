@@ -1,5 +1,0 @@
-({
-    createLineItem : function(assId, trackId) {
-
-    }
-})

@@ -6,7 +6,7 @@
             <lightning:accordion aura:id="accordion" activeSectionName="B">
                 <aura:iteration items="{!v.panelCategories}" var="cat">
                     <lightning:accordionSection name="{!cat}" label="{!cat.PanelCategoryName__c}">
-                        <c:PanelCategoryTest category="{!cat}" maxScore="{!cat.maxScore__c}"/> <br />
+                        <c:PanelCategoryListItemInput category="{!cat}" maxScore="{!cat.maxScore__c}"/> <br />
                         <c:TimeStampButton PanelCategory="{!cat.PanelCategoryName__c}" 
                                            AssessmentId="{!v.AssessmentId}"/>
                     </lightning:accordionSection>

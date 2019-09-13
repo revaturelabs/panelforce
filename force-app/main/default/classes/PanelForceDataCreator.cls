@@ -1,7 +1,7 @@
 public class PanelForceDataCreator {
     public static void createData() {
         // 1) Delete all existing Data
-        //deleteExistingData();
+        deleteExistingData();
         
         // 2) Create Training Tracks
         createTrainingTracks();
@@ -23,6 +23,7 @@ public class PanelForceDataCreator {
     }
     
     private static void deleteExistingData() {
+        deleteExistingLeads();
         deleteExistingContacts();
         deleteExistingTrainings();
         deleteExistingTrainingTracks();
@@ -31,6 +32,7 @@ public class PanelForceDataCreator {
     }
     
     // Methods that delete existing data. This is done to reduce redundant data.
+    private static void deleteExistingLeads() { delete [SELECT Id FROM Lead]; }
     private static void deleteExistingContacts() { delete [SELECT Id FROM Contact]; }
     private static void deleteExistingTrainings() { delete [SELECT Id FROM PH_Training__c]; }
     private static void deleteExistingTrainingTracks() { delete [SELECT Id FROM PH_TrainingTrack__c]; }

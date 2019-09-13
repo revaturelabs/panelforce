@@ -104,5 +104,6 @@
     <hr />
     
     <hr />
-    <c:shaneRefactor ContactId="{!v.recordId}" AssessmentId="{!v.AssessmentId}" />
+    <c:PanelCategoryList ContactId="{!v.recordId}" AssessmentId="{!v.AssessmentId}" />
+    <!--<c:shaneRefactor ContactId="{!v.recordId}" AssessmentId="{!v.AssessmentId}" />-->
 </aura:component>

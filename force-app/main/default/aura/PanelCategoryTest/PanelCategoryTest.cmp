@@ -2,28 +2,43 @@
 <aura:component controller="AssessmentLineItemController">
     <aura:attribute name="category" type="AssessmentLineItem__c"/>
     <aura:attribute name="ALIId" type="Id"/>
+    <aura:attribute name="maxScore" type="Integer" default="null" />
     <aura:attribute name="score" type="Integer" default="null"/>
     <aura:attribute name="repanel" type="Boolean" default="false"/>
     <aura:attribute name="comments" type="String" default=""/>
     
-    <!-- Form for collecting Actual Score, Repanel, and Comments -->
-    <form class="slds-form--stacked">
-        <lightning:input type="number" aura:id="aliform" label="Actual Score"
-                         name="actualscore"
-                         value="{!v.score}"
-                         min="0"
-                         required="true" 
-                         onblur="{!c.SaveALI}"/>
-        <lightning:input type="checkbox" aura:id="alirepanel" label="Repanel?"
-                         checked="{!v.repanel}"
-                         name="{!v.repanel}"
-                         onchange="{!c.SaveALI}"
-                         />
-        <lightning:input aura:id="aliform" label="Comments"
-                         name="catcomment"
-                         value="{!v.comments}"
-                         onblur="{!c.SaveALI}"
-                         />
-    </form>
+    <!-- Form for collecting Actual Score, Repanel, and Comments -->   
     
+    <form class="slds-grid slds-gutters slds-grid_vertical-align-center">
+            <div class="slds-col slds-size_2-of-12">
+                <lightning:input type="number" label="Max Score"
+                                 name="maxscore"
+                                 value="{!v.maxScore}"
+                                 disabled="true"/>
+            </div>
+            <div class="slds-col slds-size_2-of-12">
+                <lightning:input type="number" aura:id="aliform" label="Actual Score"
+                                 name="actualscore"
+                                 value="{!v.score}"
+                                 min="0"
+                                 required="true"
+                                 onblur="{!c.SaveALI}"/>
+            </div>
+            <div class="slds-col slds-size_2-of-12">
+                <div class="slds-grid_align-center">
+                    <lightning:select label="Repanel?" name="{!v.repanel}"
+                         onchange="{!c.SaveALI}" aura:id="alirepanel" value="{!v.repanel}">
+                    	<option value="false">No</option>
+                        <option value="true">Yes</option>
+                    </lightning:select>
+                </div>
+            </div>
+            <div class="slds-col slds-size_6-of-12">    
+                <lightning:input aura:id="aliform" label="Comments"
+                                 name="catcomment"
+                                 value="{!v.comments}"
+                                 onblur="{!c.SaveALI}"
+                                 />
+            </div>
+        </form>
 </aura:component>

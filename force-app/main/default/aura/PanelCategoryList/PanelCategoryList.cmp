@@ -1,0 +1,9 @@
+<aura:component controller="CreateAliController" implements="flexipage:availableForRecordHome" access="global">
+    <!--<aura:handler name="init" value="{!this}" action="{!c.doInit}" />-->
+    <aura:attribute name="ContactId" type="Id"/>
+    <aura:attribute name="AssessmentId" type="Object"/>
+    <aura:attribute name="categories" type="AssessmentLineItem__c[]"/>
+    
+    <aura:handler name="change" value="{!v.AssessmentId}" action="{!c.doInit}" />
+    <c:PanelCategoryListItem panelCategories="{!v.categories}" AssessmentId="{!v.AssessmentId}"/>
+</aura:component>
